@@ -1,0 +1,13 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/
+
+# Node (backend)
+backend/node_modules/
+backend/npm-debug.log*
+backend/.env
+backend/.env.*
+!backend/.env.example
