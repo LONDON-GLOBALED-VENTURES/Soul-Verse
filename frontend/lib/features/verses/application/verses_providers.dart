@@ -1,0 +1,28 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../core/network/dio_client.dart';
+import '../data/models/daily_verse.dart';
+import '../data/models/mood.dart';
+import '../data/models/verse.dart';
+import '../data/models/verse_template.dart';
+import '../data/verses_api.dart';
+
+part 'verses_providers.g.dart';
+
+@riverpod
+VersesApi versesApi(Ref ref) => VersesApi(ref.watch(dioClientProvider));
+
+@riverpod
+Future<List<Mood>> moods(Ref ref) => ref.watch(versesApiProvider).getMoods();
+
+@riverpod
+Future<List<Verse>> verses(Ref ref, String moodId) =>
+    ref.watch(versesApiProvider).getVerses(mood: moodId);
+
+@riverpod
+Future<List<VerseTemplate>> templates(Ref ref, String moodId) =>
+    ref.watch(versesApiProvider).getTemplates(mood: moodId);
+
+@riverpod
+Future<DailyVerse> dailyVerse(Ref ref) =>
+    ref.watch(versesApiProvider).getDailyVerse();
