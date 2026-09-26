@@ -1,10 +1,10 @@
 [
-  { "id": "anxious", "name": "Anxious", "imagePath": "images/mist.png" },
-  { "id": "hopeful", "name": "Hopeful", "imagePath": "images/dawn.png" },
-  { "id": "grateful", "name": "Grateful", "imagePath": "images/meadow.png" },
-  { "id": "sad", "name": "Sad", "imagePath": "images/ocean.png" },
-  { "id": "stressed", "name": "Stressed", "imagePath": "images/twilight.png" },
-  { "id": "need-strength", "name": "Need Strength", "imagePath": "images/forest.png" },
-  { "id": "lost", "name": "Lost", "imagePath": "images/dusk.png" },
-  { "id": "joyful", "name": "Joyful", "imagePath": "images/golden.png" }
+  { "id": "anxious", "name": "Anxious", "title": "Verses for Anxiety", "imagePath": "images/mist.png" },
+  { "id": "hopeful", "name": "Hopeful", "title": "Verses for Hope", "imagePath": "images/dawn.png" },
+  { "id": "grateful", "name": "Grateful", "title": "Verses for Gratitude", "imagePath": "images/meadow.png" },
+  { "id": "sad", "name": "Sad", "title": "Verses for Sadness", "imagePath": "images/ocean.png" },
+  { "id": "stressed", "name": "Stressed", "title": "Verses for Stress", "imagePath": "images/twilight.png" },
+  { "id": "need-strength", "name": "Need Strength", "title": "Verses for Strength", "imagePath": "images/forest.png" },
+  { "id": "lost", "name": "Lost", "title": "Verses for Guidance", "imagePath": "images/dusk.png" },
+  { "id": "joyful", "name": "Joyful", "title": "Verses for Joy", "imagePath": "images/golden.png" }
 ]

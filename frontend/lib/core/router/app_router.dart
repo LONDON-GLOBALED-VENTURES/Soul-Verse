@@ -5,16 +5,11 @@ import '../../features/favourites/presentation/favourites_page.dart';
 import '../../features/more/presentation/more_page.dart';
 import '../../features/verses/presentation/explore_page.dart';
 import '../../features/verses/presentation/home_page.dart';
+import '../../features/verses/presentation/mood_verses_page.dart';
+import 'app_routes.dart';
 import 'app_shell.dart';
 
 part 'app_router.g.dart';
-
-abstract final class AppRoutes {
-  static const home = '/home';
-  static const explore = '/explore';
-  static const favourites = '/favourites';
-  static const more = '/more';
-}
 
 @Riverpod(keepAlive: true)
 GoRouter appRouter(Ref ref) {
@@ -37,6 +32,13 @@ GoRouter appRouter(Ref ref) {
               GoRoute(
                 path: AppRoutes.explore,
                 builder: (_, _) => const ExplorePage(),
+                routes: [
+                  GoRoute(
+                    path: 'mood/:moodId',
+                    builder: (_, state) =>
+                        MoodVersesPage(moodId: state.pathParameters['moodId']!),
+                  ),
+                ],
               ),
             ],
           ),

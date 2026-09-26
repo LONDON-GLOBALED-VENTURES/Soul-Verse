@@ -6,9 +6,15 @@ part 'mood.g.dart';
 class Mood {
   final String id;
   final String name;
+  final String title;
   final String imageUrl;
 
-  const Mood({required this.id, required this.name, required this.imageUrl});
+  const Mood({
+    required this.id,
+    required this.name,
+    required this.title,
+    required this.imageUrl,
+  });
 
   factory Mood.fromJson(Map<String, dynamic> json) => _$MoodFromJson(json);
   Map<String, dynamic> toJson() => _$MoodToJson(this);
