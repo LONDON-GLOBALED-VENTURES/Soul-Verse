@@ -11,7 +11,11 @@ class DailyVerse {
   final Verse verse;
   final VerseTemplate template;
 
-  const DailyVerse({required this.date, required this.verse, required this.template});
+  const DailyVerse({
+    required this.date,
+    required this.verse,
+    required this.template,
+  });
 
   factory DailyVerse.fromJson(Map<String, dynamic> json) =>
       _$DailyVerseFromJson(json);

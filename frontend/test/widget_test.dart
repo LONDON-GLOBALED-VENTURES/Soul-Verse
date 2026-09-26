@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -40,22 +41,37 @@ class _FakeVersesApi implements VersesApi {
       const DailyVerse(date: '2026-01-01', verse: _verse, template: _template);
 
   @override
-  Future<List<VerseTemplate>> getTemplates({String? mood}) async => const [_template];
+  Future<List<VerseTemplate>> getTemplates({String? mood}) async => const [
+    _template,
+  ];
 }
 
 void main() {
-  testWidgets('shows the daily verse and moods', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [versesApiProvider.overrideWithValue(_FakeVersesApi())],
-        child: const SoulVerseApp(),
-      ),
-    );
+  Widget app() => ProviderScope(
+    overrides: [versesApiProvider.overrideWithValue(_FakeVersesApi())],
+    child: const SoulVerseApp(),
+  );
+
+  testWidgets('home shows the daily verse', (tester) async {
+    await tester.pumpWidget(app());
     await tester.pumpAndSettle();
 
-    expect(find.text('Be still, and know that I am God.'), findsOneWidget);
+    expect(find.text('Today'), findsOneWidget);
+    expect(find.text('“Be still, and know that I am God.”'), findsOneWidget);
     expect(find.text('Psalm 46:10'), findsOneWidget);
-    expect(find.text('Anxious'), findsOneWidget);
+  });
+
+  testWidgets('bottom nav switches tabs', (tester) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Explore'));
+    await tester.pumpAndSettle();
+    expect(find.text('How are you feeling?'), findsOneWidget);
+
+    await tester.tap(find.text('Favourites').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Verses you save will appear here.'), findsOneWidget);
   });
 
   test('VerseTemplate parses hex text colour', () {

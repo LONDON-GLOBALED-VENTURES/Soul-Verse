@@ -19,9 +19,7 @@ Dio dioClient(Ref ref) {
     ),
   );
 
-  dio.interceptors.add(
-    LogInterceptor(requestBody: true, responseBody: true),
-  );
+  dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
 
   return dio;
 }
