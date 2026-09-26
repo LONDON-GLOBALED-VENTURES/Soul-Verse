@@ -1,0 +1,10 @@
+[
+  { "id": "anxious", "name": "Anxious", "imagePath": "images/mist.png" },
+  { "id": "hopeful", "name": "Hopeful", "imagePath": "images/dawn.png" },
+  { "id": "grateful", "name": "Grateful", "imagePath": "images/meadow.png" },
+  { "id": "sad", "name": "Sad", "imagePath": "images/ocean.png" },
+  { "id": "stressed", "name": "Stressed", "imagePath": "images/twilight.png" },
+  { "id": "need-strength", "name": "Need Strength", "imagePath": "images/forest.png" },
+  { "id": "lost", "name": "Lost", "imagePath": "images/dusk.png" },
+  { "id": "joyful", "name": "Joyful", "imagePath": "images/golden.png" }
+]

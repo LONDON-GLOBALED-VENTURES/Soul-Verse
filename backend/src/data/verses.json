@@ -1,0 +1,378 @@
+[
+  {
+    "id": "phil-4-6",
+    "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
+    "reference": "Philippians 4:6",
+    "translation": "KJV",
+    "moods": ["anxious", "stressed"],
+    "reflection": "Worry asks you to carry tomorrow alone. Prayer hands it back to the One who already holds it."
+  },
+  {
+    "id": "1pet-5-7",
+    "text": "Casting all your care upon him; for he careth for you.",
+    "reference": "1 Peter 5:7",
+    "translation": "KJV",
+    "moods": ["anxious", "stressed", "sad"],
+    "reflection": "You don't have to carry your worries alone. God cares for you and invites you to give Him everything that feels heavy."
+  },
+  {
+    "id": "matt-6-34",
+    "text": "Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof.",
+    "reference": "Matthew 6:34",
+    "translation": "KJV",
+    "moods": ["anxious"],
+    "reflection": "Today has enough grace for today. Let tomorrow wait until it arrives."
+  },
+  {
+    "id": "isa-41-10",
+    "text": "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.",
+    "reference": "Isaiah 41:10",
+    "translation": "KJV",
+    "moods": ["anxious", "need-strength"],
+    "reflection": "Fear shrinks when you remember who stands beside you. You are held, helped and upheld."
+  },
+  {
+    "id": "john-14-27",
+    "text": "Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid.",
+    "reference": "John 14:27",
+    "translation": "KJV",
+    "moods": ["anxious", "stressed"],
+    "reflection": "His peace doesn't depend on calm circumstances. It is a gift you can receive even in the storm."
+  },
+  {
+    "id": "ps-56-3",
+    "text": "What time I am afraid, I will trust in thee.",
+    "reference": "Psalm 56:3",
+    "translation": "KJV",
+    "moods": ["anxious"],
+    "reflection": "Trust isn't the absence of fear. It's choosing where to turn when fear comes."
+  },
+  {
+    "id": "2tim-1-7",
+    "text": "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.",
+    "reference": "2 Timothy 1:7",
+    "translation": "KJV",
+    "moods": ["anxious", "need-strength"],
+    "reflection": "Fear is not your inheritance. Power, love and a steady mind are already yours."
+  },
+  {
+    "id": "ps-46-10",
+    "text": "Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.",
+    "reference": "Psalm 46:10",
+    "translation": "KJV",
+    "moods": ["stressed", "anxious"],
+    "reflection": "Stillness is not doing nothing. It is resting in the truth that God is in control."
+  },
+  {
+    "id": "matt-11-28",
+    "text": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
+    "reference": "Matthew 11:28",
+    "translation": "KJV",
+    "moods": ["stressed", "sad"],
+    "reflection": "The invitation is simple: come as you are, tired and heavy, and receive rest."
+  },
+  {
+    "id": "ps-55-22",
+    "text": "Cast thy burden upon the LORD, and he shall sustain thee: he shall never suffer the righteous to be moved.",
+    "reference": "Psalm 55:22",
+    "translation": "KJV",
+    "moods": ["stressed"],
+    "reflection": "What feels too heavy for you is never too heavy for Him. Let Him sustain you today."
+  },
+  {
+    "id": "isa-26-3",
+    "text": "Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.",
+    "reference": "Isaiah 26:3",
+    "translation": "KJV",
+    "moods": ["stressed", "anxious"],
+    "reflection": "Where your mind rests, your heart follows. Fix your thoughts on Him and find peace."
+  },
+  {
+    "id": "ps-94-19",
+    "text": "In the multitude of my thoughts within me thy comforts delight my soul.",
+    "reference": "Psalm 94:19",
+    "translation": "KJV",
+    "moods": ["stressed"],
+    "reflection": "When your thoughts race, His comfort meets you right in the middle of them."
+  },
+  {
+    "id": "ps-34-18",
+    "text": "The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.",
+    "reference": "Psalm 34:18",
+    "translation": "KJV",
+    "moods": ["sad"],
+    "reflection": "Your pain doesn't push God away. He draws closest when your heart is breaking."
+  },
+  {
+    "id": "ps-147-3",
+    "text": "He healeth the broken in heart, and bindeth up their wounds.",
+    "reference": "Psalm 147:3",
+    "translation": "KJV",
+    "moods": ["sad"],
+    "reflection": "Healing may be slow, but it is certain. He tends every wound with care."
+  },
+  {
+    "id": "rev-21-4",
+    "text": "And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away.",
+    "reference": "Revelation 21:4",
+    "translation": "KJV",
+    "moods": ["sad", "hopeful"],
+    "reflection": "Every tear is seen, and one day every tear will be wiped away. Sorrow does not have the last word."
+  },
+  {
+    "id": "ps-30-5",
+    "text": "For his anger endureth but a moment; in his favour is life: weeping may endure for a night, but joy cometh in the morning.",
+    "reference": "Psalm 30:5",
+    "translation": "KJV",
+    "moods": ["sad", "hopeful"],
+    "reflection": "Night feels long, but it always ends. Morning and joy are on their way."
+  },
+  {
+    "id": "matt-5-4",
+    "text": "Blessed are they that mourn: for they shall be comforted.",
+    "reference": "Matthew 5:4",
+    "translation": "KJV",
+    "moods": ["sad"],
+    "reflection": "Grief is not a sign of weak faith. It is a place where God's comfort is promised."
+  },
+  {
+    "id": "ps-42-11",
+    "text": "Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him, who is the health of my countenance, and my God.",
+    "reference": "Psalm 42:11",
+    "translation": "KJV",
+    "moods": ["sad", "hopeful"],
+    "reflection": "It's okay to be honest about a heavy heart, and then to speak hope to it."
+  },
+  {
+    "id": "jer-29-11",
+    "text": "For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.",
+    "reference": "Jeremiah 29:11",
+    "translation": "KJV",
+    "moods": ["hopeful", "lost"],
+    "reflection": "Even when the road is unclear, God's thoughts toward you are good, and your story has a hopeful end."
+  },
+  {
+    "id": "rom-15-13",
+    "text": "Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.",
+    "reference": "Romans 15:13",
+    "translation": "KJV",
+    "moods": ["hopeful", "joyful"],
+    "reflection": "Hope isn't something you have to manufacture. The God of hope fills you until it overflows."
+  },
+  {
+    "id": "lam-3-22-23",
+    "text": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
+    "reference": "Lamentations 3:22-23",
+    "translation": "KJV",
+    "moods": ["hopeful", "grateful"],
+    "reflection": "Yesterday's failures don't define today. His mercy is fresh every single morning."
+  },
+  {
+    "id": "rom-8-28",
+    "text": "And we know that all things work together for good to them that love God, to them who are the called according to his purpose.",
+    "reference": "Romans 8:28",
+    "translation": "KJV",
+    "moods": ["hopeful", "lost"],
+    "reflection": "Not everything is good, but God is weaving even the hard things into something good."
+  },
+  {
+    "id": "heb-11-1",
+    "text": "Now faith is the substance of things hoped for, the evidence of things not seen.",
+    "reference": "Hebrews 11:1",
+    "translation": "KJV",
+    "moods": ["hopeful"],
+    "reflection": "Faith holds on to what God has promised, even before you can see it."
+  },
+  {
+    "id": "isa-40-31",
+    "text": "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.",
+    "reference": "Isaiah 40:31",
+    "translation": "KJV",
+    "moods": ["need-strength", "hopeful"],
+    "reflection": "Waiting on God isn't wasted time. It's where tired hearts are renewed."
+  },
+  {
+    "id": "phil-4-13",
+    "text": "I can do all things through Christ which strengtheneth me.",
+    "reference": "Philippians 4:13",
+    "translation": "KJV",
+    "moods": ["need-strength"],
+    "reflection": "Your strength may run out, but His never does. Lean on Him for what's in front of you."
+  },
+  {
+    "id": "josh-1-9",
+    "text": "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.",
+    "reference": "Joshua 1:9",
+    "translation": "KJV",
+    "moods": ["need-strength", "anxious"],
+    "reflection": "Courage comes from company. Wherever you go today, you do not go alone."
+  },
+  {
+    "id": "2cor-12-9",
+    "text": "And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness.",
+    "reference": "2 Corinthians 12:9",
+    "translation": "KJV",
+    "moods": ["need-strength"],
+    "reflection": "Your weakness is not a barrier to God. It's the very place His strength shows up."
+  },
+  {
+    "id": "ps-46-1",
+    "text": "God is our refuge and strength, a very present help in trouble.",
+    "reference": "Psalm 46:1",
+    "translation": "KJV",
+    "moods": ["need-strength", "stressed"],
+    "reflection": "Help isn't far off or delayed. In trouble, God is present right now."
+  },
+  {
+    "id": "ps-121-1-2",
+    "text": "I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth.",
+    "reference": "Psalm 121:1-2",
+    "translation": "KJV",
+    "moods": ["need-strength"],
+    "reflection": "Look up. The One who made the mountains is the One who helps you."
+  },
+  {
+    "id": "deut-31-8",
+    "text": "And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed.",
+    "reference": "Deuteronomy 31:8",
+    "translation": "KJV",
+    "moods": ["lost", "need-strength"],
+    "reflection": "God is already ahead of you on the road you're afraid to walk."
+  },
+  {
+    "id": "prov-3-5-6",
+    "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+    "reference": "Proverbs 3:5-6",
+    "translation": "KJV",
+    "moods": ["lost"],
+    "reflection": "You don't need the whole map. Trust Him with the next step, and He will direct the path."
+  },
+  {
+    "id": "ps-23-1",
+    "text": "The LORD is my shepherd; I shall not want.",
+    "reference": "Psalm 23:1",
+    "translation": "KJV",
+    "moods": ["lost", "grateful"],
+    "reflection": "A shepherd leads, protects and provides. You are cared for, even when you feel lost."
+  },
+  {
+    "id": "ps-119-105",
+    "text": "Thy word is a lamp unto my feet, and a light unto my path.",
+    "reference": "Psalm 119:105",
+    "translation": "KJV",
+    "moods": ["lost"],
+    "reflection": "A lamp lights the next few steps, not the whole journey. That's enough to keep walking."
+  },
+  {
+    "id": "isa-30-21",
+    "text": "And thine ears shall hear a word behind thee, saying, This is the way, walk ye in it, when ye turn to the right hand, and when ye turn to the left.",
+    "reference": "Isaiah 30:21",
+    "translation": "KJV",
+    "moods": ["lost"],
+    "reflection": "When you don't know which way to turn, listen. God still guides those who seek Him."
+  },
+  {
+    "id": "luke-19-10",
+    "text": "For the Son of man is come to seek and to save that which was lost.",
+    "reference": "Luke 19:10",
+    "translation": "KJV",
+    "moods": ["lost"],
+    "reflection": "Feeling lost doesn't put you out of reach. You are exactly who Jesus came looking for."
+  },
+  {
+    "id": "ps-32-8",
+    "text": "I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye.",
+    "reference": "Psalm 32:8",
+    "translation": "KJV",
+    "moods": ["lost"],
+    "reflection": "God doesn't just point the way. He walks with you and teaches you as you go."
+  },
+  {
+    "id": "1thess-5-18",
+    "text": "In every thing give thanks: for this is the will of God in Christ Jesus concerning you.",
+    "reference": "1 Thessalonians 5:18",
+    "translation": "KJV",
+    "moods": ["grateful"],
+    "reflection": "Gratitude doesn't wait for perfect days. It finds God's goodness in every one."
+  },
+  {
+    "id": "ps-107-1",
+    "text": "O give thanks unto the LORD, for he is good: for his mercy endureth for ever.",
+    "reference": "Psalm 107:1",
+    "translation": "KJV",
+    "moods": ["grateful"],
+    "reflection": "His goodness isn't seasonal. His mercy lasts forever, and that's always worth thanks."
+  },
+  {
+    "id": "ps-118-24",
+    "text": "This is the day which the LORD hath made; we will rejoice and be glad in it.",
+    "reference": "Psalm 118:24",
+    "translation": "KJV",
+    "moods": ["grateful", "joyful"],
+    "reflection": "Today is a gift, made on purpose. Receive it with gladness."
+  },
+  {
+    "id": "jas-1-17",
+    "text": "Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning.",
+    "reference": "James 1:17",
+    "translation": "KJV",
+    "moods": ["grateful"],
+    "reflection": "Every good thing in your life traces back to a generous Father who never changes."
+  },
+  {
+    "id": "col-3-15",
+    "text": "And let the peace of God rule in your hearts, to the which also ye are called in one body; and be ye thankful.",
+    "reference": "Colossians 3:15",
+    "translation": "KJV",
+    "moods": ["grateful"],
+    "reflection": "Peace and thankfulness grow together. Let both settle into your heart today."
+  },
+  {
+    "id": "ps-100-4",
+    "text": "Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.",
+    "reference": "Psalm 100:4",
+    "translation": "KJV",
+    "moods": ["grateful", "joyful"],
+    "reflection": "Thanksgiving is the doorway into God's presence. Start with thanks and see where it leads."
+  },
+  {
+    "id": "phil-4-4",
+    "text": "Rejoice in the Lord alway: and again I say, Rejoice.",
+    "reference": "Philippians 4:4",
+    "translation": "KJV",
+    "moods": ["joyful"],
+    "reflection": "Joy in the Lord doesn't depend on circumstances. It's rooted in who He is."
+  },
+  {
+    "id": "ps-16-11",
+    "text": "Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.",
+    "reference": "Psalm 16:11",
+    "translation": "KJV",
+    "moods": ["joyful"],
+    "reflection": "The fullest joy isn't found in what you have, but in whose presence you're in."
+  },
+  {
+    "id": "john-15-11",
+    "text": "These things have I spoken unto you, that my joy might remain in you, and that your joy might be full.",
+    "reference": "John 15:11",
+    "translation": "KJV",
+    "moods": ["joyful"],
+    "reflection": "Jesus wants your joy to be full, not partial or passing, but lasting."
+  },
+  {
+    "id": "zeph-3-17",
+    "text": "The LORD thy God in the midst of thee is mighty; he will save, he will rejoice over thee with joy; he will rest in his love, he will joy over thee with singing.",
+    "reference": "Zephaniah 3:17",
+    "translation": "KJV",
+    "moods": ["joyful", "sad"],
+    "reflection": "Imagine it: God rejoices over you with singing. You are deeply delighted in."
+  },
+  {
+    "id": "ps-126-3",
+    "text": "The LORD hath done great things for us; whereof we are glad.",
+    "reference": "Psalm 126:3",
+    "translation": "KJV",
+    "moods": ["joyful", "grateful"],
+    "reflection": "Take a moment to remember what God has already done. Gladness follows remembering."
+  }
+]
