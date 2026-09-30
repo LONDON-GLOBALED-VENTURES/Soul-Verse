@@ -45,6 +45,8 @@ const _template = VerseTemplate(
 );
 
 class _FakeVersesApi implements VersesApi {
+  final requestedDailyDates = <String?>[];
+
   @override
   Future<List<Mood>> getMoods() async => const [
     Mood(
@@ -62,11 +64,17 @@ class _FakeVersesApi implements VersesApi {
   ];
 
   @override
-  Future<DailyVerse> getDailyVerse() async => const DailyVerse(
-    date: '2026-01-01',
-    verse: _stillVerse,
-    template: _template,
-  );
+  Future<DailyVerse> getDailyVerse({String? date}) async {
+    requestedDailyDates.add(date);
+    return const DailyVerse(
+      date: '2026-01-01',
+      verse: _stillVerse,
+      template: _template,
+    );
+  }
+
+  @override
+  Future<List<DailyVerse>> getDailyRange(String start, int days) async => [];
 
   @override
   Future<List<VerseTemplate>> getTemplates({String? mood}) async => const [
@@ -114,6 +122,7 @@ class _FakeShareService implements ShareService {
 void main() {
   late _FakeShareService shareService;
   late _FakeHomeWidgetService homeWidgetService;
+  late _FakeVersesApi versesApi;
   late Directory tempDir;
 
   setUpAll(() {
@@ -134,11 +143,12 @@ void main() {
         InMemorySharedPreferencesAsync.empty();
     shareService = _FakeShareService();
     homeWidgetService = _FakeHomeWidgetService();
+    versesApi = _FakeVersesApi();
   });
 
   Widget app() => ProviderScope(
     overrides: [
-      versesApiProvider.overrideWithValue(_FakeVersesApi()),
+      versesApiProvider.overrideWithValue(versesApi),
       shareServiceProvider.overrideWithValue(shareService),
       homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
     ],
@@ -318,6 +328,17 @@ void main() {
     await tester.tap(find.text('Explore verses'));
     await tester.pumpAndSettle();
     expect(find.text('How are you feeling?'), findsOneWidget);
+  });
+
+  testWidgets('home asks for the verse of the local date', (tester) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    final now = DateTime.now();
+    final expected =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-'
+        '${now.day.toString().padLeft(2, '0')}';
+    expect(versesApi.requestedDailyDates, [expected]);
   });
 
   testWidgets('home screen widgets are synced with the daily verse', (

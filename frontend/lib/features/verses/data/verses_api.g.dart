@@ -80,9 +80,10 @@ class _VersesApi implements VersesApi {
   }
 
   @override
-  Future<DailyVerse> getDailyVerse() async {
+  Future<DailyVerse> getDailyVerse({String? date}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'date': date};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<DailyVerse>(
@@ -99,6 +100,35 @@ class _VersesApi implements VersesApi {
     late DailyVerse _value;
     try {
       _value = DailyVerse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<List<DailyVerse>> getDailyRange(String start, int days) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'start': start, r'days': days};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<DailyVerse>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/verses/daily/range',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<DailyVerse> _value;
+    try {
+      _value = _result.data!
+          .map((dynamic i) => DailyVerse.fromJson(i as Map<String, dynamic>))
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

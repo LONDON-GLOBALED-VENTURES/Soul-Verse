@@ -276,4 +276,4 @@ final class DailyVerseProvider
   }
 }
 
-String _$dailyVerseHash() => r'9d72267ed8c5672ab5a2cbb363803ef28b47bf99';
+String _$dailyVerseHash() => r'229602f05a45a15869e8c35a59d51a87942fee47';
