@@ -96,6 +96,7 @@ void main() {
     await tester.tap(find.text('Anxious'));
     await tester.pumpAndSettle();
     expect(find.text('Verses for Anxiety'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('Rest in Him.'), 200);
     expect(find.text('Rest in Him.'), findsOneWidget);
 
     await tester.scrollUntilVisible(find.text('Show more verses'), 200);

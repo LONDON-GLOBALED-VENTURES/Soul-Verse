@@ -13,14 +13,14 @@ class VerseCard extends StatelessWidget {
     super.key,
     required this.verse,
     required this.template,
-    this.borderRadius = AppRadius.card,
+    this.borderRadius = const BorderRadius.all(Radius.circular(AppRadius.card)),
     this.header,
     this.footer,
   });
 
   final Verse verse;
   final VerseTemplate template;
-  final double borderRadius;
+  final BorderRadius borderRadius;
 
   /// Optional content drawn on the image above / below the verse (e.g. date, actions).
   final Widget? header;
@@ -37,7 +37,7 @@ class VerseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
+      borderRadius: borderRadius,
       child: Stack(
         fit: StackFit.expand,
         children: [

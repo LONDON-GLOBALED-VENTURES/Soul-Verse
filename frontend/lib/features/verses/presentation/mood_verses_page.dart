@@ -92,7 +92,9 @@ class _VerseDetail extends StatelessWidget {
                 child: VerseCard(
                   verse: verse,
                   template: template,
-                  borderRadius: AppRadius.tile,
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(AppRadius.tile),
+                  ),
                 ),
               ),
               Padding(
