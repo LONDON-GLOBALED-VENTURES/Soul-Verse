@@ -33,11 +33,21 @@ class HomeWidgetService {
 
   static const _androidPackage = 'com.londonglobaledventures.soulverse.widgets';
 
+  /// Shared storage between the iOS app and its widget extension.
+  /// Must match the App Group in both targets and in ios/VerseWidget/VerseWidget.swift.
+  static const iOSAppGroupId = 'group.com.londonglobaledventures.soulverse';
+
+  /// The WidgetKit `kind` in ios/VerseWidget/VerseWidget.swift.
+  static const _iOSWidgetKind = 'VerseWidget';
+
   /// Renders today's verse for every widget size and refreshes the widgets.
   /// Failures are logged, never thrown: the widget is a nice-to-have, not app-critical.
   Future<void> sync(DailyVerse daily) async {
-    if (!Platform.isAndroid || _lastSyncedDate == daily.date) return;
+    if (!(Platform.isAndroid || Platform.isIOS)) return;
+    if (_lastSyncedDate == daily.date) return;
     try {
+      if (Platform.isIOS) await HomeWidget.setAppGroupId(iOSAppGroupId);
+
       await HomeWidget.saveWidgetData('verse_text', daily.verse.text);
       await HomeWidget.saveWidgetData('verse_reference', daily.verse.reference);
 
@@ -50,7 +60,10 @@ class HomeWidgetService {
               child: VerseCard(
                 verse: daily.verse,
                 template: daily.template,
-                borderRadius: BorderRadius.circular(20),
+                // iOS clips widget corners itself; Android shows the image as-is.
+                borderRadius: Platform.isIOS
+                    ? BorderRadius.zero
+                    : BorderRadius.circular(20),
                 background: RawImage(image: background, fit: BoxFit.cover),
               ),
             ),
@@ -63,10 +76,14 @@ class HomeWidgetService {
         background.dispose();
       }
 
-      for (final size in VerseWidgetSize.values) {
-        await HomeWidget.updateWidget(
-          qualifiedAndroidName: '$_androidPackage.${size.androidProvider}',
-        );
+      if (Platform.isIOS) {
+        await HomeWidget.updateWidget(iOSName: _iOSWidgetKind);
+      } else {
+        for (final size in VerseWidgetSize.values) {
+          await HomeWidget.updateWidget(
+            qualifiedAndroidName: '$_androidPackage.${size.androidProvider}',
+          );
+        }
       }
       _lastSyncedDate = daily.date;
     } catch (e, stack) {
