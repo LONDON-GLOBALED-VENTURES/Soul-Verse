@@ -8,4 +8,5 @@ abstract final class AppColors {
   static const accent = Color(0xFFB8864B);
   static const border = Color(0xFFE8DFD2);
   static const placeholder = Color(0xFFE9E0D3);
+  static const heart = Color(0xFFD64545);
 }

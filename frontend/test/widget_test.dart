@@ -271,6 +271,55 @@ void main() {
     expect(find.text('Removed from favourites'), findsOneWidget);
   });
 
+  testWidgets('favourites list shows saved verses and supports remove + undo', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Save'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Favourites').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Psalm 46:10'), findsOneWidget);
+    expect(find.text('Be still, and know that I am God.'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Remove from favourites'));
+    await tester.pumpAndSettle();
+    expect(find.text('Verses you save will appear here.'), findsOneWidget);
+
+    await tester.tap(find.text('Undo'));
+    await tester.pumpAndSettle();
+    expect(find.text('Psalm 46:10'), findsOneWidget);
+  });
+
+  testWidgets('tapping a favourite opens it on the Share screen', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Save'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Favourites').last);
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Psalm 46:10'));
+    await tester.pumpAndSettle();
+    expect(find.text('Share Verse'), findsOneWidget);
+    expect(find.byTooltip('Remove from favourites'), findsOneWidget);
+  });
+
+  testWidgets('empty favourites links to Explore', (tester) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Favourites').last);
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Explore verses'));
+    await tester.pumpAndSettle();
+    expect(find.text('How are you feeling?'), findsOneWidget);
+  });
+
   testWidgets('home screen widgets are synced with the daily verse', (
     tester,
   ) async {
