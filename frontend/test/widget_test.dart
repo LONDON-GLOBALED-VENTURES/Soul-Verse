@@ -9,6 +9,7 @@ import 'package:shared_preferences_platform_interface/shared_preferences_async_p
 
 import 'package:soulverse/core/widgets/verse_card.dart';
 import 'package:soulverse/features/home_widget/home_widget_service.dart';
+import 'package:soulverse/features/reminders/data/notification_scheduler.dart';
 import 'package:soulverse/features/share/data/share_service.dart';
 import 'package:soulverse/features/verses/application/verses_providers.dart';
 import 'package:soulverse/features/verses/data/models/daily_verse.dart';
@@ -82,6 +83,11 @@ class _FakeVersesApi implements VersesApi {
   ];
 }
 
+class _NoopScheduler extends NotificationScheduler {
+  @override
+  Future<void> cancelAll() async {}
+}
+
 class _FakeHomeWidgetService implements HomeWidgetService {
   final syncedDates = <String>[];
 
@@ -151,6 +157,7 @@ void main() {
       versesApiProvider.overrideWithValue(versesApi),
       shareServiceProvider.overrideWithValue(shareService),
       homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
+      notificationSchedulerProvider.overrideWithValue(_NoopScheduler()),
     ],
     child: const SoulVerseApp(),
   );
