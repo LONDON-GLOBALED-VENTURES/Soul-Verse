@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
+import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 
 import 'package:soulverse/core/widgets/verse_card.dart';
 import 'package:soulverse/features/home_widget/home_widget_service.dart';
@@ -128,6 +130,8 @@ void main() {
   tearDownAll(() => tempDir.deleteSync(recursive: true));
 
   setUp(() {
+    SharedPreferencesAsyncPlatform.instance =
+        InMemorySharedPreferencesAsync.empty();
     shareService = _FakeShareService();
     homeWidgetService = _FakeHomeWidgetService();
   });
@@ -228,6 +232,43 @@ void main() {
     await tester.tap(find.text('Favourites').last);
     await tester.pumpAndSettle();
     expect(find.text('Verses you save will appear here.'), findsOneWidget);
+  });
+
+  testWidgets('saving from Home fills the heart and Undo reverts it', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Save'));
+    await tester.pumpAndSettle();
+    expect(find.text('Saved'), findsOneWidget);
+    expect(find.byIcon(Icons.favorite), findsWidgets);
+    expect(find.text('Saved to favourites'), findsOneWidget);
+
+    await tester.tap(find.text('Undo'));
+    await tester.pumpAndSettle();
+    expect(find.text('Save'), findsOneWidget);
+    expect(find.text('Saved'), findsNothing);
+  });
+
+  testWidgets('the Share screen heart saves and removes the verse', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byTooltip('Save to favourites'));
+    await tester.pumpAndSettle();
+    expect(find.byTooltip('Remove from favourites'), findsOneWidget);
+    expect(find.text('Saved to favourites'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Remove from favourites'));
+    await tester.pumpAndSettle();
+    expect(find.byTooltip('Save to favourites'), findsOneWidget);
+    expect(find.text('Removed from favourites'), findsOneWidget);
   });
 
   testWidgets('home screen widgets are synced with the daily verse', (

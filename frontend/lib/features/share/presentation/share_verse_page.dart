@@ -12,6 +12,8 @@ import '../../../core/widgets/verse_card.dart';
 import '../../verses/application/verses_providers.dart';
 import '../../verses/data/models/verse.dart';
 import '../../verses/data/models/verse_template.dart';
+import '../../favourites/application/favourites_provider.dart';
+import '../../favourites/presentation/toggle_favourite.dart';
 import '../data/share_service.dart';
 
 class ShareVerseArgs {
@@ -107,6 +109,7 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isSaved = ref.watch(isFavouriteProvider(_verse.id));
     final templates =
         ref.watch(templatesProvider(widget.args.moodId)).value ?? const [];
     // Keep the starting background selectable even if it isn't in the mood's list.
@@ -116,7 +119,23 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Share Verse')),
+      appBar: AppBar(
+        title: const Text('Share Verse'),
+        actions: [
+          IconButton(
+            tooltip: isSaved ? 'Remove from favourites' : 'Save to favourites',
+            icon: Icon(isSaved ? Icons.favorite : Icons.favorite_border),
+            // Saves with the background currently chosen here.
+            onPressed: () => toggleFavourite(
+              context,
+              ref,
+              verse: _verse,
+              template: _template,
+              snackBarBottomMargin: 120,
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         top: false,
         child: Column(

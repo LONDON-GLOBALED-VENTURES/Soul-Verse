@@ -9,11 +9,11 @@ import '../../../core/widgets/action_icon_button.dart';
 import '../../../core/widgets/async_states.dart';
 import '../../../core/widgets/pill_button.dart';
 import '../../../core/widgets/verse_card.dart';
+import '../../favourites/presentation/toggle_favourite.dart';
 import '../../share/presentation/share_verse_page.dart';
 import '../application/verses_providers.dart';
 import '../data/models/verse.dart';
 import '../data/models/verse_template.dart';
-import 'widgets/coming_soon.dart';
 
 class MoodVersesPage extends ConsumerStatefulWidget {
   const MoodVersesPage({super.key, required this.moodId});
@@ -108,12 +108,7 @@ class _VerseDetail extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ActionIconButton(
-                      icon: Icons.favorite_border,
-                      label: 'Save',
-                      onPressed: () =>
-                          showComingSoon(context, 'Saving to favourites'),
-                    ),
+                    FavouriteActionButton(verse: verse, template: template),
                     ActionIconButton(
                       icon: Icons.ios_share,
                       label: 'Share',

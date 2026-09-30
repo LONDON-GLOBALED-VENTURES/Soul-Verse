@@ -3,18 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/router/app_routes.dart';
-import '../../share/presentation/share_verse_page.dart';
-
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/date_format.dart';
 import '../../../core/widgets/action_icon_button.dart';
 import '../../../core/widgets/async_states.dart';
 import '../../../core/widgets/pill_button.dart';
 import '../../../core/widgets/verse_card.dart';
+import '../../favourites/presentation/toggle_favourite.dart';
+import '../../share/presentation/share_verse_page.dart';
 import '../application/verses_providers.dart';
 import '../data/models/verse.dart';
 import '../data/models/verse_template.dart';
-import 'widgets/coming_soon.dart';
 import 'widgets/reflection_sheet.dart';
 
 void _openShare(BuildContext context, Verse verse, VerseTemplate template) =>
@@ -46,8 +45,8 @@ class HomePage extends ConsumerWidget {
                     template: d.template,
                     header: _TodayHeader(date: DateTime.now()),
                     footer: _CardActions(
-                      onSave: () =>
-                          showComingSoon(context, 'Saving to favourites'),
+                      verse: d.verse,
+                      template: d.template,
                       onShare: () => _openShare(context, d.verse, d.template),
                       onEdit: () => _openShare(context, d.verse, d.template),
                     ),
@@ -115,12 +114,14 @@ class _TodayHeader extends StatelessWidget {
 
 class _CardActions extends StatelessWidget {
   const _CardActions({
-    required this.onSave,
+    required this.verse,
+    required this.template,
     required this.onShare,
     required this.onEdit,
   });
 
-  final VoidCallback onSave;
+  final Verse verse;
+  final VerseTemplate template;
   final VoidCallback onShare;
   final VoidCallback onEdit;
 
@@ -131,11 +132,10 @@ class _CardActions extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ActionIconButton(
-            icon: Icons.favorite_border,
-            label: 'Save',
+          FavouriteActionButton(
+            verse: verse,
+            template: template,
             color: Colors.white,
-            onPressed: onSave,
           ),
           ActionIconButton(
             icon: Icons.ios_share,
