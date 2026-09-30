@@ -1,7 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:soulverse/features/share/data/share_service.dart';
 import 'package:soulverse/features/verses/application/verses_providers.dart';
 import 'package:soulverse/features/verses/data/models/daily_verse.dart';
 import 'package:soulverse/features/verses/data/models/mood.dart';
@@ -66,11 +70,109 @@ class _FakeVersesApi implements VersesApi {
   ];
 }
 
+class _FakeShareService implements ShareService {
+  final calls = <String>[];
+  Uint8List? lastPng;
+  bool appInstalled = false;
+
+  @override
+  Future<SaveResult> saveToGallery(Uint8List png) async {
+    calls.add('save');
+    lastPng = png;
+    return SaveResult.saved;
+  }
+
+  @override
+  Future<bool> shareToApp(
+    ShareTarget target,
+    Uint8List png, {
+    String? text,
+  }) async {
+    calls.add('app:${target.name}');
+    lastPng = png;
+    return appInstalled;
+  }
+
+  @override
+  Future<void> shareToSystem(Uint8List png, {String? text}) async {
+    calls.add('system');
+    lastPng = png;
+  }
+}
+
 void main() {
+  late _FakeShareService shareService;
+  late Directory tempDir;
+
+  setUpAll(() {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    tempDir = Directory.systemTemp.createTempSync('soulverse_test');
+    // The image cache asks path_provider for a folder; plugins don't run in tests.
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+          const MethodChannel('plugins.flutter.io/path_provider'),
+          (_) async => tempDir.path,
+        );
+  });
+
+  tearDownAll(() => tempDir.deleteSync(recursive: true));
+
+  setUp(() => shareService = _FakeShareService());
+
   Widget app() => ProviderScope(
-    overrides: [versesApiProvider.overrideWithValue(_FakeVersesApi())],
+    overrides: [
+      versesApiProvider.overrideWithValue(_FakeVersesApi()),
+      shareServiceProvider.overrideWithValue(shareService),
+    ],
     child: const SoulVerseApp(),
   );
+
+  // Capturing the preview renders a real image, which needs real async time.
+  // Waits until the action finishes (the progress bar disappears).
+  Future<void> tapAndWait(WidgetTester tester, String label) async {
+    await tester.runAsync(() async {
+      await tester.tap(find.text(label));
+      await tester.pump();
+      for (var i = 0; i < 40; i++) {
+        await Future<void>.delayed(const Duration(milliseconds: 50));
+        await tester.pump();
+        if (find.byType(LinearProgressIndicator).evaluate().isEmpty) break;
+      }
+    });
+    await tester.pumpAndSettle();
+  }
+
+  testWidgets('share screen saves and shares the rendered verse image', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+    expect(find.text('Share Verse'), findsOneWidget);
+
+    await tapAndWait(tester, 'Save');
+    expect(shareService.calls, ['save']);
+    expect(find.text('Saved to your photos'), findsOneWidget);
+    // PNG signature: the preview was really captured.
+    expect(shareService.lastPng!.sublist(0, 4), [0x89, 0x50, 0x4E, 0x47]);
+
+    // WhatsApp not installed → falls back to the system share sheet.
+    shareService.calls.clear();
+    await tapAndWait(tester, 'WhatsApp');
+    expect(shareService.calls, ['app:whatsapp', 'system']);
+
+    shareService
+      ..calls.clear()
+      ..appInstalled = true;
+    await tapAndWait(tester, 'Instagram');
+    expect(shareService.calls, ['app:instagram']);
+
+    // Let the image cache's delayed write timer finish before the test ends.
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 1));
+  });
 
   testWidgets('home shows the daily verse and its reflection', (tester) async {
     await tester.pumpWidget(app());

@@ -41,7 +41,9 @@ dependencies:
   json_annotation: ^4.12.0
   go_router: ^18.0.1
   cached_network_image: ^4.0.2
-
+  gal: ^2.3.3
+  share_plus: ^13.3.0
+  path_provider: ^2.1.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

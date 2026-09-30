@@ -20,7 +20,7 @@ Future<List<Verse>> verses(Ref ref, String moodId) =>
     ref.watch(versesApiProvider).getVerses(mood: moodId);
 
 @riverpod
-Future<List<VerseTemplate>> templates(Ref ref, String moodId) =>
+Future<List<VerseTemplate>> templates(Ref ref, String? moodId) =>
     ref.watch(versesApiProvider).getTemplates(mood: moodId);
 
 @riverpod

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../core/router/app_routes.dart';
+import '../../share/presentation/share_verse_page.dart';
 
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/date_format.dart';
@@ -8,8 +12,16 @@ import '../../../core/widgets/async_states.dart';
 import '../../../core/widgets/pill_button.dart';
 import '../../../core/widgets/verse_card.dart';
 import '../application/verses_providers.dart';
+import '../data/models/verse.dart';
+import '../data/models/verse_template.dart';
 import 'widgets/coming_soon.dart';
 import 'widgets/reflection_sheet.dart';
+
+void _openShare(BuildContext context, Verse verse, VerseTemplate template) =>
+    context.push(
+      AppRoutes.share,
+      extra: ShareVerseArgs(verse: verse, template: template),
+    );
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -36,8 +48,8 @@ class HomePage extends ConsumerWidget {
                     footer: _CardActions(
                       onSave: () =>
                           showComingSoon(context, 'Saving to favourites'),
-                      onShare: () => showComingSoon(context, 'Sharing'),
-                      onEdit: () => showComingSoon(context, 'Editing'),
+                      onShare: () => _openShare(context, d.verse, d.template),
+                      onEdit: () => _openShare(context, d.verse, d.template),
                     ),
                   ),
                   loading: () => const LoadingBox(radius: AppRadius.card),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/router/app_routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/action_icon_button.dart';
 import '../../../core/widgets/async_states.dart';
 import '../../../core/widgets/pill_button.dart';
 import '../../../core/widgets/verse_card.dart';
+import '../../share/presentation/share_verse_page.dart';
 import '../application/verses_providers.dart';
 import '../data/models/verse.dart';
 import '../data/models/verse_template.dart';
@@ -51,6 +54,7 @@ class _MoodVersesPageState extends ConsumerState<MoodVersesPage> {
       body = verseList.isEmpty || templateList.isEmpty
           ? const Center(child: Text('No verses for this mood yet.'))
           : _VerseDetail(
+              moodId: widget.moodId,
               verse: verseList[_index % verseList.length],
               template: templateList[_index % templateList.length],
               onNext: () => setState(() => _index++),
@@ -68,11 +72,13 @@ class _MoodVersesPageState extends ConsumerState<MoodVersesPage> {
 
 class _VerseDetail extends StatelessWidget {
   const _VerseDetail({
+    required this.moodId,
     required this.verse,
     required this.template,
     required this.onNext,
   });
 
+  final String moodId;
   final Verse verse;
   final VerseTemplate template;
   final VoidCallback onNext;
@@ -111,7 +117,14 @@ class _VerseDetail extends StatelessWidget {
                     ActionIconButton(
                       icon: Icons.ios_share,
                       label: 'Share',
-                      onPressed: () => showComingSoon(context, 'Sharing'),
+                      onPressed: () => context.push(
+                        AppRoutes.share,
+                        extra: ShareVerseArgs(
+                          verse: verse,
+                          template: template,
+                          moodId: moodId,
+                        ),
+                      ),
                     ),
                   ],
                 ),

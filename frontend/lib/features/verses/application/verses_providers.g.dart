@@ -178,7 +178,7 @@ final class TemplatesProvider
         $FutureProvider<List<VerseTemplate>> {
   TemplatesProvider._({
     required TemplatesFamily super.from,
-    required String super.argument,
+    required String? super.argument,
   }) : super(
          retry: null,
          name: r'templatesProvider',
@@ -205,7 +205,7 @@ final class TemplatesProvider
 
   @override
   FutureOr<List<VerseTemplate>> create(Ref ref) {
-    final argument = this.argument as String;
+    final argument = this.argument as String?;
     return templates(ref, argument);
   }
 
@@ -220,10 +220,10 @@ final class TemplatesProvider
   }
 }
 
-String _$templatesHash() => r'6ff6095e9d8cbe6fc91b649ac34e81abf4dddff2';
+String _$templatesHash() => r'20b9507a57a1616eda722db2d68497a2961e0d31';
 
 final class TemplatesFamily extends $Family
-    with $FunctionalFamilyOverride<FutureOr<List<VerseTemplate>>, String> {
+    with $FunctionalFamilyOverride<FutureOr<List<VerseTemplate>>, String?> {
   TemplatesFamily._()
     : super(
         retry: null,
@@ -233,7 +233,7 @@ final class TemplatesFamily extends $Family
         isAutoDispose: true,
       );
 
-  TemplatesProvider call(String moodId) =>
+  TemplatesProvider call(String? moodId) =>
       TemplatesProvider._(argument: moodId, from: this);
 
   @override

@@ -47,3 +47,8 @@ kotlin {
 flutter {
     source = "../.."
 }
+
+dependencies {
+    // FileProvider for sharing rendered verse images to other apps.
+    implementation("androidx.core:core-ktx:1.16.0")
+}
