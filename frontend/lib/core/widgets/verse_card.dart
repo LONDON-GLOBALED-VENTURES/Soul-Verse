@@ -16,11 +16,15 @@ class VerseCard extends StatelessWidget {
     this.borderRadius = const BorderRadius.all(Radius.circular(AppRadius.card)),
     this.header,
     this.footer,
+    this.background,
   });
 
   final Verse verse;
   final VerseTemplate template;
   final BorderRadius borderRadius;
+
+  /// Replaces the network image, e.g. with an already-decoded image for offscreen rendering.
+  final Widget? background;
 
   /// Optional content drawn on the image above / below the verse (e.g. date, actions).
   final Widget? header;
@@ -41,14 +45,15 @@ class VerseCard extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          CachedNetworkImage(
-            imageUrl: template.imageUrl,
-            fit: BoxFit.cover,
-            placeholder: (_, _) =>
-                const ColoredBox(color: AppColors.placeholder),
-            errorWidget: (_, _, _) =>
-                const ColoredBox(color: AppColors.placeholder),
-          ),
+          background ??
+              CachedNetworkImage(
+                imageUrl: template.imageUrl,
+                fit: BoxFit.cover,
+                placeholder: (_, _) =>
+                    const ColoredBox(color: AppColors.placeholder),
+                errorWidget: (_, _, _) =>
+                    const ColoredBox(color: AppColors.placeholder),
+              ),
           DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -90,15 +95,20 @@ class _VerseText extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
-        // Size text as if the area were 9:16, so wide/short cards don't overflow.
-        final base = math.min(width, constraints.maxHeight * 9 / 16);
-        final fontSize = base * VerseCard._fontFactor(verse.text.length);
+        final height = constraints.maxHeight;
+        final length = verse.text.length;
+        // Width-based size, capped by what fits the area (matters for small/wide widgets).
+        // FittedBox below is the final guard against overflow.
+        final fontSize = math.min(
+          width * VerseCard._fontFactor(length),
+          math.sqrt(width * height * 0.5 / length),
+        );
         final hPadding = width * 0.1;
 
         return Padding(
           padding: EdgeInsets.symmetric(
             horizontal: hPadding,
-            vertical: base * 0.06,
+            vertical: math.min(width, height) * 0.06,
           ),
           child: Center(
             child: FittedBox(

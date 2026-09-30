@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:soulverse/core/widgets/verse_card.dart';
+import 'package:soulverse/features/home_widget/home_widget_service.dart';
 import 'package:soulverse/features/share/data/share_service.dart';
 import 'package:soulverse/features/verses/application/verses_providers.dart';
 import 'package:soulverse/features/verses/data/models/daily_verse.dart';
@@ -70,6 +72,13 @@ class _FakeVersesApi implements VersesApi {
   ];
 }
 
+class _FakeHomeWidgetService implements HomeWidgetService {
+  final syncedDates = <String>[];
+
+  @override
+  Future<void> sync(DailyVerse daily) async => syncedDates.add(daily.date);
+}
+
 class _FakeShareService implements ShareService {
   final calls = <String>[];
   Uint8List? lastPng;
@@ -102,6 +111,7 @@ class _FakeShareService implements ShareService {
 
 void main() {
   late _FakeShareService shareService;
+  late _FakeHomeWidgetService homeWidgetService;
   late Directory tempDir;
 
   setUpAll(() {
@@ -117,12 +127,16 @@ void main() {
 
   tearDownAll(() => tempDir.deleteSync(recursive: true));
 
-  setUp(() => shareService = _FakeShareService());
+  setUp(() {
+    shareService = _FakeShareService();
+    homeWidgetService = _FakeHomeWidgetService();
+  });
 
   Widget app() => ProviderScope(
     overrides: [
       versesApiProvider.overrideWithValue(_FakeVersesApi()),
       shareServiceProvider.overrideWithValue(shareService),
+      homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
     ],
     child: const SoulVerseApp(),
   );
@@ -214,6 +228,51 @@ void main() {
     await tester.tap(find.text('Favourites').last);
     await tester.pumpAndSettle();
     expect(find.text('Verses you save will appear here.'), findsOneWidget);
+  });
+
+  testWidgets('home screen widgets are synced with the daily verse', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    expect(homeWidgetService.syncedDates, ['2026-01-01']);
+  });
+
+  testWidgets('verse card fits every widget size, even for a long verse', (
+    tester,
+  ) async {
+    const longVerse = Verse(
+      id: 'rev-21-4',
+      text:
+          'And God shall wipe away all tears from their eyes; and there shall be '
+          'no more death, neither sorrow, nor crying, neither shall there be any '
+          'more pain: for the former things are passed away.',
+      reference: 'Revelation 21:4',
+      translation: 'KJV',
+      moods: ['sad'],
+      reflection: '',
+    );
+
+    for (final size in VerseWidgetSize.values) {
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Center(
+            child: SizedBox.fromSize(
+              size: size.logicalSize,
+              child: const VerseCard(
+                verse: longVerse,
+                template: _template,
+                background: ColoredBox(color: Color(0xFF334455)),
+              ),
+            ),
+          ),
+        ),
+      );
+      expect(tester.takeException(), isNull, reason: '${size.name} overflowed');
+      expect(find.text('Revelation 21:4'), findsOneWidget);
+    }
   });
 
   test('VerseTemplate parses hex text colour', () {

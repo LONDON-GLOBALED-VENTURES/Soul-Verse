@@ -44,6 +44,32 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/verse_share_paths"/>
         </provider>
+
+        <!-- Home-screen widgets (small / medium / large) showing today's verse. -->
+        <receiver android:name=".widgets.VerseWidgetSmall" android:exported="true"
+            android:label="@string/verse_widget_small_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/verse_widget_small_info"/>
+        </receiver>
+        <receiver android:name=".widgets.VerseWidgetMedium" android:exported="true"
+            android:label="@string/verse_widget_medium_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/verse_widget_medium_info"/>
+        </receiver>
+        <receiver android:name=".widgets.VerseWidgetLarge" android:exported="true"
+            android:label="@string/verse_widget_large_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/verse_widget_large_info"/>
+        </receiver>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

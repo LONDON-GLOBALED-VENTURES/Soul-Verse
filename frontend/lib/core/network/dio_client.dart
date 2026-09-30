@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'dio_client.g.dart';
@@ -19,7 +20,9 @@ Dio dioClient(Ref ref) {
     ),
   );
 
-  dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
+  if (kDebugMode) {
+    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
+  }
 
   return dio;
 }

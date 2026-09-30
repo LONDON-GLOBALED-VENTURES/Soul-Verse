@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="verse_widget_empty">Open SoulVerse to load today\'s verse</string>
+    <string name="verse_widget_description">Today\'s Bible verse</string>
+    <string name="verse_widget_small_label">Verse of the day (small)</string>
+    <string name="verse_widget_medium_label">Verse of the day (medium)</string>
+    <string name="verse_widget_large_label">Verse of the day (large)</string>
+    <string name="verse_widget_picker_description">Today\'s Bible verse on your home screen</string>
+</resources>
