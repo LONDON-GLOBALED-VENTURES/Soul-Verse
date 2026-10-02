@@ -3,10 +3,13 @@ const path = require('path');
 const crypto = require('crypto');
 
 const { calculateStatusLevel } = require('../utils/status-level');
+const dbUser = require('./db-user.service');
 
 const USERS_FILE = path.join(__dirname, '..', 'data', 'users.json');
 
 let usersCache = null;
+
+const isDbActive = () => Boolean(process.env.DATABASE_URL && process.env.NODE_ENV !== 'test');
 
 const ensureFile = () => {
   if (!fs.existsSync(USERS_FILE)) {
@@ -45,21 +48,27 @@ const saveUsers = () => {
   fs.writeFileSync(USERS_FILE, JSON.stringify(usersCache || [], null, 2), 'utf8');
 };
 
-const findById = (id) => {
+const findById = async (id) => {
+  if (isDbActive()) return dbUser.findById(id);
+
   const users = loadUsers();
   const user = users.find((u) => u.id === id) || null;
   if (user) ensurePrayerStats(user);
   return user;
 };
 
-const findByGoogleId = (googleId) => {
+const findByGoogleId = async (googleId) => {
+  if (isDbActive()) return dbUser.findByGoogleId(googleId);
+
   const users = loadUsers();
   const user = users.find((u) => u.googleId === googleId) || null;
   if (user) ensurePrayerStats(user);
   return user;
 };
 
-const findByEmail = (email) => {
+const findByEmail = async (email) => {
+  if (isDbActive()) return dbUser.findByEmail(email);
+
   const users = loadUsers();
   const normalized = email.trim().toLowerCase();
   const user = users.find((u) => u.email.toLowerCase() === normalized) || null;
@@ -74,7 +83,11 @@ const sanitize = (user) => {
   return safe;
 };
 
-const findOrCreateFromGoogle = ({ googleId, email, name, avatarUrl }) => {
+const findOrCreateFromGoogle = async ({ googleId, email, name, avatarUrl }) => {
+  if (isDbActive()) {
+    return dbUser.findOrCreateFromGoogle({ googleId, email, name, avatarUrl });
+  }
+
   const users = loadUsers();
   const now = new Date().toISOString();
   const normalizedEmail = email.trim().toLowerCase();
@@ -116,7 +129,9 @@ const findOrCreateFromGoogle = ({ googleId, email, name, avatarUrl }) => {
   return sanitize(user);
 };
 
-const updateSubscription = (id, subscriptionUpdate) => {
+const updateSubscription = async (id, subscriptionUpdate) => {
+  if (isDbActive()) return dbUser.updateSubscription(id, subscriptionUpdate);
+
   const users = loadUsers();
   const user = users.find((u) => u.id === id);
   if (!user) return null;
@@ -129,7 +144,11 @@ const updateSubscription = (id, subscriptionUpdate) => {
   return sanitize(user);
 };
 
-const adjustPrayerStats = (userId, { prayersSharedDelta = 0, likesReceivedDelta = 0, likesGivenDelta = 0 } = {}) => {
+const adjustPrayerStats = async (userId, { prayersSharedDelta = 0, likesReceivedDelta = 0, likesGivenDelta = 0 } = {}) => {
+  if (isDbActive()) {
+    return dbUser.adjustPrayerStats(userId, { prayersSharedDelta, likesReceivedDelta, likesGivenDelta });
+  }
+
   const users = loadUsers();
   const user = users.find((u) => u.id === userId);
   if (!user) return null;
@@ -159,4 +178,3 @@ module.exports = {
   sanitize,
   _resetForTests,
 };
-

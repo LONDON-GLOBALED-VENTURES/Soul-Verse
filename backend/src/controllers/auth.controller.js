@@ -10,7 +10,7 @@ const googleAuth = async (req, res) => {
   }
 
   const profile = await googleAuthService.verifyGoogleToken(idToken);
-  const user = userService.findOrCreateFromGoogle(profile);
+  const user = await userService.findOrCreateFromGoogle(profile);
 
   const accessToken = signAccessToken(user);
   const refreshToken = signRefreshToken(user);
@@ -30,7 +30,7 @@ const refresh = async (req, res) => {
 
   try {
     const decoded = verifyRefreshToken(refreshToken);
-    const user = userService.findById(decoded.sub);
+    const user = await userService.findById(decoded.sub);
     if (!user) {
       throw new HttpError(401, 'User no longer exists');
     }

@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'test';
 const { test, before, after, beforeEach } = require('node:test');
 const assert = require('node:assert/strict');
 const app = require('../src/app');
@@ -45,8 +46,8 @@ const del = async (path, headers = {}) => {
   return { status: res.status, body: await res.json() };
 };
 
-const createTestUser = (email = 'warrior@example.com', name = 'Faithful Believer') => {
-  return userService.findOrCreateFromGoogle({
+const createTestUser = async (email = 'warrior@example.com', name = 'Faithful Believer') => {
+  return await userService.findOrCreateFromGoogle({
     googleId: `google_${email}`,
     email,
     name,
@@ -72,7 +73,7 @@ test('POST /prayers requires authentication', async () => {
 });
 
 test('POST /prayers validates input fields', async () => {
-  const user = createTestUser();
+  const user = await createTestUser();
   const token = signAccessToken(user);
   const authHeader = { Authorization: `Bearer ${token}` };
 
@@ -86,7 +87,7 @@ test('POST /prayers validates input fields', async () => {
 });
 
 test('POST /prayers creates prayer and increments user prayersShared', async () => {
-  const user = createTestUser();
+  const user = await createTestUser();
   const token = signAccessToken(user);
   const authHeader = { Authorization: `Bearer ${token}` };
 
@@ -108,12 +109,12 @@ test('POST /prayers creates prayer and increments user prayersShared', async () 
   assert.equal(body.data.authorStatusLevel, 'Seeker');
   assert.equal(body.data.isMine, true);
 
-  const updatedUser = userService.findById(user.id);
+  const updatedUser = await userService.findById(user.id);
   assert.equal(updatedUser.prayerStats.prayersShared, 1);
 });
 
 test('POST /prayers supports anonymous sharing', async () => {
-  const user = createTestUser();
+  const user = await createTestUser();
   const token = signAccessToken(user);
   const authHeader = { Authorization: `Bearer ${token}` };
 
@@ -135,7 +136,7 @@ test('POST /prayers supports anonymous sharing', async () => {
 });
 
 test('POST /prayers/:id/like toggles like and updates author status to Believer and Prayer Warrior', async () => {
-  const author = createTestUser('author@example.com', 'Author User');
+  const author = await createTestUser('author@example.com', 'Author User');
   const authorToken = signAccessToken(author);
 
   const { body: created } = await post(
@@ -151,7 +152,7 @@ test('POST /prayers/:id/like toggles like and updates author status to Believer 
   const prayerId = created.data.id;
 
   // Liker 1 likes prayer
-  const liker1 = createTestUser('liker1@example.com', 'Liker One');
+  const liker1 = await createTestUser('liker1@example.com', 'Liker One');
   const liker1Token = signAccessToken(liker1);
 
   const resLike = await post(`/prayers/${prayerId}/like`, {}, { Authorization: `Bearer ${liker1Token}` });
@@ -160,7 +161,7 @@ test('POST /prayers/:id/like toggles like and updates author status to Believer 
   assert.equal(resLike.body.data.likesCount, 1);
 
   // Author received 1 like
-  let updatedAuthor = userService.findById(author.id);
+  let updatedAuthor = await userService.findById(author.id);
   assert.equal(updatedAuthor.prayerStats.likesReceived, 1);
   assert.equal(updatedAuthor.prayerStats.status.title, 'Seeker');
 
@@ -169,12 +170,12 @@ test('POST /prayers/:id/like toggles like and updates author status to Believer 
   assert.equal(resUnlike.body.data.isLiked, false);
   assert.equal(resUnlike.body.data.likesCount, 0);
 
-  updatedAuthor = userService.findById(author.id);
+  updatedAuthor = await userService.findById(author.id);
   assert.equal(updatedAuthor.prayerStats.likesReceived, 0);
 
   // Directly adjust author likes to 49, then add 1 like to hit 50 (Prayer Warrior)
-  userService.adjustPrayerStats(author.id, { likesReceivedDelta: 49 });
-  updatedAuthor = userService.findById(author.id);
+  await userService.adjustPrayerStats(author.id, { likesReceivedDelta: 49 });
+  updatedAuthor = await userService.findById(author.id);
   assert.equal(updatedAuthor.prayerStats.likesReceived, 49);
   assert.equal(updatedAuthor.prayerStats.status.title, 'Faithful Servant');
 
@@ -184,16 +185,16 @@ test('POST /prayers/:id/like toggles like and updates author status to Believer 
   assert.equal(resWarrior.body.data.authorStatus.title, 'Prayer Warrior');
   assert.equal(resWarrior.body.data.authorStatus.emoji, '⚔️');
 
-  updatedAuthor = userService.findById(author.id);
+  updatedAuthor = await userService.findById(author.id);
   assert.equal(updatedAuthor.prayerStats.status.title, 'Prayer Warrior');
   assert.equal(updatedAuthor.prayerStats.status.emoji, '⚔️');
 });
 
 test('DELETE /prayers/:id allows author to delete and blocks non-authors', async () => {
-  const author = createTestUser('author2@example.com', 'Author');
+  const author = await createTestUser('author2@example.com', 'Author');
   const authorToken = signAccessToken(author);
 
-  const stranger = createTestUser('stranger@example.com', 'Stranger');
+  const stranger = await createTestUser('stranger@example.com', 'Stranger');
   const strangerToken = signAccessToken(stranger);
 
   const { body: created } = await post(

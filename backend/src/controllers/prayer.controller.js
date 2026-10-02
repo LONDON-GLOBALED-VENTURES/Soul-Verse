@@ -1,10 +1,10 @@
 const prayerService = require('../services/prayer.service');
 
-const listPrayers = (req, res, next) => {
+const listPrayers = async (req, res, next) => {
   try {
     const { sort, category, page, limit } = req.query;
     const currentUserId = req.user ? req.user.id : null;
-    const result = prayerService.listPrayers({
+    const result = await prayerService.listPrayers({
       sort,
       category,
       page,
@@ -20,11 +20,11 @@ const listPrayers = (req, res, next) => {
   }
 };
 
-const createPrayer = (req, res, next) => {
+const createPrayer = async (req, res, next) => {
   try {
     const authorId = req.user.id;
     const { title, content, category, isAnonymous } = req.body;
-    const prayer = prayerService.createPrayer({
+    const prayer = await prayerService.createPrayer({
       authorId,
       title,
       content,
@@ -40,11 +40,11 @@ const createPrayer = (req, res, next) => {
   }
 };
 
-const toggleLike = (req, res, next) => {
+const toggleLike = async (req, res, next) => {
   try {
     const prayerId = req.params.id;
     const userId = req.user.id;
-    const result = prayerService.toggleLike({ prayerId, userId });
+    const result = await prayerService.toggleLike({ prayerId, userId });
     res.json({
       success: true,
       data: result,
@@ -54,11 +54,11 @@ const toggleLike = (req, res, next) => {
   }
 };
 
-const deletePrayer = (req, res, next) => {
+const deletePrayer = async (req, res, next) => {
   try {
     const prayerId = req.params.id;
     const userId = req.user.id;
-    const result = prayerService.deletePrayer({ prayerId, userId });
+    const result = await prayerService.deletePrayer({ prayerId, userId });
     res.json({
       success: true,
       data: result,

@@ -3,10 +3,13 @@ const path = require('path');
 const crypto = require('crypto');
 const HttpError = require('../utils/http-error');
 const userService = require('./user.service');
+const dbPrayer = require('./db-prayer.service');
 
 const PRAYERS_FILE = path.join(__dirname, '..', 'data', 'prayers.json');
 
 let prayersCache = null;
+
+const isDbActive = () => Boolean(process.env.DATABASE_URL && process.env.NODE_ENV !== 'test');
 
 const ensureFile = () => {
   if (!fs.existsSync(PRAYERS_FILE)) {
@@ -33,8 +36,8 @@ const savePrayers = () => {
   fs.writeFileSync(PRAYERS_FILE, JSON.stringify(prayersCache || [], null, 2), 'utf8');
 };
 
-const formatPrayer = (prayer, currentUserId = null) => {
-  const author = userService.findById(prayer.authorId);
+const formatPrayer = async (prayer, currentUserId = null) => {
+  const author = await userService.findById(prayer.authorId);
   const authorStatus = author?.prayerStats?.status || {
     level: 1,
     title: 'Seeker',
@@ -63,7 +66,11 @@ const formatPrayer = (prayer, currentUserId = null) => {
   };
 };
 
-const listPrayers = ({ sort = 'recent', category = 'All', currentUserId = null, page = 1, limit = 50 } = {}) => {
+const listPrayers = async ({ sort = 'recent', category = 'All', currentUserId = null, page = 1, limit = 50 } = {}) => {
+  if (isDbActive()) {
+    return dbPrayer.listPrayers({ sort, category, currentUserId, page, limit });
+  }
+
   const prayers = loadPrayers();
 
   let filtered = [...prayers];
@@ -81,7 +88,6 @@ const listPrayers = ({ sort = 'recent', category = 'All', currentUserId = null, 
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
   } else {
-    // default: recent
     filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 
@@ -90,15 +96,21 @@ const listPrayers = ({ sort = 'recent', category = 'All', currentUserId = null, 
   const offset = (safePage - 1) * safeLimit;
   const paginated = filtered.slice(offset, offset + safeLimit);
 
+  const items = await Promise.all(paginated.map((p) => formatPrayer(p, currentUserId)));
+
   return {
-    items: paginated.map((p) => formatPrayer(p, currentUserId)),
+    items,
     total: filtered.length,
     page: safePage,
     limit: safeLimit,
   };
 };
 
-const createPrayer = ({ authorId, title, content, category = 'General', isAnonymous = false }) => {
+const createPrayer = async ({ authorId, title, content, category = 'General', isAnonymous = false }) => {
+  if (isDbActive()) {
+    return dbPrayer.createPrayer({ authorId, title, content, category, isAnonymous });
+  }
+
   if (!authorId) throw new HttpError(401, 'Authentication required to share a prayer');
 
   const trimmedTitle = (title || '').trim();
@@ -112,7 +124,7 @@ const createPrayer = ({ authorId, title, content, category = 'General', isAnonym
     throw new HttpError(400, 'Content must be between 10 and 2000 characters');
   }
 
-  const author = userService.findById(authorId);
+  const author = await userService.findById(authorId);
   if (!author) throw new HttpError(404, 'Author account not found');
 
   const now = new Date().toISOString();
@@ -135,12 +147,16 @@ const createPrayer = ({ authorId, title, content, category = 'General', isAnonym
   prayers.unshift(newPrayer);
   savePrayers();
 
-  userService.adjustPrayerStats(authorId, { prayersSharedDelta: 1 });
+  await userService.adjustPrayerStats(authorId, { prayersSharedDelta: 1 });
 
   return formatPrayer(newPrayer, authorId);
 };
 
-const toggleLike = ({ prayerId, userId }) => {
+const toggleLike = async ({ prayerId, userId }) => {
+  if (isDbActive()) {
+    return dbPrayer.toggleLike({ prayerId, userId });
+  }
+
   if (!userId) throw new HttpError(401, 'Authentication required to pray for this request');
 
   const prayers = loadPrayers();
@@ -157,21 +173,21 @@ const toggleLike = ({ prayerId, userId }) => {
     prayer.likesCount = Math.max(0, (prayer.likesCount || 1) - 1);
     isLiked = false;
 
-    userService.adjustPrayerStats(prayer.authorId, { likesReceivedDelta: -1 });
-    userService.adjustPrayerStats(userId, { likesGivenDelta: -1 });
+    await userService.adjustPrayerStats(prayer.authorId, { likesReceivedDelta: -1 });
+    await userService.adjustPrayerStats(userId, { likesGivenDelta: -1 });
   } else {
     prayer.likedBy.push(userId);
     prayer.likesCount = (prayer.likesCount || 0) + 1;
     isLiked = true;
 
-    userService.adjustPrayerStats(prayer.authorId, { likesReceivedDelta: 1 });
-    userService.adjustPrayerStats(userId, { likesGivenDelta: 1 });
+    await userService.adjustPrayerStats(prayer.authorId, { likesReceivedDelta: 1 });
+    await userService.adjustPrayerStats(userId, { likesGivenDelta: 1 });
   }
 
   prayer.updatedAt = new Date().toISOString();
   savePrayers();
 
-  const author = userService.findById(prayer.authorId);
+  const author = await userService.findById(prayer.authorId);
 
   return {
     prayerId: prayer.id,
@@ -181,7 +197,11 @@ const toggleLike = ({ prayerId, userId }) => {
   };
 };
 
-const deletePrayer = ({ prayerId, userId }) => {
+const deletePrayer = async ({ prayerId, userId }) => {
+  if (isDbActive()) {
+    return dbPrayer.deletePrayer({ prayerId, userId });
+  }
+
   if (!userId) throw new HttpError(401, 'Authentication required');
 
   const prayers = loadPrayers();
@@ -197,7 +217,7 @@ const deletePrayer = ({ prayerId, userId }) => {
   prayers.splice(index, 1);
   savePrayers();
 
-  userService.adjustPrayerStats(userId, {
+  await userService.adjustPrayerStats(userId, {
     prayersSharedDelta: -1,
     likesReceivedDelta: -lostLikes,
   });
