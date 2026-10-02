@@ -84,6 +84,15 @@ class _FakeVersesApi implements VersesApi {
 }
 
 class _NoopScheduler extends NotificationScheduler {
+  bool permissionGranted = true;
+  var requestPermissionCalls = 0;
+
+  @override
+  Future<bool> requestPermission() async {
+    requestPermissionCalls++;
+    return permissionGranted;
+  }
+
   @override
   Future<void> cancelAll() async {}
 }
@@ -129,6 +138,7 @@ void main() {
   late _FakeShareService shareService;
   late _FakeHomeWidgetService homeWidgetService;
   late _FakeVersesApi versesApi;
+  late _NoopScheduler notificationScheduler;
   late Directory tempDir;
 
   setUpAll(() {
@@ -150,6 +160,7 @@ void main() {
     shareService = _FakeShareService();
     homeWidgetService = _FakeHomeWidgetService();
     versesApi = _FakeVersesApi();
+    notificationScheduler = _NoopScheduler();
   });
 
   Widget app() => ProviderScope(
@@ -157,7 +168,7 @@ void main() {
       versesApiProvider.overrideWithValue(versesApi),
       shareServiceProvider.overrideWithValue(shareService),
       homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
-      notificationSchedulerProvider.overrideWithValue(_NoopScheduler()),
+      notificationSchedulerProvider.overrideWithValue(notificationScheduler),
     ],
     child: const SoulVerseApp(),
   );
@@ -242,13 +253,88 @@ void main() {
     expect(find.text('Give Him what feels heavy.'), findsOneWidget);
   });
 
-  testWidgets('bottom nav switches to placeholder tabs', (tester) async {
+  testWidgets('bottom nav switches to tabs', (tester) async {
     await tester.pumpWidget(app());
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('Favourites').last);
     await tester.pumpAndSettle();
     expect(find.text('Verses you save will appear here.'), findsOneWidget);
+
+    await tester.tap(find.text('More').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Daily Reminders'), findsOneWidget);
+  });
+
+  testWidgets('More tab displays reminders and toggles on when permission granted', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('More').last);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Settings'), findsOneWidget);
+    expect(find.text('Daily Reminders'), findsOneWidget);
+    expect(find.text('Morning Verse'), findsOneWidget);
+    expect(find.text('Evening Verse'), findsOneWidget);
+    expect(find.text('7:00 AM'), findsOneWidget);
+    expect(find.text('8:00 PM'), findsOneWidget);
+
+    final switches = find.byType(Switch);
+    expect(tester.widget<Switch>(switches.first).value, isFalse);
+
+    await tester.tap(switches.first);
+    await tester.pumpAndSettle();
+
+    expect(notificationScheduler.requestPermissionCalls, 1);
+    expect(tester.widget<Switch>(switches.first).value, isTrue);
+  });
+
+  testWidgets(
+    'More tab explains how to enable notifications when permission is denied',
+    (tester) async {
+      notificationScheduler.permissionGranted = false;
+
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('More').last);
+      await tester.pumpAndSettle();
+
+      final switches = find.byType(Switch);
+      await tester.tap(switches.first);
+      await tester.pumpAndSettle();
+
+      expect(notificationScheduler.requestPermissionCalls, 1);
+      expect(tester.widget<Switch>(switches.first).value, isFalse);
+
+      expect(find.text('Notifications Disabled'), findsOneWidget);
+      await tester.tap(find.text('Got it'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Notifications are disabled'), findsOneWidget);
+    },
+  );
+
+  testWidgets('More tab allows changing reminder time via time picker', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('More').last);
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('7:00 AM'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(TimePickerDialog), findsOneWidget);
+    await tester.tap(find.text('OK'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(TimePickerDialog), findsNothing);
   });
 
   testWidgets('saving from Home fills the heart and Undo reverts it', (
