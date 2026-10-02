@@ -8,6 +8,9 @@ import 'package:shared_preferences_platform_interface/in_memory_shared_preferenc
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 
 import 'package:soulverse/core/widgets/verse_card.dart';
+import 'package:soulverse/features/auth/application/auth_service.dart';
+import 'package:soulverse/features/auth/data/auth_api.dart';
+import 'package:soulverse/features/auth/data/models/user.dart';
 import 'package:soulverse/features/home_widget/home_widget_service.dart';
 import 'package:soulverse/features/reminders/data/notification_scheduler.dart';
 import 'package:soulverse/features/share/data/share_service.dart';
@@ -134,11 +137,50 @@ class _FakeShareService implements ShareService {
   }
 }
 
+class _FakeGoogleSignInService implements GoogleSignInService {
+  String? idToken = 'mock-google-token:john@gmail.com:John Doe';
+  var signOutCalls = 0;
+
+  @override
+  Future<String?> getGoogleIdToken() async => idToken;
+
+  @override
+  Future<void> signOut() async {
+    signOutCalls++;
+  }
+}
+
+class _FakeAuthApi implements AuthApi {
+  User currentUser = const User(
+    id: 'usr_1',
+    email: 'john@gmail.com',
+    name: 'John Doe',
+    subscription: UserSubscription.free,
+  );
+
+  @override
+  Future<AuthSession> signInWithGoogle(String idToken) async {
+    return AuthSession(
+      user: currentUser,
+      accessToken: 'test-access-token',
+      refreshToken: 'test-refresh-token',
+    );
+  }
+
+  @override
+  Future<String> refreshToken(String refreshToken) async => 'new-access-token';
+
+  @override
+  Future<User> getMe() async => currentUser;
+}
+
 void main() {
   late _FakeShareService shareService;
   late _FakeHomeWidgetService homeWidgetService;
   late _FakeVersesApi versesApi;
   late _NoopScheduler notificationScheduler;
+  late _FakeGoogleSignInService googleSignInService;
+  late _FakeAuthApi authApi;
   late Directory tempDir;
 
   setUpAll(() {
@@ -161,6 +203,8 @@ void main() {
     homeWidgetService = _FakeHomeWidgetService();
     versesApi = _FakeVersesApi();
     notificationScheduler = _NoopScheduler();
+    googleSignInService = _FakeGoogleSignInService();
+    authApi = _FakeAuthApi();
   });
 
   Widget app() => ProviderScope(
@@ -169,6 +213,8 @@ void main() {
       shareServiceProvider.overrideWithValue(shareService),
       homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
       notificationSchedulerProvider.overrideWithValue(notificationScheduler),
+      googleSignInServiceProvider.overrideWithValue(googleSignInService),
+      authApiProvider.overrideWithValue(authApi),
     ],
     child: const SoulVerseApp(),
   );
@@ -336,6 +382,54 @@ void main() {
 
     expect(find.byType(TimePickerDialog), findsNothing);
   });
+
+  testWidgets('More tab shows Google sign-in button in guest mode', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('More').last);
+    await tester.pumpAndSettle();
+
+    expect(find.text('SoulVerse Account'), findsOneWidget);
+    expect(find.text('Continue with Google'), findsOneWidget);
+  });
+
+  testWidgets(
+    'More tab signs in with Google, shows profile and Free Plan, and signs out',
+    (tester) async {
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('More').last);
+      await tester.pumpAndSettle();
+
+      // Tap Continue with Google
+      await tester.tap(find.text('Continue with Google'));
+      await tester.pumpAndSettle();
+
+      // Account card displays user details and subscription tier
+      expect(find.text('John Doe'), findsOneWidget);
+      expect(find.text('john@gmail.com'), findsOneWidget);
+      expect(find.text('Free Plan'), findsOneWidget);
+
+      // Sign Out
+      await tester.tap(find.byTooltip('Sign Out'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text('Are you sure you want to sign out of SoulVerse?'),
+        findsOneWidget,
+      );
+      await tester.tap(find.text('Sign Out').last);
+      await tester.pumpAndSettle();
+
+      // Returns to guest mode
+      expect(find.text('Continue with Google'), findsOneWidget);
+      expect(googleSignInService.signOutCalls, 1);
+    },
+  );
 
   testWidgets('saving from Home fills the heart and Undo reverts it', (
     tester,

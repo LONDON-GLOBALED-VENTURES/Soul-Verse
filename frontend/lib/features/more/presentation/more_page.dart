@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/async_states.dart';
+import '../../auth/application/auth_service.dart';
+import '../../auth/presentation/widgets/google_sign_in_button.dart';
 import '../../reminders/application/reminders_provider.dart';
 import '../../reminders/data/notification_scheduler.dart';
 import '../../reminders/data/reminder_settings.dart';
@@ -134,6 +137,12 @@ class _MorePageState extends ConsumerState<MorePage> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 24, 20, 16),
                 child: Text('Settings', style: textTheme.headlineMedium),
+              ),
+            ),
+            const SliverPadding(
+              padding: EdgeInsets.fromLTRB(16, 0, 16, 12),
+              sliver: SliverToBoxAdapter(
+                child: _AccountCard(),
               ),
             ),
             SliverToBoxAdapter(
@@ -362,6 +371,188 @@ class _ReminderTile extends StatelessWidget {
             onChanged: onToggle,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _AccountCard extends ConsumerWidget {
+  const _AccountCard();
+
+  void _confirmSignOut(BuildContext context, WidgetRef ref) {
+    showDialog<void>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Sign Out'),
+        content: const Text('Are you sure you want to sign out of SoulVerse?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () {
+              Navigator.of(dialogContext).pop();
+              ref.read(authProvider.notifier).signOut();
+            },
+            child: const Text('Sign Out'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final textTheme = Theme.of(context).textTheme;
+    final authState = ref.watch(authProvider);
+
+    return authState.when(
+      data: (user) {
+        if (user == null) {
+          return Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.account_circle_outlined,
+                        color: AppColors.accent,
+                        size: 28,
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'SoulVerse Account',
+                              style: textTheme.titleMedium,
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              'Sign in to personalize your experience and sync favourites.',
+                              style: textTheme.bodySmall,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: GoogleSignInButton(
+                      isLoading: authState.isLoading,
+                      onPressed: () =>
+                          ref.read(authProvider.notifier).signInWithGoogle(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+
+        return Card(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 24,
+                  backgroundColor: AppColors.accent.withValues(alpha: 0.15),
+                  backgroundImage: user.avatarUrl.isNotEmpty
+                      ? CachedNetworkImageProvider(user.avatarUrl)
+                      : null,
+                  child: user.avatarUrl.isEmpty
+                      ? Text(
+                          user.displayName.isNotEmpty
+                              ? user.displayName[0].toUpperCase()
+                              : 'U',
+                          style: textTheme.titleLarge?.copyWith(
+                            color: AppColors.accent,
+                          ),
+                        )
+                      : null,
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        user.displayName,
+                        style: textTheme.titleMedium,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        user.email,
+                        style: textTheme.bodySmall,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 6),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.accent.withValues(alpha: 0.12),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          user.subscription.isPremium
+                              ? 'Premium Member'
+                              : 'Free Plan',
+                          style: textTheme.labelSmall?.copyWith(
+                            color: AppColors.accent,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                IconButton(
+                  tooltip: 'Sign Out',
+                  icon: const Icon(
+                    Icons.logout,
+                    color: AppColors.textSecondary,
+                  ),
+                  onPressed: () => _confirmSignOut(context, ref),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+      loading: () => const LoadingBox(height: 96),
+      error: (_, _) => Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              const Icon(Icons.error_outline, color: AppColors.accent),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  'Could not check account status',
+                  style: textTheme.bodySmall,
+                ),
+              ),
+              TextButton(
+                onPressed: () => ref.invalidate(authProvider),
+                child: const Text('Retry'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
