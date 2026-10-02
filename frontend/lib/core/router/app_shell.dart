@@ -34,6 +34,11 @@ class AppShell extends StatelessWidget {
               label: 'Explore',
             ),
             NavigationDestination(
+              icon: Icon(Icons.volunteer_activism_outlined),
+              selectedIcon: Icon(Icons.volunteer_activism),
+              label: 'Prayers',
+            ),
+            NavigationDestination(
               icon: Icon(Icons.favorite_border),
               selectedIcon: Icon(Icons.favorite),
               label: 'Favourites',

@@ -1,1 +1,60 @@
-[]
+[
+  {
+    "id": "usr_b2e47f14-9c5a-4a0b-b52d-c454bee6f784",
+    "googleId": "google_author2@example.com",
+    "email": "author2@example.com",
+    "name": "Author",
+    "avatarUrl": "https://example.com/avatar.png",
+    "subscription": {
+      "status": "free",
+      "tier": "none",
+      "purchaseToken": null,
+      "expiresAt": null
+    },
+    "prayerStats": {
+      "prayersShared": 0,
+      "likesReceived": 0,
+      "likesGiven": 0,
+      "status": {
+        "level": 1,
+        "title": "Seeker",
+        "emoji": "🌱",
+        "currentLikes": 0,
+        "nextTitle": "Believer",
+        "nextThreshold": 5,
+        "progress": 0
+      }
+    },
+    "createdAt": "2026-10-02T18:17:26.780Z",
+    "lastLoginAt": "2026-10-02T18:17:26.780Z"
+  },
+  {
+    "id": "usr_9b690d0c-5030-482d-85c9-3c0fb82c6432",
+    "googleId": "google_stranger@example.com",
+    "email": "stranger@example.com",
+    "name": "Stranger",
+    "avatarUrl": "https://example.com/avatar.png",
+    "subscription": {
+      "status": "free",
+      "tier": "none",
+      "purchaseToken": null,
+      "expiresAt": null
+    },
+    "prayerStats": {
+      "prayersShared": 0,
+      "likesReceived": 0,
+      "likesGiven": 0,
+      "status": {
+        "level": 1,
+        "title": "Seeker",
+        "emoji": "🌱",
+        "currentLikes": 0,
+        "nextTitle": "Believer",
+        "nextThreshold": 5,
+        "progress": 0
+      }
+    },
+    "createdAt": "2026-10-02T18:17:26.782Z",
+    "lastLoginAt": "2026-10-02T18:17:26.782Z"
+  }
+]

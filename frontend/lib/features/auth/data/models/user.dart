@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import '../../../prayers/data/models/prayer.dart';
 
 @immutable
 class UserSubscription {
@@ -41,6 +42,7 @@ class User {
     this.name = '',
     this.avatarUrl = '',
     this.subscription = UserSubscription.free,
+    this.prayerStats = PrayerStats.initial,
   });
 
   final String id;
@@ -48,6 +50,7 @@ class User {
   final String name;
   final String avatarUrl;
   final UserSubscription subscription;
+  final PrayerStats prayerStats;
 
   String get displayName => name.isNotEmpty ? name : email.split('@').first;
 
@@ -60,6 +63,9 @@ class User {
       subscription: json['subscription'] is Map<String, dynamic>
           ? UserSubscription.fromJson(json['subscription'] as Map<String, dynamic>)
           : UserSubscription.free,
+      prayerStats: json['prayerStats'] is Map<String, dynamic>
+          ? PrayerStats.fromJson(json['prayerStats'] as Map<String, dynamic>)
+          : PrayerStats.initial,
     );
   }
 
@@ -69,6 +75,7 @@ class User {
     'name': name,
     'avatarUrl': avatarUrl,
     'subscription': subscription.toJson(),
+    'prayerStats': prayerStats.toJson(),
   };
 
   User copyWith({
@@ -77,6 +84,7 @@ class User {
     String? name,
     String? avatarUrl,
     UserSubscription? subscription,
+    PrayerStats? prayerStats,
   }) {
     return User(
       id: id ?? this.id,
@@ -84,6 +92,7 @@ class User {
       name: name ?? this.name,
       avatarUrl: avatarUrl ?? this.avatarUrl,
       subscription: subscription ?? this.subscription,
+      prayerStats: prayerStats ?? this.prayerStats,
     );
   }
 

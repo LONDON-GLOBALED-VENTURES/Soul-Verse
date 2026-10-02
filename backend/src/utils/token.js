@@ -3,7 +3,7 @@ const { jwtSecret, jwtRefreshSecret } = require('../config/env');
 
 const signAccessToken = (user) => {
   return jwt.sign(
-    { sub: user.id, email: user.email },
+    { sub: user.id || user.sub, email: user.email },
     jwtSecret,
     { expiresIn: '1h' },
   );
@@ -11,7 +11,7 @@ const signAccessToken = (user) => {
 
 const signRefreshToken = (user) => {
   return jwt.sign(
-    { sub: user.id },
+    { sub: user.id || user.sub },
     jwtRefreshSecret,
     { expiresIn: '30d' },
   );

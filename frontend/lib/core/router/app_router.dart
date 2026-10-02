@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/favourites/presentation/favourites_page.dart';
 import '../../features/more/presentation/more_page.dart';
+import '../../features/prayers/presentation/prayers_page.dart';
 import '../../features/share/presentation/share_verse_page.dart';
 import '../../features/verses/presentation/explore_page.dart';
 import '../../features/verses/presentation/home_page.dart';
@@ -49,6 +50,14 @@ GoRouter appRouter(Ref ref) {
                         MoodVersesPage(moodId: state.pathParameters['moodId']!),
                   ),
                 ],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.prayers,
+                builder: (_, _) => const PrayersPage(),
               ),
             ],
           ),

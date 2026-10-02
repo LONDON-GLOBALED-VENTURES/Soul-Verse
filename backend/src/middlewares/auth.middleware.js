@@ -23,5 +23,27 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
-module.exports = { authMiddleware };
+const optionalAuthMiddleware = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return next();
+  }
+
+  const token = authHeader.slice(7).trim();
+  try {
+    const decoded = verifyAccessToken(token);
+    const user = userService.findById(decoded.sub);
+    if (user) {
+      req.user = user;
+    }
+  } catch (_) {
+    // Optional auth silently ignores invalid tokens and proceeds as guest
+  }
+  next();
+};
+
+module.exports = {
+  authMiddleware,
+  optionalAuthMiddleware,
+};
 

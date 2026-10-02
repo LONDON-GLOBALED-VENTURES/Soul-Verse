@@ -456,76 +456,172 @@ class _AccountCard extends ConsumerWidget {
           );
         }
 
+        final status = user.prayerStats.status;
+
         return Card(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  radius: 24,
-                  backgroundColor: AppColors.accent.withValues(alpha: 0.15),
-                  backgroundImage: user.avatarUrl.isNotEmpty
-                      ? CachedNetworkImageProvider(user.avatarUrl)
-                      : null,
-                  child: user.avatarUrl.isEmpty
-                      ? Text(
-                          user.displayName.isNotEmpty
-                              ? user.displayName[0].toUpperCase()
-                              : 'U',
-                          style: textTheme.titleLarge?.copyWith(
-                            color: AppColors.accent,
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 24,
+                      backgroundColor: AppColors.accent.withValues(alpha: 0.15),
+                      backgroundImage: user.avatarUrl.isNotEmpty
+                          ? CachedNetworkImageProvider(user.avatarUrl)
+                          : null,
+                      child: user.avatarUrl.isEmpty
+                          ? Text(
+                              user.displayName.isNotEmpty
+                                  ? user.displayName[0].toUpperCase()
+                                  : 'U',
+                              style: textTheme.titleLarge?.copyWith(
+                                color: AppColors.accent,
+                              ),
+                            )
+                          : null,
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            user.displayName,
+                            style: textTheme.titleMedium,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                        )
-                      : null,
+                          const SizedBox(height: 2),
+                          Text(
+                            user.email,
+                            style: textTheme.bodySmall,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 6),
+                          Wrap(
+                            spacing: 6,
+                            runSpacing: 4,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 2,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.accent.withValues(alpha: 0.12),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Text(
+                                  user.subscription.isPremium
+                                      ? 'Premium Member'
+                                      : 'Free Plan',
+                                  style: textTheme.labelSmall?.copyWith(
+                                    color: AppColors.accent,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 2,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppColors.textPrimary.withValues(alpha: 0.08),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Text(
+                                  status.displayTitle,
+                                  style: textTheme.labelSmall?.copyWith(
+                                    color: AppColors.textPrimary,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: 'Sign Out',
+                      icon: const Icon(
+                        Icons.logout,
+                        color: AppColors.textSecondary,
+                      ),
+                      onPressed: () => _confirmSignOut(context, ref),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                const SizedBox(height: 16),
+                const Divider(height: 1),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Spiritual Rank: ${status.displayTitle}',
+                      style: textTheme.titleSmall,
+                    ),
+                    if (status.nextThreshold != null)
                       Text(
-                        user.displayName,
-                        style: textTheme.titleMedium,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 2),
+                        '${status.currentLikes} / ${status.nextThreshold} Amens',
+                        style: textTheme.bodySmall?.copyWith(
+                          color: AppColors.accent,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    else
                       Text(
-                        user.email,
-                        style: textTheme.bodySmall,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 6),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.accent.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          user.subscription.isPremium
-                              ? 'Premium Member'
-                              : 'Free Plan',
-                          style: textTheme.labelSmall?.copyWith(
-                            color: AppColors.accent,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        'Max Rank reached! 👑',
+                        style: textTheme.bodySmall?.copyWith(
+                          color: AppColors.accent,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ],
+                  ],
+                ),
+                const SizedBox(height: 8),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: LinearProgressIndicator(
+                    value: status.progress,
+                    minHeight: 6,
+                    backgroundColor: AppColors.border,
+                    valueColor: const AlwaysStoppedAnimation<Color>(AppColors.accent),
                   ),
                 ),
-                IconButton(
-                  tooltip: 'Sign Out',
-                  icon: const Icon(
-                    Icons.logout,
-                    color: AppColors.textSecondary,
+                if (status.nextTitle != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    'Next milestone: ${status.nextTitle}',
+                    style: textTheme.bodySmall?.copyWith(
+                      color: AppColors.textSecondary,
+                      fontSize: 11,
+                    ),
                   ),
-                  onPressed: () => _confirmSignOut(context, ref),
+                ],
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _PrayerStatItem(
+                      label: 'Prayers Shared',
+                      value: '${user.prayerStats.prayersShared}',
+                    ),
+                    _PrayerStatItem(
+                      label: 'Amens Received',
+                      value: '${user.prayerStats.likesReceived}',
+                    ),
+                    _PrayerStatItem(
+                      label: 'Prayers Offered',
+                      value: '${user.prayerStats.likesGiven}',
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -554,6 +650,33 @@ class _AccountCard extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _PrayerStatItem extends StatelessWidget {
+  const _PrayerStatItem({required this.label, required this.value});
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      children: [
+        Text(
+          value,
+          style: textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: AppColors.accent,
+          ),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          label,
+          style: textTheme.bodySmall?.copyWith(fontSize: 11),
+        ),
+      ],
     );
   }
 }

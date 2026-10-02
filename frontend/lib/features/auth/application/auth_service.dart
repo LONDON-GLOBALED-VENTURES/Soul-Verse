@@ -110,6 +110,14 @@ class AuthNotifier extends AsyncNotifier<User?> {
       state = AsyncError(e, st);
     }
   }
+
+  Future<void> refreshUser() async {
+    try {
+      final api = ref.read(authApiProvider);
+      final user = await api.getMe();
+      state = AsyncData(user);
+    } catch (_) {}
+  }
 }
 
 final authProvider = AsyncNotifierProvider<AuthNotifier, User?>(AuthNotifier.new);
