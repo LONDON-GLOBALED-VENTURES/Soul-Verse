@@ -24,6 +24,30 @@ class PrayerCard extends StatelessWidget {
     return '${date.day}/${date.month}/${date.year}';
   }
 
+  Color _badgeBackgroundColor(String type, ThemeData theme) {
+    switch (type.toLowerCase()) {
+      case 'prayer':
+        return theme.colorScheme.tertiaryContainer.withValues(alpha: 0.7);
+      case 'praise':
+        return theme.colorScheme.secondaryContainer.withValues(alpha: 0.7);
+      case 'request':
+      default:
+        return theme.colorScheme.primaryContainer.withValues(alpha: 0.7);
+    }
+  }
+
+  Color _badgeTextColor(String type, ThemeData theme) {
+    switch (type.toLowerCase()) {
+      case 'prayer':
+        return theme.colorScheme.onTertiaryContainer;
+      case 'praise':
+        return theme.colorScheme.onSecondaryContainer;
+      case 'request':
+      default:
+        return theme.colorScheme.onPrimaryContainer;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -101,20 +125,6 @@ class PrayerCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.primary.withValues(alpha: 0.08),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    prayer.category,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.primary,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
                 if (prayer.isMine && onDelete != null) ...[
                   const SizedBox(width: 4),
                   PopupMenuButton<String>(
@@ -140,6 +150,41 @@ class PrayerCard extends StatelessWidget {
                     ],
                   ),
                 ],
+              ],
+            ),
+            const SizedBox(height: 10),
+            Wrap(
+              spacing: 6,
+              runSpacing: 4,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: _badgeBackgroundColor(prayer.type, theme),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    '${prayer.typeBadgeEmoji} ${prayer.typeBadgeShortLabel}',
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: _badgeTextColor(prayer.type, theme),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withValues(alpha: 0.08),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    prayer.category,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 12),

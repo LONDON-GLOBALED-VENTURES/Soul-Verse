@@ -10,6 +10,7 @@ class CreatePrayerDialog extends StatefulWidget {
     required String title,
     required String content,
     required String category,
+    required String type,
     required bool isAnonymous,
   }) onSubmit;
 
@@ -32,6 +33,7 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();
   String _selectedCategory = CreatePrayerDialog.categories.first;
+  String _selectedType = 'request';
   bool _isAnonymous = false;
   bool _isLoading = false;
 
@@ -51,6 +53,7 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
         title: _titleController.text.trim(),
         content: _contentController.text.trim(),
         category: _selectedCategory,
+        type: _selectedType,
         isAnonymous: _isAnonymous,
       );
       if (mounted) {
@@ -60,7 +63,7 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Failed to share prayer: ${e.toString()}'),
+            content: Text('Failed to share: ${e.toString()}'),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -69,6 +72,78 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
       if (mounted) {
         setState(() => _isLoading = false);
       }
+    }
+  }
+
+  String get _dialogTitle {
+    switch (_selectedType) {
+      case 'prayer':
+        return 'Share Written Prayer';
+      case 'praise':
+        return 'Share Praise Report';
+      case 'request':
+      default:
+        return 'Share Prayer Request';
+    }
+  }
+
+  String get _titleLabel {
+    switch (_selectedType) {
+      case 'prayer':
+        return 'Prayer Title';
+      case 'praise':
+        return 'Praise Report Title';
+      case 'request':
+      default:
+        return 'Request Title';
+    }
+  }
+
+  String get _titleHint {
+    switch (_selectedType) {
+      case 'prayer':
+        return 'e.g. Morning Prayer for Peace & Strength';
+      case 'praise':
+        return 'e.g. Thankful for answered prayer & recovery';
+      case 'request':
+      default:
+        return 'e.g. Healing for my mother';
+    }
+  }
+
+  String get _contentLabel {
+    switch (_selectedType) {
+      case 'prayer':
+        return 'Written Prayer';
+      case 'praise':
+        return 'Praise / Testimony Details';
+      case 'request':
+      default:
+        return 'Prayer Details';
+    }
+  }
+
+  String get _contentHint {
+    switch (_selectedType) {
+      case 'prayer':
+        return 'Write your prayer, blessing, or devotional words...';
+      case 'praise':
+        return 'Share what God has done with the community...';
+      case 'request':
+      default:
+        return 'Share what you would like prayer for...';
+    }
+  }
+
+  String get _buttonLabel {
+    switch (_selectedType) {
+      case 'prayer':
+        return 'Post Prayer';
+      case 'praise':
+        return 'Post Praise Report';
+      case 'request':
+      default:
+        return 'Post Prayer Request';
     }
   }
 
@@ -98,7 +173,11 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
-                          Icons.volunteer_activism,
+                          _selectedType == 'prayer'
+                              ? Icons.auto_stories
+                              : _selectedType == 'praise'
+                                  ? Icons.star
+                                  : Icons.volunteer_activism,
                           color: theme.colorScheme.primary,
                           size: 24,
                         ),
@@ -106,7 +185,7 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
-                          'Share Prayer Request',
+                          _dialogTitle,
                           style: theme.textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -119,12 +198,43 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
                     ],
                   ),
                   const SizedBox(height: 16),
+                  // Post Type Selector: Request | Prayer | Praise
+                  SegmentedButton<String>(
+                    segments: const [
+                      ButtonSegment(
+                        value: 'request',
+                        label: Text('Request'),
+                        icon: Text('🙏'),
+                      ),
+                      ButtonSegment(
+                        value: 'prayer',
+                        label: Text('Prayer'),
+                        icon: Text('📖'),
+                      ),
+                      ButtonSegment(
+                        value: 'praise',
+                        label: Text('Praise'),
+                        icon: Text('✨'),
+                      ),
+                    ],
+                    selected: {_selectedType},
+                    onSelectionChanged: (newSelection) {
+                      setState(() {
+                        _selectedType = newSelection.first;
+                        // Suggest appropriate default category for praise
+                        if (_selectedType == 'praise' && _selectedCategory == 'General') {
+                          _selectedCategory = 'Gratitude & Praise';
+                        }
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 16),
                   TextFormField(
                     controller: _titleController,
-                    decoration: const InputDecoration(
-                      labelText: 'Title',
-                      hintText: 'e.g. Healing for my mother',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      labelText: _titleLabel,
+                      hintText: _titleHint,
+                      border: const OutlineInputBorder(),
                     ),
                     maxLength: 100,
                     validator: (val) {
@@ -151,10 +261,10 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _contentController,
-                    decoration: const InputDecoration(
-                      labelText: 'Prayer Details',
-                      hintText: 'Share what is on your heart...',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      labelText: _contentLabel,
+                      hintText: _contentHint,
+                      border: const OutlineInputBorder(),
                       alignLabelWithHint: true,
                     ),
                     minLines: 3,
@@ -190,9 +300,9 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
                             height: 20,
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
-                        : const Text(
-                            'Post Prayer Request',
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        : Text(
+                            _buttonLabel,
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                   ),
                 ],

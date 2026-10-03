@@ -58,6 +58,7 @@ const formatPrayer = async (prayer, currentUserId = null) => {
     title: prayer.title,
     content: prayer.content,
     category: prayer.category || 'General',
+    type: prayer.type || 'request',
     likesCount: prayer.likesCount || 0,
     isLikedByMe,
     isMine,
@@ -66,9 +67,9 @@ const formatPrayer = async (prayer, currentUserId = null) => {
   };
 };
 
-const listPrayers = async ({ sort = 'recent', category = 'All', currentUserId = null, page = 1, limit = 50 } = {}) => {
+const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', currentUserId = null, page = 1, limit = 50 } = {}) => {
   if (isDbActive()) {
-    return dbPrayer.listPrayers({ sort, category, currentUserId, page, limit });
+    return dbPrayer.listPrayers({ sort, category, type, currentUserId, page, limit });
   }
 
   const prayers = loadPrayers();
@@ -78,6 +79,11 @@ const listPrayers = async ({ sort = 'recent', category = 'All', currentUserId = 
   if (category && category.trim().toLowerCase() !== 'all') {
     const target = category.trim().toLowerCase();
     filtered = filtered.filter((p) => (p.category || 'General').toLowerCase() === target);
+  }
+
+  if (type && type.trim().toLowerCase() !== 'all') {
+    const targetType = type.trim().toLowerCase();
+    filtered = filtered.filter((p) => (p.type || 'request').toLowerCase() === targetType);
   }
 
   if (sort === 'popular' || sort === 'top') {
@@ -106,9 +112,9 @@ const listPrayers = async ({ sort = 'recent', category = 'All', currentUserId = 
   };
 };
 
-const createPrayer = async ({ authorId, title, content, category = 'General', isAnonymous = false }) => {
+const createPrayer = async ({ authorId, title, content, category = 'General', isAnonymous = false, type = 'request' }) => {
   if (isDbActive()) {
-    return dbPrayer.createPrayer({ authorId, title, content, category, isAnonymous });
+    return dbPrayer.createPrayer({ authorId, title, content, category, isAnonymous, type });
   }
 
   if (!authorId) throw new HttpError(401, 'Authentication required to share a prayer');
@@ -124,6 +130,11 @@ const createPrayer = async ({ authorId, title, content, category = 'General', is
     throw new HttpError(400, 'Content must be between 10 and 2000 characters');
   }
 
+  const validTypes = ['request', 'prayer', 'praise'];
+  const normalizedType = validTypes.includes(String(type).toLowerCase())
+    ? String(type).toLowerCase()
+    : 'request';
+
   const author = await userService.findById(authorId);
   if (!author) throw new HttpError(404, 'Author account not found');
 
@@ -137,6 +148,7 @@ const createPrayer = async ({ authorId, title, content, category = 'General', is
     title: trimmedTitle,
     content: trimmedContent,
     category: (category || 'General').trim(),
+    type: normalizedType,
     likesCount: 0,
     likedBy: [],
     createdAt: now,

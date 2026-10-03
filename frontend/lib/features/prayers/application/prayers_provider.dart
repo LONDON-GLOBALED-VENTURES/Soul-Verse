@@ -1,5 +1,7 @@
 import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../auth/application/auth_service.dart';
 import '../data/models/prayer.dart';
 import '../data/prayers_api.dart';
@@ -15,8 +17,22 @@ class PrayerCategoryFilterNotifier extends Notifier<String> {
 
 final prayerCategoryFilterProvider =
     NotifierProvider<PrayerCategoryFilterNotifier, String>(
-  PrayerCategoryFilterNotifier.new,
-);
+      PrayerCategoryFilterNotifier.new,
+    );
+
+class PrayerTypeFilterNotifier extends Notifier<String> {
+  @override
+  String build() => 'all';
+
+  void setType(String type) {
+    state = type;
+  }
+}
+
+final prayerTypeFilterProvider =
+    NotifierProvider<PrayerTypeFilterNotifier, String>(
+      PrayerTypeFilterNotifier.new,
+    );
 
 class PrayerSortNotifier extends Notifier<String> {
   @override
@@ -27,26 +43,29 @@ class PrayerSortNotifier extends Notifier<String> {
   }
 }
 
-final prayerSortProvider =
-    NotifierProvider<PrayerSortNotifier, String>(PrayerSortNotifier.new);
+final prayerSortProvider = NotifierProvider<PrayerSortNotifier, String>(
+  PrayerSortNotifier.new,
+);
 
 class PrayersFeedNotifier extends AsyncNotifier<List<Prayer>> {
   @override
   Future<List<Prayer>> build() async {
     final category = ref.watch(prayerCategoryFilterProvider);
+    final type = ref.watch(prayerTypeFilterProvider);
     final sort = ref.watch(prayerSortProvider);
     final api = ref.watch(prayersApiProvider);
 
-    return api.getPrayers(category: category, sort: sort);
+    return api.getPrayers(category: category, type: type, sort: sort);
   }
 
   Future<void> refresh() async {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
       final category = ref.read(prayerCategoryFilterProvider);
+      final type = ref.read(prayerTypeFilterProvider);
       final sort = ref.read(prayerSortProvider);
       final api = ref.read(prayersApiProvider);
-      return api.getPrayers(category: category, sort: sort);
+      return api.getPrayers(category: category, type: type, sort: sort);
     });
   }
 
@@ -87,6 +106,7 @@ class PrayersFeedNotifier extends AsyncNotifier<List<Prayer>> {
     required String title,
     required String content,
     String category = 'General',
+    String type = 'request',
     bool isAnonymous = false,
   }) async {
     final api = ref.read(prayersApiProvider);
@@ -94,6 +114,7 @@ class PrayersFeedNotifier extends AsyncNotifier<List<Prayer>> {
       title: title,
       content: content,
       category: category,
+      type: type,
       isAnonymous: isAnonymous,
     );
 
@@ -117,5 +138,5 @@ class PrayersFeedNotifier extends AsyncNotifier<List<Prayer>> {
 
 final prayersFeedProvider =
     AsyncNotifierProvider<PrayersFeedNotifier, List<Prayer>>(
-  PrayersFeedNotifier.new,
-);
+      PrayersFeedNotifier.new,
+    );

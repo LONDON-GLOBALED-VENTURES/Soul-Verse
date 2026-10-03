@@ -35,12 +35,14 @@ class PrayersPage extends ConsumerWidget {
           required String title,
           required String content,
           required String category,
+          required String type,
           required bool isAnonymous,
         }) async {
           await ref.read(prayersFeedProvider.notifier).createPrayer(
                 title: title,
                 content: content,
                 category: category,
+                type: type,
                 isAnonymous: isAnonymous,
               );
         },
@@ -53,6 +55,7 @@ class PrayersPage extends ConsumerWidget {
     final theme = Theme.of(context);
     final prayersAsync = ref.watch(prayersFeedProvider);
     final selectedCategory = ref.watch(prayerCategoryFilterProvider);
+    final selectedType = ref.watch(prayerTypeFilterProvider);
     final selectedSort = ref.watch(prayerSortProvider);
     final authState = ref.watch(authProvider);
     final user = authState.value;
@@ -184,6 +187,45 @@ class PrayersPage extends ConsumerWidget {
             ),
           ],
 
+          // Post Type Filter: All | Requests | Prayers | Praise
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 2),
+            child: SizedBox(
+              width: double.infinity,
+              child: SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment(
+                    value: 'all',
+                    label: Text('All'),
+                  ),
+                  ButtonSegment(
+                    value: 'request',
+                    label: Text('🙏 Requests'),
+                  ),
+                  ButtonSegment(
+                    value: 'prayer',
+                    label: Text('📖 Prayers'),
+                  ),
+                  ButtonSegment(
+                    value: 'praise',
+                    label: Text('✨ Praise'),
+                  ),
+                ],
+                selected: {selectedType},
+                onSelectionChanged: (newSet) {
+                  ref
+                      .read(prayerTypeFilterProvider.notifier)
+                      .setType(newSet.first);
+                },
+                showSelectedIcon: false,
+                style: const ButtonStyle(
+                  visualDensity: VisualDensity.compact,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+              ),
+            ),
+          ),
+
           // Category chips horizontal list
           SizedBox(
             height: 52,
@@ -228,14 +270,20 @@ class PrayersPage extends ConsumerWidget {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            'No Prayer Requests Yet',
+                            selectedType == 'prayer'
+                                ? 'No Written Prayers Yet'
+                                : selectedType == 'praise'
+                                    ? 'No Praise Reports Yet'
+                                    : selectedType == 'request'
+                                        ? 'No Prayer Requests Yet'
+                                        : 'No Posts Yet',
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Be the first to share a prayer with the community.',
+                            'Be the first to share with the community.',
                             textAlign: TextAlign.center,
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: theme.colorScheme.onSurfaceVariant,
@@ -245,7 +293,7 @@ class PrayersPage extends ConsumerWidget {
                           FilledButton.icon(
                             onPressed: () => _openCreateDialog(context, ref),
                             icon: const Icon(Icons.add),
-                            label: const Text('Post Prayer Request'),
+                            label: const Text('Share Now'),
                           ),
                         ],
                       ),

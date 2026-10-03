@@ -20,6 +20,7 @@ const formatPrayerRow = (row, currentUserId = null) => {
     title: row.title,
     content: row.content,
     category: row.category || 'General',
+    type: row.type || 'request',
     likesCount: parseInt(row.likes_count, 10) || 0,
     isLikedByMe,
     isMine,
@@ -28,7 +29,7 @@ const formatPrayerRow = (row, currentUserId = null) => {
   };
 };
 
-const listPrayers = async ({ sort = 'recent', category = 'All', currentUserId = null, page = 1, limit = 50 } = {}) => {
+const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', currentUserId = null, page = 1, limit = 50 } = {}) => {
   const safePage = Math.max(1, parseInt(page, 10) || 1);
   const safeLimit = Math.min(100, Math.max(1, parseInt(limit, 10) || 50));
   const offset = (safePage - 1) * safeLimit;
@@ -39,6 +40,11 @@ const listPrayers = async ({ sort = 'recent', category = 'All', currentUserId = 
   if (category && category.trim().toLowerCase() !== 'all') {
     params.push(category.trim().toLowerCase());
     conditions.push(`LOWER(p.category) = $${params.length}`);
+  }
+
+  if (type && type.trim().toLowerCase() !== 'all') {
+    params.push(type.trim().toLowerCase());
+    conditions.push(`LOWER(COALESCE(p.type, 'request')) = $${params.length}`);
   }
 
   const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
@@ -90,7 +96,7 @@ const listPrayers = async ({ sort = 'recent', category = 'All', currentUserId = 
   };
 };
 
-const createPrayer = async ({ authorId, title, content, category = 'General', isAnonymous = false }) => {
+const createPrayer = async ({ authorId, title, content, category = 'General', isAnonymous = false, type = 'request' }) => {
   if (!authorId) throw new HttpError(401, 'Authentication required to share a prayer');
 
   const trimmedTitle = (title || '').trim();
@@ -103,6 +109,11 @@ const createPrayer = async ({ authorId, title, content, category = 'General', is
   if (!trimmedContent || trimmedContent.length < 10 || trimmedContent.length > 2000) {
     throw new HttpError(400, 'Content must be between 10 and 2000 characters');
   }
+
+  const validTypes = ['request', 'prayer', 'praise'];
+  const normalizedType = validTypes.includes(String(type).toLowerCase())
+    ? String(type).toLowerCase()
+    : 'request';
 
   // Check author exists
   const authorRes = await pool.query('SELECT * FROM users WHERE id = $1', [authorId]);
@@ -117,8 +128,8 @@ const createPrayer = async ({ authorId, title, content, category = 'General', is
     await client.query('BEGIN');
 
     await client.query(
-      `INSERT INTO prayers (id, author_id, author_name, author_avatar, is_anonymous, title, content, category, likes_count, created_at, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 0, $9, $9)`,
+      `INSERT INTO prayers (id, author_id, author_name, author_avatar, is_anonymous, title, content, category, type, likes_count, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 0, $10, $10)`,
       [
         prayerId,
         authorId,
@@ -128,6 +139,7 @@ const createPrayer = async ({ authorId, title, content, category = 'General', is
         trimmedTitle,
         trimmedContent,
         (category || 'General').trim(),
+        normalizedType,
         now,
       ]
     );

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../core/network/dio_client.dart';
 import 'models/prayer.dart';
 
@@ -16,12 +17,14 @@ class PrayersApi {
   Future<List<Prayer>> getPrayers({
     String sort = 'recent',
     String category = 'All',
+    String type = 'all',
     int page = 1,
     int limit = 50,
   }) async {
     final queryParams = <String, dynamic>{
       'sort': sort,
       if (category.isNotEmpty && category != 'All') 'category': category,
+      if (type.isNotEmpty && type != 'all') 'type': type,
       'page': page,
       'limit': limit,
     };
@@ -45,6 +48,7 @@ class PrayersApi {
     required String title,
     required String content,
     String category = 'General',
+    String type = 'request',
     bool isAnonymous = false,
   }) async {
     final response = await _dio.post<Map<String, dynamic>>(
@@ -53,6 +57,7 @@ class PrayersApi {
         'title': title,
         'content': content,
         'category': category,
+        'type': type,
         'isAnonymous': isAnonymous,
       },
     );
@@ -65,7 +70,9 @@ class PrayersApi {
   }
 
   Future<Map<String, dynamic>> toggleLike(String prayerId) async {
-    final response = await _dio.post<Map<String, dynamic>>('/api/prayers/$prayerId/like');
+    final response = await _dio.post<Map<String, dynamic>>(
+      '/api/prayers/$prayerId/like',
+    );
     final data = response.data!;
     return data['data'] is Map<String, dynamic>
         ? data['data'] as Map<String, dynamic>
@@ -76,3 +83,4 @@ class PrayersApi {
     await _dio.delete<void>('/api/prayers/$prayerId');
   }
 }
+

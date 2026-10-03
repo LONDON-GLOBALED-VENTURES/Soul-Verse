@@ -142,6 +142,7 @@ class Prayer {
     required this.title,
     required this.content,
     this.category = 'General',
+    this.type = 'request',
     this.likesCount = 0,
     this.isLikedByMe = false,
     this.isMine = false,
@@ -159,11 +160,48 @@ class Prayer {
   final String title;
   final String content;
   final String category;
+  final String type;
   final int likesCount;
   final bool isLikedByMe;
   final bool isMine;
   final DateTime createdAt;
   final DateTime? updatedAt;
+
+  String get typeDisplayLabel {
+    switch (type.toLowerCase()) {
+      case 'prayer':
+        return 'Written Prayer';
+      case 'praise':
+        return 'Praise Report';
+      case 'request':
+      default:
+        return 'Prayer Request';
+    }
+  }
+
+  String get typeBadgeEmoji {
+    switch (type.toLowerCase()) {
+      case 'prayer':
+        return '📖';
+      case 'praise':
+        return '✨';
+      case 'request':
+      default:
+        return '🙏';
+    }
+  }
+
+  String get typeBadgeShortLabel {
+    switch (type.toLowerCase()) {
+      case 'prayer':
+        return 'Prayer';
+      case 'praise':
+        return 'Praise';
+      case 'request':
+      default:
+        return 'Request';
+    }
+  }
 
   factory Prayer.fromJson(Map<String, dynamic> json) {
     return Prayer(
@@ -177,6 +215,7 @@ class Prayer {
       title: json['title'] as String? ?? '',
       content: json['content'] as String? ?? '',
       category: json['category'] as String? ?? 'General',
+      type: json['type'] as String? ?? 'request',
       likesCount: (json['likesCount'] as num?)?.toInt() ?? 0,
       isLikedByMe: json['isLikedByMe'] as bool? ?? false,
       isMine: json['isMine'] as bool? ?? false,
@@ -200,6 +239,7 @@ class Prayer {
     'title': title,
     'content': content,
     'category': category,
+    'type': type,
     'likesCount': likesCount,
     'isLikedByMe': isLikedByMe,
     'isMine': isMine,
@@ -218,6 +258,7 @@ class Prayer {
     String? title,
     String? content,
     String? category,
+    String? type,
     int? likesCount,
     bool? isLikedByMe,
     bool? isMine,
@@ -235,6 +276,7 @@ class Prayer {
       title: title ?? this.title,
       content: content ?? this.content,
       category: category ?? this.category,
+      type: type ?? this.type,
       likesCount: likesCount ?? this.likesCount,
       isLikedByMe: isLikedByMe ?? this.isLikedByMe,
       isMine: isMine ?? this.isMine,
@@ -249,9 +291,10 @@ class Prayer {
       other is Prayer &&
           runtimeType == other.runtimeType &&
           id == other.id &&
+          type == other.type &&
           likesCount == other.likesCount &&
           isLikedByMe == other.isLikedByMe;
 
   @override
-  int get hashCode => Object.hash(id, likesCount, isLikedByMe);
+  int get hashCode => Object.hash(id, type, likesCount, isLikedByMe);
 }

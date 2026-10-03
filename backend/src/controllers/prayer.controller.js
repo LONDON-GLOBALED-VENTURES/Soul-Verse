@@ -2,11 +2,12 @@ const prayerService = require('../services/prayer.service');
 
 const listPrayers = async (req, res, next) => {
   try {
-    const { sort, category, page, limit } = req.query;
+    const { sort, category, type, page, limit } = req.query;
     const currentUserId = req.user ? req.user.id : null;
     const result = await prayerService.listPrayers({
       sort,
       category,
+      type,
       page,
       limit,
       currentUserId,
@@ -23,13 +24,14 @@ const listPrayers = async (req, res, next) => {
 const createPrayer = async (req, res, next) => {
   try {
     const authorId = req.user.id;
-    const { title, content, category, isAnonymous } = req.body;
+    const { title, content, category, isAnonymous, type } = req.body;
     const prayer = await prayerService.createPrayer({
       authorId,
       title,
       content,
       category,
       isAnonymous,
+      type,
     });
     res.status(201).json({
       success: true,

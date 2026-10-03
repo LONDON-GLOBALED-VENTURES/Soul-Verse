@@ -76,18 +76,22 @@ void main() {
       expect(prayer.authorName, 'Grace Walker');
       expect(prayer.authorStatusLevel, 'Believer');
       expect(prayer.category, 'Health & Healing');
+      expect(prayer.type, 'request');
+      expect(prayer.typeBadgeShortLabel, 'Request');
       expect(prayer.likesCount, 12);
       expect(prayer.isLikedByMe, false);
       expect(prayer.isMine, true);
 
-      final toggled = prayer.copyWith(isLikedByMe: true, likesCount: 13);
+      final toggled = prayer.copyWith(isLikedByMe: true, likesCount: 13, type: 'praise');
       expect(toggled.isLikedByMe, true);
       expect(toggled.likesCount, 13);
+      expect(toggled.type, 'praise');
+      expect(toggled.typeBadgeShortLabel, 'Praise');
     });
   });
 
   group('Prayer Widgets Tests', () {
-    testWidgets('PrayerCard renders prayer details and triggers onLike', (tester) async {
+    testWidgets('PrayerCard renders prayer details, badge, and triggers onLike', (tester) async {
       bool liked = false;
       final prayer = Prayer(
         id: 'pry_1',
@@ -98,6 +102,7 @@ void main() {
         title: 'Strength during exams',
         content: 'Please pray for peace of mind during university finals.',
         category: 'Guidance & Wisdom',
+        type: 'request',
         likesCount: 5,
         isLikedByMe: false,
         createdAt: DateTime.now().subtract(const Duration(minutes: 5)),
@@ -121,6 +126,7 @@ void main() {
       expect(find.text('David S.'), findsOneWidget);
       expect(find.text('⚔️ Prayer Warrior'), findsOneWidget);
       expect(find.text('Guidance & Wisdom'), findsOneWidget);
+      expect(find.text('🙏 Request'), findsOneWidget);
       expect(find.text('Amen (5)'), findsOneWidget);
 
       await tester.tap(find.text('Amen (5)'));
@@ -128,6 +134,13 @@ void main() {
     });
 
     testWidgets('CreatePrayerDialog validates inputs before submit', (tester) async {
+      tester.view.physicalSize = const Size(800, 1200);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+
       bool submitted = false;
 
       await tester.pumpWidget(
@@ -138,6 +151,7 @@ void main() {
                 required String title,
                 required String content,
                 required String category,
+                required String type,
                 required bool isAnonymous,
               }) async {
                 submitted = true;
@@ -150,7 +164,9 @@ void main() {
       expect(find.text('Share Prayer Request'), findsOneWidget);
 
       // Attempt to submit empty form
-      await tester.tap(find.text('Post Prayer Request'));
+      final submitFinder = find.text('Post Prayer Request');
+      await tester.ensureVisible(submitFinder);
+      await tester.tap(submitFinder);
       await tester.pumpAndSettle();
 
       expect(submitted, isFalse);
@@ -159,7 +175,8 @@ void main() {
       // Enter valid title and short content
       await tester.enterText(find.byType(TextFormField).first, 'Need peace');
       await tester.enterText(find.byType(TextFormField).last, 'Short');
-      await tester.tap(find.text('Post Prayer Request'));
+      await tester.ensureVisible(submitFinder);
+      await tester.tap(submitFinder);
       await tester.pumpAndSettle();
 
       expect(submitted, isFalse);
@@ -170,7 +187,8 @@ void main() {
         find.byType(TextFormField).last,
         'Please pray for peace in my family this weekend.',
       );
-      await tester.tap(find.text('Post Prayer Request'));
+      await tester.ensureVisible(submitFinder);
+      await tester.tap(submitFinder);
       await tester.pumpAndSettle();
 
       expect(submitted, isTrue);
