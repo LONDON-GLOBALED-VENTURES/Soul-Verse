@@ -1,6 +1,6 @@
 [
   {
-    "id": "usr_db3a5ede-8365-4cd7-8387-c9237414c71e",
+    "id": "usr_6201e21d-942b-44e8-9a04-c5f1bbd4b363",
     "googleId": "google_author2@example.com",
     "email": "author2@example.com",
     "name": "Author",
@@ -25,11 +25,11 @@
         "progress": 0
       }
     },
-    "createdAt": "2026-10-02T19:17:47.103Z",
-    "lastLoginAt": "2026-10-02T19:17:47.103Z"
+    "createdAt": "2026-10-02T19:31:12.485Z",
+    "lastLoginAt": "2026-10-02T19:31:12.485Z"
   },
   {
-    "id": "usr_1164b2a0-b4b9-4eb8-bc95-9a5187edfdea",
+    "id": "usr_c18e0d6d-52c3-4985-9a79-1c10ab9f6b43",
     "googleId": "google_stranger@example.com",
     "email": "stranger@example.com",
     "name": "Stranger",
@@ -54,7 +54,7 @@
         "progress": 0
       }
     },
-    "createdAt": "2026-10-02T19:17:47.103Z",
-    "lastLoginAt": "2026-10-02T19:17:47.103Z"
+    "createdAt": "2026-10-02T19:31:12.486Z",
+    "lastLoginAt": "2026-10-02T19:31:12.486Z"
   }
 ]
