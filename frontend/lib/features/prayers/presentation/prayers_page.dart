@@ -58,6 +58,7 @@ class PrayersPage extends ConsumerWidget {
     final selectedType = ref.watch(prayerTypeFilterProvider);
     final selectedScope = ref.watch(prayerScopeFilterProvider);
     final selectedSort = ref.watch(prayerSortProvider);
+    final isLoadingMore = ref.watch(isLoadingMorePrayersProvider);
     final authState = ref.watch(authProvider);
     final user = authState.value;
 
@@ -356,11 +357,31 @@ class PrayersPage extends ConsumerWidget {
                 return RefreshIndicator(
                   onRefresh: () =>
                       ref.read(prayersFeedProvider.notifier).refresh(),
-                  child: ListView.builder(
-                    padding: const EdgeInsets.only(bottom: 80, top: 4),
-                    itemCount: prayers.length,
-                    itemBuilder: (context, index) {
-                      final prayer = prayers[index];
+                  child: NotificationListener<ScrollNotification>(
+                    onNotification: (scrollInfo) {
+                      if (scrollInfo.metrics.pixels >=
+                          scrollInfo.metrics.maxScrollExtent - 250) {
+                        ref.read(prayersFeedProvider.notifier).loadMore();
+                      }
+                      return false;
+                    },
+                    child: ListView.builder(
+                      padding: const EdgeInsets.only(bottom: 80, top: 4),
+                      itemCount: prayers.length + (isLoadingMore ? 1 : 0),
+                      itemBuilder: (context, index) {
+                        if (index == prayers.length) {
+                          return const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 20),
+                            child: Center(
+                              child: SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: CircularProgressIndicator(strokeWidth: 2.5),
+                              ),
+                            ),
+                          );
+                        }
+                        final prayer = prayers[index];
                       return PrayerCard(
                         prayer: prayer,
                         onLike: () async {
@@ -420,8 +441,9 @@ class PrayersPage extends ConsumerWidget {
                       );
                     },
                   ),
-                );
-              },
+                ),
+              );
+            },
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (err, _) => Center(
                 child: Padding(
