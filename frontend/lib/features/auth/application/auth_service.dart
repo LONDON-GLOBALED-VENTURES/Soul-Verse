@@ -11,9 +11,18 @@ abstract class GoogleSignInService {
   Future<void> signOut();
 }
 
+const _googleServerClientId = String.fromEnvironment(
+  'GOOGLE_CLIENT_ID',
+  defaultValue: '255267733185-rmsq5809usmfseqvjot1qq75h75c9ahd.apps.googleusercontent.com',
+);
+
 class DefaultGoogleSignInService implements GoogleSignInService {
   DefaultGoogleSignInService([GoogleSignIn? googleSignIn])
-      : _googleSignIn = googleSignIn ?? GoogleSignIn(scopes: ['email', 'profile']);
+      : _googleSignIn = googleSignIn ??
+            GoogleSignIn(
+              serverClientId: _googleServerClientId,
+              scopes: ['email', 'profile'],
+            );
 
   final GoogleSignIn _googleSignIn;
 
