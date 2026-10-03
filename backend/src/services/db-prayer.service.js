@@ -57,6 +57,10 @@ const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', mi
   let orderBy = 'ORDER BY p.created_at DESC';
   if (sort === 'popular' || sort === 'top') {
     orderBy = 'ORDER BY p.likes_count DESC, p.created_at DESC';
+  } else if (sort === 'needs_prayer' || sort === 'unanswered') {
+    orderBy = 'ORDER BY p.likes_count ASC, p.created_at DESC';
+  } else if (sort === 'trending') {
+    orderBy = 'ORDER BY ((p.likes_count + 1.0) / POWER((EXTRACT(EPOCH FROM (NOW() - p.created_at)) / 3600.0) + 2.0, 1.5)) DESC, p.created_at DESC';
   }
 
   // Count total matching

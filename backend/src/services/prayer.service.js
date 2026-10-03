@@ -97,6 +97,25 @@ const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', mi
       }
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
+  } else if (sort === 'needs_prayer' || sort === 'unanswered') {
+    filtered.sort((a, b) => {
+      if ((a.likesCount || 0) !== (b.likesCount || 0)) {
+        return (a.likesCount || 0) - (b.likesCount || 0);
+      }
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
+  } else if (sort === 'trending') {
+    const now = Date.now();
+    filtered.sort((a, b) => {
+      const hoursA = Math.max(0, (now - new Date(a.createdAt).getTime()) / (1000 * 60 * 60));
+      const hoursB = Math.max(0, (now - new Date(b.createdAt).getTime()) / (1000 * 60 * 60));
+      const scoreA = ((a.likesCount || 0) + 1.0) / Math.pow(hoursA + 2.0, 1.5);
+      const scoreB = ((b.likesCount || 0) + 1.0) / Math.pow(hoursB + 2.0, 1.5);
+      if (scoreB !== scoreA) {
+        return scoreB - scoreA;
+      }
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
   } else {
     filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }

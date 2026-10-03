@@ -36,7 +36,7 @@ final prayerTypeFilterProvider =
 
 class PrayerSortNotifier extends Notifier<String> {
   @override
-  String build() => 'recent';
+  String build() => 'trending';
 
   void setSort(String sort) {
     state = sort;

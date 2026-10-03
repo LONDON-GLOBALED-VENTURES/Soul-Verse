@@ -221,3 +221,45 @@ test('DELETE /prayers/:id allows author to delete and blocks non-authors', async
   const { body: list } = await get('/prayers');
   assert.equal(list.data.items.length, 0);
 });
+
+test('GET /prayers?sort=needs_prayer prioritizes posts with 0 amens', async () => {
+  const author = await createTestUser('author_np@example.com', 'Author NP');
+  const token = signAccessToken(author);
+
+  const p1 = await post('/prayers', { title: 'Needs Help First', content: 'Prayer with 0 amens' }, { Authorization: `Bearer ${token}` });
+  const p2 = await post('/prayers', { title: 'Already Prayed For', content: 'Prayer with 1 amen' }, { Authorization: `Bearer ${token}` });
+
+  // Like p2
+  const liker = await createTestUser('liker_np@example.com', 'Liker NP');
+  await post(`/prayers/${p2.body.data.id}/like`, {}, { Authorization: `Bearer ${signAccessToken(liker)}` });
+
+  const { body: res } = await get('/prayers?sort=needs_prayer');
+  assert.equal(res.status || 200, 200);
+  assert.equal(res.data.items.length, 2);
+  assert.equal(res.data.items[0].id, p1.body.data.id);
+  assert.equal(res.data.items[0].likesCount, 0);
+  assert.equal(res.data.items[1].id, p2.body.data.id);
+  assert.equal(res.data.items[1].likesCount, 1);
+});
+
+test('GET /prayers?sort=trending ranks posts using decay algorithm', async () => {
+  const author = await createTestUser('author_tr@example.com', 'Author TR');
+  const token = signAccessToken(author);
+
+  const p1 = await post('/prayers', { title: 'Older Post with 1 amen', content: 'A prayer from earlier' }, { Authorization: `Bearer ${token}` });
+  const p2 = await post('/prayers', { title: 'Fresh Post with 5 amens', content: 'A viral prayer request' }, { Authorization: `Bearer ${token}` });
+
+  // Add 1 like to p1
+  const liker1 = await createTestUser('l1@example.com', 'L1');
+  await post(`/prayers/${p1.body.data.id}/like`, {}, { Authorization: `Bearer ${signAccessToken(liker1)}` });
+
+  // Add multiple likes to p2
+  for (let i = 2; i <= 5; i++) {
+    const l = await createTestUser(`l${i}@example.com`, `L${i}`);
+    await post(`/prayers/${p2.body.data.id}/like`, {}, { Authorization: `Bearer ${signAccessToken(l)}` });
+  }
+
+  const { body: res } = await get('/prayers?sort=trending');
+  assert.equal(res.data.items[0].id, p2.body.data.id);
+  assert.equal(res.data.items[0].likesCount, 4);
+});
