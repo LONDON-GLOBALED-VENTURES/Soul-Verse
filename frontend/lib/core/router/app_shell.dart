@@ -18,10 +18,13 @@ class AppShell extends StatelessWidget {
         ),
         child: NavigationBar(
           selectedIndex: navigationShell.currentIndex,
-          onDestinationSelected: (index) => navigationShell.goBranch(
-            index,
-            initialLocation: index == navigationShell.currentIndex,
-          ),
+          onDestinationSelected: (index) {
+            ScaffoldMessenger.of(context).clearSnackBars();
+            navigationShell.goBranch(
+              index,
+              initialLocation: index == navigationShell.currentIndex,
+            );
+          },
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.home_outlined),

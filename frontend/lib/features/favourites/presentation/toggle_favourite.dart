@@ -21,16 +21,23 @@ Future<void> toggleFavourite(
 
   void show(String message, {VoidCallback? onUndo}) {
     messenger
-      ..hideCurrentSnackBar()
+      ..clearSnackBars()
       ..showSnackBar(
         SnackBar(
           content: Text(message),
           behavior: SnackBarBehavior.floating,
           margin: EdgeInsets.fromLTRB(16, 0, 16, snackBarBottomMargin),
-          duration: const Duration(seconds: 3),
+          duration: const Duration(seconds: 2),
+          dismissDirection: DismissDirection.horizontal,
           action: onUndo == null
               ? null
-              : SnackBarAction(label: 'Undo', onPressed: onUndo),
+              : SnackBarAction(
+                  label: 'Undo',
+                  onPressed: () {
+                    messenger.clearSnackBars();
+                    onUndo();
+                  },
+                ),
         ),
       );
   }
