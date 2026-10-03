@@ -32,7 +32,10 @@ class PrayersApi {
     );
 
     final data = response.data!;
-    final items = data['items'] as List<dynamic>? ?? [];
+    final payload = data['data'] is Map<String, dynamic>
+        ? data['data'] as Map<String, dynamic>
+        : data;
+    final items = payload['items'] as List<dynamic>? ?? [];
     return items
         .map((item) => Prayer.fromJson(item as Map<String, dynamic>))
         .toList();
@@ -54,12 +57,19 @@ class PrayersApi {
       },
     );
 
-    return Prayer.fromJson(response.data!);
+    final data = response.data!;
+    final payload = data['data'] is Map<String, dynamic>
+        ? data['data'] as Map<String, dynamic>
+        : data;
+    return Prayer.fromJson(payload);
   }
 
   Future<Map<String, dynamic>> toggleLike(String prayerId) async {
     final response = await _dio.post<Map<String, dynamic>>('/api/prayers/$prayerId/like');
-    return response.data!;
+    final data = response.data!;
+    return data['data'] is Map<String, dynamic>
+        ? data['data'] as Map<String, dynamic>
+        : data;
   }
 
   Future<void> deletePrayer(String prayerId) async {
