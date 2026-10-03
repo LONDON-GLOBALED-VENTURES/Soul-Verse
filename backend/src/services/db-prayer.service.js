@@ -29,7 +29,7 @@ const formatPrayerRow = (row, currentUserId = null) => {
   };
 };
 
-const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', currentUserId = null, page = 1, limit = 50 } = {}) => {
+const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', mine = false, currentUserId = null, page = 1, limit = 50 } = {}) => {
   const safePage = Math.max(1, parseInt(page, 10) || 1);
   const safeLimit = Math.min(100, Math.max(1, parseInt(limit, 10) || 50));
   const offset = (safePage - 1) * safeLimit;
@@ -45,6 +45,11 @@ const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', cu
   if (type && type.trim().toLowerCase() !== 'all') {
     params.push(type.trim().toLowerCase());
     conditions.push(`LOWER(COALESCE(p.type, 'request')) = $${params.length}`);
+  }
+
+  if (mine && currentUserId) {
+    params.push(currentUserId);
+    conditions.push(`p.author_id = $${params.length}`);
   }
 
   const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';

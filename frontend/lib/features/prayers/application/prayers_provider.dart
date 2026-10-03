@@ -47,15 +47,35 @@ final prayerSortProvider = NotifierProvider<PrayerSortNotifier, String>(
   PrayerSortNotifier.new,
 );
 
+class PrayerScopeFilterNotifier extends Notifier<String> {
+  @override
+  String build() => 'community';
+
+  void setScope(String scope) {
+    state = scope;
+  }
+}
+
+final prayerScopeFilterProvider =
+    NotifierProvider<PrayerScopeFilterNotifier, String>(
+      PrayerScopeFilterNotifier.new,
+    );
+
 class PrayersFeedNotifier extends AsyncNotifier<List<Prayer>> {
   @override
   Future<List<Prayer>> build() async {
     final category = ref.watch(prayerCategoryFilterProvider);
     final type = ref.watch(prayerTypeFilterProvider);
     final sort = ref.watch(prayerSortProvider);
+    final scope = ref.watch(prayerScopeFilterProvider);
     final api = ref.watch(prayersApiProvider);
 
-    return api.getPrayers(category: category, type: type, sort: sort);
+    return api.getPrayers(
+      category: category,
+      type: type,
+      sort: sort,
+      mine: scope == 'mine',
+    );
   }
 
   Future<void> refresh() async {
@@ -64,8 +84,14 @@ class PrayersFeedNotifier extends AsyncNotifier<List<Prayer>> {
       final category = ref.read(prayerCategoryFilterProvider);
       final type = ref.read(prayerTypeFilterProvider);
       final sort = ref.read(prayerSortProvider);
+      final scope = ref.read(prayerScopeFilterProvider);
       final api = ref.read(prayersApiProvider);
-      return api.getPrayers(category: category, type: type, sort: sort);
+      return api.getPrayers(
+        category: category,
+        type: type,
+        sort: sort,
+        mine: scope == 'mine',
+      );
     });
   }
 

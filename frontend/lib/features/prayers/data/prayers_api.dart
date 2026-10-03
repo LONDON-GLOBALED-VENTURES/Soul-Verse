@@ -18,6 +18,7 @@ class PrayersApi {
     String sort = 'recent',
     String category = 'All',
     String type = 'all',
+    bool mine = false,
     int page = 1,
     int limit = 50,
   }) async {
@@ -25,6 +26,7 @@ class PrayersApi {
       'sort': sort,
       if (category.isNotEmpty && category != 'All') 'category': category,
       if (type.isNotEmpty && type != 'all') 'type': type,
+      if (mine) 'mine': 'true',
       'page': page,
       'limit': limit,
     };
@@ -83,4 +85,3 @@ class PrayersApi {
     await _dio.delete<void>('/api/prayers/$prayerId');
   }
 }
-

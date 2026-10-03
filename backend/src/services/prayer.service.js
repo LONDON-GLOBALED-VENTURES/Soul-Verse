@@ -67,9 +67,9 @@ const formatPrayer = async (prayer, currentUserId = null) => {
   };
 };
 
-const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', currentUserId = null, page = 1, limit = 50 } = {}) => {
+const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', mine = false, currentUserId = null, page = 1, limit = 50 } = {}) => {
   if (isDbActive()) {
-    return dbPrayer.listPrayers({ sort, category, type, currentUserId, page, limit });
+    return dbPrayer.listPrayers({ sort, category, type, mine, currentUserId, page, limit });
   }
 
   const prayers = loadPrayers();
@@ -84,6 +84,10 @@ const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', cu
   if (type && type.trim().toLowerCase() !== 'all') {
     const targetType = type.trim().toLowerCase();
     filtered = filtered.filter((p) => (p.type || 'request').toLowerCase() === targetType);
+  }
+
+  if (mine && currentUserId) {
+    filtered = filtered.filter((p) => p.authorId === currentUserId);
   }
 
   if (sort === 'popular' || sort === 'top') {

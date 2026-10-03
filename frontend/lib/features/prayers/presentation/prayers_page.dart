@@ -56,13 +56,14 @@ class PrayersPage extends ConsumerWidget {
     final prayersAsync = ref.watch(prayersFeedProvider);
     final selectedCategory = ref.watch(prayerCategoryFilterProvider);
     final selectedType = ref.watch(prayerTypeFilterProvider);
+    final selectedScope = ref.watch(prayerScopeFilterProvider);
     final selectedSort = ref.watch(prayerSortProvider);
     final authState = ref.watch(authProvider);
     final user = authState.value;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Community Prayers'),
+        title: Text(selectedScope == 'mine' ? 'My Prayers' : 'Community Prayers'),
         actions: [
           PopupMenuButton<String>(
             icon: const Icon(Icons.sort),
@@ -108,6 +109,45 @@ class PrayersPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
+          // Feed Scope Toggle: Community vs My Posts
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+            child: SizedBox(
+              width: double.infinity,
+              child: SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment(
+                    value: 'community',
+                    label: Text('🌍 Community'),
+                  ),
+                  ButtonSegment(
+                    value: 'mine',
+                    label: Text('👤 My Posts'),
+                  ),
+                ],
+                selected: {selectedScope},
+                onSelectionChanged: (newSet) {
+                  final newScope = newSet.first;
+                  if (newScope == 'mine' && user == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please sign in to view your posts'),
+                      ),
+                    );
+                    return;
+                  }
+                  ref
+                      .read(prayerScopeFilterProvider.notifier)
+                      .setScope(newScope);
+                },
+                showSelectedIcon: false,
+                style: const ButtonStyle(
+                  visualDensity: VisualDensity.compact,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+              ),
+            ),
+          ),
           // Spiritual Rank banner if signed in
           if (user != null) ...[
             Container(
@@ -264,26 +304,38 @@ class PrayersPage extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.favorite_border,
+                            selectedScope == 'mine'
+                                ? Icons.person_outline
+                                : Icons.favorite_border,
                             size: 64,
                             color: theme.colorScheme.outline,
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            selectedType == 'prayer'
-                                ? 'No Written Prayers Yet'
-                                : selectedType == 'praise'
-                                    ? 'No Praise Reports Yet'
-                                    : selectedType == 'request'
-                                        ? 'No Prayer Requests Yet'
-                                        : 'No Posts Yet',
+                            selectedScope == 'mine'
+                                ? (selectedType == 'prayer'
+                                    ? 'No Written Prayers Shared Yet'
+                                    : selectedType == 'praise'
+                                        ? 'No Praise Reports Shared Yet'
+                                        : selectedType == 'request'
+                                            ? 'No Prayer Requests Shared Yet'
+                                            : 'No Posts Shared Yet')
+                                : (selectedType == 'prayer'
+                                    ? 'No Written Prayers Yet'
+                                    : selectedType == 'praise'
+                                        ? 'No Praise Reports Yet'
+                                        : selectedType == 'request'
+                                            ? 'No Prayer Requests Yet'
+                                            : 'No Posts Yet'),
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Be the first to share with the community.',
+                            selectedScope == 'mine'
+                                ? 'You have not shared any prayers or requests yet.'
+                                : 'Be the first to share with the community.',
                             textAlign: TextAlign.center,
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: theme.colorScheme.onSurfaceVariant,

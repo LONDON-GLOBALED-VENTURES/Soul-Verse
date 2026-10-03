@@ -2,12 +2,13 @@ const prayerService = require('../services/prayer.service');
 
 const listPrayers = async (req, res, next) => {
   try {
-    const { sort, category, type, page, limit } = req.query;
+    const { sort, category, type, page, limit, mine } = req.query;
     const currentUserId = req.user ? req.user.id : null;
     const result = await prayerService.listPrayers({
       sort,
       category,
       type,
+      mine: mine === 'true' || mine === '1',
       page,
       limit,
       currentUserId,
