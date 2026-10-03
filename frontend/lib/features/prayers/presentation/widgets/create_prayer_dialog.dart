@@ -156,7 +156,7 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 500),
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -200,21 +200,32 @@ class _CreatePrayerDialogState extends State<CreatePrayerDialog> {
                   const SizedBox(height: 16),
                   // Post Type Selector: Request | Prayer | Praise
                   SegmentedButton<String>(
+                    showSelectedIcon: false,
+                    style: const ButtonStyle(
+                      visualDensity: VisualDensity.compact,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
                     segments: const [
                       ButtonSegment(
                         value: 'request',
-                        label: Text('Request'),
-                        icon: Text('🙏'),
+                        label: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text('🙏 Request'),
+                        ),
                       ),
                       ButtonSegment(
                         value: 'prayer',
-                        label: Text('Prayer'),
-                        icon: Text('📖'),
+                        label: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text('📖 Prayer'),
+                        ),
                       ),
                       ButtonSegment(
                         value: 'praise',
-                        label: Text('Praise'),
-                        icon: Text('✨'),
+                        label: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text('✨ Praise'),
+                        ),
                       ),
                     ],
                     selected: {_selectedType},
