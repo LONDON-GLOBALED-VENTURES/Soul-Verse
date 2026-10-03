@@ -17,12 +17,23 @@ class NotificationScheduler {
   // Big-text style lets long verses expand in the Android notification shade.
   static NotificationDetails _detailsFor(String body) => NotificationDetails(
     android: AndroidNotificationDetails(
-      'verse_reminders',
-      'Verse reminders',
+      'verse_reminders_v2',
+      'Daily Verse Reminders',
       channelDescription: 'Morning and evening verse reminders',
+      importance: Importance.max,
+      priority: Priority.max,
+      playSound: true,
+      enableVibration: true,
       styleInformation: BigTextStyleInformation(body),
     ),
-    iOS: const DarwinNotificationDetails(),
+    iOS: const DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+      presentBanner: true,
+      presentList: true,
+      interruptionLevel: InterruptionLevel.active,
+    ),
   );
 
   Future<void> _ensureInitialized() => _initialized ??= _initialize();
