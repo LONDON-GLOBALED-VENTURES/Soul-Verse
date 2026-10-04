@@ -16,6 +16,7 @@ class OnboardingPage extends ConsumerStatefulWidget {
 class _OnboardingPageState extends ConsumerState<OnboardingPage> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  String _selectedIntent = 'anxious';
 
   @override
   void dispose() {
@@ -25,6 +26,15 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
 
   void _onSkip() {
     ref.read(onboardingCompletedProvider.notifier).complete();
+  }
+
+  void _prevPage() {
+    if (_currentPage > 0) {
+      _pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   void _nextPage() {
@@ -45,11 +55,21 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
       body: SafeArea(
         child: Column(
           children: [
-            // Top Navigation: Step Indicator & Skip Button
+            // Top Navigation: Back Button, Step Indicator & Skip Button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               child: Row(
                 children: [
+                  if (_currentPage > 0) ...[
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back_rounded, size: 22),
+                      color: AppColors.textPrimary,
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                      onPressed: _prevPage,
+                    ),
+                    const SizedBox(width: 12),
+                  ],
                   _StepIndicator(currentPage: _currentPage, totalSteps: 3),
                   const Spacer(),
                   TextButton(
@@ -93,11 +113,16 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
                       }
                     },
                   ),
-                  _PlaceholderStepView(
-                    stepNumber: 2,
-                    title: 'Where is your heart today?',
-                    description: 'Personalize your daily walk with God.',
-                    onContinue: _nextPage,
+                  _IntentStepView(
+                    selectedIntent: _selectedIntent,
+                    onSelectIntent: (intent) =>
+                        setState(() => _selectedIntent = intent),
+                    onContinue: () async {
+                      await ref
+                          .read(onboardingCompletedProvider.notifier)
+                          .saveIntent(_selectedIntent);
+                      _nextPage();
+                    },
                   ),
                   _PlaceholderStepView(
                     stepNumber: 3,
@@ -333,6 +358,209 @@ class _StepIndicator extends StatelessWidget {
           ),
         );
       }),
+    );
+  }
+}
+
+class _IntentOption {
+  final String id;
+  final String emoji;
+  final String title;
+  final String description;
+
+  const _IntentOption({
+    required this.id,
+    required this.emoji,
+    required this.title,
+    required this.description,
+  });
+}
+
+/// Slide 2: Spiritual Intent & Heart Questionnaire
+class _IntentStepView extends StatelessWidget {
+  const _IntentStepView({
+    required this.selectedIntent,
+    required this.onSelectIntent,
+    required this.onContinue,
+  });
+
+  final String selectedIntent;
+  final ValueChanged<String> onSelectIntent;
+  final VoidCallback onContinue;
+
+  static const List<_IntentOption> options = [
+    _IntentOption(
+      id: 'anxious',
+      emoji: '🕊️',
+      title: 'Inner Peace & Rest',
+      description: 'Be still and release all anxiety into His hands.',
+    ),
+    _IntentOption(
+      id: 'hopeful',
+      emoji: '🌅',
+      title: 'Living Hope & Renewal',
+      description: "Start each morning rooted in God's promises.",
+    ),
+    _IntentOption(
+      id: 'need-strength',
+      emoji: '💪',
+      title: 'Unshakable Strength',
+      description: 'Stand firm and overcome battles through faith.',
+    ),
+    _IntentOption(
+      id: 'grateful',
+      emoji: '🙏',
+      title: 'Praise & Overflowing Joy',
+      description: "Celebrate God's goodness with a thankful heart.",
+    ),
+    _IntentOption(
+      id: 'prayers',
+      emoji: '🤝',
+      title: 'Fellowship & Prayer',
+      description: 'Lift up and be lifted up together in Christ.',
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 12),
+          Text(
+            'Where is your heart today?',
+            textAlign: TextAlign.center,
+            style: theme.textTheme.headlineMedium?.copyWith(
+              fontFamily: AppFonts.serif,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textPrimary,
+              fontSize: 28,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'God meets you wherever you are. What does your spirit need most right now?',
+            textAlign: TextAlign.center,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: AppColors.textSecondary,
+              height: 1.45,
+            ),
+          ),
+          const SizedBox(height: 24),
+          // List of selectable charismatic cards
+          ...options.map((opt) {
+            final isSelected = opt.id == selectedIntent;
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: InkWell(
+                onTap: () => onSelectIntent(opt.id),
+                borderRadius: BorderRadius.circular(16),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  decoration: BoxDecoration(
+                    color: isSelected
+                        ? AppColors.accent.withValues(alpha: 0.08)
+                        : AppColors.surface,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: isSelected ? AppColors.accent : AppColors.border,
+                      width: isSelected ? 1.8 : 1.0,
+                    ),
+                    boxShadow: isSelected
+                        ? [
+                            BoxShadow(
+                              color: AppColors.accent.withValues(alpha: 0.12),
+                              blurRadius: 12,
+                              offset: const Offset(0, 4),
+                            ),
+                          ]
+                        : null,
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 44,
+                        height: 44,
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? AppColors.accent.withValues(alpha: 0.15)
+                              : AppColors.background,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Text(
+                            opt.emoji,
+                            style: const TextStyle(fontSize: 22),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              opt.title,
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textPrimary,
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              opt.description,
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: AppColors.textSecondary,
+                                height: 1.3,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Icon(
+                        isSelected
+                            ? Icons.check_circle_rounded
+                            : Icons.radio_button_unchecked,
+                        color:
+                            isSelected ? AppColors.accent : AppColors.placeholder,
+                        size: 22,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }),
+          const SizedBox(height: 16),
+          // Continue Button
+          SizedBox(
+            width: double.infinity,
+            height: 52,
+            child: FilledButton(
+              onPressed: onContinue,
+              style: FilledButton.styleFrom(
+                backgroundColor: AppColors.textPrimary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(26),
+                ),
+                elevation: 0,
+              ),
+              child: const Text(
+                'Continue',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+        ],
+      ),
     );
   }
 }
