@@ -69,6 +69,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
 	<key>GIDClientID</key>
 	<string>255267733185-3tdm9het5g12a83dkpdg36reu0elpmcm.apps.googleusercontent.com</string>
 	<key>GIDServerClientID</key>
