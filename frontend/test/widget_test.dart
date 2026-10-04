@@ -307,21 +307,21 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Verses you save will appear here.'), findsOneWidget);
 
-    await tester.tap(find.text('More').last);
+    await tester.tap(find.text('Profile').last);
     await tester.pumpAndSettle();
     expect(find.text('Daily Reminders'), findsOneWidget);
   });
 
-  testWidgets('More tab displays reminders and toggles on when permission granted', (
+  testWidgets('Profile tab displays reminders and toggles on when permission granted', (
     tester,
   ) async {
     await tester.pumpWidget(app());
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('More').last);
+    await tester.tap(find.text('Profile').last);
     await tester.pumpAndSettle();
 
-    expect(find.text('Settings'), findsOneWidget);
+    expect(find.text('Profile'), findsWidgets);
     expect(find.text('Daily Reminders'), findsOneWidget);
     expect(find.text('Morning Verse'), findsOneWidget);
     expect(find.text('Evening Verse'), findsOneWidget);
@@ -339,14 +339,14 @@ void main() {
   });
 
   testWidgets(
-    'More tab explains how to enable notifications when permission is denied',
+    'Profile tab explains how to enable notifications when permission is denied',
     (tester) async {
       notificationScheduler.permissionGranted = false;
 
       await tester.pumpWidget(app());
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('More').last);
+      await tester.tap(find.text('Profile').last);
       await tester.pumpAndSettle();
 
       final switches = find.byType(Switch);
@@ -364,13 +364,13 @@ void main() {
     },
   );
 
-  testWidgets('More tab allows changing reminder time via time picker', (
+  testWidgets('Profile tab allows changing reminder time via time picker', (
     tester,
   ) async {
     await tester.pumpWidget(app());
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('More').last);
+    await tester.tap(find.text('Profile').last);
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('7:00 AM'));
@@ -383,13 +383,13 @@ void main() {
     expect(find.byType(TimePickerDialog), findsNothing);
   });
 
-  testWidgets('More tab shows Google sign-in button in guest mode', (
+  testWidgets('Profile tab shows Google sign-in button in guest mode', (
     tester,
   ) async {
     await tester.pumpWidget(app());
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('More').last);
+    await tester.tap(find.text('Profile').last);
     await tester.pumpAndSettle();
 
     expect(find.text('SoulVerse Account'), findsOneWidget);
@@ -397,12 +397,12 @@ void main() {
   });
 
   testWidgets(
-    'More tab signs in with Google, shows profile and Free Plan, and signs out',
+    'Profile tab signs in with Google, shows profile and Free Plan, and signs out',
     (tester) async {
       await tester.pumpWidget(app());
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('More').last);
+      await tester.tap(find.text('Profile').last);
       await tester.pumpAndSettle();
 
       // Tap Continue with Google

@@ -136,7 +136,7 @@ class _MorePageState extends ConsumerState<MorePage> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 24, 20, 16),
-                child: Text('Settings', style: textTheme.headlineMedium),
+                child: Text('Profile', style: textTheme.headlineMedium),
               ),
             ),
             const SliverPadding(

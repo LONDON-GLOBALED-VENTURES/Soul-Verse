@@ -47,9 +47,9 @@ class AppShell extends StatelessWidget {
               label: 'Favourites',
             ),
             NavigationDestination(
-              icon: Icon(Icons.menu),
-              selectedIcon: Icon(Icons.menu),
-              label: 'More',
+              icon: Icon(Icons.person_outline),
+              selectedIcon: Icon(Icons.person),
+              label: 'Profile',
             ),
           ],
         ),
