@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -16,10 +18,16 @@ const _googleServerClientId = String.fromEnvironment(
   defaultValue: '255267733185-rmsq5809usmfseqvjot1qq75h75c9ahd.apps.googleusercontent.com',
 );
 
+const _googleIOSClientId = String.fromEnvironment(
+  'GOOGLE_IOS_CLIENT_ID',
+  defaultValue: '255267733185-3tdm9het5g12a83dkpdg36reu0elpmcm.apps.googleusercontent.com',
+);
+
 class DefaultGoogleSignInService implements GoogleSignInService {
   DefaultGoogleSignInService([GoogleSignIn? googleSignIn])
       : _googleSignIn = googleSignIn ??
             GoogleSignIn(
+              clientId: Platform.isIOS ? _googleIOSClientId : null,
               serverClientId: _googleServerClientId,
               scopes: ['email', 'profile'],
             );
