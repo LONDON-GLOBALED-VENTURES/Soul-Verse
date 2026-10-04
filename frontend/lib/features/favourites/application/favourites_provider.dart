@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../auth/application/auth_service.dart';
 import '../../verses/data/models/verse.dart';
 import '../../verses/data/models/verse_template.dart';
 import '../data/favourite_verse.dart';
@@ -11,8 +12,10 @@ part 'favourites_provider.g.dart';
 @Riverpod(keepAlive: true)
 class Favourites extends _$Favourites {
   @override
-  Future<List<FavouriteVerse>> build() =>
-      ref.watch(favouritesRepositoryProvider).load();
+  Future<List<FavouriteVerse>> build() {
+    final userId = ref.watch(currentUserIdProvider);
+    return ref.watch(favouritesRepositoryProvider).load(userId: userId);
+  }
 
   /// Saves the verse (or removes it if already saved). Returns true if it is now saved.
   Future<bool> toggle(Verse verse, VerseTemplate template) async {
@@ -51,7 +54,8 @@ class Favourites extends _$Favourites {
     final previous = state;
     state = AsyncData(updated);
     try {
-      await ref.read(favouritesRepositoryProvider).save(updated);
+      final userId = ref.read(currentUserIdProvider);
+      await ref.read(favouritesRepositoryProvider).save(updated, userId: userId);
     } catch (_) {
       state = previous;
       rethrow;

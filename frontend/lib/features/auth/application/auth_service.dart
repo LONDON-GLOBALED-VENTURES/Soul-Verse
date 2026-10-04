@@ -138,3 +138,8 @@ class AuthNotifier extends AsyncNotifier<User?> {
 }
 
 final authProvider = AsyncNotifierProvider<AuthNotifier, User?>(AuthNotifier.new);
+
+final currentUserIdProvider = Provider<String?>((ref) {
+  return ref.watch(authProvider).value?.id;
+});
+

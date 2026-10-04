@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,10 +33,10 @@ class _FailingRepository extends FavouritesRepository {
   _FailingRepository() : super(SharedPreferencesAsync());
 
   @override
-  Future<List<FavouriteVerse>> load() async => [];
+  Future<List<FavouriteVerse>> load({String? userId}) async => [];
 
   @override
-  Future<void> save(List<FavouriteVerse> favourites) =>
+  Future<void> save(List<FavouriteVerse> favourites, {String? userId}) =>
       Future.error(Exception('disk full'));
 }
 
@@ -129,4 +131,62 @@ void main() {
     );
     expect(failing.read(favouritesProvider).value, isEmpty);
   });
+
+  test('favourites are isolated per user account and guest', () async {
+    final repo = FavouritesRepository(SharedPreferencesAsync());
+    final itemGuest = FavouriteVerse(
+      verse: _verse('guest_verse'),
+      template: _template,
+      savedAt: DateTime.now(),
+    );
+    final itemUser1 = FavouriteVerse(
+      verse: _verse('user1_verse'),
+      template: _template,
+      savedAt: DateTime.now(),
+    );
+    final itemUser2 = FavouriteVerse(
+      verse: _verse('user2_verse'),
+      template: _template,
+      savedAt: DateTime.now(),
+    );
+
+    await repo.save([itemGuest], userId: null);
+    await repo.save([itemUser1], userId: 'user_1');
+    await repo.save([itemUser2], userId: 'user_2');
+
+    final guestLoaded = await repo.load(userId: null);
+    final user1Loaded = await repo.load(userId: 'user_1');
+    final user2Loaded = await repo.load(userId: 'user_2');
+
+    expect(guestLoaded.map((e) => e.verse.id), ['guest_verse']);
+    expect(user1Loaded.map((e) => e.verse.id), ['user1_verse']);
+    expect(user2Loaded.map((e) => e.verse.id), ['user2_verse']);
+  });
+
+  test('migrates legacy favourites key to favourites_guest', () async {
+    final legacyItem = FavouriteVerse(
+      verse: _verse('legacy_v1'),
+      template: _template,
+      savedAt: DateTime.now(),
+    );
+    final legacyJson = jsonEncode({
+      'version': 1,
+      'items': [legacyItem.toJson()],
+    });
+
+    SharedPreferencesAsyncPlatform.instance =
+        InMemorySharedPreferencesAsync.withData({
+      'favourites': legacyJson,
+    });
+
+    final repo = FavouritesRepository(SharedPreferencesAsync());
+    final loaded = await repo.load();
+    expect(loaded.map((e) => e.verse.id), ['legacy_v1']);
+
+    // Legacy key migrated to favourites_guest
+    final prefs = SharedPreferencesAsync();
+    expect(await prefs.getString('favourites'), isNull);
+    expect(await prefs.getString('favourites_guest'), isNotNull);
+  });
 }
+

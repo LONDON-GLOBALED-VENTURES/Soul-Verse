@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../auth/application/auth_service.dart';
+import '../../auth/presentation/widgets/sign_in_prompt_dialog.dart';
 import '../application/prayers_provider.dart';
 import 'widgets/create_prayer_dialog.dart';
 import 'widgets/prayer_card.dart';
@@ -19,13 +20,16 @@ class PrayersPage extends ConsumerWidget {
     'Financial & Work',
   ];
 
-  void _openCreateDialog(BuildContext context, WidgetRef ref) {
+  Future<void> _openCreateDialog(BuildContext context, WidgetRef ref) async {
     final user = ref.read(authProvider).value;
     if (user == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please sign in to share a prayer request')),
+      final signedIn = await showSignInPromptDialog(
+        context,
+        title: 'Share a Prayer',
+        message: 'Sign in to share your prayer requests and praise reports with our community.',
+        icon: Icons.volunteer_activism_rounded,
       );
-      return;
+      if (!signedIn || !context.mounted) return;
     }
 
     showDialog<void>(
@@ -187,15 +191,16 @@ class PrayersPage extends ConsumerWidget {
                   ),
                 ],
                 selected: {selectedScope},
-                onSelectionChanged: (newSet) {
+                onSelectionChanged: (newSet) async {
                   final newScope = newSet.first;
                   if (newScope == 'mine' && user == null) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Please sign in to view your posts'),
-                      ),
+                    final signedIn = await showSignInPromptDialog(
+                      context,
+                      title: 'View Your Posts',
+                      message: 'Sign in to access your prayer requests, praise reports, and track community responses.',
+                      icon: Icons.person_outline_rounded,
                     );
-                    return;
+                    if (!signedIn || !context.mounted) return;
                   }
                   ref
                       .read(prayerScopeFilterProvider.notifier)
@@ -445,13 +450,15 @@ class PrayersPage extends ConsumerWidget {
                       return PrayerCard(
                         prayer: prayer,
                         onLike: () async {
-                          if (user == null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Please sign in to pray with others'),
-                              ),
+                          final currentUser = ref.read(authProvider).value;
+                          if (currentUser == null) {
+                            final signedIn = await showSignInPromptDialog(
+                              context,
+                              title: 'Pray with Others',
+                              message: 'Sign in to pray together and support your brothers and sisters in Christ.',
+                              icon: Icons.favorite_rounded,
                             );
-                            return;
+                            if (!signedIn || !context.mounted) return;
                           }
                           try {
                             await ref
