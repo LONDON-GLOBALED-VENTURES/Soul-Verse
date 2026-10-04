@@ -54,12 +54,17 @@ class ShareService {
     return opened ?? false;
   }
 
-  Future<void> shareToSystem(Uint8List png, {String? text}) async {
+  Future<void> shareToSystem(
+    Uint8List png, {
+    String? text,
+    Rect? sharePositionOrigin,
+  }) async {
     final file = await _writeTemp(png);
     await SharePlus.instance.share(
       ShareParams(
         files: [XFile(file.path, mimeType: 'image/png')],
         text: text,
+        sharePositionOrigin: sharePositionOrigin,
       ),
     );
   }

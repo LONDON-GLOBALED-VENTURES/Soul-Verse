@@ -131,7 +131,11 @@ class _FakeShareService implements ShareService {
   }
 
   @override
-  Future<void> shareToSystem(Uint8List png, {String? text}) async {
+  Future<void> shareToSystem(
+    Uint8List png, {
+    String? text,
+    Rect? sharePositionOrigin,
+  }) async {
     calls.add('system');
     lastPng = png;
   }

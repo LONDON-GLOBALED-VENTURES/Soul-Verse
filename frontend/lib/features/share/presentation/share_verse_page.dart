@@ -84,13 +84,29 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
     });
   });
 
+  Rect? get _shareOrigin {
+    final box = context.findRenderObject() as RenderBox?;
+    return box != null ? (box.localToGlobal(Offset.zero) & box.size) : null;
+  }
+
   void _shareTo(ShareTarget target) => _run((service, png) async {
     final opened = await service.shareToApp(target, png, text: _shareText);
-    if (!opened) await service.shareToSystem(png, text: _shareText);
+    if (!opened) {
+      await service.shareToSystem(
+        png,
+        text: _shareText,
+        sharePositionOrigin: _shareOrigin,
+      );
+    }
   });
 
-  void _shareMore() =>
-      _run((service, png) => service.shareToSystem(png, text: _shareText));
+  void _shareMore() => _run(
+    (service, png) => service.shareToSystem(
+      png,
+      text: _shareText,
+      sharePositionOrigin: _shareOrigin,
+    ),
+  );
 
   void _toast(String message) {
     if (!mounted) return;
