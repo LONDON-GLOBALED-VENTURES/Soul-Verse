@@ -647,6 +647,7 @@ class _HabitStepViewState extends ConsumerState<_HabitStepView> {
     } finally {
       if (mounted) {
         await ref.read(onboardingCompletedProvider.notifier).complete();
+        setState(() => _isSaving = false);
       }
     }
   }
