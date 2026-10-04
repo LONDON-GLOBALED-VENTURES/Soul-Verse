@@ -29,4 +29,3 @@ class OnboardingRepository {
 final onboardingRepositoryProvider = Provider<OnboardingRepository>((ref) {
   return OnboardingRepository(SharedPreferencesAsync());
 });
-
