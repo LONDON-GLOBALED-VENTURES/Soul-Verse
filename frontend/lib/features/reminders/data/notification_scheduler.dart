@@ -7,6 +7,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
 
+import '../../../core/theme/app_colors.dart';
+
 part 'notification_scheduler.g.dart';
 
 /// Thin wrapper over flutter_local_notifications so reminder logic can be tested without plugins.
@@ -15,26 +17,32 @@ class NotificationScheduler {
   Future<void>? _initialized;
 
   // Big-text style lets long verses expand in the Android notification shade.
-  static NotificationDetails _detailsFor(String body) => NotificationDetails(
-    android: AndroidNotificationDetails(
-      'verse_reminders_v2',
-      'Daily Verse Reminders',
-      channelDescription: 'Morning and evening verse reminders',
-      importance: Importance.max,
-      priority: Priority.max,
-      playSound: true,
-      enableVibration: true,
-      styleInformation: BigTextStyleInformation(body),
-    ),
-    iOS: const DarwinNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-      presentBanner: true,
-      presentList: true,
-      interruptionLevel: InterruptionLevel.active,
-    ),
-  );
+  static NotificationDetails _detailsFor(String body, [String? title]) =>
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          'verse_reminders_v2',
+          'Daily Verse Reminders',
+          channelDescription: 'Morning and evening verse reminders',
+          importance: Importance.max,
+          priority: Priority.max,
+          playSound: true,
+          enableVibration: true,
+          color: AppColors.accent,
+          styleInformation: BigTextStyleInformation(
+            body,
+            contentTitle: title,
+            summaryText: 'SoulVerse',
+          ),
+        ),
+        iOS: const DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
+          presentBanner: true,
+          presentList: true,
+          interruptionLevel: InterruptionLevel.active,
+        ),
+      );
 
   Future<void> _ensureInitialized() => _initialized ??= _initialize();
 
@@ -100,7 +108,7 @@ class NotificationScheduler {
         when.hour,
         when.minute,
       ),
-      notificationDetails: _detailsFor(body),
+      notificationDetails: _detailsFor(body, title),
       // Inexact avoids the exact-alarm permission; delivery may drift by a few minutes.
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       title: title,
