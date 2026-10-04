@@ -80,82 +80,42 @@ class PrayersPage extends ConsumerWidget {
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: 'trending',
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.trending_up,
-                      size: 20,
-                      color: selectedSort == 'trending' ? theme.colorScheme.primary : null,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '🔥 Trending',
-                      style: TextStyle(
-                        fontWeight: selectedSort == 'trending' ? FontWeight.bold : FontWeight.normal,
-                        color: selectedSort == 'trending' ? theme.colorScheme.primary : null,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  '🔥 Trending',
+                  style: TextStyle(
+                    fontWeight: selectedSort == 'trending' ? FontWeight.bold : FontWeight.normal,
+                    color: selectedSort == 'trending' ? theme.colorScheme.primary : null,
+                  ),
                 ),
               ),
               PopupMenuItem(
                 value: 'recent',
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.schedule,
-                      size: 20,
-                      color: selectedSort == 'recent' ? theme.colorScheme.primary : null,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '🕒 Most Recent',
-                      style: TextStyle(
-                        fontWeight: selectedSort == 'recent' ? FontWeight.bold : FontWeight.normal,
-                        color: selectedSort == 'recent' ? theme.colorScheme.primary : null,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  '🕒 Most Recent',
+                  style: TextStyle(
+                    fontWeight: selectedSort == 'recent' ? FontWeight.bold : FontWeight.normal,
+                    color: selectedSort == 'recent' ? theme.colorScheme.primary : null,
+                  ),
                 ),
               ),
               PopupMenuItem(
                 value: 'popular',
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.favorite,
-                      size: 20,
-                      color: selectedSort == 'popular' ? theme.colorScheme.primary : null,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '💖 Most Prayed',
-                      style: TextStyle(
-                        fontWeight: selectedSort == 'popular' ? FontWeight.bold : FontWeight.normal,
-                        color: selectedSort == 'popular' ? theme.colorScheme.primary : null,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  '💖 Most Prayed',
+                  style: TextStyle(
+                    fontWeight: selectedSort == 'popular' ? FontWeight.bold : FontWeight.normal,
+                    color: selectedSort == 'popular' ? theme.colorScheme.primary : null,
+                  ),
                 ),
               ),
               PopupMenuItem(
                 value: 'needs_prayer',
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.volunteer_activism,
-                      size: 20,
-                      color: selectedSort == 'needs_prayer' ? theme.colorScheme.primary : null,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '🤝 Needs Prayer',
-                      style: TextStyle(
-                        fontWeight: selectedSort == 'needs_prayer' ? FontWeight.bold : FontWeight.normal,
-                        color: selectedSort == 'needs_prayer' ? theme.colorScheme.primary : null,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  '🤝 Needs Prayer',
+                  style: TextStyle(
+                    fontWeight: selectedSort == 'needs_prayer' ? FontWeight.bold : FontWeight.normal,
+                    color: selectedSort == 'needs_prayer' ? theme.colorScheme.primary : null,
+                  ),
                 ),
               ),
             ],
