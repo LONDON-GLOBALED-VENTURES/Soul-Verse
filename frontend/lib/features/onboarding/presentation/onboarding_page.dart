@@ -4,6 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../auth/presentation/widgets/sign_in_prompt_dialog.dart';
+import '../../reminders/application/reminders_provider.dart';
+import '../../reminders/data/notification_scheduler.dart';
+import '../../reminders/data/reminder_settings.dart';
 import '../application/onboarding_provider.dart';
 
 class OnboardingPage extends ConsumerStatefulWidget {
@@ -124,12 +127,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
                       _nextPage();
                     },
                   ),
-                  _PlaceholderStepView(
-                    stepNumber: 3,
-                    title: 'Make Room for His Presence',
-                    description: 'Set your daily scripture habit and reminders.',
-                    onContinue: _nextPage,
-                  ),
+                  const _HabitStepView(),
                 ],
               ),
             ),
@@ -565,76 +563,381 @@ class _IntentStepView extends StatelessWidget {
   }
 }
 
-/// Placeholder for Steps 2 and 3 before their dedicated implementations
-class _PlaceholderStepView extends StatelessWidget {
-  const _PlaceholderStepView({
-    required this.stepNumber,
-    required this.title,
-    required this.description,
-    required this.onContinue,
-  });
+/// Slide 3: Daily Habit & Notification Setup
+class _HabitStepView extends ConsumerStatefulWidget {
+  const _HabitStepView();
 
-  final int stepNumber;
-  final String title;
-  final String description;
-  final VoidCallback onContinue;
+  @override
+  ConsumerState<_HabitStepView> createState() => _HabitStepViewState();
+}
+
+class _HabitStepViewState extends ConsumerState<_HabitStepView> {
+  bool _morningEnabled = true;
+  TimeOfDay _morningTime = const TimeOfDay(hour: 8, minute: 0);
+
+  bool _eveningEnabled = true;
+  TimeOfDay _eveningTime = const TimeOfDay(hour: 20, minute: 0);
+
+  bool _isSaving = false;
+
+  String _formatTimeOfDay(TimeOfDay time) {
+    final hour = time.hourOfPeriod == 0 ? 12 : time.hourOfPeriod;
+    final minute = time.minute.toString().padLeft(2, '0');
+    final period = time.period == DayPeriod.am ? 'AM' : 'PM';
+    return '$hour:$minute $period';
+  }
+
+  Future<void> _selectTime({required bool isMorning}) async {
+    final initialTime = isMorning ? _morningTime : _eveningTime;
+    final picked = await showTimePicker(
+      context: context,
+      initialTime: initialTime,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+                  primary: AppColors.accent,
+                ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null && mounted) {
+      setState(() {
+        if (isMorning) {
+          _morningTime = picked;
+          _morningEnabled = true;
+        } else {
+          _eveningTime = picked;
+          _eveningEnabled = true;
+        }
+      });
+    }
+  }
+
+  Future<void> _onBlessWalk() async {
+    if (_isSaving) return;
+    setState(() => _isSaving = true);
+
+    try {
+      final anyEnabled = _morningEnabled || _eveningEnabled;
+      if (anyEnabled) {
+        final scheduler = ref.read(notificationSchedulerProvider);
+        final granted = await scheduler.requestPermission();
+        if (granted) {
+          final settings = ReminderSettings(
+            morning: ReminderSlot(
+              enabled: _morningEnabled,
+              hour: _morningTime.hour,
+              minute: _morningTime.minute,
+            ),
+            evening: ReminderSlot(
+              enabled: _eveningEnabled,
+              hour: _eveningTime.hour,
+              minute: _eveningTime.minute,
+            ),
+          );
+          await ref.read(remindersProvider.notifier).save(settings);
+        }
+      }
+    } catch (e) {
+      debugPrint('Error enabling habit reminders: $e');
+    } finally {
+      if (mounted) {
+        await ref.read(onboardingCompletedProvider.notifier).complete();
+      }
+    }
+  }
+
+  void _onSkipLater() {
+    ref.read(onboardingCompletedProvider.notifier).complete();
+  }
+
+  Widget _buildReminderCard({
+    required BuildContext context,
+    required String title,
+    required String subtitle,
+    required IconData icon,
+    required bool enabled,
+    required TimeOfDay time,
+    required ValueChanged<bool> onToggle,
+    required VoidCallback onTapTime,
+  }) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: enabled
+              ? AppColors.accent.withValues(alpha: 0.35)
+              : AppColors.border,
+          width: enabled ? 1.5 : 1.0,
+        ),
+        boxShadow: enabled
+            ? [
+                BoxShadow(
+                  color: AppColors.accent.withValues(alpha: 0.08),
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
+                ),
+              ]
+            : null,
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: enabled
+                      ? AppColors.accent.withValues(alpha: 0.15)
+                      : AppColors.background,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Icon(
+                    icon,
+                    size: 24,
+                    color: enabled ? AppColors.accent : AppColors.placeholder,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: AppColors.textSecondary,
+                        height: 1.3,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              Switch.adaptive(
+                value: enabled,
+                onChanged: onToggle,
+                activeTrackColor: AppColors.accent,
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          const Divider(height: 1, color: AppColors.border),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Reminder Time',
+                style: theme.textTheme.labelMedium?.copyWith(
+                  color: AppColors.textSecondary,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              InkWell(
+                onTap: onTapTime,
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: enabled
+                        ? AppColors.accent.withValues(alpha: 0.12)
+                        : AppColors.background,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: enabled
+                          ? AppColors.accent.withValues(alpha: 0.3)
+                          : AppColors.border,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.access_time_rounded,
+                        size: 16,
+                        color:
+                            enabled ? AppColors.accent : AppColors.placeholder,
+                      ),
+                      const SizedBox(width: 6),
+                      Text(
+                        _formatTimeOfDay(time),
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          color: enabled
+                              ? AppColors.accent
+                              : AppColors.textSecondary,
+                        ),
+                      ),
+                      const SizedBox(width: 2),
+                      Icon(
+                        Icons.arrow_drop_down_rounded,
+                        size: 18,
+                        color:
+                            enabled ? AppColors.accent : AppColors.placeholder,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppColors.accent.withValues(alpha: 0.12),
-              shape: BoxShape.circle,
-            ),
-            child: Text(
-              '$stepNumber',
-              style: theme.textTheme.titleLarge?.copyWith(
-                color: AppColors.accent,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 12),
           Text(
-            title,
+            'Make Room for His Presence',
             textAlign: TextAlign.center,
-            style: theme.textTheme.headlineSmall?.copyWith(
+            style: theme.textTheme.headlineMedium?.copyWith(
               fontFamily: AppFonts.serif,
               fontWeight: FontWeight.bold,
               color: AppColors.textPrimary,
+              fontSize: 28,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           Text(
-            description,
+            'A gentle daily rhythm to nourish your spirit and stay connected with God.',
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium?.copyWith(
               color: AppColors.textSecondary,
+              height: 1.45,
             ),
           ),
-          const SizedBox(height: 36),
+          const SizedBox(height: 24),
+          // Morning Slot Card
+          _buildReminderCard(
+            context: context,
+            title: 'Morning Verse of the Day',
+            subtitle: 'Awaken your heart with His truth before the day rushes in.',
+            icon: Icons.wb_sunny_rounded,
+            enabled: _morningEnabled,
+            time: _morningTime,
+            onToggle: (val) => setState(() => _morningEnabled = val),
+            onTapTime: () => _selectTime(isMorning: true),
+          ),
+          const SizedBox(height: 12),
+          // Evening Slot Card
+          _buildReminderCard(
+            context: context,
+            title: 'Evening Reflection & Peace',
+            subtitle: 'Rest peacefully under His grace as you close your day.',
+            icon: Icons.nightlight_round,
+            enabled: _eveningEnabled,
+            time: _eveningTime,
+            onToggle: (val) => setState(() => _eveningEnabled = val),
+            onTapTime: () => _selectTime(isMorning: false),
+          ),
+          const SizedBox(height: 20),
+          // Scripture Promise Banner
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.border),
+            ),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.favorite_rounded,
+                  size: 18,
+                  color: AppColors.accent,
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    '“Your word is a lamp to my feet and a light to my path.” — Psalm 119:105',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: AppColors.textSecondary,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 28),
+          // Primary CTA Button
           SizedBox(
             width: double.infinity,
             height: 52,
             child: FilledButton(
-              onPressed: onContinue,
+              onPressed: _isSaving ? null : _onBlessWalk,
               style: FilledButton.styleFrom(
                 backgroundColor: AppColors.textPrimary,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(26),
                 ),
+                elevation: 0,
               ),
-              child: const Text('Continue'),
+              child: _isSaving
+                  ? const SizedBox(
+                      width: 22,
+                      height: 22,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: AppColors.surface,
+                      ),
+                    )
+                  : const Text(
+                      'Bless My Daily Walk',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
             ),
           ),
+          const SizedBox(height: 8),
+          // Secondary Skip Button
+          TextButton(
+            onPressed: _isSaving ? null : _onSkipLater,
+            style: TextButton.styleFrom(
+              foregroundColor: AppColors.textSecondary,
+            ),
+            child: const Text(
+              "I'll set this later",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
         ],
       ),
     );
