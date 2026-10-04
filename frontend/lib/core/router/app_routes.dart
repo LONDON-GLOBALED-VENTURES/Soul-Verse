@@ -1,4 +1,5 @@
 abstract final class AppRoutes {
+  static const onboarding = '/onboarding';
   static const home = '/home';
   static const explore = '/explore';
   static const favourites = '/favourites';

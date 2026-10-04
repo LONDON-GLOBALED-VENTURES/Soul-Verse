@@ -202,7 +202,9 @@ void main() {
 
   setUp(() {
     SharedPreferencesAsyncPlatform.instance =
-        InMemorySharedPreferencesAsync.empty();
+        InMemorySharedPreferencesAsync.withData({
+      'has_completed_onboarding': true,
+    });
     shareService = _FakeShareService();
     homeWidgetService = _FakeHomeWidgetService();
     versesApi = _FakeVersesApi();
