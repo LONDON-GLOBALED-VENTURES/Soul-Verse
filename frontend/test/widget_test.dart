@@ -203,8 +203,8 @@ void main() {
   setUp(() {
     SharedPreferencesAsyncPlatform.instance =
         InMemorySharedPreferencesAsync.withData({
-      'has_completed_onboarding': true,
-    });
+          'has_completed_onboarding': true,
+        });
     shareService = _FakeShareService();
     homeWidgetService = _FakeHomeWidgetService();
     versesApi = _FakeVersesApi();
@@ -318,31 +318,32 @@ void main() {
     expect(find.text('Daily Reminders'), findsOneWidget);
   });
 
-  testWidgets('Profile tab displays reminders and toggles on when permission granted', (
-    tester,
-  ) async {
-    await tester.pumpWidget(app());
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Profile tab displays reminders and toggles on when permission granted',
+    (tester) async {
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Profile').last);
-    await tester.pumpAndSettle();
+      await tester.tap(find.text('Profile').last);
+      await tester.pumpAndSettle();
 
-    expect(find.text('Profile'), findsWidgets);
-    expect(find.text('Daily Reminders'), findsOneWidget);
-    expect(find.text('Morning Verse'), findsOneWidget);
-    expect(find.text('Evening Verse'), findsOneWidget);
-    expect(find.text('7:00 AM'), findsOneWidget);
-    expect(find.text('8:00 PM'), findsOneWidget);
+      expect(find.text('Profile'), findsWidgets);
+      expect(find.text('Daily Reminders'), findsOneWidget);
+      expect(find.text('Morning Verse'), findsOneWidget);
+      expect(find.text('Evening Verse'), findsOneWidget);
+      expect(find.text('7:00 AM'), findsOneWidget);
+      expect(find.text('8:00 PM'), findsOneWidget);
 
-    final switches = find.byType(Switch);
-    expect(tester.widget<Switch>(switches.first).value, isFalse);
+      final switches = find.byType(Switch);
+      expect(tester.widget<Switch>(switches.first).value, isFalse);
 
-    await tester.tap(switches.first);
-    await tester.pumpAndSettle();
+      await tester.tap(switches.first);
+      await tester.pumpAndSettle();
 
-    expect(notificationScheduler.requestPermissionCalls, 1);
-    expect(tester.widget<Switch>(switches.first).value, isTrue);
-  });
+      expect(notificationScheduler.requestPermissionCalls, 1);
+      expect(tester.widget<Switch>(switches.first).value, isTrue);
+    },
+  );
 
   testWidgets(
     'Profile tab explains how to enable notifications when permission is denied',

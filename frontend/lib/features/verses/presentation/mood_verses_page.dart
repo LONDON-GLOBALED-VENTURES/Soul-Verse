@@ -25,9 +25,12 @@ class MoodVersesPage extends ConsumerStatefulWidget {
 }
 
 class _MoodVersesPageState extends ConsumerState<MoodVersesPage> {
-  int _index = 0;
+  int? _startIndex;
+  int _step = 0;
 
   void _retry() {
+    _startIndex = null;
+    _step = 0;
     ref.invalidate(versesProvider(widget.moodId));
     ref.invalidate(templatesProvider(widget.moodId));
   }
@@ -51,13 +54,18 @@ class _MoodVersesPageState extends ConsumerState<MoodVersesPage> {
     } else if (verses.value case final verseList?
         when templates.value != null) {
       final templateList = templates.value!;
+      if (_startIndex == null && verseList.isNotEmpty) {
+        final random = ref.watch(moodVersesRandomProvider);
+        _startIndex = random != null ? random.nextInt(verseList.length) : 0;
+      }
+      final currentIndex = (_startIndex ?? 0) + _step;
       body = verseList.isEmpty || templateList.isEmpty
           ? const Center(child: Text('No verses for this mood yet.'))
           : _VerseDetail(
               moodId: widget.moodId,
-              verse: verseList[_index % verseList.length],
-              template: templateList[_index % templateList.length],
-              onNext: () => setState(() => _index++),
+              verse: verseList[currentIndex % verseList.length],
+              template: templateList[currentIndex % templateList.length],
+              onNext: () => setState(() => _step++),
             );
     } else {
       body = const _LoadingDetail();

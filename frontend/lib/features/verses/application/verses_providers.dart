@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/network/dio_client.dart';
@@ -29,3 +32,7 @@ Future<List<VerseTemplate>> templates(Ref ref, String? moodId) =>
 Future<DailyVerse> dailyVerse(Ref ref) => ref
     .watch(versesApiProvider)
     .getDailyVerse(date: formatIsoDate(DateTime.now()));
+
+/// Random generator used to pick a random starting verse when opening a mood.
+/// In tests, this can be overridden with null or a seeded Random.
+final moodVersesRandomProvider = Provider<Random?>((ref) => Random());
