@@ -10,6 +10,7 @@ import '../../auth/presentation/widgets/google_sign_in_button.dart';
 import '../../reminders/application/reminders_provider.dart';
 import '../../reminders/data/notification_scheduler.dart';
 import '../../reminders/data/reminder_settings.dart';
+import '../../subscription/presentation/premium_upgrade_sheet.dart';
 
 class MorePage extends ConsumerStatefulWidget {
   const MorePage({super.key});
@@ -506,22 +507,45 @@ class _AccountCard extends ConsumerWidget {
                             spacing: 6,
                             runSpacing: 4,
                             children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 2,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: AppColors.accent.withValues(alpha: 0.12),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Text(
-                                  user.subscription.isPremium
-                                      ? 'Premium Member'
-                                      : 'Free Plan',
-                                  style: textTheme.labelSmall?.copyWith(
-                                    color: AppColors.accent,
-                                    fontWeight: FontWeight.w600,
+                              InkWell(
+                                onTap: user.subscription.isPremium
+                                    ? null
+                                    : () => showPremiumUpgradeSheet(context),
+                                borderRadius: BorderRadius.circular(12),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: user.subscription.isPremium
+                                        ? const Color(0xFFFFD700).withValues(alpha: 0.18)
+                                        : AppColors.accent.withValues(alpha: 0.12),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      if (user.subscription.isPremium) ...[
+                                        const Icon(
+                                          Icons.star_rounded,
+                                          size: 13,
+                                          color: Color(0xFFD4AF37),
+                                        ),
+                                        const SizedBox(width: 3),
+                                      ],
+                                      Text(
+                                        user.subscription.isPremium
+                                            ? 'Premium Member'
+                                            : 'Free Plan',
+                                        style: textTheme.labelSmall?.copyWith(
+                                          color: user.subscription.isPremium
+                                              ? const Color(0xFFB8860B)
+                                              : AppColors.accent,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),

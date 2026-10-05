@@ -11,6 +11,7 @@ class VerseTemplate {
   final List<String> moods;
   final String textColor;
   final double overlayOpacity;
+  final bool isPremium;
 
   const VerseTemplate({
     required this.id,
@@ -18,6 +19,7 @@ class VerseTemplate {
     required this.moods,
     required this.textColor,
     required this.overlayOpacity,
+    this.isPremium = false,
   });
 
   Color get textColorValue =>

@@ -13,6 +13,7 @@ VerseTemplate _$VerseTemplateFromJson(Map<String, dynamic> json) =>
       moods: (json['moods'] as List<dynamic>).map((e) => e as String).toList(),
       textColor: json['textColor'] as String,
       overlayOpacity: (json['overlayOpacity'] as num).toDouble(),
+      isPremium: json['isPremium'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$VerseTemplateToJson(VerseTemplate instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$VerseTemplateToJson(VerseTemplate instance) =>
       'moods': instance.moods,
       'textColor': instance.textColor,
       'overlayOpacity': instance.overlayOpacity,
+      'isPremium': instance.isPremium,
     };

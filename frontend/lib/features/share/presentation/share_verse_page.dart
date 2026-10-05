@@ -15,6 +15,8 @@ import '../../verses/data/models/verse.dart';
 import '../../verses/data/models/verse_template.dart';
 import '../../favourites/application/favourites_provider.dart';
 import '../../favourites/presentation/toggle_favourite.dart';
+import '../../auth/application/auth_service.dart';
+import '../../subscription/presentation/premium_upgrade_sheet.dart';
 import '../data/share_service.dart';
 
 class ShareVerseArgs {
@@ -135,6 +137,9 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
       ...templates.where((t) => t.id != widget.args.template.id),
     ];
 
+    final currentUser = ref.watch(authProvider).value;
+    final isPremium = currentUser?.subscription.isPremium ?? false;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Share Verse'),
@@ -186,13 +191,24 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                 scrollDirection: Axis.horizontal,
                 itemCount: choices.length,
                 separatorBuilder: (_, _) => const SizedBox(width: 10),
-                itemBuilder: (context, i) => _TemplateThumb(
-                  template: choices[i],
-                  selected: choices[i].id == _template.id,
-                  onTap: _busy
-                      ? null
-                      : () => setState(() => _template = choices[i]),
-                ),
+                itemBuilder: (context, i) {
+                  final choice = choices[i];
+                  final isLocked = choice.isPremium && !isPremium;
+                  return _TemplateThumb(
+                    template: choice,
+                    selected: choice.id == _template.id,
+                    isLocked: isLocked,
+                    onTap: _busy
+                        ? null
+                        : () {
+                            if (isLocked) {
+                              showPremiumUpgradeSheet(context);
+                            } else {
+                              setState(() => _template = choice);
+                            }
+                          },
+                  );
+                },
               ),
             ),
             const SizedBox(height: 12),
@@ -262,18 +278,20 @@ class _TemplateThumb extends StatelessWidget {
     required this.template,
     required this.selected,
     required this.onTap,
+    this.isLocked = false,
   });
 
   final VerseTemplate template;
   final bool selected;
   final VoidCallback? onTap;
+  final bool isLocked;
 
   @override
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
       selected: selected,
-      label: 'Background ${template.id}',
+      label: 'Background ${template.id}${isLocked ? ' (Premium)' : ''}',
       child: GestureDetector(
         onTap: onTap,
         child: AnimatedContainer(
@@ -289,13 +307,31 @@ class _TemplateThumb extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(9),
-            child: CachedNetworkImage(
-              imageUrl: template.imageUrl,
-              fit: BoxFit.cover,
-              placeholder: (_, _) =>
-                  const ColoredBox(color: AppColors.placeholder),
-              errorWidget: (_, _, _) =>
-                  const ColoredBox(color: AppColors.placeholder),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                CachedNetworkImage(
+                  imageUrl: template.imageUrl,
+                  fit: BoxFit.cover,
+                  placeholder: (_, _) =>
+                      const ColoredBox(color: AppColors.placeholder),
+                  errorWidget: (_, _, _) =>
+                      const ColoredBox(color: AppColors.placeholder),
+                ),
+                if (isLocked)
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.38),
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.lock_rounded,
+                        color: Color(0xFFFFD700),
+                        size: 16,
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
         ),

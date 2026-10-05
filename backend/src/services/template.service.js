@@ -7,6 +7,10 @@ const list = ({ mood } = {}) => {
   return templates.filter((template) => template.moods.includes(mood));
 };
 
-const getForDay = (dayIndex) => templates[dayIndex % templates.length];
+const getForDay = (dayIndex) => {
+  const freeTemplates = templates.filter((t) => !t.isPremium);
+  const pool = freeTemplates.length > 0 ? freeTemplates : templates;
+  return pool[dayIndex % pool.length];
+};
 
 module.exports = { list, getForDay };
