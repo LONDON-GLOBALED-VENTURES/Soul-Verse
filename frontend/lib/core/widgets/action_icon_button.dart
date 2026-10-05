@@ -5,13 +5,15 @@ import '../theme/app_colors.dart';
 class ActionIconButton extends StatelessWidget {
   const ActionIconButton({
     super.key,
-    required this.icon,
+    this.icon,
+    this.iconWidget,
     required this.label,
     required this.onPressed,
     this.color = AppColors.textPrimary,
-  });
+  }) : assert(icon != null || iconWidget != null, 'Provide icon or iconWidget');
 
-  final IconData icon;
+  final IconData? icon;
+  final Widget? iconWidget;
   final String label;
   final VoidCallback? onPressed;
   final Color color;
@@ -26,7 +28,13 @@ class ActionIconButton extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: color, size: 26),
+            SizedBox(
+              width: 26,
+              height: 26,
+              child: Center(
+                child: iconWidget ?? Icon(icon, color: color, size: 26),
+              ),
+            ),
             const SizedBox(height: 4),
             Text(
               label,

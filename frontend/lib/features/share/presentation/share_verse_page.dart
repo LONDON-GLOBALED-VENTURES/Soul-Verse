@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
@@ -115,10 +116,10 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
       ..showSnackBar(
         SnackBar(
           content: Text(message),
-          // Float above the action row so the buttons stay tappable.
+          // Float above the template and action rows so controls stay visible and tappable.
           behavior: SnackBarBehavior.floating,
-          margin: const EdgeInsets.fromLTRB(16, 0, 16, 120),
-          duration: const Duration(seconds: 2),
+          margin: const EdgeInsets.fromLTRB(16, 0, 16, 175),
+          duration: const Duration(milliseconds: 1400),
         ),
       );
   }
@@ -147,7 +148,7 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
               ref,
               verse: _verse,
               template: _template,
-              snackBarBottomMargin: 120,
+              snackBarBottomMargin: 175,
             ),
           ),
         ],
@@ -206,14 +207,35 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                     onPressed: _busy ? null : _save,
                   ),
                   ActionIconButton(
-                    icon: Icons.camera_alt_outlined,
+                    iconWidget: ShaderMask(
+                      blendMode: BlendMode.srcIn,
+                      shaderCallback: (bounds) => const RadialGradient(
+                        center: Alignment(-0.6, 0.8),
+                        radius: 1.5,
+                        colors: [
+                          Color(0xFFFEDA75),
+                          Color(0xFFFA7E1E),
+                          Color(0xFFD62976),
+                          Color(0xFF962FBF),
+                          Color(0xFF4F5BD5),
+                        ],
+                      ).createShader(bounds),
+                      child: const FaIcon(
+                        FontAwesomeIcons.instagram,
+                        size: 24,
+                      ),
+                    ),
                     label: 'Instagram',
                     onPressed: _busy
                         ? null
                         : () => _shareTo(ShareTarget.instagram),
                   ),
                   ActionIconButton(
-                    icon: Icons.chat_outlined,
+                    iconWidget: const FaIcon(
+                      FontAwesomeIcons.whatsapp,
+                      color: Color(0xFF25D366),
+                      size: 24,
+                    ),
                     label: 'WhatsApp',
                     onPressed: _busy
                         ? null

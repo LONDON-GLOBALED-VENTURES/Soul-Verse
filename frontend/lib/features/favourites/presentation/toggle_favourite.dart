@@ -27,7 +27,7 @@ Future<void> toggleFavourite(
           content: Text(message),
           behavior: SnackBarBehavior.floating,
           margin: EdgeInsets.fromLTRB(16, 0, 16, snackBarBottomMargin),
-          duration: const Duration(seconds: 2),
+          duration: const Duration(milliseconds: 1400),
           dismissDirection: DismissDirection.horizontal,
           action: onUndo == null
               ? null
