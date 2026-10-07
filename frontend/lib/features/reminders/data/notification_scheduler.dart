@@ -28,6 +28,8 @@ class NotificationScheduler {
           playSound: true,
           enableVibration: true,
           color: AppColors.accent,
+          icon: 'ic_notification',
+          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
           styleInformation: BigTextStyleInformation(
             body,
             contentTitle: title,
@@ -57,7 +59,7 @@ class NotificationScheduler {
     }
     await _plugin.initialize(
       settings: const InitializationSettings(
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        android: AndroidInitializationSettings('ic_notification'),
         // Permission is requested explicitly when the user turns a reminder on.
         iOS: DarwinInitializationSettings(
           requestAlertPermission: false,
