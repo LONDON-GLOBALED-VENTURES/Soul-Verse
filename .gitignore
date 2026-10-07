@@ -4,6 +4,8 @@ Thumbs.db
 .idea/
 *.iml
 .vscode/
+__pycache__/
+*.pyc
 
 # Node (backend)
 backend/node_modules/

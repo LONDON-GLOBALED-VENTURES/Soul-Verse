@@ -4,7 +4,10 @@
     "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
     "reference": "Philippians 4:6",
     "translation": "KJV",
-    "moods": ["anxious", "stressed"],
+    "moods": [
+      "anxious",
+      "stressed"
+    ],
     "reflection": "Worry asks you to carry tomorrow alone. Prayer hands it back to the One who already holds it."
   },
   {
@@ -12,7 +15,11 @@
     "text": "Casting all your care upon him; for he careth for you.",
     "reference": "1 Peter 5:7",
     "translation": "KJV",
-    "moods": ["anxious", "stressed", "sad"],
+    "moods": [
+      "anxious",
+      "stressed",
+      "sad"
+    ],
     "reflection": "You don't have to carry your worries alone. God cares for you and invites you to give Him everything that feels heavy."
   },
   {
@@ -20,7 +27,9 @@
     "text": "Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof.",
     "reference": "Matthew 6:34",
     "translation": "KJV",
-    "moods": ["anxious"],
+    "moods": [
+      "anxious"
+    ],
     "reflection": "Today has enough grace for today. Let tomorrow wait until it arrives."
   },
   {
@@ -28,7 +37,10 @@
     "text": "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.",
     "reference": "Isaiah 41:10",
     "translation": "KJV",
-    "moods": ["anxious", "need-strength"],
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
     "reflection": "Fear shrinks when you remember who stands beside you. You are held, helped and upheld."
   },
   {
@@ -36,7 +48,10 @@
     "text": "Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid.",
     "reference": "John 14:27",
     "translation": "KJV",
-    "moods": ["anxious", "stressed"],
+    "moods": [
+      "anxious",
+      "stressed"
+    ],
     "reflection": "His peace doesn't depend on calm circumstances. It is a gift you can receive even in the storm."
   },
   {
@@ -44,7 +59,9 @@
     "text": "What time I am afraid, I will trust in thee.",
     "reference": "Psalm 56:3",
     "translation": "KJV",
-    "moods": ["anxious"],
+    "moods": [
+      "anxious"
+    ],
     "reflection": "Trust isn't the absence of fear. It's choosing where to turn when fear comes."
   },
   {
@@ -52,7 +69,10 @@
     "text": "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.",
     "reference": "2 Timothy 1:7",
     "translation": "KJV",
-    "moods": ["anxious", "need-strength"],
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
     "reflection": "Fear is not your inheritance. Power, love and a steady mind are already yours."
   },
   {
@@ -60,7 +80,10 @@
     "text": "Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.",
     "reference": "Psalm 46:10",
     "translation": "KJV",
-    "moods": ["stressed", "anxious"],
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
     "reflection": "Stillness is not doing nothing. It is resting in the truth that God is in control."
   },
   {
@@ -68,7 +91,10 @@
     "text": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
     "reference": "Matthew 11:28",
     "translation": "KJV",
-    "moods": ["stressed", "sad"],
+    "moods": [
+      "stressed",
+      "sad"
+    ],
     "reflection": "The invitation is simple: come as you are, tired and heavy, and receive rest."
   },
   {
@@ -76,7 +102,9 @@
     "text": "Cast thy burden upon the LORD, and he shall sustain thee: he shall never suffer the righteous to be moved.",
     "reference": "Psalm 55:22",
     "translation": "KJV",
-    "moods": ["stressed"],
+    "moods": [
+      "stressed"
+    ],
     "reflection": "What feels too heavy for you is never too heavy for Him. Let Him sustain you today."
   },
   {
@@ -84,7 +112,10 @@
     "text": "Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.",
     "reference": "Isaiah 26:3",
     "translation": "KJV",
-    "moods": ["stressed", "anxious"],
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
     "reflection": "Where your mind rests, your heart follows. Fix your thoughts on Him and find peace."
   },
   {
@@ -92,7 +123,9 @@
     "text": "In the multitude of my thoughts within me thy comforts delight my soul.",
     "reference": "Psalm 94:19",
     "translation": "KJV",
-    "moods": ["stressed"],
+    "moods": [
+      "stressed"
+    ],
     "reflection": "When your thoughts race, His comfort meets you right in the middle of them."
   },
   {
@@ -100,7 +133,9 @@
     "text": "The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.",
     "reference": "Psalm 34:18",
     "translation": "KJV",
-    "moods": ["sad"],
+    "moods": [
+      "sad"
+    ],
     "reflection": "Your pain doesn't push God away. He draws closest when your heart is breaking."
   },
   {
@@ -108,7 +143,9 @@
     "text": "He healeth the broken in heart, and bindeth up their wounds.",
     "reference": "Psalm 147:3",
     "translation": "KJV",
-    "moods": ["sad"],
+    "moods": [
+      "sad"
+    ],
     "reflection": "Healing may be slow, but it is certain. He tends every wound with care."
   },
   {
@@ -116,7 +153,10 @@
     "text": "And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away.",
     "reference": "Revelation 21:4",
     "translation": "KJV",
-    "moods": ["sad", "hopeful"],
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
     "reflection": "Every tear is seen, and one day every tear will be wiped away. Sorrow does not have the last word."
   },
   {
@@ -124,7 +164,10 @@
     "text": "For his anger endureth but a moment; in his favour is life: weeping may endure for a night, but joy cometh in the morning.",
     "reference": "Psalm 30:5",
     "translation": "KJV",
-    "moods": ["sad", "hopeful"],
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
     "reflection": "Night feels long, but it always ends. Morning and joy are on their way."
   },
   {
@@ -132,7 +175,9 @@
     "text": "Blessed are they that mourn: for they shall be comforted.",
     "reference": "Matthew 5:4",
     "translation": "KJV",
-    "moods": ["sad"],
+    "moods": [
+      "sad"
+    ],
     "reflection": "Grief is not a sign of weak faith. It is a place where God's comfort is promised."
   },
   {
@@ -140,7 +185,10 @@
     "text": "Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him, who is the health of my countenance, and my God.",
     "reference": "Psalm 42:11",
     "translation": "KJV",
-    "moods": ["sad", "hopeful"],
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
     "reflection": "It's okay to be honest about a heavy heart, and then to speak hope to it."
   },
   {
@@ -148,7 +196,10 @@
     "text": "For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.",
     "reference": "Jeremiah 29:11",
     "translation": "KJV",
-    "moods": ["hopeful", "lost"],
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
     "reflection": "Even when the road is unclear, God's thoughts toward you are good, and your story has a hopeful end."
   },
   {
@@ -156,7 +207,10 @@
     "text": "Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.",
     "reference": "Romans 15:13",
     "translation": "KJV",
-    "moods": ["hopeful", "joyful"],
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
     "reflection": "Hope isn't something you have to manufacture. The God of hope fills you until it overflows."
   },
   {
@@ -164,7 +218,10 @@
     "text": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
     "reference": "Lamentations 3:22-23",
     "translation": "KJV",
-    "moods": ["hopeful", "grateful"],
+    "moods": [
+      "hopeful",
+      "grateful"
+    ],
     "reflection": "Yesterday's failures don't define today. His mercy is fresh every single morning."
   },
   {
@@ -172,7 +229,10 @@
     "text": "And we know that all things work together for good to them that love God, to them who are the called according to his purpose.",
     "reference": "Romans 8:28",
     "translation": "KJV",
-    "moods": ["hopeful", "lost"],
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
     "reflection": "Not everything is good, but God is weaving even the hard things into something good."
   },
   {
@@ -180,7 +240,9 @@
     "text": "Now faith is the substance of things hoped for, the evidence of things not seen.",
     "reference": "Hebrews 11:1",
     "translation": "KJV",
-    "moods": ["hopeful"],
+    "moods": [
+      "hopeful"
+    ],
     "reflection": "Faith holds on to what God has promised, even before you can see it."
   },
   {
@@ -188,7 +250,10 @@
     "text": "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.",
     "reference": "Isaiah 40:31",
     "translation": "KJV",
-    "moods": ["need-strength", "hopeful"],
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
     "reflection": "Waiting on God isn't wasted time. It's where tired hearts are renewed."
   },
   {
@@ -196,7 +261,9 @@
     "text": "I can do all things through Christ which strengtheneth me.",
     "reference": "Philippians 4:13",
     "translation": "KJV",
-    "moods": ["need-strength"],
+    "moods": [
+      "need-strength"
+    ],
     "reflection": "Your strength may run out, but His never does. Lean on Him for what's in front of you."
   },
   {
@@ -204,7 +271,10 @@
     "text": "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.",
     "reference": "Joshua 1:9",
     "translation": "KJV",
-    "moods": ["need-strength", "anxious"],
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
     "reflection": "Courage comes from company. Wherever you go today, you do not go alone."
   },
   {
@@ -212,7 +282,9 @@
     "text": "And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness.",
     "reference": "2 Corinthians 12:9",
     "translation": "KJV",
-    "moods": ["need-strength"],
+    "moods": [
+      "need-strength"
+    ],
     "reflection": "Your weakness is not a barrier to God. It's the very place His strength shows up."
   },
   {
@@ -220,7 +292,10 @@
     "text": "God is our refuge and strength, a very present help in trouble.",
     "reference": "Psalm 46:1",
     "translation": "KJV",
-    "moods": ["need-strength", "stressed"],
+    "moods": [
+      "need-strength",
+      "stressed"
+    ],
     "reflection": "Help isn't far off or delayed. In trouble, God is present right now."
   },
   {
@@ -228,7 +303,9 @@
     "text": "I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth.",
     "reference": "Psalm 121:1-2",
     "translation": "KJV",
-    "moods": ["need-strength"],
+    "moods": [
+      "need-strength"
+    ],
     "reflection": "Look up. The One who made the mountains is the One who helps you."
   },
   {
@@ -236,7 +313,10 @@
     "text": "And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed.",
     "reference": "Deuteronomy 31:8",
     "translation": "KJV",
-    "moods": ["lost", "need-strength"],
+    "moods": [
+      "lost",
+      "need-strength"
+    ],
     "reflection": "God is already ahead of you on the road you're afraid to walk."
   },
   {
@@ -244,7 +324,9 @@
     "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
     "reference": "Proverbs 3:5-6",
     "translation": "KJV",
-    "moods": ["lost"],
+    "moods": [
+      "lost"
+    ],
     "reflection": "You don't need the whole map. Trust Him with the next step, and He will direct the path."
   },
   {
@@ -252,7 +334,10 @@
     "text": "The LORD is my shepherd; I shall not want.",
     "reference": "Psalm 23:1",
     "translation": "KJV",
-    "moods": ["lost", "grateful"],
+    "moods": [
+      "lost",
+      "grateful"
+    ],
     "reflection": "A shepherd leads, protects and provides. You are cared for, even when you feel lost."
   },
   {
@@ -260,7 +345,9 @@
     "text": "Thy word is a lamp unto my feet, and a light unto my path.",
     "reference": "Psalm 119:105",
     "translation": "KJV",
-    "moods": ["lost"],
+    "moods": [
+      "lost"
+    ],
     "reflection": "A lamp lights the next few steps, not the whole journey. That's enough to keep walking."
   },
   {
@@ -268,7 +355,9 @@
     "text": "And thine ears shall hear a word behind thee, saying, This is the way, walk ye in it, when ye turn to the right hand, and when ye turn to the left.",
     "reference": "Isaiah 30:21",
     "translation": "KJV",
-    "moods": ["lost"],
+    "moods": [
+      "lost"
+    ],
     "reflection": "When you don't know which way to turn, listen. God still guides those who seek Him."
   },
   {
@@ -276,7 +365,9 @@
     "text": "For the Son of man is come to seek and to save that which was lost.",
     "reference": "Luke 19:10",
     "translation": "KJV",
-    "moods": ["lost"],
+    "moods": [
+      "lost"
+    ],
     "reflection": "Feeling lost doesn't put you out of reach. You are exactly who Jesus came looking for."
   },
   {
@@ -284,7 +375,9 @@
     "text": "I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye.",
     "reference": "Psalm 32:8",
     "translation": "KJV",
-    "moods": ["lost"],
+    "moods": [
+      "lost"
+    ],
     "reflection": "God doesn't just point the way. He walks with you and teaches you as you go."
   },
   {
@@ -292,7 +385,9 @@
     "text": "In every thing give thanks: for this is the will of God in Christ Jesus concerning you.",
     "reference": "1 Thessalonians 5:18",
     "translation": "KJV",
-    "moods": ["grateful"],
+    "moods": [
+      "grateful"
+    ],
     "reflection": "Gratitude doesn't wait for perfect days. It finds God's goodness in every one."
   },
   {
@@ -300,7 +395,9 @@
     "text": "O give thanks unto the LORD, for he is good: for his mercy endureth for ever.",
     "reference": "Psalm 107:1",
     "translation": "KJV",
-    "moods": ["grateful"],
+    "moods": [
+      "grateful"
+    ],
     "reflection": "His goodness isn't seasonal. His mercy lasts forever, and that's always worth thanks."
   },
   {
@@ -308,7 +405,10 @@
     "text": "This is the day which the LORD hath made; we will rejoice and be glad in it.",
     "reference": "Psalm 118:24",
     "translation": "KJV",
-    "moods": ["grateful", "joyful"],
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
     "reflection": "Today is a gift, made on purpose. Receive it with gladness."
   },
   {
@@ -316,7 +416,9 @@
     "text": "Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning.",
     "reference": "James 1:17",
     "translation": "KJV",
-    "moods": ["grateful"],
+    "moods": [
+      "grateful"
+    ],
     "reflection": "Every good thing in your life traces back to a generous Father who never changes."
   },
   {
@@ -324,7 +426,9 @@
     "text": "And let the peace of God rule in your hearts, to the which also ye are called in one body; and be ye thankful.",
     "reference": "Colossians 3:15",
     "translation": "KJV",
-    "moods": ["grateful"],
+    "moods": [
+      "grateful"
+    ],
     "reflection": "Peace and thankfulness grow together. Let both settle into your heart today."
   },
   {
@@ -332,7 +436,10 @@
     "text": "Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.",
     "reference": "Psalm 100:4",
     "translation": "KJV",
-    "moods": ["grateful", "joyful"],
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
     "reflection": "Thanksgiving is the doorway into God's presence. Start with thanks and see where it leads."
   },
   {
@@ -340,7 +447,9 @@
     "text": "Rejoice in the Lord alway: and again I say, Rejoice.",
     "reference": "Philippians 4:4",
     "translation": "KJV",
-    "moods": ["joyful"],
+    "moods": [
+      "joyful"
+    ],
     "reflection": "Joy in the Lord doesn't depend on circumstances. It's rooted in who He is."
   },
   {
@@ -348,7 +457,9 @@
     "text": "Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.",
     "reference": "Psalm 16:11",
     "translation": "KJV",
-    "moods": ["joyful"],
+    "moods": [
+      "joyful"
+    ],
     "reflection": "The fullest joy isn't found in what you have, but in whose presence you're in."
   },
   {
@@ -356,7 +467,9 @@
     "text": "These things have I spoken unto you, that my joy might remain in you, and that your joy might be full.",
     "reference": "John 15:11",
     "translation": "KJV",
-    "moods": ["joyful"],
+    "moods": [
+      "joyful"
+    ],
     "reflection": "Jesus wants your joy to be full, not partial or passing, but lasting."
   },
   {
@@ -364,7 +477,10 @@
     "text": "The LORD thy God in the midst of thee is mighty; he will save, he will rejoice over thee with joy; he will rest in his love, he will joy over thee with singing.",
     "reference": "Zephaniah 3:17",
     "translation": "KJV",
-    "moods": ["joyful", "sad"],
+    "moods": [
+      "joyful",
+      "sad"
+    ],
     "reflection": "Imagine it: God rejoices over you with singing. You are deeply delighted in."
   },
   {
@@ -372,7 +488,4893 @@
     "text": "The LORD hath done great things for us; whereof we are glad.",
     "reference": "Psalm 126:3",
     "translation": "KJV",
-    "moods": ["joyful", "grateful"],
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
     "reflection": "Take a moment to remember what God has already done. Gladness follows remembering."
+  },
+  {
+    "id": "ps-3-5",
+    "text": "I laid me down and slept; I awaked; for the LORD sustained me.",
+    "reference": "Psalm 3:5",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "stressed"
+    ],
+    "reflection": "You can rest and sleep in total peace, knowing God watches over every breath."
+  },
+  {
+    "id": "ps-4-8",
+    "text": "I will both lay me down in peace, and sleep: for thou, LORD , only makest me dwell in safety.",
+    "reference": "Psalm 4:8",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "stressed"
+    ],
+    "reflection": "Lay down in quiet safety; God alone makes you dwell without fear."
+  },
+  {
+    "id": "ps-9-9",
+    "text": "The LORD also will be a refuge for the oppressed, a refuge in times of trouble.",
+    "reference": "Psalm 9:9",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "sad"
+    ],
+    "reflection": "The Lord is an unshakeable refuge for the oppressed in times of trouble."
+  },
+  {
+    "id": "ps-23-2",
+    "text": "He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
+    "reference": "Psalm 23:2",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "He gently leads you beside quiet waters, granting true rest to your weary soul."
+  },
+  {
+    "id": "ps-32-7",
+    "text": "Thou art my hiding place; thou shalt preserve me from trouble; thou shalt compass me about with songs of deliverance. Selah.",
+    "reference": "Psalm 32:7",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "God is your hiding place; He preserves you from trouble and surrounds you with songs of deliverance."
+  },
+  {
+    "id": "ps-34-17",
+    "text": "The righteous cry, and the LORD heareth, and delivereth them out of all their troubles.",
+    "reference": "Psalm 34:17",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "anxious"
+    ],
+    "reflection": "The righteous cry, and the Lord hears, delivering them out of all their troubles."
+  },
+  {
+    "id": "ps-37-5",
+    "text": "Commit thy way unto the LORD ; trust also in him; and he shall bring it to pass.",
+    "reference": "Psalm 37:5",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "stressed"
+    ],
+    "reflection": "Commit your way unto the Lord; trust also in Him, and He shall bring it to pass."
+  },
+  {
+    "id": "ps-37-7",
+    "text": "Rest in the LORD , and wait patiently for him: fret not thyself because of him who prospereth in his way, because of the man who bringeth wicked devices to pass.",
+    "reference": "Psalm 37:7",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "Rest in the Lord, and wait patiently for Him without fret or worry over worldly schemes."
+  },
+  {
+    "id": "ps-57-1",
+    "text": "Be merciful unto me, O God, be merciful unto me: for my soul trusteth in thee: yea, in the shadow of thy wings will I make my refuge, until these calamities be overpast.",
+    "reference": "Psalm 57:1",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "Take refuge in the shadow of God's wings until life's fierce storms pass by."
+  },
+  {
+    "id": "ps-62-8",
+    "text": "Trust in him at all times; ye people, pour out your heart before him: God is a refuge for us. Selah.",
+    "reference": "Psalm 62:8",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "sad"
+    ],
+    "reflection": "Pour out your heart before Him at all times; God is an open refuge for us."
+  },
+  {
+    "id": "ps-91-1",
+    "text": "He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty.",
+    "reference": "Psalm 91:1",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "He that dwells in the secret place of the Most High shall abide under the shadow of the Almighty."
+  },
+  {
+    "id": "ps-107-29",
+    "text": "He maketh the storm a calm, so that the waves thereof are still.",
+    "reference": "Psalm 107:29",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "He maketh the storm a calm, so that the raging waves thereof are still."
+  },
+  {
+    "id": "ps-119-165",
+    "text": "Great peace have they which love thy law: and nothing shall offend them.",
+    "reference": "Psalm 119:165",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "Great peace have they which love thy law: and nothing shall offend or stumble them."
+  },
+  {
+    "id": "prov-3-24",
+    "text": "When thou liest down, thou shalt not be afraid: yea, thou shalt lie down, and thy sleep shall be sweet.",
+    "reference": "Proverbs 3:24",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "When thou liest down, thou shalt not be afraid: yea, thou shalt lie down, and thy sleep shall be sweet."
+  },
+  {
+    "id": "prov-12-25",
+    "text": "Heaviness in the heart of man maketh it stoop: but a good word maketh it glad.",
+    "reference": "Proverbs 12:25",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "sad"
+    ],
+    "reflection": "Heaviness in the heart of man maketh it stoop: but a good word maketh it glad."
+  },
+  {
+    "id": "isa-40-11",
+    "text": "He shall feed his flock like a shepherd: he shall gather the lambs with his arm, and carry them in his bosom, and shall gently lead those that are with young.",
+    "reference": "Isaiah 40:11",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "sad"
+    ],
+    "reflection": "He shall feed His flock like a shepherd: He shall gather the lambs with His arm, and carry them in His bosom."
+  },
+  {
+    "id": "isa-43-1",
+    "text": "But now thus saith the LORD that created thee, O Jacob, and he that formed thee, O Israel, Fear not: for I have redeemed thee, I have called thee by thy name; thou art mine.",
+    "reference": "Isaiah 43:1",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "sad"
+    ],
+    "reflection": "Fear not: for I have redeemed thee, I have called thee by thy name; thou art mine."
+  },
+  {
+    "id": "matt-10-31",
+    "text": "Fear ye not therefore, ye are of more value than many sparrows.",
+    "reference": "Matthew 10:31",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "sad"
+    ],
+    "reflection": "Fear ye not therefore, ye are of more value than many sparrows."
+  },
+  {
+    "id": "john-14-1",
+    "text": "Let not your heart be troubled: ye believe in God, believe also in me.",
+    "reference": "John 14:1",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "stressed"
+    ],
+    "reflection": "Let not your heart be troubled: ye believe in God, believe also in me."
+  },
+  {
+    "id": "john-14-18",
+    "text": "I will not leave you comfortless: I will come to you.",
+    "reference": "John 14:18",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "stressed"
+    ],
+    "reflection": "I will not leave you comfortless: I will come to you."
+  },
+  {
+    "id": "phil-4-7",
+    "text": "And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.",
+    "reference": "Philippians 4:7",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "anxious"
+    ],
+    "reflection": "And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."
+  },
+  {
+    "id": "heb-13-5",
+    "text": "Let your conversation be without covetousness; and be content with such things as ye have: for he hath said, I will never leave thee, nor forsake thee.",
+    "reference": "Hebrews 13:5",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "stressed"
+    ],
+    "reflection": "Let your conversation be without covetousness; and be content with such things as ye have: for He hath said, I will never leave thee, nor forsake thee."
+  },
+  {
+    "id": "ps-30-11",
+    "text": "Thou hast turned for me my mourning into dancing: thou hast put off my sackcloth, and girded me with gladness;",
+    "reference": "Psalm 30:11",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "sad"
+    ],
+    "reflection": "God turns your mourning into dancing, removing your sackcloth and clothing you with gladness."
+  },
+  {
+    "id": "ps-37-11",
+    "text": "But the meek shall inherit the earth; and shall delight themselves in the abundance of peace.",
+    "reference": "Psalm 37:11",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "joyful"
+    ],
+    "reflection": "The meek shall inherit the earth and delight themselves in the abundance of peace."
+  },
+  {
+    "id": "ps-51-12",
+    "text": "Restore unto me the joy of thy salvation; and uphold me with thy free spirit.",
+    "reference": "Psalm 51:12",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "sad"
+    ],
+    "reflection": "Restore unto me the joy of Thy salvation, and uphold me with Thy free spirit."
+  },
+  {
+    "id": "ps-63-7",
+    "text": "Because thou hast been my help, therefore in the shadow of thy wings will I rejoice.",
+    "reference": "Psalm 63:7",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "stressed"
+    ],
+    "reflection": "Because God has been your help, rejoice beneath the shadow of His loving wings."
+  },
+  {
+    "id": "ps-126-5",
+    "text": "They that sow in tears shall reap in joy.",
+    "reference": "Psalm 126:5",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "joyful"
+    ],
+    "reflection": "They that sow in tears shall reap in joy and sing songs of harvest."
+  },
+  {
+    "id": "prov-14-30",
+    "text": "A sound heart is the life of the flesh: but envy the rottenness of the bones.",
+    "reference": "Proverbs 14:30",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "joyful"
+    ],
+    "reflection": "A sound heart is the life of the flesh: peace of mind brings healing to the whole body."
+  },
+  {
+    "id": "prov-15-13",
+    "text": "A merry heart maketh a cheerful countenance: but by sorrow of the heart the spirit is broken.",
+    "reference": "Proverbs 15:13",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "sad"
+    ],
+    "reflection": "A merry heart maketh a cheerful countenance: but by sorrow of the heart the spirit is broken."
+  },
+  {
+    "id": "prov-17-22",
+    "text": "A merry heart doeth good like a medicine: but a broken spirit drieth the bones.",
+    "reference": "Proverbs 17:22",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "sad"
+    ],
+    "reflection": "A merry heart doeth good like a medicine: but a broken spirit drieth the bones."
+  },
+  {
+    "id": "isa-32-17",
+    "text": "And the work of righteousness shall be peace; and the effect of righteousness quietness and assurance for ever.",
+    "reference": "Isaiah 32:17",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "joyful"
+    ],
+    "reflection": "The work of righteousness shall be peace; and the effect of righteousness quietness and assurance for ever."
+  },
+  {
+    "id": "isa-61-3",
+    "text": "To appoint unto them that mourn in Zion, to give unto them beauty for ashes, the oil of joy for mourning, the garment of praise for the spirit of heaviness; that they might be called trees of righteousness, the planting of the LORD , that he might be glorified.",
+    "reference": "Isaiah 61:3",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "sad"
+    ],
+    "reflection": "To give unto them beauty for ashes, the oil of joy for mourning, the garment of praise for the spirit of heaviness."
+  },
+  {
+    "id": "luke-2-14",
+    "text": "Glory to God in the highest, and on earth peace, good will toward men.",
+    "reference": "Luke 2:14",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "stressed"
+    ],
+    "reflection": "Glory to God in the highest, and on earth peace, good will toward men."
+  },
+  {
+    "id": "john-16-22",
+    "text": "And ye now therefore have sorrow: but I will see you again, and your heart shall rejoice, and your joy no man taketh from you.",
+    "reference": "John 16:22",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "joyful"
+    ],
+    "reflection": "Ye now therefore have sorrow: but I will see you again, and your heart shall rejoice, and your joy no man taketh from you."
+  },
+  {
+    "id": "rom-14-17",
+    "text": "For the kingdom of God is not meat and drink; but righteousness, and peace, and joy in the Holy Ghost.",
+    "reference": "Romans 14:17",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "stressed"
+    ],
+    "reflection": "The kingdom of God is not meat and drink; but righteousness, and peace, and joy in the Holy Ghost."
+  },
+  {
+    "id": "2cor-13-11",
+    "text": "Finally, brethren, farewell. Be perfect, be of good comfort, be of one mind, live in peace; and the God of love and peace shall be with you.",
+    "reference": "2 Corinthians 13:11",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "joyful"
+    ],
+    "reflection": "Be perfect, be of good comfort, be of one mind, live in peace; and the God of love and peace shall be with you."
+  },
+  {
+    "id": "gal-5-22",
+    "text": "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith,",
+    "reference": "Galatians 5:22",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "stressed"
+    ],
+    "reflection": "The fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith,"
+  },
+  {
+    "id": "james-5-13",
+    "text": "Is any among you afflicted? let him pray. Is any merry? let him sing psalms.",
+    "reference": "James 5:13",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "joyful"
+    ],
+    "reflection": "Is any among you afflicted? let him pray. Is any merry? let him sing psalms."
+  },
+  {
+    "id": "ps-3-3",
+    "text": "But thou, O LORD , art a shield for me; my glory, and the lifter up of mine head.",
+    "reference": "Psalm 3:3",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "The Lord is your shield and the lifter of your head, transforming your trial into triumph."
+  },
+  {
+    "id": "ps-9-10",
+    "text": "And they that know thy name will put their trust in thee: for thou, LORD , hast not forsaken them that seek thee.",
+    "reference": "Psalm 9:10",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "anxious"
+    ],
+    "reflection": "Those who know God's name put their trust in Him, for He has never forsaken those who seek Him."
+  },
+  {
+    "id": "ps-18-2",
+    "text": "The LORD is my rock, and my fortress, and my deliverer; my God, my strength, in whom I will trust; my buckler, and the horn of my salvation, and my high tower.",
+    "reference": "Psalm 18:2",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "stressed"
+    ],
+    "reflection": "The Lord is your rock, your fortress, and your deliverer in whom you can hide safely."
+  },
+  {
+    "id": "ps-18-28",
+    "text": "For thou wilt light my candle: the LORD my God will enlighten my darkness.",
+    "reference": "Psalm 18:28",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "lost"
+    ],
+    "reflection": "God lights your candle in the dark; He turns every shadow into radiant day."
+  },
+  {
+    "id": "ps-23-4",
+    "text": "Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.",
+    "reference": "Psalm 23:4",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "need-strength"
+    ],
+    "reflection": "Even through the darkest valley, fear no evil; His rod and staff comfort you always."
+  },
+  {
+    "id": "ps-27-1",
+    "text": "The LORD is my light and my salvation; whom shall I fear? the LORD is the strength of my life; of whom shall I be afraid?",
+    "reference": "Psalm 27:1",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "The Lord is your light and salvation; there is no one and nothing you need to fear."
+  },
+  {
+    "id": "ps-29-11",
+    "text": "The LORD will give strength unto his people; the LORD will bless his people with peace.",
+    "reference": "Psalm 29:11",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "need-strength"
+    ],
+    "reflection": "The Lord will give strength unto His people and bless them with everlasting peace."
+  },
+  {
+    "id": "ps-34-4",
+    "text": "I sought the LORD , and he heard me, and delivered me from all my fears.",
+    "reference": "Psalm 34:4",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "Seek the Lord and He will hear you, delivering your heart from all debilitating fears."
+  },
+  {
+    "id": "ps-34-7",
+    "text": "The angel of the LORD encampeth round about them that fear him, and delivereth them.",
+    "reference": "Psalm 34:7",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "The angel of the Lord encamps round about those who fear Him and delivers them."
+  },
+  {
+    "id": "ps-34-19",
+    "text": "Many are the afflictions of the righteous: but the LORD delivereth him out of them all.",
+    "reference": "Psalm 34:19",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "Many are the afflictions of the righteous, but the Lord delivers them out of them all."
+  },
+  {
+    "id": "ps-37-24",
+    "text": "Though he fall, he shall not be utterly cast down: for the LORD upholdeth him with his hand.",
+    "reference": "Psalm 37:24",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "Though you may stumble, you will not fall headlong, for the Lord upholds you with His hand."
+  },
+  {
+    "id": "ps-37-39",
+    "text": "But the salvation of the righteous is of the LORD : he is their strength in the time of trouble.",
+    "reference": "Psalm 37:39",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "stressed"
+    ],
+    "reflection": "The salvation of the righteous is of the Lord; He is their strength in times of trouble."
+  },
+  {
+    "id": "ps-40-2",
+    "text": "He brought me up also out of an horrible pit, out of the miry clay, and set my feet upon a rock, and established my goings.",
+    "reference": "Psalm 40:2",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "need-strength"
+    ],
+    "reflection": "He lifts you out of the miry pit and sets your feet firmly upon a solid rock."
+  },
+  {
+    "id": "ps-42-1",
+    "text": "As the hart panteth after the water brooks, so panteth my soul after thee, O God.",
+    "reference": "Psalm 42:1",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "sad"
+    ],
+    "reflection": "As the deer pants for streams of water, so your soul pants thirstily for God."
+  },
+  {
+    "id": "ps-46-2",
+    "text": "Therefore will not we fear, though the earth be removed, and though the mountains be carried into the midst of the sea;",
+    "reference": "Psalm 46:2",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "Therefore we will not fear, though the earth be removed and the mountains shake."
+  },
+  {
+    "id": "ps-61-2",
+    "text": "From the end of the earth will I cry unto thee, when my heart is overwhelmed: lead me to the rock that is higher than I.",
+    "reference": "Psalm 61:2",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "need-strength"
+    ],
+    "reflection": "When your heart is overwhelmed, pray to be led to the Rock that is higher than you."
+  },
+  {
+    "id": "ps-61-3",
+    "text": "For thou hast been a shelter for me, and a strong tower from the enemy.",
+    "reference": "Psalm 61:3",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "need-strength"
+    ],
+    "reflection": "God has been a trusted shelter and a strong tower of defense against every foe."
+  },
+  {
+    "id": "ps-62-1",
+    "text": "Truly my soul waiteth upon God: from him cometh my salvation.",
+    "reference": "Psalm 62:1",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "lost"
+    ],
+    "reflection": "Truly my soul waits upon God in silence; from Him alone comes my salvation."
+  },
+  {
+    "id": "ps-73-26",
+    "text": "My flesh and my heart faileth: but God is the strength of my heart, and my portion for ever.",
+    "reference": "Psalm 73:26",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "My flesh and heart may fail, but God is the strength of my heart and my portion forever."
+  },
+  {
+    "id": "ps-91-2",
+    "text": "I will say of the LORD , He is my refuge and my fortress: my God; in him will I trust.",
+    "reference": "Psalm 91:2",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "Say of the Lord: He is my refuge and my fortress; my God, in Him will I trust."
+  },
+  {
+    "id": "ps-91-4",
+    "text": "He shall cover thee with his feathers, and under his wings shalt thou trust: his truth shall be thy shield and buckler.",
+    "reference": "Psalm 91:4",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "He shall cover you with His feathers; under His wings you shall trust; His truth is your shield."
+  },
+  {
+    "id": "ps-91-11",
+    "text": "For he shall give his angels charge over thee, to keep thee in all thy ways.",
+    "reference": "Psalm 91:11",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "He shall give His angels charge over you, to keep and guard you in all your ways."
+  },
+  {
+    "id": "ps-103-3",
+    "text": "Who forgiveth all thine iniquities; who healeth all thy diseases;",
+    "reference": "Psalm 103:3",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "Who forgiveth all thine iniquities; who healeth all thy diseases and restores your soul."
+  },
+  {
+    "id": "ps-112-7",
+    "text": "He shall not be afraid of evil tidings: his heart is fixed, trusting in the LORD .",
+    "reference": "Psalm 112:7",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "He shall not be afraid of evil tidings: his heart is fixed, trusting in the Lord."
+  },
+  {
+    "id": "ps-118-6",
+    "text": "The LORD is on my side; I will not fear: what can man do unto me?",
+    "reference": "Psalm 118:6",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "The Lord is on my side; I will not fear: what can man do unto me?"
+  },
+  {
+    "id": "ps-119-114",
+    "text": "Thou art my hiding place and my shield: I hope in thy word.",
+    "reference": "Psalm 119:114",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "Thou art my hiding place and my shield: I hope in thy unfailing word."
+  },
+  {
+    "id": "ps-121-3",
+    "text": "He will not suffer thy foot to be moved: he that keepeth thee will not slumber.",
+    "reference": "Psalm 121:3",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "He will not suffer thy foot to be moved: He that keepeth thee will not slumber."
+  },
+  {
+    "id": "ps-121-5",
+    "text": "The LORD is thy keeper: the LORD is thy shade upon thy right hand.",
+    "reference": "Psalm 121:5",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "stressed"
+    ],
+    "reflection": "The Lord is thy keeper: the Lord is thy shade upon thy right hand."
+  },
+  {
+    "id": "ps-138-3",
+    "text": "In the day when I cried thou answeredst me, and strengthenedst me with strength in my soul.",
+    "reference": "Psalm 138:3",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "In the day when I cried Thou answeredst me, and strengthenedst me with strength in my soul."
+  },
+  {
+    "id": "ps-139-1",
+    "text": "O LORD , thou hast searched me, and known me .",
+    "reference": "Psalm 139:1",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "sad"
+    ],
+    "reflection": "O Lord, Thou hast searched me, and known me; You know every secret place of my heart."
+  },
+  {
+    "id": "ps-145-14",
+    "text": "The LORD upholdeth all that fall, and raiseth up all those that be bowed down.",
+    "reference": "Psalm 145:14",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "The Lord upholdeth all that fall, and raiseth up all those that be bowed down."
+  },
+  {
+    "id": "ps-145-18",
+    "text": "The LORD is nigh unto all them that call upon him, to all that call upon him in truth.",
+    "reference": "Psalm 145:18",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "lost"
+    ],
+    "reflection": "The Lord is nigh unto all them that call upon Him, to all that call upon Him in truth."
+  },
+  {
+    "id": "prov-3-5",
+    "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding.",
+    "reference": "Proverbs 3:5",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "anxious"
+    ],
+    "reflection": "Trust in the Lord with all thine heart; and lean not unto thine own understanding."
+  },
+  {
+    "id": "prov-3-26",
+    "text": "For the LORD shall be thy confidence, and shall keep thy foot from being taken.",
+    "reference": "Proverbs 3:26",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "For the Lord shall be thy confidence, and shall keep thy foot from being taken."
+  },
+  {
+    "id": "prov-4-23",
+    "text": "Keep thy heart with all diligence; for out of it are the issues of life.",
+    "reference": "Proverbs 4:23",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "stressed"
+    ],
+    "reflection": "Keep thy heart with all diligence; for out of it are the issues of life."
+  },
+  {
+    "id": "prov-14-26",
+    "text": "In the fear of the LORD is strong confidence: and his children shall have a place of refuge.",
+    "reference": "Proverbs 14:26",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "In the fear of the Lord is strong confidence: and His children shall have a place of refuge."
+  },
+  {
+    "id": "prov-15-1",
+    "text": "A soft answer turneth away wrath: but grievous words stir up anger.",
+    "reference": "Proverbs 15:1",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "lost"
+    ],
+    "reflection": "A soft answer turneth away wrath: but grievous words stir up anger."
+  },
+  {
+    "id": "prov-16-3",
+    "text": "Commit thy works unto the LORD , and thy thoughts shall be established.",
+    "reference": "Proverbs 16:3",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "stressed"
+    ],
+    "reflection": "Commit thy works unto the Lord, and thy thoughts shall be established."
+  },
+  {
+    "id": "prov-16-7",
+    "text": "When a man’s ways please the LORD , he maketh even his enemies to be at peace with him.",
+    "reference": "Proverbs 16:7",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "stressed"
+    ],
+    "reflection": "When a man's ways please the Lord, He maketh even his enemies to be at peace with him."
+  },
+  {
+    "id": "prov-16-32",
+    "text": "He that is slow to anger is better than the mighty; and he that ruleth his spirit than he that taketh a city.",
+    "reference": "Proverbs 16:32",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "stressed"
+    ],
+    "reflection": "He that is slow to anger is better than the mighty; and he that ruleth his spirit than he that taketh a city."
+  },
+  {
+    "id": "prov-18-10",
+    "text": "The name of the LORD is a strong tower: the righteous runneth into it, and is safe.",
+    "reference": "Proverbs 18:10",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "The name of the Lord is a strong tower: the righteous runneth into it, and is safe."
+  },
+  {
+    "id": "prov-29-25",
+    "text": "The fear of man bringeth a snare: but whoso putteth his trust in the LORD shall be safe.",
+    "reference": "Proverbs 29:25",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "The fear of man bringeth a snare: but whoso putteth his trust in the Lord shall be safe."
+  },
+  {
+    "id": "isa-30-15",
+    "text": "For thus saith the Lord GOD , the Holy One of Israel; In returning and rest shall ye be saved; in quietness and in confidence shall be your strength: and ye would not.",
+    "reference": "Isaiah 30:15",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "need-strength"
+    ],
+    "reflection": "In returning and rest shall ye be saved; in quietness and in confidence shall be your strength."
+  },
+  {
+    "id": "isa-35-4",
+    "text": "Say to them that are of a fearful heart, Be strong, fear not: behold, your God will come with vengeance, even God with a recompence; he will come and save you.",
+    "reference": "Isaiah 35:4",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "Say to them that are of a fearful heart, Be strong, fear not: behold, your God will come and save you."
+  },
+  {
+    "id": "isa-41-13",
+    "text": "For I the LORD thy God will hold thy right hand, saying unto thee, Fear not; I will help thee.",
+    "reference": "Isaiah 41:13",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "For I the Lord thy God will hold thy right hand, saying unto thee, Fear not; I will help thee."
+  },
+  {
+    "id": "isa-43-2",
+    "text": "When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee.",
+    "reference": "Isaiah 43:2",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee."
+  },
+  {
+    "id": "isa-54-17",
+    "text": "No weapon that is formed against thee shall prosper; and every tongue that shall rise against thee in judgment thou shalt condemn. This is the heritage of the servants of the LORD , and their righteousness is of me, saith the LORD .",
+    "reference": "Isaiah 54:17",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "No weapon that is formed against thee shall prosper; this is the heritage of the servants of the Lord."
+  },
+  {
+    "id": "isa-55-8",
+    "text": "For my thoughts are not your thoughts, neither are your ways my ways, saith the LORD .",
+    "reference": "Isaiah 55:8",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "stressed"
+    ],
+    "reflection": "For my thoughts are not your thoughts, neither are your ways my ways, saith the Lord."
+  },
+  {
+    "id": "isa-58-11",
+    "text": "And the LORD shall guide thee continually, and satisfy thy soul in drought, and make fat thy bones: and thou shalt be like a watered garden, and like a spring of water, whose waters fail not.",
+    "reference": "Isaiah 58:11",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "stressed"
+    ],
+    "reflection": "The Lord shall guide thee continually, and satisfy thy soul in drought, and make fat thy bones."
+  },
+  {
+    "id": "deut-31-6",
+    "text": "Be strong and of a good courage, fear not, nor be afraid of them: for the LORD thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee.",
+    "reference": "Deuteronomy 31:6",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "Be strong and of a good courage, fear not, nor be afraid of them: for the Lord thy God, He it is that doth go with thee; He will not fail thee, nor forsake thee."
+  },
+  {
+    "id": "deut-33-27",
+    "text": "The eternal God is thy refuge, and underneath are the everlasting arms: and he shall thrust out the enemy from before thee; and shall say, Destroy them .",
+    "reference": "Deuteronomy 33:27",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "stressed"
+    ],
+    "reflection": "The eternal God is thy refuge, and underneath are the everlasting arms."
+  },
+  {
+    "id": "eccl-3-1",
+    "text": "To every thing there is a season, and a time to every purpose under the heaven:",
+    "reference": "Ecclesiastes 3:1",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "lost"
+    ],
+    "reflection": "To every thing there is a season, and a time to every purpose under the heaven."
+  },
+  {
+    "id": "matt-5-5",
+    "text": "Blessed are the meek: for they shall inherit the earth.",
+    "reference": "Matthew 5:5",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "lost"
+    ],
+    "reflection": "Blessed are the meek: for they shall inherit the earth."
+  },
+  {
+    "id": "matt-5-9",
+    "text": "Blessed are the peacemakers: for they shall be called the children of God.",
+    "reference": "Matthew 5:9",
+    "translation": "KJV",
+    "moods": [
+      "stressed"
+    ],
+    "reflection": "Blessed are the peacemakers: for they shall be called the children of God."
+  },
+  {
+    "id": "matt-6-33",
+    "text": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.",
+    "reference": "Matthew 6:33",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "anxious"
+    ],
+    "reflection": "Seek ye first the kingdom of God, and His righteousness; and all these things shall be added unto you."
+  },
+  {
+    "id": "matt-11-29",
+    "text": "Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls.",
+    "reference": "Matthew 11:29",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "lost"
+    ],
+    "reflection": "Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls."
+  },
+  {
+    "id": "matt-11-30",
+    "text": "For my yoke is easy, and my burden is light.",
+    "reference": "Matthew 11:30",
+    "translation": "KJV",
+    "moods": [
+      "stressed"
+    ],
+    "reflection": "For my yoke is easy, and my burden is light."
+  },
+  {
+    "id": "matt-14-27",
+    "text": "But straightway Jesus spake unto them, saying, Be of good cheer; it is I; be not afraid.",
+    "reference": "Matthew 14:27",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "Be of good cheer; it is I; be not afraid."
+  },
+  {
+    "id": "luke-1-79",
+    "text": "To give light to them that sit in darkness and in the shadow of death, to guide our feet into the way of peace.",
+    "reference": "Luke 1:79",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "stressed"
+    ],
+    "reflection": "To give light to them that sit in darkness and in the shadow of death, to guide our feet into the way of peace."
+  },
+  {
+    "id": "john-4-14",
+    "text": "But whosoever drinketh of the water that I shall give him shall never thirst; but the water that I shall give him shall be in him a well of water springing up into everlasting life.",
+    "reference": "John 4:14",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "lost"
+    ],
+    "reflection": "Whosoever drinketh of the water that I shall give him shall never thirst; but it shall be in him a well of water springing up into everlasting life."
+  },
+  {
+    "id": "john-16-33",
+    "text": "These things I have spoken unto you, that in me ye might have peace. In the world ye shall have tribulation: but be of good cheer; I have overcome the world.",
+    "reference": "John 16:33",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "These things I have spoken unto you, that in me ye might have peace. In the world ye shall have tribulation: but be of good cheer; I have overcome the world."
+  },
+  {
+    "id": "rom-8-26",
+    "text": "Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered.",
+    "reference": "Romans 8:26",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "need-strength"
+    ],
+    "reflection": "The Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us."
+  },
+  {
+    "id": "rom-8-31",
+    "text": "What shall we then say to these things? If God be for us, who can be against us?",
+    "reference": "Romans 8:31",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "What shall we then say to these things? If God be for us, who can be against us?"
+  },
+  {
+    "id": "rom-12-18",
+    "text": "If it be possible, as much as lieth in you, live peaceably with all men.",
+    "reference": "Romans 12:18",
+    "translation": "KJV",
+    "moods": [
+      "stressed"
+    ],
+    "reflection": "If it be possible, as much as lieth in you, live peaceably with all men."
+  },
+  {
+    "id": "1cor-10-13",
+    "text": "There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it.",
+    "reference": "1 Corinthians 10:13",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able."
+  },
+  {
+    "id": "2cor-1-4",
+    "text": "Who comforteth us in all our tribulation, that we may be able to comfort them which are in any trouble, by the comfort wherewith we ourselves are comforted of God.",
+    "reference": "2 Corinthians 1:4",
+    "translation": "KJV",
+    "moods": [
+      "sad"
+    ],
+    "reflection": "Who comforteth us in all our tribulation, that we may be able to comfort them which are in any trouble, by the comfort wherewith we ourselves are comforted of God."
+  },
+  {
+    "id": "2cor-4-8",
+    "text": "We are troubled on every side, yet not distressed; we are perplexed, but not in despair;",
+    "reference": "2 Corinthians 4:8",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "We are troubled on every side, yet not distressed; we are perplexed, but not in despair;"
+  },
+  {
+    "id": "2cor-4-16",
+    "text": "For which cause we faint not; but though our outward man perish, yet the inward man is renewed day by day.",
+    "reference": "2 Corinthians 4:16",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "For which cause we faint not; but though our outward man perish, yet the inward man is renewed day by day."
+  },
+  {
+    "id": "gal-5-23",
+    "text": "Meekness, temperance: against such there is no law.",
+    "reference": "Galatians 5:23",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "stressed"
+    ],
+    "reflection": "Meekness, temperance: against such there is no law."
+  },
+  {
+    "id": "eph-6-11",
+    "text": "Put on the whole armour of God, that ye may be able to stand against the wiles of the devil.",
+    "reference": "Ephesians 6:11",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "Put on the whole armour of God, that ye may be able to stand against the wiles of the devil."
+  },
+  {
+    "id": "1thess-5-17",
+    "text": "Pray without ceasing.",
+    "reference": "1 Thessalonians 5:17",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "stressed"
+    ],
+    "reflection": "Pray without ceasing."
+  },
+  {
+    "id": "2thess-3-3",
+    "text": "But the Lord is faithful, who shall stablish you, and keep you from evil.",
+    "reference": "2 Thessalonians 3:3",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "The Lord is faithful, who shall stablish you, and keep you from evil."
+  },
+  {
+    "id": "2thess-3-16",
+    "text": "Now the Lord of peace himself give you peace always by all means. The Lord be with you all.",
+    "reference": "2 Thessalonians 3:16",
+    "translation": "KJV",
+    "moods": [
+      "stressed"
+    ],
+    "reflection": "Now the Lord of peace Himself give you peace always by all means. The Lord be with you all."
+  },
+  {
+    "id": "heb-4-16",
+    "text": "Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need.",
+    "reference": "Hebrews 4:16",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need."
+  },
+  {
+    "id": "heb-13-6",
+    "text": "So that we may boldly say, The Lord is my helper, and I will not fear what man shall do unto me.",
+    "reference": "Hebrews 13:6",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "need-strength"
+    ],
+    "reflection": "We may boldly say, The Lord is my helper, and I will not fear what man shall do unto me."
+  },
+  {
+    "id": "james-4-10",
+    "text": "Humble yourselves in the sight of the Lord, and he shall lift you up.",
+    "reference": "James 4:10",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "sad"
+    ],
+    "reflection": "Humble yourselves in the sight of the Lord, and He shall lift you up."
+  },
+  {
+    "id": "1pet-5-6",
+    "text": "Humble yourselves therefore under the mighty hand of God, that he may exalt you in due time:",
+    "reference": "1 Peter 5:6",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "need-strength"
+    ],
+    "reflection": "Humble yourselves therefore under the mighty hand of God, that He may exalt you in due time:"
+  },
+  {
+    "id": "1john-4-4",
+    "text": "Ye are of God, little children, and have overcome them: because greater is he that is in you, than he that is in the world.",
+    "reference": "1 John 4:4",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "anxious"
+    ],
+    "reflection": "Ye are of God, little children, and have overcome them: because greater is He that is in you, than he that is in the world."
+  },
+  {
+    "id": "1john-4-18",
+    "text": "There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love.",
+    "reference": "1 John 4:18",
+    "translation": "KJV",
+    "moods": [
+      "anxious"
+    ],
+    "reflection": "There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love."
+  },
+  {
+    "id": "ps-1-2",
+    "text": "But his delight is in the law of the LORD ; and in his law doth he meditate day and night.",
+    "reference": "Psalm 1:2",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "joyful"
+    ],
+    "reflection": "Delight in God's word nourishes your mind and guides your daily decisions with clarity."
+  },
+  {
+    "id": "ps-5-11",
+    "text": "But let all those that put their trust in thee rejoice: let them ever shout for joy, because thou defendest them: let them also that love thy name be joyful in thee.",
+    "reference": "Psalm 5:11",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "need-strength"
+    ],
+    "reflection": "Rejoice under the shelter of God's wings; His defense surrounding you is sure."
+  },
+  {
+    "id": "ps-27-4",
+    "text": "One thing have I desired of the LORD , that will I seek after; that I may dwell in the house of the LORD all the days of my life, to behold the beauty of the LORD , and to enquire in his temple.",
+    "reference": "Psalm 27:4",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "lost"
+    ],
+    "reflection": "Seek above all else to behold the beauty of the Lord and dwell in His holy temple."
+  },
+  {
+    "id": "ps-36-7",
+    "text": "How excellent is thy lovingkindness, O God! therefore the children of men put their trust under the shadow of thy wings.",
+    "reference": "Psalm 36:7",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "grateful"
+    ],
+    "reflection": "How excellent is God's lovingkindness! Children of men find shelter under His wings."
+  },
+  {
+    "id": "ps-36-9",
+    "text": "For with thee is the fountain of life: in thy light shall we see light.",
+    "reference": "Psalm 36:9",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "joyful"
+    ],
+    "reflection": "With God is the fountain of life, and in His light we clearly see light."
+  },
+  {
+    "id": "ps-51-17",
+    "text": "The sacrifices of God are a broken spirit: a broken and a contrite heart, O God, thou wilt not despise.",
+    "reference": "Psalm 51:17",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "A broken and contrite heart, O God, You will not despise; grace meets your humility."
+  },
+  {
+    "id": "ps-63-1",
+    "text": "O God, thou art my God; early will I seek thee: my soul thirsteth for thee, my flesh longeth for thee in a dry and thirsty land, where no water is;",
+    "reference": "Psalm 63:1",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "joyful"
+    ],
+    "reflection": "Seek God early; in a dry and thirsty land, His love satisfies your innermost being."
+  },
+  {
+    "id": "ps-68-19",
+    "text": "Blessed be the Lord, who daily loadeth us with benefits, even the God of our salvation. Selah.",
+    "reference": "Psalm 68:19",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "stressed"
+    ],
+    "reflection": "Blessed be the Lord, who daily bears our burdens and carries our cares."
+  },
+  {
+    "id": "ps-86-15",
+    "text": "But thou, O Lord, art a God full of compassion, and gracious, longsuffering, and plenteous in mercy and truth.",
+    "reference": "Psalm 86:15",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "sad"
+    ],
+    "reflection": "The Lord is full of compassion, gracious, longsuffering, and plenteous in mercy and truth."
+  },
+  {
+    "id": "ps-100-1",
+    "text": "Make a joyful noise unto the LORD , all ye lands.",
+    "reference": "Psalm 100:1",
+    "translation": "KJV",
+    "moods": [
+      "joyful"
+    ],
+    "reflection": "Make a joyful noise unto the Lord, all ye lands, and celebrate His sovereign grace."
+  },
+  {
+    "id": "ps-103-13",
+    "text": "Like as a father pitieth his children, so the LORD pitieth them that fear him.",
+    "reference": "Psalm 103:13",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "Like as a father pitieth his children, so the Lord pitieth and cares for them that fear Him."
+  },
+  {
+    "id": "ps-107-9",
+    "text": "For he satisfieth the longing soul, and filleth the hungry soul with goodness.",
+    "reference": "Psalm 107:9",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "stressed"
+    ],
+    "reflection": "For He satisfieth the longing soul, and filleth the hungry soul with goodness."
+  },
+  {
+    "id": "ps-116-7",
+    "text": "Return unto thy rest, O my soul; for the LORD hath dealt bountifully with thee.",
+    "reference": "Psalm 116:7",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "grateful"
+    ],
+    "reflection": "Return unto thy rest, O my soul; for the Lord hath dealt bountifully with thee."
+  },
+  {
+    "id": "ps-118-14",
+    "text": "The LORD is my strength and song, and is become my salvation.",
+    "reference": "Psalm 118:14",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "joyful"
+    ],
+    "reflection": "The Lord is my strength and song, and is become my salvation."
+  },
+  {
+    "id": "prov-3-13",
+    "text": "Happy is the man that findeth wisdom, and the man that getteth understanding.",
+    "reference": "Proverbs 3:13",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "lost"
+    ],
+    "reflection": "Happy is the man that findeth wisdom, and the man that getteth understanding."
+  },
+  {
+    "id": "prov-16-24",
+    "text": "Pleasant words are as an honeycomb, sweet to the soul, and health to the bones.",
+    "reference": "Proverbs 16:24",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "Pleasant words are as an honeycomb, sweet to the soul, and health to the bones."
+  },
+  {
+    "id": "prov-17-17",
+    "text": "A friend loveth at all times, and a brother is born for adversity.",
+    "reference": "Proverbs 17:17",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "A friend loveth at all times, and a brother is born for adversity."
+  },
+  {
+    "id": "prov-18-24",
+    "text": "A man that hath friends must shew himself friendly: and there is a friend that sticketh closer than a brother.",
+    "reference": "Proverbs 18:24",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "A man that hath friends must shew himself friendly: and there is a friend that sticketh closer than a brother."
+  },
+  {
+    "id": "prov-31-25",
+    "text": "Strength and honour are her clothing; and she shall rejoice in time to come.",
+    "reference": "Proverbs 31:25",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "need-strength"
+    ],
+    "reflection": "Strength and honour are her clothing; and she shall rejoice in time to come."
+  },
+  {
+    "id": "isa-12-2",
+    "text": "Behold, God is my salvation; I will trust, and not be afraid: for the LORD JEHOVAH is my strength and my song; he also is become my salvation.",
+    "reference": "Isaiah 12:2",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "joyful"
+    ],
+    "reflection": "Behold, God is my salvation; I will trust, and not be afraid: for the Lord JEHOVAH is my strength and my song."
+  },
+  {
+    "id": "isa-43-4",
+    "text": "Since thou wast precious in my sight, thou hast been honourable, and I have loved thee: therefore will I give men for thee, and people for thy life.",
+    "reference": "Isaiah 43:4",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "Since thou wast precious in my sight, thou hast been honourable, and I have loved thee."
+  },
+  {
+    "id": "isa-53-5",
+    "text": "But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.",
+    "reference": "Isaiah 53:5",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "He was wounded for our transgressions, He was bruised for our iniquities: with His stripes we are healed."
+  },
+  {
+    "id": "jer-31-3",
+    "text": "The LORD hath appeared of old unto me, saying , Yea, I have loved thee with an everlasting love: therefore with lovingkindness have I drawn thee.",
+    "reference": "Jeremiah 31:3",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "The Lord hath appeared of old unto me, saying, Yea, I have loved thee with an everlasting love: therefore with lovingkindness have I drawn thee."
+  },
+  {
+    "id": "hab-3-17",
+    "text": "Although the fig tree shall not blossom, neither shall fruit be in the vines; the labour of the olive shall fail, and the fields shall yield no meat; the flock shall be cut off from the fold, and there shall be no herd in the stalls:",
+    "reference": "Habakkuk 3:17",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "Although the fig tree shall not blossom, neither shall fruit be in the vines; yet I will rejoice in the Lord."
+  },
+  {
+    "id": "neh-8-10",
+    "text": "Then he said unto them, Go your way, eat the fat, and drink the sweet, and send portions unto them for whom nothing is prepared: for this day is holy unto our Lord: neither be ye sorry; for the joy of the LORD is your strength.",
+    "reference": "Nehemiah 8:10",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "need-strength"
+    ],
+    "reflection": "The joy of the Lord is your strength; let His gladness fill and restore your heart."
+  },
+  {
+    "id": "matt-5-8",
+    "text": "Blessed are the pure in heart: for they shall see God.",
+    "reference": "Matthew 5:8",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "joyful"
+    ],
+    "reflection": "Blessed are the pure in heart: for they shall see God."
+  },
+  {
+    "id": "matt-6-26",
+    "text": "Behold the fowls of the air: for they sow not, neither do they reap, nor gather into barns; yet your heavenly Father feedeth them. Are ye not much better than they?",
+    "reference": "Matthew 6:26",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "grateful"
+    ],
+    "reflection": "Behold the fowls of the air: your heavenly Father feedeth them. Are ye not much better than they?"
+  },
+  {
+    "id": "john-8-36",
+    "text": "If the Son therefore shall make you free, ye shall be free indeed.",
+    "reference": "John 8:36",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "need-strength"
+    ],
+    "reflection": "If the Son therefore shall make you free, ye shall be free indeed."
+  },
+  {
+    "id": "john-15-9",
+    "text": "As the Father hath loved me, so have I loved you: continue ye in my love.",
+    "reference": "John 15:9",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "stressed"
+    ],
+    "reflection": "As the Father hath loved me, so have I loved you: continue ye in my love."
+  },
+  {
+    "id": "rom-8-37",
+    "text": "Nay, in all these things we are more than conquerors through him that loved us.",
+    "reference": "Romans 8:37",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "joyful"
+    ],
+    "reflection": "Nay, in all these things we are more than conquerors through Him that loved us."
+  },
+  {
+    "id": "rom-12-12",
+    "text": "Rejoicing in hope; patient in tribulation; continuing instant in prayer;",
+    "reference": "Romans 12:12",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "need-strength"
+    ],
+    "reflection": "Rejoicing in hope; patient in tribulation; continuing instant in prayer."
+  },
+  {
+    "id": "2cor-1-3",
+    "text": "Blessed be God, even the Father of our Lord Jesus Christ, the Father of mercies, and the God of all comfort;",
+    "reference": "2 Corinthians 1:3",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "Blessed be God, even the Father of our Lord Jesus Christ, the Father of mercies, and the God of all comfort."
+  },
+  {
+    "id": "2cor-3-17",
+    "text": "Now the Lord is that Spirit: and where the Spirit of the Lord is , there is liberty.",
+    "reference": "2 Corinthians 3:17",
+    "translation": "KJV",
+    "moods": [
+      "joyful"
+    ],
+    "reflection": "Now the Lord is that Spirit: and where the Spirit of the Lord is, there is liberty."
+  },
+  {
+    "id": "phil-4-8",
+    "text": "Finally, brethren, whatsoever things are true, whatsoever things are honest, whatsoever things are just, whatsoever things are pure, whatsoever things are lovely, whatsoever things are of good report; if there be any virtue, and if there be any praise, think on these things.",
+    "reference": "Philippians 4:8",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "joyful"
+    ],
+    "reflection": "Finally, brethren, whatsoever things are true, honest, just, pure, lovely, of good report; think on these things."
+  },
+  {
+    "id": "phil-4-11",
+    "text": "Not that I speak in respect of want: for I have learned, in whatsoever state I am, therewith to be content.",
+    "reference": "Philippians 4:11",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "grateful"
+    ],
+    "reflection": "I have learned, in whatsoever state I am, therewith to be content."
+  },
+  {
+    "id": "1thess-5-11",
+    "text": "Wherefore comfort yourselves together, and edify one another, even as also ye do.",
+    "reference": "1 Thessalonians 5:11",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "grateful"
+    ],
+    "reflection": "Comfort yourselves together, and edify one another, even as also ye do."
+  },
+  {
+    "id": "1thess-5-16",
+    "text": "Rejoice evermore.",
+    "reference": "1 Thessalonians 5:16",
+    "translation": "KJV",
+    "moods": [
+      "joyful"
+    ],
+    "reflection": "Rejoice evermore."
+  },
+  {
+    "id": "1tim-6-6",
+    "text": "But godliness with contentment is great gain.",
+    "reference": "1 Timothy 6:6",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "grateful"
+    ],
+    "reflection": "Godliness with contentment is great gain."
+  },
+  {
+    "id": "2tim-4-7",
+    "text": "I have fought a good fight, I have finished my course, I have kept the faith:",
+    "reference": "2 Timothy 4:7",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "joyful"
+    ],
+    "reflection": "I have fought a good fight, I have finished my course, I have kept the faith:"
+  },
+  {
+    "id": "james-1-2",
+    "text": "My brethren, count it all joy when ye fall into divers temptations;",
+    "reference": "James 1:2",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "need-strength"
+    ],
+    "reflection": "Count it all joy when ye fall into divers temptations; knowing this, that the trying of your faith worketh patience."
+  },
+  {
+    "id": "1pet-1-8",
+    "text": "Whom having not seen, ye love; in whom, though now ye see him not, yet believing, ye rejoice with joy unspeakable and full of glory:",
+    "reference": "1 Peter 1:8",
+    "translation": "KJV",
+    "moods": [
+      "joyful"
+    ],
+    "reflection": "Whom having not seen, ye love; in whom, though now ye see Him not, yet believing, ye rejoice with joy unspeakable and full of glory:"
+  },
+  {
+    "id": "1john-4-16",
+    "text": "And we have known and believed the love that God hath to us. God is love; and he that dwelleth in love dwelleth in God, and God in him.",
+    "reference": "1 John 4:16",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "stressed"
+    ],
+    "reflection": "We have known and believed the love that God hath to us. God is love; and he that dwelleth in love dwelleth in God, and God in him."
+  },
+  {
+    "id": "1john-5-4",
+    "text": "For whatsoever is born of God overcometh the world: and this is the victory that overcometh the world, even our faith.",
+    "reference": "1 John 5:4",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "joyful"
+    ],
+    "reflection": "Whatsoever is born of God overcometh the world: and this is the victory that overcometh the world, even our faith."
+  },
+  {
+    "id": "ps-8-1",
+    "text": "O LORD our Lord, how excellent is thy name in all the earth! who hast set thy glory above the heavens.",
+    "reference": "Psalm 8:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Marvel at the majesty of the Creator whose glory fills the earth and stars."
+  },
+  {
+    "id": "ps-8-9",
+    "text": "O LORD our Lord, how excellent is thy name in all the earth!",
+    "reference": "Psalm 8:9",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "All creation echoes the excellent name of the Lord who cares deeply for you."
+  },
+  {
+    "id": "ps-9-1",
+    "text": "I will praise thee , O LORD , with my whole heart; I will shew forth all thy marvellous works.",
+    "reference": "Psalm 9:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Praise God with your whole heart; recounting His wondrous works drives out despair."
+  },
+  {
+    "id": "ps-16-8",
+    "text": "I have set the LORD always before me: because he is at my right hand, I shall not be moved.",
+    "reference": "Psalm 16:8",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "need-strength"
+    ],
+    "reflection": "Keep the Lord continually before you; with Him at your right hand, you shall not be shaken."
+  },
+  {
+    "id": "ps-16-9",
+    "text": "Therefore my heart is glad, and my glory rejoiceth: my flesh also shall rest in hope.",
+    "reference": "Psalm 16:9",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "A glad heart and rejoicing soul rest secure in the constant goodness of God."
+  },
+  {
+    "id": "ps-18-32",
+    "text": "It is God that girdeth me with strength, and maketh my way perfect.",
+    "reference": "Psalm 18:32",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "It is God who girds you with strength and makes your way straight and secure."
+  },
+  {
+    "id": "ps-19-1",
+    "text": "The heavens declare the glory of God; and the firmament sheweth his handywork.",
+    "reference": "Psalm 19:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "The heavens declare the glory of God, reminding you of the majesty behind your life."
+  },
+  {
+    "id": "ps-19-7",
+    "text": "The law of the LORD is perfect, converting the soul: the testimony of the LORD is sure, making wise the simple.",
+    "reference": "Psalm 19:7",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "need-strength"
+    ],
+    "reflection": "God's law restores the soul, and His testimony makes simple hearts wise."
+  },
+  {
+    "id": "ps-20-7",
+    "text": "Some trust in chariots, and some in horses: but we will remember the name of the LORD our God.",
+    "reference": "Psalm 20:7",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "While the world trusts in earthly power, our confidence rests in the holy name of the Lord."
+  },
+  {
+    "id": "ps-23-3",
+    "text": "He restoreth my soul: he leadeth me in the paths of righteousness for his name’s sake.",
+    "reference": "Psalm 23:3",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "need-strength"
+    ],
+    "reflection": "He restores your soul and leads you down right paths for His name's sake."
+  },
+  {
+    "id": "ps-23-5",
+    "text": "Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over.",
+    "reference": "Psalm 23:5",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "God prepares a table of abundant blessing for you, overflowing your cup with grace."
+  },
+  {
+    "id": "ps-25-4",
+    "text": "Shew me thy ways, O LORD ; teach me thy paths.",
+    "reference": "Psalm 25:4",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Ask the Lord to reveal His ways; He faithfully teaches paths of truth to willing hearts."
+  },
+  {
+    "id": "ps-25-9",
+    "text": "The meek will he guide in judgment: and the meek will he teach his way.",
+    "reference": "Psalm 25:9",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "The meek and humble are guided in judgment, gently instructed in the ways of God."
+  },
+  {
+    "id": "ps-30-12",
+    "text": "To the end that my glory may sing praise to thee, and not be silent. O LORD my God, I will give thanks unto thee for ever.",
+    "reference": "Psalm 30:12",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Give thanks unto God forever; your heart cannot stay silent in the light of His grace."
+  },
+  {
+    "id": "ps-34-1",
+    "text": "I will bless the LORD at all times: his praise shall continually be in my mouth.",
+    "reference": "Psalm 34:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Bless the Lord at all times; let His praise continually be on your lips."
+  },
+  {
+    "id": "ps-34-3",
+    "text": "O magnify the LORD with me, and let us exalt his name together.",
+    "reference": "Psalm 34:3",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Magnify the Lord together and exalt His name in holy unity and fellowship."
+  },
+  {
+    "id": "ps-37-23",
+    "text": "The steps of a good man are ordered by the LORD : and he delighteth in his way.",
+    "reference": "Psalm 37:23",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "The steps of a good man are ordered by the Lord, and He delights in his journey."
+  },
+  {
+    "id": "ps-40-3",
+    "text": "And he hath put a new song in my mouth, even praise unto our God: many shall see it , and fear, and shall trust in the LORD .",
+    "reference": "Psalm 40:3",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "He puts a new song in your mouth, a hymn of praise unto our God."
+  },
+  {
+    "id": "ps-59-16",
+    "text": "But I will sing of thy power; yea, I will sing aloud of thy mercy in the morning: for thou hast been my defence and refuge in the day of my trouble.",
+    "reference": "Psalm 59:16",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Sing aloud of God's mercy in the morning; He has been your fortress and defense."
+  },
+  {
+    "id": "ps-62-7",
+    "text": "In God is my salvation and my glory: the rock of my strength, and my refuge, is in God.",
+    "reference": "Psalm 62:7",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "In God is my salvation and glory; the rock of my strength and refuge is in God."
+  },
+  {
+    "id": "ps-63-3",
+    "text": "Because thy lovingkindness is better than life, my lips shall praise thee.",
+    "reference": "Psalm 63:3",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Because Your lovingkindness is better than life itself, my lips shall praise You."
+  },
+  {
+    "id": "ps-66-2",
+    "text": "Sing forth the honour of his name: make his praise glorious.",
+    "reference": "Psalm 66:2",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Sing forth the honour of His name; make His praise glorious throughout the earth."
+  },
+  {
+    "id": "ps-86-11",
+    "text": "Teach me thy way, O LORD ; I will walk in thy truth: unite my heart to fear thy name.",
+    "reference": "Psalm 86:11",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Teach me Thy way, O Lord; unite my heart to reverence and honor Thy name."
+  },
+  {
+    "id": "ps-90-12",
+    "text": "So teach us to number our days, that we may apply our hearts unto wisdom.",
+    "reference": "Psalm 90:12",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Teach us to number our days that we may apply our hearts unto true wisdom."
+  },
+  {
+    "id": "ps-90-14",
+    "text": "O satisfy us early with thy mercy; that we may rejoice and be glad all our days.",
+    "reference": "Psalm 90:14",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Satisfy us early with Thy mercy, that we may rejoice and be glad all our days."
+  },
+  {
+    "id": "ps-92-1",
+    "text": "It is a good thing to give thanks unto the LORD , and to sing praises unto thy name, O most High:",
+    "reference": "Psalm 92:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "It is a good thing to give thanks unto the Lord, and to sing praises unto Thy name."
+  },
+  {
+    "id": "ps-95-1",
+    "text": "O come, let us sing unto the LORD : let us make a joyful noise to the rock of our salvation.",
+    "reference": "Psalm 95:1",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "O come, let us sing unto the Lord; let us make a joyful noise to the rock of our salvation."
+  },
+  {
+    "id": "ps-96-1",
+    "text": "O sing unto the LORD a new song: sing unto the LORD , all the earth.",
+    "reference": "Psalm 96:1",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "O sing unto the Lord a new song; sing unto the Lord, all the earth."
+  },
+  {
+    "id": "ps-98-1",
+    "text": "O sing unto the LORD a new song; for he hath done marvellous things: his right hand, and his holy arm, hath gotten him the victory.",
+    "reference": "Psalm 98:1",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Sing unto the Lord a new song, for He hath done marvellous and wonder-filled things."
+  },
+  {
+    "id": "ps-100-2",
+    "text": "Serve the LORD with gladness: come before his presence with singing.",
+    "reference": "Psalm 100:2",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Serve the Lord with gladness; come before His presence with singing and joy."
+  },
+  {
+    "id": "ps-103-1",
+    "text": "Bless the LORD , O my soul: and all that is within me, bless his holy name.",
+    "reference": "Psalm 103:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Bless the Lord, O my soul: and all that is within me, bless His holy name."
+  },
+  {
+    "id": "ps-111-10",
+    "text": "The fear of the LORD is the beginning of wisdom: a good understanding have all they that do his commandments: his praise endureth for ever.",
+    "reference": "Psalm 111:10",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "The fear of the Lord is the beginning of wisdom: a good understanding have all they that do His commandments."
+  },
+  {
+    "id": "ps-119-11",
+    "text": "Thy word have I hid in mine heart, that I might not sin against thee.",
+    "reference": "Psalm 119:11",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Thy word have I hid in mine heart, that I might not sin against thee."
+  },
+  {
+    "id": "ps-121-1",
+    "text": "I will lift up mine eyes unto the hills, from whence cometh my help.",
+    "reference": "Psalm 121:1",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "need-strength"
+    ],
+    "reflection": "I will lift up mine eyes unto the hills, from whence cometh my help."
+  },
+  {
+    "id": "ps-121-2",
+    "text": "My help cometh from the LORD , which made heaven and earth.",
+    "reference": "Psalm 121:2",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "My help cometh from the Lord, which made heaven and earth."
+  },
+  {
+    "id": "ps-139-10",
+    "text": "Even there shall thy hand lead me, and thy right hand shall hold me.",
+    "reference": "Psalm 139:10",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "need-strength"
+    ],
+    "reflection": "Even there shall Thy hand lead me, and Thy right hand shall hold me."
+  },
+  {
+    "id": "ps-139-14",
+    "text": "I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well.",
+    "reference": "Psalm 139:14",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "I will praise Thee; for I am fearfully and wonderfully made: marvellous are Thy works."
+  },
+  {
+    "id": "ps-147-5",
+    "text": "Great is our Lord, and of great power: his understanding is infinite.",
+    "reference": "Psalm 147:5",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "Great is our Lord, and of great power: His understanding is infinite."
+  },
+  {
+    "id": "ps-150-6",
+    "text": "Let every thing that hath breath praise the LORD . Praise ye the LORD .",
+    "reference": "Psalm 150:6",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Let every thing that hath breath praise the Lord. Praise ye the Lord."
+  },
+  {
+    "id": "prov-3-6",
+    "text": "In all thy ways acknowledge him, and he shall direct thy paths.",
+    "reference": "Proverbs 3:6",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "In all thy ways acknowledge Him, and He shall direct thy paths with wisdom and light."
+  },
+  {
+    "id": "prov-3-7",
+    "text": "Be not wise in thine own eyes: fear the LORD , and depart from evil.",
+    "reference": "Proverbs 3:7",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Be not wise in thine own eyes: fear the Lord, and depart from evil."
+  },
+  {
+    "id": "prov-10-22",
+    "text": "The blessing of the LORD , it maketh rich, and he addeth no sorrow with it.",
+    "reference": "Proverbs 10:22",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "The blessing of the Lord, it maketh rich, and He addeth no sorrow with it."
+  },
+  {
+    "id": "prov-11-25",
+    "text": "The liberal soul shall be made fat: and he that watereth shall be watered also himself.",
+    "reference": "Proverbs 11:25",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "The liberal soul shall be made fat: and he that watereth shall be watered also himself."
+  },
+  {
+    "id": "prov-15-15",
+    "text": "All the days of the afflicted are evil: but he that is of a merry heart hath a continual feast.",
+    "reference": "Proverbs 15:15",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "All the days of the afflicted are evil: but he that is of a merry heart hath a continual feast."
+  },
+  {
+    "id": "prov-15-23",
+    "text": "A man hath joy by the answer of his mouth: and a word spoken in due season, how good is it !",
+    "reference": "Proverbs 15:23",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "A man hath joy by the answer of his mouth: and a word spoken in due season, how good is it!"
+  },
+  {
+    "id": "prov-16-9",
+    "text": "A man’s heart deviseth his way: but the LORD directeth his steps.",
+    "reference": "Proverbs 16:9",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "A man's heart deviseth his way: but the Lord directeth his steps."
+  },
+  {
+    "id": "prov-16-16",
+    "text": "How much better is it to get wisdom than gold! and to get understanding rather to be chosen than silver!",
+    "reference": "Proverbs 16:16",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "How much better is it to get wisdom than gold! and to get understanding rather to be chosen than silver!"
+  },
+  {
+    "id": "prov-20-24",
+    "text": "Man’s goings are of the LORD ; how can a man then understand his own way?",
+    "reference": "Proverbs 20:24",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Man's goings are of the Lord; how can a man then understand his own way?"
+  },
+  {
+    "id": "prov-22-1",
+    "text": "A good name is rather to be chosen than great riches, and loving favour rather than silver and gold.",
+    "reference": "Proverbs 22:1",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "A good name is rather to be chosen than great riches, and loving favour rather than silver and gold."
+  },
+  {
+    "id": "prov-27-9",
+    "text": "Ointment and perfume rejoice the heart: so doth the sweetness of a man’s friend by hearty counsel.",
+    "reference": "Proverbs 27:9",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Ointment and perfume rejoice the heart: so doth the sweetness of a man's friend by hearty counsel."
+  },
+  {
+    "id": "prov-28-1",
+    "text": "The wicked flee when no man pursueth: but the righteous are bold as a lion.",
+    "reference": "Proverbs 28:1",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "The wicked flee when no man pursueth: but the righteous are bold as a lion."
+  },
+  {
+    "id": "prov-30-5",
+    "text": "Every word of God is pure: he is a shield unto them that put their trust in him.",
+    "reference": "Proverbs 30:5",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "Every word of God is pure: He is a shield unto them that put their trust in Him."
+  },
+  {
+    "id": "isa-12-3",
+    "text": "Therefore with joy shall ye draw water out of the wells of salvation.",
+    "reference": "Isaiah 12:3",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Therefore with joy shall ye draw water out of the wells of salvation."
+  },
+  {
+    "id": "isa-40-28",
+    "text": "Hast thou not known? hast thou not heard, that the everlasting God, the LORD , the Creator of the ends of the earth, fainteth not, neither is weary? there is no searching of his understanding.",
+    "reference": "Isaiah 40:28",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "The everlasting God, the Lord, the Creator of the ends of the earth, fainteth not, neither is weary."
+  },
+  {
+    "id": "isa-40-29",
+    "text": "He giveth power to the faint; and to them that have no might he increaseth strength.",
+    "reference": "Isaiah 40:29",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "He giveth power to the faint; and to them that have no might He increaseth strength."
+  },
+  {
+    "id": "isa-55-12",
+    "text": "For ye shall go out with joy, and be led forth with peace: the mountains and the hills shall break forth before you into singing, and all the trees of the field shall clap their hands.",
+    "reference": "Isaiah 55:12",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Ye shall go out with joy, and be led forth with peace: the mountains and the hills shall break forth into singing."
+  },
+  {
+    "id": "isa-61-10",
+    "text": "I will greatly rejoice in the LORD , my soul shall be joyful in my God; for he hath clothed me with the garments of salvation, he hath covered me with the robe of righteousness, as a bridegroom decketh himself with ornaments, and as a bride adorneth herself with her jewels.",
+    "reference": "Isaiah 61:10",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "I will greatly rejoice in the Lord, my soul shall be joyful in my God; for He hath clothed me with the garments of salvation."
+  },
+  {
+    "id": "mic-6-8",
+    "text": "He hath shewed thee, O man, what is good; and what doth the LORD require of thee, but to do justly, and to love mercy, and to walk humbly with thy God?",
+    "reference": "Micah 6:8",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "He hath shewed thee, O man, what is good; and what doth the Lord require of thee, but to do justly, and to love mercy, and to walk humbly with thy God?"
+  },
+  {
+    "id": "hab-3-18",
+    "text": "Yet I will rejoice in the LORD , I will joy in the God of my salvation.",
+    "reference": "Habakkuk 3:18",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Yet I will rejoice in the Lord, I will joy in the God of my salvation."
+  },
+  {
+    "id": "hab-3-19",
+    "text": "The LORD God is my strength, and he will make my feet like hinds’ feet , and he will make me to walk upon mine high places. To the chief singer on my stringed instruments.",
+    "reference": "Habakkuk 3:19",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "The Lord God is my strength, and He will make my feet like hinds' feet, and He will make me to walk upon mine high places."
+  },
+  {
+    "id": "zech-4-6",
+    "text": "Then he answered and spake unto me, saying, This is the word of the LORD unto Zerubbabel, saying, Not by might, nor by power, but by my spirit, saith the LORD of hosts.",
+    "reference": "Zechariah 4:6",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "Not by might, nor by power, but by my spirit, saith the Lord of hosts."
+  },
+  {
+    "id": "matt-5-16",
+    "text": "Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.",
+    "reference": "Matthew 5:16",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "grateful"
+    ],
+    "reflection": "Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven."
+  },
+  {
+    "id": "matt-6-21",
+    "text": "For where your treasure is, there will your heart be also.",
+    "reference": "Matthew 6:21",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Where your treasure is, there will your heart be also."
+  },
+  {
+    "id": "matt-22-37",
+    "text": "Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind.",
+    "reference": "Matthew 22:37",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind."
+  },
+  {
+    "id": "luke-6-38",
+    "text": "Give, and it shall be given unto you; good measure, pressed down, and shaken together, and running over, shall men give into your bosom. For with the same measure that ye mete withal it shall be measured to you again.",
+    "reference": "Luke 6:38",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Give, and it shall be given unto you; good measure, pressed down, and shaken together, and running over."
+  },
+  {
+    "id": "john-1-12",
+    "text": "But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name:",
+    "reference": "John 1:12",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "As many as received Him, to them gave He power to become the sons of God, even to them that believe on His name."
+  },
+  {
+    "id": "john-6-35",
+    "text": "And Jesus said unto them, I am the bread of life: he that cometh to me shall never hunger; and he that believeth on me shall never thirst.",
+    "reference": "John 6:35",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "I am the bread of life: he that cometh to me shall never hunger; and he that believeth on me shall never thirst."
+  },
+  {
+    "id": "john-8-32",
+    "text": "And ye shall know the truth, and the truth shall make you free.",
+    "reference": "John 8:32",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "Ye shall know the truth, and the truth shall make you free."
+  },
+  {
+    "id": "john-10-27",
+    "text": "My sheep hear my voice, and I know them, and they follow me:",
+    "reference": "John 10:27",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "My sheep hear my voice, and I know them, and they follow me."
+  },
+  {
+    "id": "john-13-34",
+    "text": "A new commandment I give unto you, That ye love one another; as I have loved you, that ye also love one another.",
+    "reference": "John 13:34",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "A new commandment I give unto you, That ye love one another; as I have loved you, that ye also love one another."
+  },
+  {
+    "id": "john-14-6",
+    "text": "Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me.",
+    "reference": "John 14:6",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "I am the way, the truth, and the life: no man cometh unto the Father, but by me."
+  },
+  {
+    "id": "john-15-5",
+    "text": "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing.",
+    "reference": "John 15:5",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing."
+  },
+  {
+    "id": "john-15-12",
+    "text": "This is my commandment, That ye love one another, as I have loved you.",
+    "reference": "John 15:12",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "This is my commandment, That ye love one another, as I have loved you."
+  },
+  {
+    "id": "rom-8-14",
+    "text": "For as many as are led by the Spirit of God, they are the sons of God.",
+    "reference": "Romans 8:14",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "As many as are led by the Spirit of God, they are the sons of God."
+  },
+  {
+    "id": "rom-12-1",
+    "text": "I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.",
+    "reference": "Romans 12:1",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service."
+  },
+  {
+    "id": "rom-12-2",
+    "text": "And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.",
+    "reference": "Romans 12:2",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."
+  },
+  {
+    "id": "rom-12-9",
+    "text": "Let love be without dissimulation. Abhor that which is evil; cleave to that which is good.",
+    "reference": "Romans 12:9",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Let love be without dissimulation. Abhor that which is evil; cleave to that which is good."
+  },
+  {
+    "id": "rom-12-10",
+    "text": "Be kindly affectioned one to another with brotherly love; in honour preferring one another;",
+    "reference": "Romans 12:10",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Be kindly affectioned one to another with brotherly love; in honour preferring one another."
+  },
+  {
+    "id": "rom-12-21",
+    "text": "Be not overcome of evil, but overcome evil with good.",
+    "reference": "Romans 12:21",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "Be not overcome of evil, but overcome evil with good."
+  },
+  {
+    "id": "1cor-13-4",
+    "text": "Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up,",
+    "reference": "1 Corinthians 13:4",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up."
+  },
+  {
+    "id": "1cor-15-57",
+    "text": "But thanks be to God, which giveth us the victory through our Lord Jesus Christ.",
+    "reference": "1 Corinthians 15:57",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Thanks be to God, which giveth us the victory through our Lord Jesus Christ."
+  },
+  {
+    "id": "1cor-16-13",
+    "text": "Watch ye, stand fast in the faith, quit you like men, be strong.",
+    "reference": "1 Corinthians 16:13",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "Watch ye, stand fast in the faith, quit you like men, be strong."
+  },
+  {
+    "id": "1cor-16-14",
+    "text": "Let all your things be done with charity.",
+    "reference": "1 Corinthians 16:14",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Let all your things be done with charity."
+  },
+  {
+    "id": "2cor-5-7",
+    "text": "(For we walk by faith, not by sight:)",
+    "reference": "2 Corinthians 5:7",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "need-strength"
+    ],
+    "reflection": "For we walk by faith, not by sight."
+  },
+  {
+    "id": "eph-1-3",
+    "text": "Blessed be the God and Father of our Lord Jesus Christ, who hath blessed us with all spiritual blessings in heavenly places in Christ:",
+    "reference": "Ephesians 1:3",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Blessed be the God and Father of our Lord Jesus Christ, who hath blessed us with all spiritual blessings in heavenly places in Christ."
+  },
+  {
+    "id": "eph-3-16",
+    "text": "That he would grant you, according to the riches of his glory, to be strengthened with might by his Spirit in the inner man;",
+    "reference": "Ephesians 3:16",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "That He would grant you, according to the riches of His glory, to be strengthened with might by His Spirit in the inner man;"
+  },
+  {
+    "id": "eph-3-21",
+    "text": "Unto him be glory in the church by Christ Jesus throughout all ages, world without end. Amen.",
+    "reference": "Ephesians 3:21",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Unto Him be glory in the church by Christ Jesus throughout all ages, world without end. Amen."
+  },
+  {
+    "id": "eph-4-32",
+    "text": "And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ’s sake hath forgiven you.",
+    "reference": "Ephesians 4:32",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ's sake hath forgiven you."
+  },
+  {
+    "id": "eph-5-2",
+    "text": "And walk in love, as Christ also hath loved us, and hath given himself for us an offering and a sacrifice to God for a sweetsmelling savour.",
+    "reference": "Ephesians 5:2",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Walk in love, as Christ also hath loved us, and hath given Himself for us an offering and a sacrifice to God."
+  },
+  {
+    "id": "eph-6-10",
+    "text": "Finally, my brethren, be strong in the Lord, and in the power of his might.",
+    "reference": "Ephesians 6:10",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "Finally, my brethren, be strong in the Lord, and in the power of His might."
+  },
+  {
+    "id": "phil-2-13",
+    "text": "For it is God which worketh in you both to will and to do of his good pleasure.",
+    "reference": "Philippians 2:13",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "lost"
+    ],
+    "reflection": "It is God which worketh in you both to will and to do of His good pleasure."
+  },
+  {
+    "id": "col-2-6",
+    "text": "As ye have therefore received Christ Jesus the Lord, so walk ye in him:",
+    "reference": "Colossians 2:6",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "As ye have therefore received Christ Jesus the Lord, so walk ye in Him:"
+  },
+  {
+    "id": "col-3-12",
+    "text": "Put on therefore, as the elect of God, holy and beloved, bowels of mercies, kindness, humbleness of mind, meekness, longsuffering;",
+    "reference": "Colossians 3:12",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Put on therefore, as the elect of God, holy and beloved, bowels of mercies, kindness, humbleness of mind, meekness, longsuffering;"
+  },
+  {
+    "id": "col-3-14",
+    "text": "And above all these things put on charity, which is the bond of perfectness.",
+    "reference": "Colossians 3:14",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Above all these things put on charity, which is the bond of perfectness."
+  },
+  {
+    "id": "1tim-4-12",
+    "text": "Let no man despise thy youth; but be thou an example of the believers, in word, in conversation, in charity, in spirit, in faith, in purity.",
+    "reference": "1 Timothy 4:12",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "need-strength"
+    ],
+    "reflection": "Let no man despise thy youth; but be thou an example of the believers, in word, in conversation, in charity, in spirit, in faith, in purity."
+  },
+  {
+    "id": "1tim-6-12",
+    "text": "Fight the good fight of faith, lay hold on eternal life, whereunto thou art also called, and hast professed a good profession before many witnesses.",
+    "reference": "1 Timothy 6:12",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "Fight the good fight of faith, lay hold on eternal life, whereunto thou art also called."
+  },
+  {
+    "id": "heb-4-12",
+    "text": "For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and is a discerner of the thoughts and intents of the heart.",
+    "reference": "Hebrews 4:12",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "The word of God is quick, and powerful, and sharper than any twoedged sword."
+  },
+  {
+    "id": "heb-10-24",
+    "text": "And let us consider one another to provoke unto love and to good works:",
+    "reference": "Hebrews 10:24",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Let us consider one another to provoke unto love and to good works:"
+  },
+  {
+    "id": "james-1-5",
+    "text": "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.",
+    "reference": "James 1:5",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him."
+  },
+  {
+    "id": "james-4-7",
+    "text": "Submit yourselves therefore to God. Resist the devil, and he will flee from you.",
+    "reference": "James 4:7",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "Submit yourselves therefore to God. Resist the devil, and he will flee from you."
+  },
+  {
+    "id": "james-5-16",
+    "text": "Confess your faults one to another, and pray one for another, that ye may be healed. The effectual fervent prayer of a righteous man availeth much.",
+    "reference": "James 5:16",
+    "translation": "KJV",
+    "moods": [
+      "need-strength"
+    ],
+    "reflection": "The effectual fervent prayer of a righteous man availeth much."
+  },
+  {
+    "id": "1pet-2-9",
+    "text": "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light:",
+    "reference": "1 Peter 2:9",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of Him who hath called you out of darkness into His marvellous light:"
+  },
+  {
+    "id": "1john-3-1",
+    "text": "Behold, what manner of love the Father hath bestowed upon us, that we should be called the sons of God: therefore the world knoweth us not, because it knew him not.",
+    "reference": "1 John 3:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "Behold, what manner of love the Father hath bestowed upon us, that we should be called the sons of God:"
+  },
+  {
+    "id": "1john-4-7",
+    "text": "Beloved, let us love one another: for love is of God; and every one that loveth is born of God, and knoweth God.",
+    "reference": "1 John 4:7",
+    "translation": "KJV",
+    "moods": [
+      "lost"
+    ],
+    "reflection": "Beloved, let us love one another: for love is of God; and every one that loveth is born of God, and knoweth God."
+  },
+  {
+    "id": "jude-1-25",
+    "text": "To the only wise God our Saviour, be glory and majesty, dominion and power, both now and ever. Amen.",
+    "reference": "Jude 1:25",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "joyful"
+    ],
+    "reflection": "To the only wise God our Saviour, be glory and majesty, dominion and power, both now and ever. Amen."
+  },
+  {
+    "id": "ps-19-14",
+    "text": "Let the words of my mouth, and the meditation of my heart, be acceptable in thy sight, O LORD , my strength, and my redeemer.",
+    "reference": "Psalm 19:14",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "grateful"
+    ],
+    "reflection": "May the words of your mouth and the meditation of your heart be pleasing to your Redeemer."
+  },
+  {
+    "id": "ps-24-1",
+    "text": "The earth is the LORD’s , and the fulness thereof; the world, and they that dwell therein.",
+    "reference": "Psalm 24:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "The earth and everything in it belongs to God; you are held within His vast design."
+  },
+  {
+    "id": "ps-27-13",
+    "text": "I had fainted , unless I had believed to see the goodness of the LORD in the land of the living.",
+    "reference": "Psalm 27:13",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "Hold on in faith; you will truly see the goodness of the Lord in the land of the living."
+  },
+  {
+    "id": "ps-28-7",
+    "text": "The LORD is my strength and my shield; my heart trusted in him, and I am helped: therefore my heart greatly rejoiceth; and with my song will I praise him.",
+    "reference": "Psalm 28:7",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "need-strength"
+    ],
+    "reflection": "The Lord is your strength and shield; your heart can trust Him and sing with praise."
+  },
+  {
+    "id": "ps-33-5",
+    "text": "He loveth righteousness and judgment: the earth is full of the goodness of the LORD .",
+    "reference": "Psalm 33:5",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "The earth is full of the lovingkindness and unfailing goodness of the Lord."
+  },
+  {
+    "id": "ps-33-18",
+    "text": "Behold, the eye of the LORD is upon them that fear him, upon them that hope in his mercy;",
+    "reference": "Psalm 33:18",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "anxious"
+    ],
+    "reflection": "The eye of the Lord is upon those that fear Him, upon those that hope in His steadfast mercy."
+  },
+  {
+    "id": "ps-40-1",
+    "text": "I waited patiently for the LORD ; and he inclined unto me, and heard my cry.",
+    "reference": "Psalm 40:1",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "Wait patiently for the Lord; He inclines His ear and hears your heartfelt cry."
+  },
+  {
+    "id": "ps-42-5",
+    "text": "Why art thou cast down, O my soul? and why art thou disquieted in me? hope thou in God: for I shall yet praise him for the help of his countenance.",
+    "reference": "Psalm 42:5",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
+    "reflection": "Why cast down, O soul? Hope in God, for you shall yet praise Him for His saving presence."
+  },
+  {
+    "id": "ps-42-8",
+    "text": "Yet the LORD will command his lovingkindness in the daytime, and in the night his song shall be with me, and my prayer unto the God of my life.",
+    "reference": "Psalm 42:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "stressed"
+    ],
+    "reflection": "The Lord commands His lovingkindness in the daytime, and His song is with you in the night."
+  },
+  {
+    "id": "ps-57-7",
+    "text": "My heart is fixed, O God, my heart is fixed: I will sing and give praise.",
+    "reference": "Psalm 57:7",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "need-strength"
+    ],
+    "reflection": "My heart is fixed, O God, my heart is steadfast; I will sing and give praise."
+  },
+  {
+    "id": "ps-62-5",
+    "text": "My soul, wait thou only upon God; for my expectation is from him.",
+    "reference": "Psalm 62:5",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "stressed"
+    ],
+    "reflection": "Wait only upon God, my soul; for my expectation and confident hope are from Him."
+  },
+  {
+    "id": "ps-65-11",
+    "text": "Thou crownest the year with thy goodness; and thy paths drop fatness.",
+    "reference": "Psalm 65:11",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "God crowns the year with His goodness, and His paths drop abundance and blessing."
+  },
+  {
+    "id": "ps-66-20",
+    "text": "Blessed be God, which hath not turned away my prayer, nor his mercy from me.",
+    "reference": "Psalm 66:20",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "Blessed be God, who has not turned away our prayer nor His mercy from us."
+  },
+  {
+    "id": "ps-92-2",
+    "text": "To shew forth thy lovingkindness in the morning, and thy faithfulness every night,",
+    "reference": "Psalm 92:2",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "To show forth Thy lovingkindness in the morning, and Thy faithfulness every night."
+  },
+  {
+    "id": "ps-95-6",
+    "text": "O come, let us worship and bow down: let us kneel before the LORD our maker.",
+    "reference": "Psalm 95:6",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "lost"
+    ],
+    "reflection": "O come, let us worship and bow down; let us kneel before the Lord our Maker."
+  },
+  {
+    "id": "ps-100-3",
+    "text": "Know ye that the LORD he is God: it is he that hath made us, and not we ourselves; we are his people, and the sheep of his pasture.",
+    "reference": "Psalm 100:3",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "grateful"
+    ],
+    "reflection": "Know that the Lord He is God; it is He that made us, and we are the sheep of His pasture."
+  },
+  {
+    "id": "ps-103-2",
+    "text": "Bless the LORD , O my soul, and forget not all his benefits:",
+    "reference": "Psalm 103:2",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "Bless the Lord, O my soul, and forget not all His gracious benefits toward you."
+  },
+  {
+    "id": "ps-103-8",
+    "text": "The LORD is merciful and gracious, slow to anger, and plenteous in mercy.",
+    "reference": "Psalm 103:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "The Lord is merciful and gracious, slow to anger, and plenteous in everlasting mercy."
+  },
+  {
+    "id": "ps-116-1",
+    "text": "I love the LORD , because he hath heard my voice and my supplications.",
+    "reference": "Psalm 116:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "I love the Lord, because He hath heard my voice and my heartfelt supplications."
+  },
+  {
+    "id": "ps-118-1",
+    "text": "O give thanks unto the LORD ; for he is good: because his mercy endureth for ever.",
+    "reference": "Psalm 118:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "O give thanks unto the Lord; for He is good: because His mercy endureth for ever."
+  },
+  {
+    "id": "ps-119-50",
+    "text": "This is my comfort in my affliction: for thy word hath quickened me.",
+    "reference": "Psalm 119:50",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
+    "reflection": "This is my comfort in my affliction: for thy word hath quickened and revived me."
+  },
+  {
+    "id": "ps-130-5",
+    "text": "I wait for the LORD , my soul doth wait, and in his word do I hope.",
+    "reference": "Psalm 130:5",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "I wait for the Lord, my soul doth wait, and in His word do I place my confident hope."
+  },
+  {
+    "id": "ps-136-1",
+    "text": "O give thanks unto the LORD ; for he is good: for his mercy endureth for ever.",
+    "reference": "Psalm 136:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "O give thanks unto the Lord; for He is good: for His mercy endureth for ever."
+  },
+  {
+    "id": "ps-145-9",
+    "text": "The LORD is good to all: and his tender mercies are over all his works.",
+    "reference": "Psalm 145:9",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "The Lord is good to all: and His tender mercies are over all His works."
+  },
+  {
+    "id": "prov-3-3",
+    "text": "Let not mercy and truth forsake thee: bind them about thy neck; write them upon the table of thine heart:",
+    "reference": "Proverbs 3:3",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "grateful"
+    ],
+    "reflection": "Let not mercy and truth forsake thee: bind them about thy neck; write them upon the table of thine heart."
+  },
+  {
+    "id": "prov-13-12",
+    "text": "Hope deferred maketh the heart sick: but when the desire cometh, it is a tree of life.",
+    "reference": "Proverbs 13:12",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "Hope deferred maketh the heart sick: but when the desire cometh, it is a tree of life."
+  },
+  {
+    "id": "prov-22-4",
+    "text": "By humility and the fear of the LORD are riches, and honour, and life.",
+    "reference": "Proverbs 22:4",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "grateful"
+    ],
+    "reflection": "By humility and the fear of the Lord are riches, and honour, and life."
+  },
+  {
+    "id": "prov-27-17",
+    "text": "Iron sharpeneth iron; so a man sharpeneth the countenance of his friend.",
+    "reference": "Proverbs 27:17",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "grateful"
+    ],
+    "reflection": "Iron sharpeneth iron; so a man sharpeneth the countenance of his friend."
+  },
+  {
+    "id": "prov-31-30",
+    "text": "Favour is deceitful, and beauty is vain: but a woman that feareth the LORD , she shall be praised.",
+    "reference": "Proverbs 31:30",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "grateful"
+    ],
+    "reflection": "Favour is deceitful, and beauty is vain: but a woman that feareth the Lord, she shall be praised."
+  },
+  {
+    "id": "isa-25-1",
+    "text": "O LORD , thou art my God; I will exalt thee, I will praise thy name; for thou hast done wonderful things; thy counsels of old are faithfulness and truth.",
+    "reference": "Isaiah 25:1",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "O Lord, Thou art my God; I will exalt Thee, I will praise Thy name; for Thou hast done wonderful things."
+  },
+  {
+    "id": "isa-49-15",
+    "text": "Can a woman forget her sucking child, that she should not have compassion on the son of her womb? yea, they may forget, yet will I not forget thee.",
+    "reference": "Isaiah 49:15",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
+    "reflection": "Can a woman forget her sucking child? yea, they may forget, yet will I not forget thee."
+  },
+  {
+    "id": "isa-54-10",
+    "text": "For the mountains shall depart, and the hills be removed; but my kindness shall not depart from thee, neither shall the covenant of my peace be removed, saith the LORD that hath mercy on thee.",
+    "reference": "Isaiah 54:10",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "The mountains shall depart, and the hills be removed; but my kindness shall not depart from thee."
+  },
+  {
+    "id": "isa-61-1",
+    "text": "The Spirit of the Lord GOD is upon me; because the LORD hath anointed me to preach good tidings unto the meek; he hath sent me to bind up the brokenhearted, to proclaim liberty to the captives, and the opening of the prison to them that are bound;",
+    "reference": "Isaiah 61:1",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "The Spirit of the Lord God is upon me; He hath sent me to bind up the brokenhearted, to proclaim liberty to the captives."
+  },
+  {
+    "id": "jer-29-12",
+    "text": "Then shall ye call upon me, and ye shall go and pray unto me, and I will hearken unto you.",
+    "reference": "Jeremiah 29:12",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "anxious"
+    ],
+    "reflection": "Then shall ye call upon me, and ye shall go and pray unto me, and I will hearken unto you."
+  },
+  {
+    "id": "lam-3-25",
+    "text": "The LORD is good unto them that wait for him, to the soul that seeketh him.",
+    "reference": "Lamentations 3:25",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "stressed"
+    ],
+    "reflection": "The Lord is good unto them that wait for Him, to the soul that seeketh Him."
+  },
+  {
+    "id": "lam-3-26",
+    "text": "It is good that a man should both hope and quietly wait for the salvation of the LORD .",
+    "reference": "Lamentations 3:26",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "hopeful"
+    ],
+    "reflection": "It is good that a man should both hope and quietly wait for the salvation of the Lord."
+  },
+  {
+    "id": "mic-7-7",
+    "text": "Therefore I will look unto the LORD ; I will wait for the God of my salvation: my God will hear me.",
+    "reference": "Micah 7:7",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "Therefore I will look unto the Lord; I will wait for the God of my salvation: my God will hear me."
+  },
+  {
+    "id": "job-19-25",
+    "text": "For I know that my redeemer liveth, and that he shall stand at the latter day upon the earth:",
+    "reference": "Job 19:25",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "For I know that my Redeemer liveth, and that He shall stand at the latter day upon the earth."
+  },
+  {
+    "id": "matt-5-3",
+    "text": "Blessed are the poor in spirit: for theirs is the kingdom of heaven.",
+    "reference": "Matthew 5:3",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
+    "reflection": "Blessed are the poor in spirit: for theirs is the kingdom of heaven."
+  },
+  {
+    "id": "matt-5-7",
+    "text": "Blessed are the merciful: for they shall obtain mercy.",
+    "reference": "Matthew 5:7",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "Blessed are the merciful: for they shall obtain mercy."
+  },
+  {
+    "id": "matt-18-20",
+    "text": "For where two or three are gathered together in my name, there am I in the midst of them.",
+    "reference": "Matthew 18:20",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "hopeful"
+    ],
+    "reflection": "Where two or three are gathered together in my name, there am I in the midst of them."
+  },
+  {
+    "id": "mark-12-30",
+    "text": "And thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind, and with all thy strength: this is the first commandment.",
+    "reference": "Mark 12:30",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "lost"
+    ],
+    "reflection": "Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind, and with all thy strength."
+  },
+  {
+    "id": "luke-1-78",
+    "text": "Through the tender mercy of our God; whereby the dayspring from on high hath visited us,",
+    "reference": "Luke 1:78",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "Through the tender mercy of our God; whereby the dayspring from on high hath visited us."
+  },
+  {
+    "id": "luke-12-32",
+    "text": "Fear not, little flock; for it is your Father’s good pleasure to give you the kingdom.",
+    "reference": "Luke 12:32",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "hopeful"
+    ],
+    "reflection": "Fear not, little flock; for it is your Father's good pleasure to give you the kingdom."
+  },
+  {
+    "id": "john-1-5",
+    "text": "And the light shineth in darkness; and the darkness comprehended it not.",
+    "reference": "John 1:5",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "The light shineth in darkness; and the darkness comprehended it not."
+  },
+  {
+    "id": "john-1-16",
+    "text": "And of his fulness have all we received, and grace for grace.",
+    "reference": "John 1:16",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "Of His fulness have all we received, and grace for grace."
+  },
+  {
+    "id": "john-10-28",
+    "text": "And I give unto them eternal life; and they shall never perish, neither shall any man pluck them out of my hand.",
+    "reference": "John 10:28",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "hopeful"
+    ],
+    "reflection": "I give unto them eternal life; and they shall never perish, neither shall any man pluck them out of my hand."
+  },
+  {
+    "id": "john-11-25",
+    "text": "Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live:",
+    "reference": "John 11:25",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live."
+  },
+  {
+    "id": "john-15-13",
+    "text": "Greater love hath no man than this, that a man lay down his life for his friends.",
+    "reference": "John 15:13",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "Greater love hath no man than this, that a man lay down his life for his friends."
+  },
+  {
+    "id": "rom-5-1",
+    "text": "Therefore being justified by faith, we have peace with God through our Lord Jesus Christ:",
+    "reference": "Romans 5:1",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "hopeful"
+    ],
+    "reflection": "Being justified by faith, we have peace with God through our Lord Jesus Christ."
+  },
+  {
+    "id": "rom-5-5",
+    "text": "And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us.",
+    "reference": "Romans 5:5",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "Hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us."
+  },
+  {
+    "id": "rom-8-1",
+    "text": "There is therefore now no condemnation to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit.",
+    "reference": "Romans 8:1",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "hopeful"
+    ],
+    "reflection": "There is therefore now no condemnation to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit."
+  },
+  {
+    "id": "rom-8-18",
+    "text": "For I reckon that the sufferings of this present time are not worthy to be compared with the glory which shall be revealed in us.",
+    "reference": "Romans 8:18",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
+    "reflection": "I reckon that the sufferings of this present time are not worthy to be compared with the glory which shall be revealed in us."
+  },
+  {
+    "id": "rom-8-38",
+    "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come,",
+    "reference": "Romans 8:38",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "hopeful"
+    ],
+    "reflection": "For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come,"
+  },
+  {
+    "id": "rom-8-39",
+    "text": "Nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
+    "reference": "Romans 8:39",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "Nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord."
+  },
+  {
+    "id": "2cor-4-17",
+    "text": "For our light affliction, which is but for a moment, worketh for us a far more exceeding and eternal weight of glory;",
+    "reference": "2 Corinthians 4:17",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "sad"
+    ],
+    "reflection": "Our light affliction, which is but for a moment, worketh for us a far more exceeding and eternal weight of glory;"
+  },
+  {
+    "id": "2cor-9-8",
+    "text": "And God is able to make all grace abound toward you; that ye, always having all sufficiency in all things , may abound to every good work:",
+    "reference": "2 Corinthians 9:8",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "need-strength"
+    ],
+    "reflection": "God is able to make all grace abound toward you; that ye, always having all sufficiency in all things, may abound to every good work."
+  },
+  {
+    "id": "2cor-9-15",
+    "text": "Thanks be unto God for his unspeakable gift.",
+    "reference": "2 Corinthians 9:15",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "Thanks be unto God for His unspeakable gift."
+  },
+  {
+    "id": "eph-3-17",
+    "text": "That Christ may dwell in your hearts by faith; that ye, being rooted and grounded in love,",
+    "reference": "Ephesians 3:17",
+    "translation": "KJV",
+    "moods": [
+      "stressed",
+      "hopeful"
+    ],
+    "reflection": "That Christ may dwell in your hearts by faith; that ye, being rooted and grounded in love,"
+  },
+  {
+    "id": "eph-5-20",
+    "text": "Giving thanks always for all things unto God and the Father in the name of our Lord Jesus Christ;",
+    "reference": "Ephesians 5:20",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "Giving thanks always for all things unto God and the Father in the name of our Lord Jesus Christ;"
+  },
+  {
+    "id": "col-2-7",
+    "text": "Rooted and built up in him, and stablished in the faith, as ye have been taught, abounding therein with thanksgiving.",
+    "reference": "Colossians 2:7",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "need-strength"
+    ],
+    "reflection": "Rooted and built up in Him, and stablished in the faith, as ye have been taught, abounding therein with thanksgiving."
+  },
+  {
+    "id": "col-3-17",
+    "text": "And whatsoever ye do in word or deed, do all in the name of the Lord Jesus, giving thanks to God and the Father by him.",
+    "reference": "Colossians 3:17",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "lost"
+    ],
+    "reflection": "Whatsoever ye do in word or deed, do all in the name of the Lord Jesus, giving thanks to God and the Father by Him."
+  },
+  {
+    "id": "col-3-23",
+    "text": "And whatsoever ye do, do it heartily, as to the Lord, and not unto men;",
+    "reference": "Colossians 3:23",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "grateful"
+    ],
+    "reflection": "Whatsoever ye do, do it heartily, as to the Lord, and not unto men;"
+  },
+  {
+    "id": "2tim-4-18",
+    "text": "And the Lord shall deliver me from every evil work, and will preserve me unto his heavenly kingdom: to whom be glory for ever and ever. Amen.",
+    "reference": "2 Timothy 4:18",
+    "translation": "KJV",
+    "moods": [
+      "anxious",
+      "hopeful"
+    ],
+    "reflection": "The Lord shall deliver me from every evil work, and will preserve me unto His heavenly kingdom: to whom be glory for ever and ever."
+  },
+  {
+    "id": "heb-6-19",
+    "text": "Which hope we have as an anchor of the soul, both sure and stedfast, and which entereth into that within the veil;",
+    "reference": "Hebrews 6:19",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "anxious"
+    ],
+    "reflection": "Which hope we have as an anchor of the soul, both sure and stedfast, and which entereth into that within the veil;"
+  },
+  {
+    "id": "2pet-1-3",
+    "text": "According as his divine power hath given unto us all things that pertain unto life and godliness, through the knowledge of him that hath called us to glory and virtue:",
+    "reference": "2 Peter 1:3",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "grateful"
+    ],
+    "reflection": "His divine power hath given unto us all things that pertain unto life and godliness, through the knowledge of Him that hath called us to glory and virtue:"
+  },
+  {
+    "id": "1john-4-19",
+    "text": "We love him, because he first loved us.",
+    "reference": "1 John 4:19",
+    "translation": "KJV",
+    "moods": [
+      "grateful"
+    ],
+    "reflection": "We love Him, because He first loved us."
+  },
+  {
+    "id": "rev-7-17",
+    "text": "For the Lamb which is in the midst of the throne shall feed them, and shall lead them unto living fountains of waters: and God shall wipe away all tears from their eyes.",
+    "reference": "Revelation 7:17",
+    "translation": "KJV",
+    "moods": [
+      "sad",
+      "hopeful"
+    ],
+    "reflection": "The Lamb which is in the midst of the throne shall feed them, and shall lead them unto living fountains of waters: and God shall wipe away all tears from their eyes."
+  },
+  {
+    "id": "ps-24-7",
+    "text": "Lift up your heads, O ye gates; and be ye lift up, ye everlasting doors; and the King of glory shall come in.",
+    "reference": "Psalm 24:7",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "hopeful"
+    ],
+    "reflection": "Lift up your heads and welcome the King of glory into every corner of your life."
+  },
+  {
+    "id": "ps-33-21",
+    "text": "For our heart shall rejoice in him, because we have trusted in his holy name.",
+    "reference": "Psalm 33:21",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "hopeful"
+    ],
+    "reflection": "Our heart rejoices in Him because we have trusted in His holy name."
+  },
+  {
+    "id": "ps-37-4",
+    "text": "Delight thyself also in the LORD ; and he shall give thee the desires of thine heart.",
+    "reference": "Psalm 37:4",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "hopeful"
+    ],
+    "reflection": "Delight yourself in the Lord, and He will give you the deepest desires of your heart."
+  },
+  {
+    "id": "ps-84-12",
+    "text": "O LORD of hosts, blessed is the man that trusteth in thee.",
+    "reference": "Psalm 84:12",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
+    "reflection": "O Lord of hosts, blessed is the person that trusts wholeheartedly in You."
+  },
+  {
+    "id": "ps-146-5",
+    "text": "Happy is he that hath the God of Jacob for his help, whose hope is in the LORD his God:",
+    "reference": "Psalm 146:5",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
+    "reflection": "Happy is he that hath the God of Jacob for his help, whose hope is in the Lord his God."
+  },
+  {
+    "id": "prov-16-20",
+    "text": "He that handleth a matter wisely shall find good: and whoso trusteth in the LORD , happy is he.",
+    "reference": "Proverbs 16:20",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
+    "reflection": "He that handleth a matter wisely shall find good: and whoso trusteth in the Lord, happy is he."
+  },
+  {
+    "id": "isa-9-6",
+    "text": "For unto us a child is born, unto us a son is given: and the government shall be upon his shoulder: and his name shall be called Wonderful, Counsellor, The mighty God, The everlasting Father, The Prince of Peace.",
+    "reference": "Isaiah 9:6",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "hopeful"
+    ],
+    "reflection": "Unto us a child is born, unto us a son is given: His name shall be called Wonderful, Counsellor, The Prince of Peace."
+  },
+  {
+    "id": "isa-60-1",
+    "text": "Arise, shine; for thy light is come, and the glory of the LORD is risen upon thee.",
+    "reference": "Isaiah 60:1",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
+    "reflection": "Arise, shine; for thy light is come, and the glory of the Lord is risen upon thee."
+  },
+  {
+    "id": "mal-4-2",
+    "text": "But unto you that fear my name shall the Sun of righteousness arise with healing in his wings; and ye shall go forth, and grow up as calves of the stall.",
+    "reference": "Malachi 4:2",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
+    "reflection": "Unto you that fear my name shall the Sun of righteousness arise with healing in His wings."
+  },
+  {
+    "id": "john-10-10",
+    "text": "The thief cometh not, but for to steal, and to kill, and to destroy: I am come that they might have life, and that they might have it more abundantly.",
+    "reference": "John 10:10",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "hopeful"
+    ],
+    "reflection": "I am come that they might have life, and that they might have it more abundantly."
+  },
+  {
+    "id": "john-16-24",
+    "text": "Hitherto have ye asked nothing in my name: ask, and ye shall receive, that your joy may be full.",
+    "reference": "John 16:24",
+    "translation": "KJV",
+    "moods": [
+      "joyful",
+      "hopeful"
+    ],
+    "reflection": "Ask, and ye shall receive, that your joy may be full."
+  },
+  {
+    "id": "1cor-2-9",
+    "text": "But as it is written, Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which God hath prepared for them that love him.",
+    "reference": "1 Corinthians 2:9",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
+    "reflection": "Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which God hath prepared for them that love Him."
+  },
+  {
+    "id": "2cor-5-17",
+    "text": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
+    "reference": "2 Corinthians 5:17",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
+    "reflection": "If any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new."
+  },
+  {
+    "id": "1pet-1-3",
+    "text": "Blessed be the God and Father of our Lord Jesus Christ, which according to his abundant mercy hath begotten us again unto a lively hope by the resurrection of Jesus Christ from the dead,",
+    "reference": "1 Peter 1:3",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "joyful"
+    ],
+    "reflection": "Blessed be the God and Father of our Lord Jesus Christ, which according to His abundant mercy hath begotten us again unto a lively hope."
+  },
+  {
+    "id": "ps-1-1",
+    "text": "Blessed is the man that walketh not in the counsel of the ungodly, nor standeth in the way of sinners, nor sitteth in the seat of the scornful.",
+    "reference": "Psalm 1:1",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Walking in God's counsel protects your steps and sets you on a path of enduring blessing."
+  },
+  {
+    "id": "ps-1-3",
+    "text": "And he shall be like a tree planted by the rivers of water, that bringeth forth his fruit in his season; his leaf also shall not wither; and whatsoever he doeth shall prosper.",
+    "reference": "Psalm 1:3",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Rooted in God's living truth, you will flourish and yield fruit in every season."
+  },
+  {
+    "id": "ps-5-3",
+    "text": "My voice shalt thou hear in the morning, O LORD ; in the morning will I direct my prayer unto thee, and will look up.",
+    "reference": "Psalm 5:3",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Begin each morning by laying your prayers before Him, watching in expectant faith."
+  },
+  {
+    "id": "ps-18-30",
+    "text": "As for God, his way is perfect: the word of the LORD is tried: he is a buckler to all those that trust in him.",
+    "reference": "Psalm 18:30",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "God's way is flawless and His word is tested; He is a buckler to all who trust in Him."
+  },
+  {
+    "id": "ps-20-4",
+    "text": "Grant thee according to thine own heart, and fulfil all thy counsel.",
+    "reference": "Psalm 20:4",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Trust God with your deepest desires; He fulfills counsel born of faith in His will."
+  },
+  {
+    "id": "ps-25-5",
+    "text": "Lead me in thy truth, and teach me: for thou art the God of my salvation; on thee do I wait all the day.",
+    "reference": "Psalm 25:5",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Wait upon God as your Savior, allowing His truth to guide your steps all day long."
+  },
+  {
+    "id": "ps-25-10",
+    "text": "All the paths of the LORD are mercy and truth unto such as keep his covenant and his testimonies.",
+    "reference": "Psalm 25:10",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "All the paths of the Lord are mercy and truth for those who keep His covenant."
+  },
+  {
+    "id": "ps-25-14",
+    "text": "The secret of the LORD is with them that fear him; and he will shew them his covenant.",
+    "reference": "Psalm 25:14",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "The secret of the Lord is with those who fear Him, and He reveals His promises to them."
+  },
+  {
+    "id": "ps-27-14",
+    "text": "Wait on the LORD : be of good courage, and he shall strengthen thine heart: wait, I say, on the LORD .",
+    "reference": "Psalm 27:14",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Wait on the Lord and be of good courage; He will strengthen your heart."
+  },
+  {
+    "id": "ps-31-24",
+    "text": "Be of good courage, and he shall strengthen your heart, all ye that hope in the LORD .",
+    "reference": "Psalm 31:24",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "Be of good courage, and He shall strengthen your heart, all ye that hope in the Lord."
+  },
+  {
+    "id": "ps-33-4",
+    "text": "For the word of the LORD is right; and all his works are done in truth.",
+    "reference": "Psalm 33:4",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "The word of the Lord is right and true, and all His works are done in faithfulness."
+  },
+  {
+    "id": "ps-33-20",
+    "text": "Our soul waiteth for the LORD : he is our help and our shield.",
+    "reference": "Psalm 33:20",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Our soul waits for the Lord; He is our dependable help and protective shield."
+  },
+  {
+    "id": "ps-33-22",
+    "text": "Let thy mercy, O LORD , be upon us, according as we hope in thee.",
+    "reference": "Psalm 33:22",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Let Your mercy be upon us, O Lord, according as we place our total hope in You."
+  },
+  {
+    "id": "ps-37-3",
+    "text": "Trust in the LORD , and do good; so shalt thou dwell in the land, and verily thou shalt be fed.",
+    "reference": "Psalm 37:3",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Trust in the Lord and do good; dwell in the land and feed on His faithfulness."
+  },
+  {
+    "id": "ps-51-10",
+    "text": "Create in me a clean heart, O God; and renew a right spirit within me.",
+    "reference": "Psalm 51:10",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Create in me a clean heart, O God, and renew a steadfast spirit within me."
+  },
+  {
+    "id": "ps-71-5",
+    "text": "For thou art my hope, O Lord GOD : thou art my trust from my youth.",
+    "reference": "Psalm 71:5",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "For You are my hope, O Lord God; You have been my trust since my youth."
+  },
+  {
+    "id": "ps-119-130",
+    "text": "The entrance of thy words giveth light; it giveth understanding unto the simple.",
+    "reference": "Psalm 119:130",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "The entrance of thy words giveth light; it giveth understanding unto the simple."
+  },
+  {
+    "id": "ps-121-8",
+    "text": "The LORD shall preserve thy going out and thy coming in from this time forth, and even for evermore.",
+    "reference": "Psalm 121:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "The Lord shall preserve thy going out and thy coming in from this time forth, and even for evermore."
+  },
+  {
+    "id": "ps-138-8",
+    "text": "The LORD will perfect that which concerneth me: thy mercy, O LORD , endureth for ever: forsake not the works of thine own hands.",
+    "reference": "Psalm 138:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "The Lord will perfect that which concerneth me: Thy mercy, O Lord, endureth for ever."
+  },
+  {
+    "id": "ps-139-9",
+    "text": "If I take the wings of the morning, and dwell in the uttermost parts of the sea;",
+    "reference": "Psalm 139:9",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "If I take the wings of the morning, and dwell in the uttermost parts of the sea;"
+  },
+  {
+    "id": "ps-143-8",
+    "text": "Cause me to hear thy lovingkindness in the morning; for in thee do I trust: cause me to know the way wherein I should walk; for I lift up my soul unto thee.",
+    "reference": "Psalm 143:8",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Cause me to hear Thy lovingkindness in the morning; for in Thee do I trust: cause me to know the way wherein I should walk."
+  },
+  {
+    "id": "prov-4-18",
+    "text": "But the path of the just is as the shining light, that shineth more and more unto the perfect day.",
+    "reference": "Proverbs 4:18",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "The path of the just is as the shining light, that shineth more and more unto the perfect day."
+  },
+  {
+    "id": "prov-8-17",
+    "text": "I love them that love me; and those that seek me early shall find me.",
+    "reference": "Proverbs 8:17",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "I love them that love me; and those that seek me early shall find me."
+  },
+  {
+    "id": "prov-19-21",
+    "text": "There are many devices in a man’s heart; nevertheless the counsel of the LORD , that shall stand.",
+    "reference": "Proverbs 19:21",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "There are many devices in a man's heart; nevertheless the counsel of the Lord, that shall stand."
+  },
+  {
+    "id": "prov-23-18",
+    "text": "For surely there is an end; and thine expectation shall not be cut off.",
+    "reference": "Proverbs 23:18",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "For surely there is an end; and thine expectation shall not be cut off."
+  },
+  {
+    "id": "prov-24-16",
+    "text": "For a just man falleth seven times, and riseth up again: but the wicked shall fall into mischief.",
+    "reference": "Proverbs 24:16",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "For a just man falleth seven times, and riseth up again: God restores you after every stumble."
+  },
+  {
+    "id": "isa-26-4",
+    "text": "Trust ye in the LORD for ever: for in the LORD JEHOVAH is everlasting strength:",
+    "reference": "Isaiah 26:4",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "Trust ye in the Lord for ever: for in the LORD JEHOVAH is everlasting strength."
+  },
+  {
+    "id": "isa-30-18",
+    "text": "And therefore will the LORD wait, that he may be gracious unto you, and therefore will he be exalted, that he may have mercy upon you: for the LORD is a God of judgment: blessed are all they that wait for him.",
+    "reference": "Isaiah 30:18",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Therefore will the Lord wait, that He may be gracious unto you: blessed are all they that wait for Him."
+  },
+  {
+    "id": "isa-40-8",
+    "text": "The grass withereth, the flower fadeth: but the word of our God shall stand for ever.",
+    "reference": "Isaiah 40:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "The grass withereth, the flower fadeth: but the word of our God shall stand for ever."
+  },
+  {
+    "id": "isa-43-18",
+    "text": "Remember ye not the former things, neither consider the things of old.",
+    "reference": "Isaiah 43:18",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Remember ye not the former things, neither consider the things of old."
+  },
+  {
+    "id": "isa-43-19",
+    "text": "Behold, I will do a new thing; now it shall spring forth; shall ye not know it? I will even make a way in the wilderness, and rivers in the desert.",
+    "reference": "Isaiah 43:19",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Behold, I will do a new thing; now it shall spring forth; shall ye not know it? I will even make a way in the wilderness."
+  },
+  {
+    "id": "isa-55-6",
+    "text": "Seek ye the LORD while he may be found, call ye upon him while he is near:",
+    "reference": "Isaiah 55:6",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Seek ye the Lord while He may be found, call ye upon Him while He is near."
+  },
+  {
+    "id": "isa-55-9",
+    "text": "For as the heavens are higher than the earth, so are my ways higher than your ways, and my thoughts than your thoughts.",
+    "reference": "Isaiah 55:9",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "As the heavens are higher than the earth, so are my ways higher than your ways, and my thoughts than your thoughts."
+  },
+  {
+    "id": "jer-17-7",
+    "text": "Blessed is the man that trusteth in the LORD , and whose hope the LORD is.",
+    "reference": "Jeremiah 17:7",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Blessed is the man that trusteth in the Lord, and whose hope the Lord is."
+  },
+  {
+    "id": "jer-17-8",
+    "text": "For he shall be as a tree planted by the waters, and that spreadeth out her roots by the river, and shall not see when heat cometh, but her leaf shall be green; and shall not be careful in the year of drought, neither shall cease from yielding fruit.",
+    "reference": "Jeremiah 17:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "He shall be as a tree planted by the waters; his leaf shall be green, neither shall cease from yielding fruit."
+  },
+  {
+    "id": "jer-29-13",
+    "text": "And ye shall seek me, and find me , when ye shall search for me with all your heart.",
+    "reference": "Jeremiah 29:13",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "And ye shall seek me, and find me, when ye shall search for me with all your heart."
+  },
+  {
+    "id": "jer-32-17",
+    "text": "Ah Lord GOD ! behold, thou hast made the heaven and the earth by thy great power and stretched out arm, and there is nothing too hard for thee:",
+    "reference": "Jeremiah 32:17",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "Ah Lord God! behold, Thou hast made the heaven and the earth by Thy great power: there is nothing too hard for Thee."
+  },
+  {
+    "id": "jer-33-3",
+    "text": "Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not.",
+    "reference": "Jeremiah 33:3",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not."
+  },
+  {
+    "id": "lam-3-24",
+    "text": "The LORD is my portion, saith my soul; therefore will I hope in him.",
+    "reference": "Lamentations 3:24",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "The Lord is my portion, saith my soul; therefore will I hope in Him."
+  },
+  {
+    "id": "mic-7-8",
+    "text": "Rejoice not against me, O mine enemy: when I fall, I shall arise; when I sit in darkness, the LORD shall be a light unto me.",
+    "reference": "Micah 7:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Rejoice not against me, O mine enemy: when I fall, I shall arise; when I sit in darkness, the Lord shall be a light unto me."
+  },
+  {
+    "id": "eccl-3-11",
+    "text": "He hath made every thing beautiful in his time: also he hath set the world in their heart, so that no man can find out the work that God maketh from the beginning to the end.",
+    "reference": "Ecclesiastes 3:11",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "He hath made every thing beautiful in his time: trust His timing across every chapter."
+  },
+  {
+    "id": "job-23-10",
+    "text": "But he knoweth the way that I take: when he hath tried me, I shall come forth as gold.",
+    "reference": "Job 23:10",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "He knoweth the way that I take: when He hath tried me, I shall come forth as gold."
+  },
+  {
+    "id": "matt-5-6",
+    "text": "Blessed are they which do hunger and thirst after righteousness: for they shall be filled.",
+    "reference": "Matthew 5:6",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Blessed are they which do hunger and thirst after righteousness: for they shall be filled."
+  },
+  {
+    "id": "matt-5-14",
+    "text": "Ye are the light of the world. A city that is set on an hill cannot be hid.",
+    "reference": "Matthew 5:14",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Ye are the light of the world. A city that is set on an hill cannot be hid."
+  },
+  {
+    "id": "matt-7-7",
+    "text": "Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you:",
+    "reference": "Matthew 7:7",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you."
+  },
+  {
+    "id": "matt-7-8",
+    "text": "For every one that asketh receiveth; and he that seeketh findeth; and to him that knocketh it shall be opened.",
+    "reference": "Matthew 7:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "For every one that asketh receiveth; and he that seeketh findeth; and to him that knocketh it shall be opened."
+  },
+  {
+    "id": "matt-17-20",
+    "text": "And Jesus said unto them, Because of your unbelief: for verily I say unto you, If ye have faith as a grain of mustard seed, ye shall say unto this mountain, Remove hence to yonder place; and it shall remove; and nothing shall be impossible unto you.",
+    "reference": "Matthew 17:20",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "If ye have faith as a grain of mustard seed, nothing shall be impossible unto you."
+  },
+  {
+    "id": "matt-19-26",
+    "text": "But Jesus beheld them , and said unto them, With men this is impossible; but with God all things are possible.",
+    "reference": "Matthew 19:26",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "With men this is impossible; but with God all things are possible."
+  },
+  {
+    "id": "matt-21-22",
+    "text": "And all things, whatsoever ye shall ask in prayer, believing, ye shall receive.",
+    "reference": "Matthew 21:22",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "All things, whatsoever ye shall ask in prayer, believing, ye shall receive."
+  },
+  {
+    "id": "matt-28-20",
+    "text": "Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen.",
+    "reference": "Matthew 28:20",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Lo, I am with you alway, even unto the end of the world."
+  },
+  {
+    "id": "mark-9-23",
+    "text": "Jesus said unto him, If thou canst believe, all things are possible to him that believeth.",
+    "reference": "Mark 9:23",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "If thou canst believe, all things are possible to him that believeth."
+  },
+  {
+    "id": "mark-10-27",
+    "text": "And Jesus looking upon them saith, With men it is impossible, but not with God: for with God all things are possible.",
+    "reference": "Mark 10:27",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "With men it is impossible, but not with God: for with God all things are possible."
+  },
+  {
+    "id": "mark-11-24",
+    "text": "Therefore I say unto you, What things soever ye desire, when ye pray, believe that ye receive them , and ye shall have them .",
+    "reference": "Mark 11:24",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "What things soever ye desire, when ye pray, believe that ye receive them, and ye shall have them."
+  },
+  {
+    "id": "luke-1-37",
+    "text": "For with God nothing shall be impossible.",
+    "reference": "Luke 1:37",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "For with God nothing shall be impossible."
+  },
+  {
+    "id": "luke-1-45",
+    "text": "And blessed is she that believed: for there shall be a performance of those things which were told her from the Lord.",
+    "reference": "Luke 1:45",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Blessed is she that believed: for there shall be a performance of those things which were told her from the Lord."
+  },
+  {
+    "id": "luke-11-9",
+    "text": "And I say unto you, Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you.",
+    "reference": "Luke 11:9",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you."
+  },
+  {
+    "id": "luke-18-27",
+    "text": "And he said, The things which are impossible with men are possible with God.",
+    "reference": "Luke 18:27",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "The things which are impossible with men are possible with God."
+  },
+  {
+    "id": "john-8-12",
+    "text": "Then spake Jesus again unto them, saying, I am the light of the world: he that followeth me shall not walk in darkness, but shall have the light of life.",
+    "reference": "John 8:12",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "I am the light of the world: he that followeth me shall not walk in darkness, but shall have the light of life."
+  },
+  {
+    "id": "john-14-13",
+    "text": "And whatsoever ye shall ask in my name, that will I do, that the Father may be glorified in the Son.",
+    "reference": "John 14:13",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Whatsoever ye shall ask in my name, that will I do, that the Father may be glorified in the Son."
+  },
+  {
+    "id": "rom-10-9",
+    "text": "That if thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be saved.",
+    "reference": "Romans 10:9",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "If thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised Him from the dead, thou shalt be saved."
+  },
+  {
+    "id": "rom-10-13",
+    "text": "For whosoever shall call upon the name of the Lord shall be saved.",
+    "reference": "Romans 10:13",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Whosoever shall call upon the name of the Lord shall be saved."
+  },
+  {
+    "id": "rom-14-8",
+    "text": "For whether we live, we live unto the Lord; and whether we die, we die unto the Lord: whether we live therefore, or die, we are the Lord’s.",
+    "reference": "Romans 14:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Whether we live, we live unto the Lord; and whether we die, we die unto the Lord: whether we live therefore, or die, we are the Lord's."
+  },
+  {
+    "id": "1cor-1-9",
+    "text": "God is faithful, by whom ye were called unto the fellowship of his Son Jesus Christ our Lord.",
+    "reference": "1 Corinthians 1:9",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "God is faithful, by whom ye were called unto the fellowship of His Son Jesus Christ our Lord."
+  },
+  {
+    "id": "1cor-13-7",
+    "text": "Beareth all things, believeth all things, hopeth all things, endureth all things.",
+    "reference": "1 Corinthians 13:7",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Beareth all things, believeth all things, hopeth all things, endureth all things."
+  },
+  {
+    "id": "1cor-13-8",
+    "text": "Charity never faileth: but whether there be prophecies, they shall fail; whether there be tongues, they shall cease; whether there be knowledge, it shall vanish away.",
+    "reference": "1 Corinthians 13:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Charity never faileth: but whether there be prophecies, they shall fail; love abides forever."
+  },
+  {
+    "id": "1cor-13-13",
+    "text": "And now abideth faith, hope, charity, these three; but the greatest of these is charity.",
+    "reference": "1 Corinthians 13:13",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Now abideth faith, hope, charity, these three; but the greatest of these is charity."
+  },
+  {
+    "id": "1cor-15-58",
+    "text": "Therefore, my beloved brethren, be ye stedfast, unmoveable, always abounding in the work of the Lord, forasmuch as ye know that your labour is not in vain in the Lord.",
+    "reference": "1 Corinthians 15:58",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "Be ye stedfast, unmoveable, always abounding in the work of the Lord, forasmuch as ye know that your labour is not in vain in the Lord."
+  },
+  {
+    "id": "2cor-4-9",
+    "text": "Persecuted, but not forsaken; cast down, but not destroyed;",
+    "reference": "2 Corinthians 4:9",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "Persecuted, but not forsaken; cast down, but not destroyed;"
+  },
+  {
+    "id": "2cor-4-18",
+    "text": "While we look not at the things which are seen, but at the things which are not seen: for the things which are seen are temporal; but the things which are not seen are eternal.",
+    "reference": "2 Corinthians 4:18",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "We look not at the things which are seen, but at the things which are not seen: for the things which are not seen are eternal."
+  },
+  {
+    "id": "gal-6-9",
+    "text": "And let us not be weary in well doing: for in due season we shall reap, if we faint not.",
+    "reference": "Galatians 6:9",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "Let us not be weary in well doing: for in due season we shall reap, if we faint not."
+  },
+  {
+    "id": "eph-2-10",
+    "text": "For we are his workmanship, created in Christ Jesus unto good works, which God hath before ordained that we should walk in them.",
+    "reference": "Ephesians 2:10",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "We are His workmanship, created in Christ Jesus unto good works, which God hath before ordained that we should walk in them."
+  },
+  {
+    "id": "eph-3-20",
+    "text": "Now unto him that is able to do exceeding abundantly above all that we ask or think, according to the power that worketh in us,",
+    "reference": "Ephesians 3:20",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "Now unto Him that is able to do exceeding abundantly above all that we ask or think, according to the power that worketh in us,"
+  },
+  {
+    "id": "phil-1-6",
+    "text": "Being confident of this very thing, that he which hath begun a good work in you will perform it until the day of Jesus Christ:",
+    "reference": "Philippians 1:6",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Being confident of this very thing, that He which hath begun a good work in you will perform it until the day of Jesus Christ:"
+  },
+  {
+    "id": "phil-3-13",
+    "text": "Brethren, I count not myself to have apprehended: but this one thing I do , forgetting those things which are behind, and reaching forth unto those things which are before,",
+    "reference": "Philippians 3:13",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Forgetting those things which are behind, and reaching forth unto those things which are before,"
+  },
+  {
+    "id": "phil-3-14",
+    "text": "I press toward the mark for the prize of the high calling of God in Christ Jesus.",
+    "reference": "Philippians 3:14",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "I press toward the mark for the prize of the high calling of God in Christ Jesus."
+  },
+  {
+    "id": "1thess-5-24",
+    "text": "Faithful is he that calleth you, who also will do it.",
+    "reference": "1 Thessalonians 5:24",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Faithful is He that calleth you, who also will do it."
+  },
+  {
+    "id": "2tim-2-13",
+    "text": "If we believe not, yet he abideth faithful: he cannot deny himself.",
+    "reference": "2 Timothy 2:13",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "If we believe not, yet He abideth faithful: He cannot deny Himself."
+  },
+  {
+    "id": "heb-10-23",
+    "text": "Let us hold fast the profession of our faith without wavering; (for he is faithful that promised;)",
+    "reference": "Hebrews 10:23",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Let us hold fast the profession of our faith without wavering; for He is faithful that promised;"
+  },
+  {
+    "id": "heb-11-6",
+    "text": "But without faith it is impossible to please him : for he that cometh to God must believe that he is, and that he is a rewarder of them that diligently seek him.",
+    "reference": "Hebrews 11:6",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "He that cometh to God must believe that He is, and that He is a rewarder of them that diligently seek Him."
+  },
+  {
+    "id": "heb-12-1",
+    "text": "Wherefore seeing we also are compassed about with so great a cloud of witnesses, let us lay aside every weight, and the sin which doth so easily beset us , and let us run with patience the race that is set before us,",
+    "reference": "Hebrews 12:1",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "Let us lay aside every weight, and the sin which doth so easily beset us, and let us run with patience the race that is set before us,"
+  },
+  {
+    "id": "heb-12-2",
+    "text": "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God.",
+    "reference": "Hebrews 12:2",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before Him endured the cross."
+  },
+  {
+    "id": "heb-13-8",
+    "text": "Jesus Christ the same yesterday, and to day, and for ever.",
+    "reference": "Hebrews 13:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "Jesus Christ the same yesterday, and to day, and for ever."
+  },
+  {
+    "id": "james-1-12",
+    "text": "Blessed is the man that endureth temptation: for when he is tried, he shall receive the crown of life, which the Lord hath promised to them that love him.",
+    "reference": "James 1:12",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Blessed is the man that endureth temptation: for when he is tried, he shall receive the crown of life."
+  },
+  {
+    "id": "james-4-8",
+    "text": "Draw nigh to God, and he will draw nigh to you. Cleanse your hands, ye sinners; and purify your hearts, ye double minded.",
+    "reference": "James 4:8",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Draw nigh to God, and He will draw nigh to you."
+  },
+  {
+    "id": "1pet-3-15",
+    "text": "But sanctify the Lord God in your hearts: and be ready always to give an answer to every man that asketh you a reason of the hope that is in you with meekness and fear:",
+    "reference": "1 Peter 3:15",
+    "translation": "KJV",
+    "moods": [
+      "lost",
+      "hopeful"
+    ],
+    "reflection": "Sanctify the Lord God in your hearts: and be ready always to give an answer to every man that asketh you a reason of the hope that is in you."
+  },
+  {
+    "id": "1pet-5-10",
+    "text": "But the God of all grace, who hath called us unto his eternal glory by Christ Jesus, after that ye have suffered a while, make you perfect, stablish, strengthen, settle you .",
+    "reference": "1 Peter 5:10",
+    "translation": "KJV",
+    "moods": [
+      "need-strength",
+      "hopeful"
+    ],
+    "reflection": "The God of all grace, who hath called us unto His eternal glory by Christ Jesus, after that ye have suffered a while, make you perfect, stablish, strengthen, settle you."
+  },
+  {
+    "id": "2pet-3-9",
+    "text": "The Lord is not slack concerning his promise, as some men count slackness; but is longsuffering to us-ward, not willing that any should perish, but that all should come to repentance.",
+    "reference": "2 Peter 3:9",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "The Lord is not slack concerning His promise, as some men count slackness; but is longsuffering to us-ward, not willing that any should perish."
+  },
+  {
+    "id": "1john-1-9",
+    "text": "If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.",
+    "reference": "1 John 1:9",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "If we confess our sins, He is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness."
+  },
+  {
+    "id": "1john-5-14",
+    "text": "And this is the confidence that we have in him, that, if we ask any thing according to his will, he heareth us:",
+    "reference": "1 John 5:14",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "This is the confidence that we have in Him, that, if we ask any thing according to His will, He heareth us:"
+  },
+  {
+    "id": "jude-1-24",
+    "text": "Now unto him that is able to keep you from falling, and to present you faultless before the presence of his glory with exceeding joy,",
+    "reference": "Jude 1:24",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "need-strength"
+    ],
+    "reflection": "Unto Him that is able to keep you from falling, and to present you faultless before the presence of His glory with exceeding joy,"
+  },
+  {
+    "id": "rev-1-8",
+    "text": "I am Alpha and Omega, the beginning and the ending, saith the Lord, which is, and which was, and which is to come, the Almighty.",
+    "reference": "Revelation 1:8",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "I am Alpha and Omega, the beginning and the ending, saith the Lord, which is, and which was, and which is to come, the Almighty."
+  },
+  {
+    "id": "rev-3-20",
+    "text": "Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him, and will sup with him, and he with me.",
+    "reference": "Revelation 3:20",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him, and will sup with him, and he with me."
+  },
+  {
+    "id": "rev-21-5",
+    "text": "And he that sat upon the throne said, Behold, I make all things new. And he said unto me, Write: for these words are true and faithful.",
+    "reference": "Revelation 21:5",
+    "translation": "KJV",
+    "moods": [
+      "hopeful"
+    ],
+    "reflection": "He that sat upon the throne said, Behold, I make all things new. And He said unto me, Write: for these words are true and faithful."
+  },
+  {
+    "id": "rev-22-17",
+    "text": "And the Spirit and the bride say, Come. And let him that heareth say, Come. And let him that is athirst come. And whosoever will, let him take the water of life freely.",
+    "reference": "Revelation 22:17",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "lost"
+    ],
+    "reflection": "Let him that is athirst come. And whosoever will, let him take the water of life freely."
+  },
+  {
+    "id": "ps-5-12",
+    "text": "For thou, LORD , wilt bless the righteous; with favour wilt thou compass him as with a shield.",
+    "reference": "Psalm 5:12",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "hopeful"
+    ],
+    "reflection": "God crowns the faithful with unmerited favor, surrounding them like a mighty shield."
+  },
+  {
+    "id": "ps-23-6",
+    "text": "Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever.",
+    "reference": "Psalm 23:6",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "grateful"
+    ],
+    "reflection": "Goodness and mercy follow you every day of your life as you dwell in God's presence."
+  },
+  {
+    "id": "ps-31-19",
+    "text": "Oh how great is thy goodness, which thou hast laid up for them that fear thee; which thou hast wrought for them that trust in thee before the sons of men!",
+    "reference": "Psalm 31:19",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "hopeful"
+    ],
+    "reflection": "How great is God's goodness, laid up in store for those who revere Him!"
+  },
+  {
+    "id": "ps-34-8",
+    "text": "O taste and see that the LORD is good: blessed is the man that trusteth in him.",
+    "reference": "Psalm 34:8",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "hopeful"
+    ],
+    "reflection": "Taste and see that the Lord is good; blessed is the person who trusts in Him."
+  },
+  {
+    "id": "ps-36-5",
+    "text": "Thy mercy, O LORD , is in the heavens; and thy faithfulness reacheth unto the clouds.",
+    "reference": "Psalm 36:5",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "hopeful"
+    ],
+    "reflection": "God's mercy reaches into the heavens, and His faithfulness towers to the clouds."
+  },
+  {
+    "id": "ps-71-14",
+    "text": "But I will hope continually, and will yet praise thee more and more.",
+    "reference": "Psalm 71:14",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "grateful"
+    ],
+    "reflection": "I will hope continually and praise You more and more as each day unfolds."
+  },
+  {
+    "id": "ps-84-11",
+    "text": "For the LORD God is a sun and shield: the LORD will give grace and glory: no good thing will he withhold from them that walk uprightly.",
+    "reference": "Psalm 84:11",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "grateful"
+    ],
+    "reflection": "The Lord God is a sun and shield; no good thing will He withhold from the upright."
+  },
+  {
+    "id": "ps-86-5",
+    "text": "For thou, Lord, art good, and ready to forgive; and plenteous in mercy unto all them that call upon thee.",
+    "reference": "Psalm 86:5",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "grateful"
+    ],
+    "reflection": "The Lord is good and ready to forgive, plenteous in mercy to all who call on Him."
+  },
+  {
+    "id": "ps-100-5",
+    "text": "For the LORD is good; his mercy is everlasting; and his truth endureth to all generations.",
+    "reference": "Psalm 100:5",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "hopeful"
+    ],
+    "reflection": "For the Lord is good; His mercy is everlasting, and His truth endureth to all generations."
+  },
+  {
+    "id": "ps-103-4",
+    "text": "Who redeemeth thy life from destruction; who crowneth thee with lovingkindness and tender mercies;",
+    "reference": "Psalm 103:4",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "hopeful"
+    ],
+    "reflection": "Who redeemeth thy life from destruction; who crowneth thee with lovingkindness and tender mercies."
+  },
+  {
+    "id": "ps-103-11",
+    "text": "For as the heaven is high above the earth, so great is his mercy toward them that fear him.",
+    "reference": "Psalm 103:11",
+    "translation": "KJV",
+    "moods": [
+      "grateful",
+      "hopeful"
+    ],
+    "reflection": "As the heaven is high above the earth, so great is His mercy toward them that fear Him."
+  },
+  {
+    "id": "ps-103-12",
+    "text": "As far as the east is from the west, so far hath he removed our transgressions from us.",
+    "reference": "Psalm 103:12",
+    "translation": "KJV",
+    "moods": [
+      "hopeful",
+      "grateful"
+    ],
+    "reflection": "As far as the east is from the west, so far hath He removed our transgressions from us."
   }
 ]
