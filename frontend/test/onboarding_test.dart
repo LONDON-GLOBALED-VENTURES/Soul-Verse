@@ -90,7 +90,7 @@ void main() {
       );
     }
 
-    testWidgets('renders Slide 1 (Welcome) and Skip button completes onboarding', (tester) async {
+    testWidgets('renders Slide 1 (Welcome) without Skip and advances to Slide 2 where Skip works', (tester) async {
       tester.view.physicalSize = const Size(600, 1000);
       tester.view.devicePixelRatio = 1.0;
       addTearDown(tester.view.resetPhysicalSize);
@@ -102,8 +102,15 @@ void main() {
 
       expect(find.text('Draw Near to God'), findsOneWidget);
       expect(find.text('Begin Your Journey'), findsOneWidget);
-      expect(find.text('Skip'), findsOneWidget);
+      // Skip button is hidden on Slide 1 (Welcome)
+      expect(find.text('Skip'), findsNothing);
 
+      // Advance to Slide 2
+      await tester.tap(find.text('Begin Your Journey'));
+      await tester.pumpAndSettle();
+
+      // Skip button is available on Slide 2
+      expect(find.text('Skip'), findsOneWidget);
       await tester.tap(find.text('Skip'));
       await tester.pumpAndSettle();
 

@@ -61,35 +61,39 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
             // Top Navigation: Back Button, Step Indicator & Skip Button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              child: Row(
-                children: [
-                  if (_currentPage > 0) ...[
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back_rounded, size: 22),
-                      color: AppColors.textPrimary,
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      onPressed: _prevPage,
-                    ),
-                    const SizedBox(width: 12),
-                  ],
-                  _StepIndicator(currentPage: _currentPage, totalSteps: 3),
-                  const Spacer(),
-                  TextButton(
-                    onPressed: _onSkip,
-                    style: TextButton.styleFrom(
-                      foregroundColor: AppColors.textSecondary,
-                      visualDensity: VisualDensity.compact,
-                    ),
-                    child: const Text(
-                      'Skip',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
+              child: SizedBox(
+                height: 40,
+                child: Row(
+                  children: [
+                    if (_currentPage > 0) ...[
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back_rounded, size: 22),
+                        color: AppColors.textPrimary,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        onPressed: _prevPage,
                       ),
-                    ),
-                  ),
-                ],
+                      const SizedBox(width: 12),
+                    ],
+                    _StepIndicator(currentPage: _currentPage, totalSteps: 3),
+                    const Spacer(),
+                    if (_currentPage > 0)
+                      TextButton(
+                        onPressed: _onSkip,
+                        style: TextButton.styleFrom(
+                          foregroundColor: AppColors.textSecondary,
+                          visualDensity: VisualDensity.compact,
+                        ),
+                        child: const Text(
+                          'Skip',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
             // PageView containing onboarding slides
@@ -177,11 +181,10 @@ class _WelcomeStepView extends StatelessWidget {
                 width: 1.5,
               ),
             ),
-            child: const Center(
-              child: Icon(
-                Icons.auto_stories_rounded,
-                size: 46,
-                color: AppColors.accent,
+            child: ClipOval(
+              child: Image.asset(
+                'assets/icon/app_icon.png',
+                fit: BoxFit.cover,
               ),
             ),
           ),
