@@ -17,11 +17,13 @@ class VerseCard extends StatelessWidget {
     this.header,
     this.footer,
     this.background,
+    this.showWatermark = false,
   });
 
   final Verse verse;
   final VerseTemplate template;
   final BorderRadius borderRadius;
+  final bool showWatermark;
 
   /// Replaces the network image, e.g. with an already-decoded image for offscreen rendering.
   final Widget? background;
@@ -76,8 +78,49 @@ class VerseCard extends StatelessWidget {
               ?footer,
             ],
           ),
+          if (showWatermark)
+            Positioned(
+              right: 18,
+              bottom: 18,
+              child: _Watermark(textColor: template.textColorValue),
+            ),
         ],
       ),
+    );
+  }
+}
+
+class _Watermark extends StatelessWidget {
+  const _Watermark({required this.textColor});
+
+  final Color textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Image.asset(
+          'assets/icon/app_icon_foreground.png',
+          width: 15,
+          height: 15,
+        ),
+        const SizedBox(width: 5),
+        Text(
+          'SoulVerse',
+          style: TextStyle(
+            fontFamily: AppFonts.serif,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.8,
+            color: textColor.withValues(alpha: 0.8),
+            shadows: const [
+              Shadow(blurRadius: 6, color: Colors.black45),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
