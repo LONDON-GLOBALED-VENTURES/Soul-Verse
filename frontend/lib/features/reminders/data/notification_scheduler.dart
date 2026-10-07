@@ -91,11 +91,14 @@ class NotificationScheduler {
   }
 
   /// Schedules a notification at [when], a local wall-clock time.
+  /// If [matchDateTimeComponents] is provided (e.g. [DateTimeComponents.time]),
+  /// the notification repeats at that time.
   Future<void> schedule({
     required int id,
     required DateTime when,
     required String title,
     required String body,
+    DateTimeComponents? matchDateTimeComponents,
   }) async {
     await _ensureInitialized();
     await _plugin.zonedSchedule(
@@ -111,6 +114,7 @@ class NotificationScheduler {
       notificationDetails: _detailsFor(body, title),
       // Inexact avoids the exact-alarm permission; delivery may drift by a few minutes.
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      matchDateTimeComponents: matchDateTimeComponents,
       title: title,
       body: body,
     );

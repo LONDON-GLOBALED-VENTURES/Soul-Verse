@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/utils/date_format.dart';
@@ -10,8 +11,9 @@ import '../data/reminder_settings.dart';
 
 part 'reminder_service.g.dart';
 
-/// Schedules the next [daysAhead] days of verse reminders with the actual verse text,
-/// so they keep arriving even if the app isn't opened for a while.
+/// Schedules the next [daysAhead] days of verse reminders with the actual verse text.
+/// Starting on day 31, a daily repeating fallback notification keeps reminding the user
+/// even if they haven't opened the app for a month.
 class ReminderService {
   ReminderService(this._api, this._scheduler, {DateTime Function()? now})
     : _now = now ?? DateTime.now;
@@ -20,7 +22,10 @@ class ReminderService {
   final NotificationScheduler _scheduler;
   final DateTime Function() _now;
 
-  static const daysAhead = 14;
+  static const daysAhead = 30;
+  static const fallbackNotificationId = 999;
+  static const fallbackBody =
+      "Your daily verse is waiting for you - tap to read today's scripture and reflection.";
 
   Future<void> reschedule(ReminderSettings settings) async {
     await _scheduler.cancelAll();
@@ -50,6 +55,22 @@ class ReminderService {
         body: _formatNotificationBody(entry),
       );
     }
+
+    // Schedule a repeating fallback notification starting from day 31 onwards
+    final fallbackWhen = DateTime(
+      now.year,
+      now.month,
+      now.day + daysAhead,
+      setting.hour,
+      setting.minute,
+    );
+    await _scheduler.schedule(
+      id: fallbackNotificationId,
+      when: fallbackWhen,
+      title: 'Daily Verse',
+      body: fallbackBody,
+      matchDateTimeComponents: DateTimeComponents.time,
+    );
   }
 
   static String _formatNotificationBody(DailyVerse? entry) {
