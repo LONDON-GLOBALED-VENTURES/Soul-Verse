@@ -22,7 +22,7 @@ class NotificationScheduler {
         android: AndroidNotificationDetails(
           'verse_reminders_v2',
           'Daily Verse Reminders',
-          channelDescription: 'Morning and evening verse reminders',
+          channelDescription: 'Daily verse reminder',
           importance: Importance.max,
           priority: Priority.max,
           playSound: true,

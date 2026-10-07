@@ -221,6 +221,7 @@ void main() {
       notificationSchedulerProvider.overrideWithValue(notificationScheduler),
       googleSignInServiceProvider.overrideWithValue(googleSignInService),
       authApiProvider.overrideWithValue(authApi),
+      moodVersesRandomProvider.overrideWithValue(null),
     ],
     child: const SoulVerseApp(),
   );
@@ -329,10 +330,8 @@ void main() {
 
       expect(find.text('Profile'), findsWidgets);
       expect(find.text('Daily Reminders'), findsOneWidget);
-      expect(find.text('Morning Verse'), findsOneWidget);
-      expect(find.text('Evening Verse'), findsOneWidget);
-      expect(find.text('7:00 AM'), findsOneWidget);
-      expect(find.text('8:00 PM'), findsOneWidget);
+      expect(find.text('Daily Verse'), findsOneWidget);
+      expect(find.text('8:00 AM'), findsOneWidget);
 
       final switches = find.byType(Switch);
       expect(tester.widget<Switch>(switches.first).value, isFalse);
@@ -380,7 +379,7 @@ void main() {
     await tester.tap(find.text('Profile').last);
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('7:00 AM'));
+    await tester.tap(find.text('8:00 AM'));
     await tester.pumpAndSettle();
 
     expect(find.byType(TimePickerDialog), findsOneWidget);

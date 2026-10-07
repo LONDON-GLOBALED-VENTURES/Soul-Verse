@@ -21,12 +21,10 @@ Map<String, dynamic> _$ReminderSlotToJson(ReminderSlot instance) =>
 
 ReminderSettings _$ReminderSettingsFromJson(Map<String, dynamic> json) =>
     ReminderSettings(
-      morning: ReminderSlot.fromJson(json['morning'] as Map<String, dynamic>),
-      evening: ReminderSlot.fromJson(json['evening'] as Map<String, dynamic>),
+      daily: ReminderSlot.fromJson(json['daily'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ReminderSettingsToJson(ReminderSettings instance) =>
     <String, dynamic>{
-      'morning': instance.morning.toJson(),
-      'evening': instance.evening.toJson(),
+      'daily': instance.daily.toJson(),
     };

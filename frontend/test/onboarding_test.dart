@@ -165,8 +165,7 @@ void main() {
 
       // Should be on Step 3
       expect(find.text('Make Room for His Presence'), findsOneWidget);
-      expect(find.text('Morning Verse of the Day'), findsOneWidget);
-      expect(find.text('Evening Reflection & Peace'), findsOneWidget);
+      expect(find.text('Daily Verse of the Day'), findsOneWidget);
       expect(find.text('Bless My Daily Walk'), findsOneWidget);
       expect(find.text("I'll set this later"), findsOneWidget);
 

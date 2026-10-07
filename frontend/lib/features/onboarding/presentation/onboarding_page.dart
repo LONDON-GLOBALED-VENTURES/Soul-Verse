@@ -572,11 +572,8 @@ class _HabitStepView extends ConsumerStatefulWidget {
 }
 
 class _HabitStepViewState extends ConsumerState<_HabitStepView> {
-  bool _morningEnabled = true;
-  TimeOfDay _morningTime = const TimeOfDay(hour: 8, minute: 0);
-
-  bool _eveningEnabled = true;
-  TimeOfDay _eveningTime = const TimeOfDay(hour: 20, minute: 0);
+  bool _reminderEnabled = true;
+  TimeOfDay _reminderTime = const TimeOfDay(hour: 8, minute: 0);
 
   bool _isSaving = false;
 
@@ -587,11 +584,10 @@ class _HabitStepViewState extends ConsumerState<_HabitStepView> {
     return '$hour:$minute $period';
   }
 
-  Future<void> _selectTime({required bool isMorning}) async {
-    final initialTime = isMorning ? _morningTime : _eveningTime;
+  Future<void> _selectTime() async {
     final picked = await showTimePicker(
       context: context,
-      initialTime: initialTime,
+      initialTime: _reminderTime,
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
@@ -606,13 +602,8 @@ class _HabitStepViewState extends ConsumerState<_HabitStepView> {
 
     if (picked != null && mounted) {
       setState(() {
-        if (isMorning) {
-          _morningTime = picked;
-          _morningEnabled = true;
-        } else {
-          _eveningTime = picked;
-          _eveningEnabled = true;
-        }
+        _reminderTime = picked;
+        _reminderEnabled = true;
       });
     }
   }
@@ -622,21 +613,15 @@ class _HabitStepViewState extends ConsumerState<_HabitStepView> {
     setState(() => _isSaving = true);
 
     try {
-      final anyEnabled = _morningEnabled || _eveningEnabled;
-      if (anyEnabled) {
+      if (_reminderEnabled) {
         final scheduler = ref.read(notificationSchedulerProvider);
         final granted = await scheduler.requestPermission();
         if (granted) {
           final settings = ReminderSettings(
-            morning: ReminderSlot(
-              enabled: _morningEnabled,
-              hour: _morningTime.hour,
-              minute: _morningTime.minute,
-            ),
-            evening: ReminderSlot(
-              enabled: _eveningEnabled,
-              hour: _eveningTime.hour,
-              minute: _eveningTime.minute,
+            daily: ReminderSlot(
+              enabled: _reminderEnabled,
+              hour: _reminderTime.hour,
+              minute: _reminderTime.minute,
             ),
           );
           await ref.read(remindersProvider.notifier).save(settings);
@@ -839,28 +824,16 @@ class _HabitStepViewState extends ConsumerState<_HabitStepView> {
             ),
           ),
           const SizedBox(height: 24),
-          // Morning Slot Card
+          // Daily Reminder Card
           _buildReminderCard(
             context: context,
-            title: 'Morning Verse of the Day',
+            title: 'Daily Verse of the Day',
             subtitle: 'Awaken your heart with His truth before the day rushes in.',
             icon: Icons.wb_sunny_rounded,
-            enabled: _morningEnabled,
-            time: _morningTime,
-            onToggle: (val) => setState(() => _morningEnabled = val),
-            onTapTime: () => _selectTime(isMorning: true),
-          ),
-          const SizedBox(height: 12),
-          // Evening Slot Card
-          _buildReminderCard(
-            context: context,
-            title: 'Evening Reflection & Peace',
-            subtitle: 'Rest peacefully under His grace as you close your day.',
-            icon: Icons.nightlight_round,
-            enabled: _eveningEnabled,
-            time: _eveningTime,
-            onToggle: (val) => setState(() => _eveningEnabled = val),
-            onTapTime: () => _selectTime(isMorning: false),
+            enabled: _reminderEnabled,
+            time: _reminderTime,
+            onToggle: (val) => setState(() => _reminderEnabled = val),
+            onTapTime: _selectTime,
           ),
           const SizedBox(height: 20),
           // Scripture Promise Banner

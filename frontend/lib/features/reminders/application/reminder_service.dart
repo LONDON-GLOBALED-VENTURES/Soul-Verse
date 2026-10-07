@@ -29,28 +29,35 @@ class ReminderService {
     final now = _now();
     final entries = await _fetchVerses(now);
 
+    final setting = settings.daily;
+    if (!setting.enabled) return;
+
     for (var day = 0; day < daysAhead; day++) {
       final date = DateTime(now.year, now.month, now.day + day);
       final entry = entries[formatIsoDate(date)];
-      for (final slot in _Slot.values) {
-        final setting = slot.of(settings);
-        if (!setting.enabled) continue;
-        final when = DateTime(
-          date.year,
-          date.month,
-          date.day,
-          setting.hour,
-          setting.minute,
-        );
-        if (!when.isAfter(now)) continue;
-        await _scheduler.schedule(
-          id: day * _Slot.values.length + slot.index,
-          when: when,
-          title: slot.title,
-          body: slot.body(entry),
-        );
-      }
+      final when = DateTime(
+        date.year,
+        date.month,
+        date.day,
+        setting.hour,
+        setting.minute,
+      );
+      if (!when.isAfter(now)) continue;
+      await _scheduler.schedule(
+        id: day,
+        when: when,
+        title: 'Daily Verse',
+        body: _formatNotificationBody(entry),
+      );
     }
+  }
+
+  static String _formatNotificationBody(DailyVerse? entry) {
+    if (entry == null) {
+      return 'Take a moment with today\'s verse.';
+    }
+    final verse = entry.verse;
+    return '“${verse.text}” — ${verse.reference}';
   }
 
   /// Keyed by date. Empty when offline: reminders still go out, with generic text.
@@ -62,30 +69,6 @@ class ReminderService {
       debugPrint('Scheduling reminders without verse text: $e');
       return {};
     }
-  }
-}
-
-enum _Slot {
-  morning('Your morning verse'),
-  evening('Evening reflection');
-
-  const _Slot(this.title);
-
-  final String title;
-
-  ReminderSlot of(ReminderSettings settings) =>
-      this == morning ? settings.morning : settings.evening;
-
-  String body(DailyVerse? entry) {
-    if (entry == null) {
-      return this == morning
-          ? 'Take a moment with today\'s verse.'
-          : 'Pause and reflect on today\'s verse.';
-    }
-    final verse = entry.verse;
-    return this == morning
-        ? '“${verse.text}” — ${verse.reference}'
-        : '${verse.reflection} (${verse.reference})';
   }
 }
 

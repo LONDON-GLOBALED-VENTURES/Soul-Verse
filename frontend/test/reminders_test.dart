@@ -94,13 +94,12 @@ class _FakeApi implements VersesApi {
   Future<List<Verse>> getVerses({String? mood}) => throw UnimplementedError();
 }
 
-// 1 Oct 2026, 09:00 local: today's 07:00 has passed, today's 20:00 hasn't.
+// 1 Oct 2026, 09:00 local: today's 08:00 has passed.
 final _now = DateTime(2026, 10, 1, 9);
 
-ReminderSettings _settings({bool morning = false, bool evening = false}) =>
+ReminderSettings _settings({bool enabled = false, int hour = 8, int minute = 0}) =>
     ReminderSettings.defaults.copyWith(
-      morning: ReminderSettings.defaults.morning.copyWith(enabled: morning),
-      evening: ReminderSettings.defaults.evening.copyWith(enabled: evening),
+      daily: ReminderSlot(enabled: enabled, hour: hour, minute: minute),
     );
 
 void main() {
@@ -122,63 +121,56 @@ void main() {
 
   test('schedules 14 days ahead, skipping times already past', () async {
     final api = _FakeApi();
-    await service(api).reschedule(_settings(morning: true, evening: true));
+    await service(api).reschedule(_settings(enabled: true, hour: 8));
 
     expect(api.rangeRequest, ('2026-10-01', 14));
-    // Today's morning already passed: 13 mornings + 14 evenings.
-    expect(scheduler.scheduled, hasLength(27));
+    // Today's 8:00 has already passed at 9:00: 13 days are scheduled.
+    expect(scheduler.scheduled, hasLength(13));
     expect(scheduler.scheduled.every((s) => s.when.isAfter(_now)), isTrue);
-    expect(scheduler.scheduled.map((s) => s.id).toSet(), hasLength(27));
-    expect(scheduler.scheduled.first.when, DateTime(2026, 10, 1, 20));
-    expect(scheduler.scheduled.last.when, DateTime(2026, 10, 14, 20));
+    expect(scheduler.scheduled.map((s) => s.id).toSet(), hasLength(13));
+    expect(scheduler.scheduled.first.when, DateTime(2026, 10, 2, 8));
+    expect(scheduler.scheduled.last.when, DateTime(2026, 10, 14, 8));
   });
 
-  test('each reminder shows that day\'s verse', () async {
+  test('each reminder shows that day\'s verse quote', () async {
     await service(_FakeApi())
-        .reschedule(_settings(morning: true, evening: true));
+        .reschedule(_settings(enabled: true, hour: 8));
 
-    final morningOct2 = scheduler.scheduled.firstWhere(
-      (s) => s.when == DateTime(2026, 10, 2, 7),
+    final oct2 = scheduler.scheduled.firstWhere(
+      (s) => s.when == DateTime(2026, 10, 2, 8),
     );
-    expect(morningOct2.title, 'Your morning verse');
-    expect(morningOct2.body, '“Verse for 2026-10-02” — Ref 2026-10-02');
-
-    final eveningOct1 = scheduler.scheduled.firstWhere(
-      (s) => s.when == DateTime(2026, 10, 1, 20),
-    );
-    expect(eveningOct1.title, 'Evening reflection');
-    expect(eveningOct1.body, 'Reflection for 2026-10-01 (Ref 2026-10-01)');
+    expect(oct2.title, 'Daily Verse');
+    expect(oct2.body, '“Verse for 2026-10-02” — Ref 2026-10-02');
   });
 
-  test('only enabled reminders are scheduled, at the chosen time', () async {
-    final settings = _settings(
-      morning: true,
-    ).copyWith(morning: const ReminderSlot(enabled: true, hour: 6, minute: 30));
+  test('schedules today when reminder time is in the future', () async {
+    final settings = _settings(enabled: true, hour: 10, minute: 30);
     await service(_FakeApi()).reschedule(settings);
 
-    expect(scheduler.scheduled, hasLength(13));
+    // 10:30 AM is after 9:00 AM, so today + next 13 days = 14 reminders.
+    expect(scheduler.scheduled, hasLength(14));
     expect(
-      scheduler.scheduled.every((s) => s.title == 'Your morning verse'),
+      scheduler.scheduled.every((s) => s.title == 'Daily Verse'),
       isTrue,
     );
-    expect(scheduler.scheduled.first.when, DateTime(2026, 10, 2, 6, 30));
+    expect(scheduler.scheduled.first.when, DateTime(2026, 10, 1, 10, 30));
   });
 
   test('offline still schedules reminders with generic text', () async {
     await service(_FakeApi(offline: true))
-        .reschedule(_settings(morning: true, evening: true));
+        .reschedule(_settings(enabled: true, hour: 10));
 
-    expect(scheduler.scheduled, hasLength(27));
+    expect(scheduler.scheduled, hasLength(14));
     expect(
       scheduler.scheduled.first.body,
-      'Pause and reflect on today\'s verse.',
+      'Take a moment with today\'s verse.',
     );
   });
 
   test('rescheduling replaces previous reminders', () async {
     final s = service(_FakeApi());
-    await s.reschedule(_settings(morning: true, evening: true));
-    await s.reschedule(_settings(evening: true));
+    await s.reschedule(_settings(enabled: true, hour: 8));
+    await s.reschedule(_settings(enabled: true, hour: 10));
 
     expect(scheduler.scheduled, hasLength(14));
     expect(scheduler.cancelAllCalls, 2);
@@ -190,28 +182,27 @@ void main() {
           InMemorySharedPreferencesAsync.empty();
     });
 
-    test('default to off at 7:00 am and 8:00 pm', () async {
+    test('default to off at 8:00 am', () async {
       final container = ProviderContainer();
       addTearDown(container.dispose);
       final settings = await container.read(remindersProvider.future);
 
       expect(settings.anyEnabled, isFalse);
-      expect((settings.morning.hour, settings.morning.minute), (7, 0));
-      expect((settings.evening.hour, settings.evening.minute), (20, 0));
+      expect((settings.daily.hour, settings.daily.minute), (8, 0));
     });
 
     test('are saved across app restarts', () async {
       final first = ProviderContainer();
       await first
           .read(remindersProvider.notifier)
-          .save(_settings(evening: true));
+          .save(_settings(enabled: true, hour: 9));
       first.dispose();
 
       final restarted = ProviderContainer();
       addTearDown(restarted.dispose);
       final settings = await restarted.read(remindersProvider.future);
-      expect(settings.evening.enabled, isTrue);
-      expect(settings.morning.enabled, isFalse);
+      expect(settings.daily.enabled, isTrue);
+      expect(settings.daily.hour, 9);
     });
 
     test('unreadable data falls back to defaults', () async {

@@ -27,11 +27,8 @@ class _MorePageState extends ConsumerState<MorePage> {
     return time.format(context);
   }
 
-  Future<void> _pickTime(
-    ReminderSettings settings, {
-    required bool isMorning,
-  }) async {
-    final currentSlot = isMorning ? settings.morning : settings.evening;
+  Future<void> _pickTime(ReminderSettings settings) async {
+    final currentSlot = settings.daily;
     final picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay(hour: currentSlot.hour, minute: currentSlot.minute),
@@ -55,16 +52,14 @@ class _MorePageState extends ConsumerState<MorePage> {
         hour: picked.hour,
         minute: picked.minute,
       );
-      final updated = isMorning
-          ? settings.copyWith(morning: updatedSlot)
-          : settings.copyWith(evening: updatedSlot);
-      await ref.read(remindersProvider.notifier).save(updated);
+      await ref.read(remindersProvider.notifier).save(
+            settings.copyWith(daily: updatedSlot),
+          );
     }
   }
 
   Future<void> _toggleReminder(
     ReminderSettings settings, {
-    required bool isMorning,
     required bool enabled,
   }) async {
     if (enabled) {
@@ -87,13 +82,9 @@ class _MorePageState extends ConsumerState<MorePage> {
       });
     }
 
-    final updated = isMorning
-        ? settings.copyWith(
-            morning: settings.morning.copyWith(enabled: enabled),
-          )
-        : settings.copyWith(
-            evening: settings.evening.copyWith(enabled: enabled),
-          );
+    final updated = settings.copyWith(
+      daily: settings.daily.copyWith(enabled: enabled),
+    );
     await ref.read(remindersProvider.notifier).save(updated);
   }
 
@@ -170,48 +161,20 @@ class _MorePageState extends ConsumerState<MorePage> {
                     children: [
                       Card(
                         clipBehavior: Clip.antiAlias,
-                        child: Column(
-                          children: [
-                            _ReminderTile(
-                              icon: Icons.wb_sunny_outlined,
-                              title: 'Morning Verse',
-                              timeText: _formatTime(
-                                context,
-                                settings.morning.hour,
-                                settings.morning.minute,
-                              ),
-                              enabled: settings.morning.enabled,
-                              onTapTime: () => _pickTime(
-                                settings,
-                                isMorning: true,
-                              ),
-                              onToggle: (enabled) => _toggleReminder(
-                                settings,
-                                isMorning: true,
-                                enabled: enabled,
-                              ),
-                            ),
-                            const Divider(height: 1, indent: 56, endIndent: 16),
-                            _ReminderTile(
-                              icon: Icons.nightlight_outlined,
-                              title: 'Evening Verse',
-                              timeText: _formatTime(
-                                context,
-                                settings.evening.hour,
-                                settings.evening.minute,
-                              ),
-                              enabled: settings.evening.enabled,
-                              onTapTime: () => _pickTime(
-                                settings,
-                                isMorning: false,
-                              ),
-                              onToggle: (enabled) => _toggleReminder(
-                                settings,
-                                isMorning: false,
-                                enabled: enabled,
-                              ),
-                            ),
-                          ],
+                        child: _ReminderTile(
+                          icon: Icons.wb_sunny_outlined,
+                          title: 'Daily Verse',
+                          timeText: _formatTime(
+                            context,
+                            settings.daily.hour,
+                            settings.daily.minute,
+                          ),
+                          enabled: settings.daily.enabled,
+                          onTapTime: () => _pickTime(settings),
+                          onToggle: (enabled) => _toggleReminder(
+                            settings,
+                            enabled: enabled,
+                          ),
                         ),
                       ),
                       if (_permissionDenied) ...[

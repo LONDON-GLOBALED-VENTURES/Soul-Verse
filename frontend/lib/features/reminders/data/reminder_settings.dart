@@ -26,28 +26,34 @@ class ReminderSlot {
   Map<String, dynamic> toJson() => _$ReminderSlotToJson(this);
 }
 
-/// Morning and evening verse reminders. Off by default: turning one on asks for permission.
+/// Daily verse reminder. Off by default: turning it on asks for permission.
 @JsonSerializable(explicitToJson: true)
 class ReminderSettings {
-  final ReminderSlot morning;
-  final ReminderSlot evening;
+  final ReminderSlot daily;
 
-  const ReminderSettings({required this.morning, required this.evening});
+  const ReminderSettings({required this.daily});
 
   static const defaults = ReminderSettings(
-    morning: ReminderSlot(enabled: false, hour: 7, minute: 0),
-    evening: ReminderSlot(enabled: false, hour: 20, minute: 0),
+    daily: ReminderSlot(enabled: false, hour: 8, minute: 0),
   );
 
-  bool get anyEnabled => morning.enabled || evening.enabled;
+  bool get anyEnabled => daily.enabled;
 
-  ReminderSettings copyWith({ReminderSlot? morning, ReminderSlot? evening}) =>
-      ReminderSettings(
-        morning: morning ?? this.morning,
-        evening: evening ?? this.evening,
-      );
+  ReminderSettings copyWith({ReminderSlot? daily}) =>
+      ReminderSettings(daily: daily ?? this.daily);
 
-  factory ReminderSettings.fromJson(Map<String, dynamic> json) =>
-      _$ReminderSettingsFromJson(json);
+  factory ReminderSettings.fromJson(Map<String, dynamic> json) {
+    if (json.containsKey('daily') && json['daily'] is Map<String, dynamic>) {
+      return _$ReminderSettingsFromJson(json);
+    }
+    // Backward compatibility for legacy morning/evening settings
+    if (json.containsKey('morning') && json['morning'] is Map<String, dynamic>) {
+      final morning =
+          ReminderSlot.fromJson(json['morning'] as Map<String, dynamic>);
+      return ReminderSettings(daily: morning);
+    }
+    return defaults;
+  }
+
   Map<String, dynamic> toJson() => _$ReminderSettingsToJson(this);
 }
