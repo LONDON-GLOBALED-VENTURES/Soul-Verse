@@ -73,21 +73,27 @@ class NotificationScheduler {
   /// Shows the system permission prompt (Android 13+ / iOS). Returns whether it was granted.
   Future<bool> requestPermission() async {
     await _ensureInitialized();
-    if (Platform.isAndroid) {
-      return await _plugin
-              .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin
-              >()
-              ?.requestNotificationsPermission() ??
-          false;
-    }
-    if (Platform.isIOS) {
-      return await _plugin
-              .resolvePlatformSpecificImplementation<
-                IOSFlutterLocalNotificationsPlugin
-              >()
-              ?.requestPermissions(alert: true, badge: true, sound: true) ??
-          false;
+    try {
+      if (Platform.isAndroid) {
+        final android = _plugin.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+        // If already granted / enabled at OS level, return true immediately.
+        final areEnabled = await android?.areNotificationsEnabled();
+        if (areEnabled == true) return true;
+
+        return await android?.requestNotificationsPermission() ?? false;
+      }
+      if (Platform.isIOS) {
+        return await _plugin
+                .resolvePlatformSpecificImplementation<
+                  IOSFlutterLocalNotificationsPlugin
+                >()
+                ?.requestPermissions(alert: true, badge: true, sound: true) ??
+            false;
+      }
+    } catch (e) {
+      debugPrint('Error requesting notification permission: $e');
+      return true;
     }
     return false;
   }
