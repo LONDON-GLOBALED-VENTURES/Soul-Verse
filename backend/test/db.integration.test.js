@@ -1,5 +1,6 @@
 // Runs only against a throwaway Postgres: it DROPS ALL TABLES in that database.
 //   TEST_DATABASE_URL=postgresql://user@localhost:5432/soulverse_test npm test
+process.env.NODE_ENV = 'test';
 const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 
