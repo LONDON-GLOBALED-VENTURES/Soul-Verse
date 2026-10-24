@@ -1,13 +1,14 @@
 const { Pool } = require('pg');
-require('dotenv').config();
+require('dotenv').config({ quiet: true });
 
 const connectionString = process.env.DATABASE_URL;
 
+// Hosted Postgres (Neon) needs SSL; a local development database usually has none.
+const isLocal = /@(localhost|127\.0\.0\.1)[:/]/.test(connectionString || '');
+
 const pool = new Pool({
   connectionString,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: isLocal ? false : { rejectUnauthorized: false },
   max: 10,
   idleTimeoutMillis: 30000,
 });

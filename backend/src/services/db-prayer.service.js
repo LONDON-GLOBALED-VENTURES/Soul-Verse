@@ -177,6 +177,7 @@ const createPrayer = async ({ authorId, title, content, category = 'General', is
     title: trimmedTitle,
     content: trimmedContent,
     category: (category || 'General').trim(),
+    type: normalizedType,
     likesCount: 0,
     isLikedByMe: false,
     isMine: true,

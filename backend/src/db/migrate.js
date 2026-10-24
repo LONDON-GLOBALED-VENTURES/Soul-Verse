@@ -1,8 +1,7 @@
 const { pool } = require('./index');
 
+// Idempotent: safe to run on a fresh database and on one created by an older version.
 async function migrate() {
-  console.log('Connecting to Neon PostgreSQL to run migrations...');
-
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -38,10 +37,16 @@ async function migrate() {
         title VARCHAR(150) NOT NULL,
         content TEXT NOT NULL,
         category VARCHAR(100) DEFAULT 'General',
+        type VARCHAR(20) NOT NULL DEFAULT 'request',
         likes_count INTEGER DEFAULT 0,
         created_at TIMESTAMPTZ DEFAULT NOW(),
         updated_at TIMESTAMPTZ DEFAULT NOW()
       );
+    `);
+
+    // 2b. Databases created before `type` existed: CREATE TABLE IF NOT EXISTS skips them.
+    await client.query(`
+      ALTER TABLE prayers ADD COLUMN IF NOT EXISTS type VARCHAR(20) NOT NULL DEFAULT 'request';
     `);
 
     // 3. Prayer Likes Table (Unique constraint prevents duplicate likes)
@@ -59,23 +64,28 @@ async function migrate() {
       CREATE INDEX IF NOT EXISTS idx_prayers_created_at ON prayers(created_at DESC);
       CREATE INDEX IF NOT EXISTS idx_prayers_likes_count ON prayers(likes_count DESC);
       CREATE INDEX IF NOT EXISTS idx_prayers_category ON prayers(category);
+      CREATE INDEX IF NOT EXISTS idx_prayers_type ON prayers(type);
       CREATE INDEX IF NOT EXISTS idx_prayer_likes_user ON prayer_likes(user_id);
     `);
 
     await client.query('COMMIT');
-    console.log('✅ All tables and indexes created successfully on Neon PostgreSQL!');
   } catch (err) {
     await client.query('ROLLBACK');
-    console.error('❌ Migration failed:', err);
-    process.exit(1);
+    throw err;
   } finally {
     client.release();
-    await pool.end();
   }
 }
 
 if (require.main === module) {
-  migrate();
+  console.log('Running database migrations...');
+  migrate()
+    .then(() => console.log('✅ All tables and indexes are up to date.'))
+    .catch((err) => {
+      console.error('❌ Migration failed:', err);
+      process.exitCode = 1;
+    })
+    .finally(() => pool.end());
 }
 
 module.exports = migrate;
