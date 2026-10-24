@@ -76,7 +76,7 @@ class _MorePageState extends ConsumerState<MorePage> {
     }
 
     if (!mounted) return;
-    if (_permissionDenied) {
+    if (_permissionDenied && !enabled) {
       setState(() {
         _permissionDenied = false;
       });
@@ -289,52 +289,55 @@ class _ReminderTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        children: [
-          Icon(icon, color: AppColors.accent, size: 24),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: textTheme.titleMedium),
-                const SizedBox(height: 4),
-                InkWell(
-                  onTap: onTapTime,
-                  borderRadius: BorderRadius.circular(6),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          timeText,
-                          style: textTheme.bodyMedium?.copyWith(
-                            color: AppColors.accent,
-                            fontWeight: FontWeight.w600,
+    return InkWell(
+      onTap: () => onToggle(!enabled),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            Icon(icon, color: AppColors.accent, size: 24),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: textTheme.titleMedium),
+                  const SizedBox(height: 4),
+                  InkWell(
+                    onTap: onTapTime,
+                    borderRadius: BorderRadius.circular(6),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            timeText,
+                            style: textTheme.bodyMedium?.copyWith(
+                              color: AppColors.accent,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 4),
-                        const Icon(
-                          Icons.edit_outlined,
-                          size: 14,
-                          color: AppColors.accent,
-                        ),
-                      ],
+                          const SizedBox(width: 4),
+                          const Icon(
+                            Icons.edit_outlined,
+                            size: 14,
+                            color: AppColors.accent,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Switch.adaptive(
-            value: enabled,
-            activeTrackColor: AppColors.accent,
-            onChanged: onToggle,
-          ),
-        ],
+            Switch.adaptive(
+              value: enabled,
+              activeTrackColor: AppColors.accent,
+              onChanged: onToggle,
+            ),
+          ],
+        ),
       ),
     );
   }

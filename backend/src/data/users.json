@@ -1,9 +1,9 @@
 [
   {
-    "id": "usr_6201e21d-942b-44e8-9a04-c5f1bbd4b363",
-    "googleId": "google_author2@example.com",
-    "email": "author2@example.com",
-    "name": "Author",
+    "id": "usr_5fa388d5-358b-42c5-ad71-dcd123804219",
+    "googleId": "google_author_tr@example.com",
+    "email": "author_tr@example.com",
+    "name": "Author TR",
     "avatarUrl": "https://example.com/avatar.png",
     "subscription": {
       "status": "free",
@@ -12,27 +12,27 @@
       "expiresAt": null
     },
     "prayerStats": {
-      "prayersShared": 0,
-      "likesReceived": 0,
+      "prayersShared": 2,
+      "likesReceived": 5,
       "likesGiven": 0,
       "status": {
-        "level": 1,
-        "title": "Seeker",
-        "emoji": "🌱",
-        "currentLikes": 0,
-        "nextTitle": "Believer",
-        "nextThreshold": 5,
+        "level": 2,
+        "title": "Believer",
+        "emoji": "🕊️",
+        "currentLikes": 5,
+        "nextTitle": "Faithful Servant",
+        "nextThreshold": 20,
         "progress": 0
       }
     },
-    "createdAt": "2026-10-02T19:31:12.485Z",
-    "lastLoginAt": "2026-10-02T19:31:12.485Z"
+    "createdAt": "2026-10-24T18:32:14.503Z",
+    "lastLoginAt": "2026-10-24T18:32:14.503Z"
   },
   {
-    "id": "usr_c18e0d6d-52c3-4985-9a79-1c10ab9f6b43",
-    "googleId": "google_stranger@example.com",
-    "email": "stranger@example.com",
-    "name": "Stranger",
+    "id": "usr_9f2750f0-324e-4a35-b22e-3788a8acd542",
+    "googleId": "google_l1@example.com",
+    "email": "l1@example.com",
+    "name": "L1",
     "avatarUrl": "https://example.com/avatar.png",
     "subscription": {
       "status": "free",
@@ -43,7 +43,7 @@
     "prayerStats": {
       "prayersShared": 0,
       "likesReceived": 0,
-      "likesGiven": 0,
+      "likesGiven": 1,
       "status": {
         "level": 1,
         "title": "Seeker",
@@ -54,7 +54,123 @@
         "progress": 0
       }
     },
-    "createdAt": "2026-10-02T19:31:12.486Z",
-    "lastLoginAt": "2026-10-02T19:31:12.486Z"
+    "createdAt": "2026-10-24T18:32:14.515Z",
+    "lastLoginAt": "2026-10-24T18:32:14.515Z"
+  },
+  {
+    "id": "usr_79364634-b643-431a-a35b-04f1d070e509",
+    "googleId": "google_l2@example.com",
+    "email": "l2@example.com",
+    "name": "L2",
+    "avatarUrl": "https://example.com/avatar.png",
+    "subscription": {
+      "status": "free",
+      "tier": "none",
+      "purchaseToken": null,
+      "expiresAt": null
+    },
+    "prayerStats": {
+      "prayersShared": 0,
+      "likesReceived": 0,
+      "likesGiven": 1,
+      "status": {
+        "level": 1,
+        "title": "Seeker",
+        "emoji": "🌱",
+        "currentLikes": 0,
+        "nextTitle": "Believer",
+        "nextThreshold": 5,
+        "progress": 0
+      }
+    },
+    "createdAt": "2026-10-24T18:32:14.521Z",
+    "lastLoginAt": "2026-10-24T18:32:14.521Z"
+  },
+  {
+    "id": "usr_a29ad180-808b-4495-ad4e-8c61467152f2",
+    "googleId": "google_l3@example.com",
+    "email": "l3@example.com",
+    "name": "L3",
+    "avatarUrl": "https://example.com/avatar.png",
+    "subscription": {
+      "status": "free",
+      "tier": "none",
+      "purchaseToken": null,
+      "expiresAt": null
+    },
+    "prayerStats": {
+      "prayersShared": 0,
+      "likesReceived": 0,
+      "likesGiven": 1,
+      "status": {
+        "level": 1,
+        "title": "Seeker",
+        "emoji": "🌱",
+        "currentLikes": 0,
+        "nextTitle": "Believer",
+        "nextThreshold": 5,
+        "progress": 0
+      }
+    },
+    "createdAt": "2026-10-24T18:32:14.529Z",
+    "lastLoginAt": "2026-10-24T18:32:14.529Z"
+  },
+  {
+    "id": "usr_2d18cc6b-0bdd-49db-9998-66f6a12ab97a",
+    "googleId": "google_l4@example.com",
+    "email": "l4@example.com",
+    "name": "L4",
+    "avatarUrl": "https://example.com/avatar.png",
+    "subscription": {
+      "status": "free",
+      "tier": "none",
+      "purchaseToken": null,
+      "expiresAt": null
+    },
+    "prayerStats": {
+      "prayersShared": 0,
+      "likesReceived": 0,
+      "likesGiven": 1,
+      "status": {
+        "level": 1,
+        "title": "Seeker",
+        "emoji": "🌱",
+        "currentLikes": 0,
+        "nextTitle": "Believer",
+        "nextThreshold": 5,
+        "progress": 0
+      }
+    },
+    "createdAt": "2026-10-24T18:32:14.539Z",
+    "lastLoginAt": "2026-10-24T18:32:14.539Z"
+  },
+  {
+    "id": "usr_4cb47b04-59c4-45c2-9a4a-64b14a24af0e",
+    "googleId": "google_l5@example.com",
+    "email": "l5@example.com",
+    "name": "L5",
+    "avatarUrl": "https://example.com/avatar.png",
+    "subscription": {
+      "status": "free",
+      "tier": "none",
+      "purchaseToken": null,
+      "expiresAt": null
+    },
+    "prayerStats": {
+      "prayersShared": 0,
+      "likesReceived": 0,
+      "likesGiven": 1,
+      "status": {
+        "level": 1,
+        "title": "Seeker",
+        "emoji": "🌱",
+        "currentLikes": 0,
+        "nextTitle": "Believer",
+        "nextThreshold": 5,
+        "progress": 0
+      }
+    },
+    "createdAt": "2026-10-24T18:32:14.543Z",
+    "lastLoginAt": "2026-10-24T18:32:14.543Z"
   }
 ]

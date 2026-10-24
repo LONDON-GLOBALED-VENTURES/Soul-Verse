@@ -52,10 +52,48 @@ class NotificationScheduler {
     tz_data.initializeTimeZones();
     try {
       final zone = await FlutterTimezone.getLocalTimezone();
-      tz.setLocalLocation(tz.getLocation(zone.identifier));
+      final id = zone.identifier;
+      debugPrint('Device timezone identifier: $id');
+      try {
+        tz.setLocalLocation(tz.getLocation(id));
+        debugPrint('Timezone set to: ${tz.local.name}');
+      } catch (e) {
+        debugPrint('tz.getLocation("$id") failed: $e — falling back to UTC offset');
+        // Try to find timezone by UTC offset from the device
+        try {
+          final now = DateTime.now();
+          final offset = now.timeZoneOffset;
+          // Search for a timezone matching this offset
+          final candidates = tz.timeZoneDatabase.locations.values
+              .where((loc) => loc.currentTimeZone.offset == offset.inMilliseconds)
+              .toList();
+          if (candidates.isNotEmpty) {
+            tz.setLocalLocation(candidates.first);
+            debugPrint('Timezone resolved via offset to: ${tz.local.name}');
+          } else {
+            tz.setLocalLocation(tz.UTC);
+            debugPrint('No timezone found for offset ${offset.inHours}h — using UTC');
+          }
+        } catch (_) {
+          tz.setLocalLocation(tz.UTC);
+          debugPrint('Timezone offset fallback failed — using UTC');
+        }
+      }
     } catch (e) {
-      // Falls back to UTC; reminders would be offset, so make it visible in logs.
       debugPrint('Could not resolve local timezone: $e');
+      // Try offset-based fallback even when FlutterTimezone fails
+      try {
+        final offset = DateTime.now().timeZoneOffset;
+        final candidates = tz.timeZoneDatabase.locations.values
+            .where((loc) => loc.currentTimeZone.offset == offset.inMilliseconds)
+            .toList();
+        if (candidates.isNotEmpty) {
+          tz.setLocalLocation(candidates.first);
+          debugPrint('Timezone resolved via offset to: ${tz.local.name}');
+        }
+      } catch (_) {
+        // Already defaults to UTC
+      }
     }
     await _plugin.initialize(
       settings: const InitializationSettings(
@@ -68,20 +106,46 @@ class NotificationScheduler {
         ),
       ),
     );
+
+    if (Platform.isAndroid) {
+      const channel = AndroidNotificationChannel(
+        'verse_reminders_v2',
+        'Daily Verse Reminders',
+        description: 'Daily verse reminder',
+        importance: Importance.max,
+        playSound: true,
+        enableVibration: true,
+      );
+      await _plugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.createNotificationChannel(channel);
+    }
   }
 
   /// Shows the system permission prompt (Android 13+ / iOS). Returns whether it was granted.
   Future<bool> requestPermission() async {
-    await _ensureInitialized();
     try {
+      await _ensureInitialized();
       if (Platform.isAndroid) {
         final android = _plugin.resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>();
+
         // If already granted / enabled at OS level, return true immediately.
         final areEnabled = await android?.areNotificationsEnabled();
         if (areEnabled == true) return true;
 
-        return await android?.requestNotificationsPermission() ?? false;
+        final requested = await android?.requestNotificationsPermission();
+        if (requested == true) return true;
+
+        final recheck = await android?.areNotificationsEnabled();
+        if (recheck == true) return true;
+
+        // On Android versions prior to 13 (API < 33), runtime permission prompt is not supported.
+        // If areNotificationsEnabled returned null, default to true.
+        if (recheck == null) return true;
+
+        return false;
       }
       if (Platform.isIOS) {
         return await _plugin
@@ -95,7 +159,7 @@ class NotificationScheduler {
       debugPrint('Error requesting notification permission: $e');
       return true;
     }
-    return false;
+    return true;
   }
 
   /// Schedules a notification at [when], a local wall-clock time.
@@ -120,8 +184,9 @@ class NotificationScheduler {
         when.minute,
       ),
       notificationDetails: _detailsFor(body, title),
-      // Inexact avoids the exact-alarm permission; delivery may drift by a few minutes.
-      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      // Exact timing ensures the notification fires when expected, even on
+      // Huawei/EMUI devices with aggressive power management.
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: matchDateTimeComponents,
       title: title,
       body: body,
