@@ -23,7 +23,7 @@ class SoulVerseApp extends ConsumerWidget {
     });
 
     // Reschedule reminders on launch (settings load) and whenever they change,
-    // keeping the next 14 days of verse notifications up to date.
+    // keeping the upcoming verse notifications up to date (see ReminderService).
     ref.listen(remindersProvider, (_, next) {
       next.whenData(ref.read(reminderServiceProvider).reschedule);
     });
