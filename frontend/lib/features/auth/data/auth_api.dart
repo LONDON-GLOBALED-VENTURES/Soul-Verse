@@ -11,7 +11,7 @@ class AuthApi {
 
   Future<AuthSession> signInWithGoogle(String idToken) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/api/auth/google',
+      '/auth/google',
       data: {'idToken': idToken},
     );
     return AuthSession.fromJson(response.data!);
@@ -19,14 +19,14 @@ class AuthApi {
 
   Future<String> refreshToken(String refreshToken) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/api/auth/refresh',
+      '/auth/refresh',
       data: {'refreshToken': refreshToken},
     );
     return response.data!['accessToken'] as String;
   }
 
   Future<User> getMe() async {
-    final response = await _dio.get<Map<String, dynamic>>('/api/auth/me');
+    final response = await _dio.get<Map<String, dynamic>>('/auth/me');
     return User.fromJson(response.data!['user'] as Map<String, dynamic>);
   }
 }

@@ -32,7 +32,7 @@ class PrayersApi {
     };
 
     final response = await _dio.get<Map<String, dynamic>>(
-      '/api/prayers',
+      '/prayers',
       queryParameters: queryParams,
     );
 
@@ -54,7 +54,7 @@ class PrayersApi {
     bool isAnonymous = false,
   }) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/api/prayers',
+      '/prayers',
       data: {
         'title': title,
         'content': content,
@@ -73,7 +73,7 @@ class PrayersApi {
 
   Future<Map<String, dynamic>> toggleLike(String prayerId) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/api/prayers/$prayerId/like',
+      '/prayers/$prayerId/like',
     );
     final data = response.data!;
     return data['data'] is Map<String, dynamic>
@@ -82,6 +82,6 @@ class PrayersApi {
   }
 
   Future<void> deletePrayer(String prayerId) async {
-    await _dio.delete<void>('/api/prayers/$prayerId');
+    await _dio.delete<void>('/prayers/$prayerId');
   }
 }

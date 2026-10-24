@@ -6,9 +6,10 @@ import '../../features/auth/data/auth_token_storage.dart';
 
 part 'dio_client.g.dart';
 
+// Must end with `/api`; endpoint paths are relative to it (e.g. '/prayers').
 const _baseUrl = String.fromEnvironment(
   'API_BASE_URL',
-  defaultValue: 'https://api.example.com',
+  defaultValue: 'https://api.example.com/api',
 );
 
 @riverpod
