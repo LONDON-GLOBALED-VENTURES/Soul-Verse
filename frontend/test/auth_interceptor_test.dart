@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
@@ -60,7 +61,11 @@ void main() {
   setUp(() async {
     SharedPreferencesAsyncPlatform.instance =
         InMemorySharedPreferencesAsync.empty();
-    tokens = AuthTokenStorage(SharedPreferencesAsync());
+    FlutterSecureStorage.setMockInitialValues({});
+    tokens = AuthTokenStorage(
+      const FlutterSecureStorage(),
+      SharedPreferencesAsync(),
+    );
     await tokens.saveTokens(accessToken: 'old-token', refreshToken: 'refresh');
 
     server = _FakeServer();
