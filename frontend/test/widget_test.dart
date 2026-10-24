@@ -97,8 +97,23 @@ class _NoopScheduler extends NotificationScheduler {
     return permissionGranted;
   }
 
+  bool exactAllowed = true;
+  bool grantExactInSettings = false;
+  var openExactSettingsCalls = 0;
+  var cancelAllCalls = 0;
+
   @override
-  Future<void> cancelAll() async {}
+  Future<bool> canScheduleExactAlarms() async => exactAllowed;
+
+  @override
+  Future<bool> openExactAlarmSettings() async {
+    openExactSettingsCalls++;
+    if (grantExactInSettings) exactAllowed = true;
+    return exactAllowed;
+  }
+
+  @override
+  Future<void> cancelAll() async => cancelAllCalls++;
 
   @override
   Future<void> schedule({
@@ -379,6 +394,80 @@ void main() {
       expect(find.text('Notifications are disabled'), findsOneWidget);
     },
   );
+
+  group('exact alarm prompt', () {
+    final card = find.text('Get your verse right on time');
+
+    Future<void> openProfileWithReminderOn(WidgetTester tester) async {
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Profile').last);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(Switch).first);
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('appears when reminders are on but exact alarms are off', (
+      tester,
+    ) async {
+      notificationScheduler.exactAllowed = false;
+      await openProfileWithReminderOn(tester);
+
+      expect(card, findsOneWidget);
+    });
+
+    testWidgets('stays hidden when exact alarms are allowed', (tester) async {
+      await openProfileWithReminderOn(tester);
+
+      expect(card, findsNothing);
+    });
+
+    testWidgets('stays hidden while reminders are off', (tester) async {
+      notificationScheduler.exactAllowed = false;
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Profile').last);
+      await tester.pumpAndSettle();
+
+      expect(card, findsNothing);
+    });
+
+    testWidgets('Allow opens settings; granting hides it and reschedules', (
+      tester,
+    ) async {
+      notificationScheduler
+        ..exactAllowed = false
+        ..grantExactInSettings = true;
+      await openProfileWithReminderOn(tester);
+      final reschedulesBefore = notificationScheduler.cancelAllCalls;
+
+      await tester.ensureVisible(find.text('Allow'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Allow'));
+      await tester.pumpAndSettle();
+
+      expect(notificationScheduler.openExactSettingsCalls, 1);
+      expect(card, findsNothing);
+      expect(
+        notificationScheduler.cancelAllCalls,
+        greaterThan(reschedulesBefore),
+        reason: 'reminders rescheduled as exact',
+      );
+    });
+
+    testWidgets('declining in settings keeps the prompt', (tester) async {
+      notificationScheduler.exactAllowed = false;
+      await openProfileWithReminderOn(tester);
+
+      await tester.ensureVisible(find.text('Allow'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Allow'));
+      await tester.pumpAndSettle();
+
+      expect(notificationScheduler.openExactSettingsCalls, 1);
+      expect(card, findsOneWidget);
+    });
+  });
 
   testWidgets('Profile tab allows changing reminder time via time picker', (
     tester,

@@ -209,6 +209,29 @@ class NotificationScheduler {
     }
   }
 
+  /// False only on Android 12+ when "Alarms & reminders" is off for the app, in
+  /// which case reminders can arrive up to an hour late.
+  Future<bool> canScheduleExactAlarms() async {
+    await _ensureInitialized();
+    return await _canScheduleExact() != false;
+  }
+
+  /// Opens the system "Alarms & reminders" page for SoulVerse and returns
+  /// whether exact alarms are allowed once the user comes back.
+  Future<bool> openExactAlarmSettings() async {
+    await _ensureInitialized();
+    try {
+      await _plugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >()
+          ?.requestExactAlarmsPermission();
+    } catch (e) {
+      debugPrint('Could not open exact alarm settings: $e');
+    }
+    return canScheduleExactAlarms();
+  }
+
   Future<void> cancelAll() async {
     await _ensureInitialized();
     await _plugin.cancelAll();

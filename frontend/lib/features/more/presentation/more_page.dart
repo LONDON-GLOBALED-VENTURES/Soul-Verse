@@ -7,6 +7,8 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/async_states.dart';
 import '../../auth/application/auth_service.dart';
 import '../../auth/presentation/widgets/google_sign_in_button.dart';
+import '../../reminders/application/exact_alarms_provider.dart';
+import '../../reminders/application/reminder_service.dart';
 import '../../reminders/application/reminders_provider.dart';
 import '../../reminders/data/notification_scheduler.dart';
 import '../../reminders/data/reminder_settings.dart';
@@ -22,6 +24,28 @@ class MorePage extends ConsumerStatefulWidget {
 class _MorePageState extends ConsumerState<MorePage> {
   bool _permissionDenied = false;
 
+  late final AppLifecycleListener _lifecycle;
+
+  @override
+  void initState() {
+    super.initState();
+    // The exact-alarm setting is changed outside the app, so re-check on return.
+    _lifecycle = AppLifecycleListener(
+      onResume: () => ref.invalidate(exactAlarmsAllowedProvider),
+    );
+  }
+
+  @override
+  void dispose() {
+    _lifecycle.dispose();
+    super.dispose();
+  }
+
+  Future<void> _allowExactAlarms() async {
+    await ref.read(notificationSchedulerProvider).openExactAlarmSettings();
+    ref.invalidate(exactAlarmsAllowedProvider);
+  }
+
   String _formatTime(BuildContext context, int hour, int minute) {
     final time = TimeOfDay(hour: hour, minute: minute);
     return time.format(context);
@@ -31,7 +55,10 @@ class _MorePageState extends ConsumerState<MorePage> {
     final currentSlot = settings.daily;
     final picked = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay(hour: currentSlot.hour, minute: currentSlot.minute),
+      initialTime: TimeOfDay(
+        hour: currentSlot.hour,
+        minute: currentSlot.minute,
+      ),
       builder: (pickerContext, child) {
         return Theme(
           data: Theme.of(pickerContext).copyWith(
@@ -52,9 +79,9 @@ class _MorePageState extends ConsumerState<MorePage> {
         hour: picked.hour,
         minute: picked.minute,
       );
-      await ref.read(remindersProvider.notifier).save(
-            settings.copyWith(daily: updatedSlot),
-          );
+      await ref
+          .read(remindersProvider.notifier)
+          .save(settings.copyWith(daily: updatedSlot));
     }
   }
 
@@ -120,6 +147,15 @@ class _MorePageState extends ConsumerState<MorePage> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final remindersAsync = ref.watch(remindersProvider);
+    final exactAlarmsAllowed = ref.watch(exactAlarmsAllowedProvider).value;
+
+    // Once allowed, reschedule so the pending reminders become exact right away.
+    ref.listen(exactAlarmsAllowedProvider, (previous, next) {
+      final settings = ref.read(remindersProvider).value;
+      if (previous?.value == false && next.value == true && settings != null) {
+        ref.read(reminderServiceProvider).reschedule(settings);
+      }
+    });
 
     return Scaffold(
       body: SafeArea(
@@ -133,9 +169,7 @@ class _MorePageState extends ConsumerState<MorePage> {
             ),
             const SliverPadding(
               padding: EdgeInsets.fromLTRB(16, 0, 16, 12),
-              sliver: SliverToBoxAdapter(
-                child: _AccountCard(),
-              ),
+              sliver: SliverToBoxAdapter(child: _AccountCard()),
             ),
             SliverToBoxAdapter(
               child: Padding(
@@ -171,12 +205,15 @@ class _MorePageState extends ConsumerState<MorePage> {
                           ),
                           enabled: settings.daily.enabled,
                           onTapTime: () => _pickTime(settings),
-                          onToggle: (enabled) => _toggleReminder(
-                            settings,
-                            enabled: enabled,
-                          ),
+                          onToggle: (enabled) =>
+                              _toggleReminder(settings, enabled: enabled),
                         ),
                       ),
+                      if (settings.daily.enabled &&
+                          exactAlarmsAllowed == false) ...[
+                        const SizedBox(height: 16),
+                        _ExactAlarmCard(onAllow: _allowExactAlarms),
+                      ],
                       if (_permissionDenied) ...[
                         const SizedBox(height: 16),
                         Container(
@@ -268,6 +305,55 @@ class _MorePageState extends ConsumerState<MorePage> {
   }
 }
 
+/// Shown on Android 14+ when "Alarms & reminders" is off, which can delay
+/// reminders by up to an hour.
+class _ExactAlarmCard extends StatelessWidget {
+  const _ExactAlarmCard({required this.onAllow});
+
+  final VoidCallback onAllow;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.tile),
+        border: Border.all(color: AppColors.accent),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.alarm_outlined, color: AppColors.accent, size: 22),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Get your verse right on time',
+                  style: textTheme.titleSmall,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Your phone may deliver reminders up to an hour late. '
+                  'Allow "Alarms & reminders" for SoulVerse so they arrive '
+                  'at the time you chose.',
+                  style: textTheme.bodySmall,
+                ),
+                const SizedBox(height: 12),
+                FilledButton(onPressed: onAllow, child: const Text('Allow')),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _ReminderTile extends StatelessWidget {
   const _ReminderTile({
     required this.icon,
@@ -307,7 +393,10 @@ class _ReminderTile extends StatelessWidget {
                     onTap: onTapTime,
                     borderRadius: BorderRadius.circular(6),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 2,
+                        horizontal: 2,
+                      ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -485,8 +574,11 @@ class _AccountCard extends ConsumerWidget {
                                   ),
                                   decoration: BoxDecoration(
                                     color: user.subscription.isPremium
-                                        ? const Color(0xFFFFD700).withValues(alpha: 0.18)
-                                        : AppColors.accent.withValues(alpha: 0.12),
+                                        ? const Color(0xFFFFD700)
+                                              .withValues(alpha: 0.18)
+                                        : AppColors.accent.withValues(
+                                            alpha: 0.12,
+                                          ),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Row(
@@ -521,7 +613,9 @@ class _AccountCard extends ConsumerWidget {
                                   vertical: 2,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: AppColors.textPrimary.withValues(alpha: 0.08),
+                                  color: AppColors.textPrimary.withValues(
+                                    alpha: 0.08,
+                                  ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
@@ -582,7 +676,9 @@ class _AccountCard extends ConsumerWidget {
                     value: status.progress,
                     minHeight: 6,
                     backgroundColor: AppColors.border,
-                    valueColor: const AlwaysStoppedAnimation<Color>(AppColors.accent),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                      AppColors.accent,
+                    ),
                   ),
                 ),
                 if (status.nextTitle != null) ...[
@@ -662,10 +758,7 @@ class _PrayerStatItem extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 2),
-        Text(
-          label,
-          style: textTheme.bodySmall?.copyWith(fontSize: 11),
-        ),
+        Text(label, style: textTheme.bodySmall?.copyWith(fontSize: 11)),
       ],
     );
   }
