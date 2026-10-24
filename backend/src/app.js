@@ -28,14 +28,13 @@ app.get('/', (req, res) => {
   });
 });
 
-// Root /health alias
+// Root /health alias for hosting health checks.
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Mount routes under /api and root for flexible client routing
+// The API lives only under /api (clients' API_BASE_URL ends with /api).
 app.use('/api', routes);
-app.use('/', routes);
 
 app.use(notFound);
 app.use(errorHandler);

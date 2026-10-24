@@ -76,6 +76,21 @@ test('range validates start and days', async () => {
   }
 });
 
+test('the API is served only under /api; root keeps info and health', async () => {
+  const root = baseUrl.replace(/\/api$/, '');
+
+  assert.equal((await fetch(`${root}/verses/daily`)).status, 404);
+  assert.equal((await fetch(`${root}/prayers`)).status, 404);
+  assert.equal((await fetch(`${baseUrl}/verses/daily`)).status, 200);
+
+  const health = await fetch(`${root}/health`);
+  assert.equal(health.status, 200);
+  assert.equal((await health.json()).status, 'ok');
+
+  const info = await (await fetch(`${root}/`)).json();
+  assert.equal(info.endpoints.prayers, '/api/prayers');
+});
+
 test('unknown routes return a JSON 404', async () => {
   const { status, body } = await get('/nope');
   assert.equal(status, 404);
