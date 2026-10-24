@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
@@ -106,7 +105,6 @@ class _NoopScheduler extends NotificationScheduler {
     required DateTime when,
     required String title,
     required String body,
-    DateTimeComponents? matchDateTimeComponents,
   }) async {}
 }
 

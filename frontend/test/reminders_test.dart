@@ -1,4 +1,3 @@
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
@@ -15,18 +14,11 @@ import 'package:soulverse/features/verses/data/models/verse_template.dart';
 import 'package:soulverse/features/verses/data/verses_api.dart';
 
 class _Scheduled {
-  _Scheduled(
-    this.id,
-    this.when,
-    this.title,
-    this.body, {
-    this.matchDateTimeComponents,
-  });
+  _Scheduled(this.id, this.when, this.title, this.body);
   final int id;
   final DateTime when;
   final String title;
   final String body;
-  final DateTimeComponents? matchDateTimeComponents;
 }
 
 class _FakeScheduler extends NotificationScheduler {
@@ -45,16 +37,7 @@ class _FakeScheduler extends NotificationScheduler {
     required DateTime when,
     required String title,
     required String body,
-    DateTimeComponents? matchDateTimeComponents,
-  }) async => scheduled.add(
-        _Scheduled(
-          id,
-          when,
-          title,
-          body,
-          matchDateTimeComponents: matchDateTimeComponents,
-        ),
-      );
+  }) async => scheduled.add(_Scheduled(id, when, title, body));
 }
 
 /// Returns a distinct verse per date: "Verse for 2026-10-02" etc.
@@ -114,10 +97,13 @@ class _FakeApi implements VersesApi {
 // 1 Oct 2026, 09:00 local: today's 08:00 has passed.
 final _now = DateTime(2026, 10, 1, 9);
 
-ReminderSettings _settings({bool enabled = false, int hour = 8, int minute = 0}) =>
-    ReminderSettings.defaults.copyWith(
-      daily: ReminderSlot(enabled: enabled, hour: hour, minute: minute),
-    );
+ReminderSettings _settings({
+  bool enabled = false,
+  int hour = 8,
+  int minute = 0,
+}) => ReminderSettings.defaults.copyWith(
+  daily: ReminderSlot(enabled: enabled, hour: hour, minute: minute),
+);
 
 void main() {
   late _FakeScheduler scheduler;
@@ -136,30 +122,47 @@ void main() {
     expect(api.rangeRequest, isNull, reason: 'no need to fetch verses');
   });
 
-  test('schedules 30 days ahead plus repeating fallback, skipping past time for today', () async {
+  test('schedules 30 verse days then 30 generic days, skipping past time for today', () async {
     final api = _FakeApi();
     await service(api).reschedule(_settings(enabled: true, hour: 8));
 
     expect(api.rangeRequest, ('2026-10-01', 30));
-    // Today's 8:00 has already passed at 9:00: 29 days of quotes + 1 repeating fallback = 30 total.
-    expect(scheduler.scheduled, hasLength(30));
+    // Today's 8:00 has already passed at 9:00: 29 verse days + 30 generic days.
+    expect(scheduler.scheduled, hasLength(59));
     expect(scheduler.scheduled.every((s) => s.when.isAfter(_now)), isTrue);
-    expect(scheduler.scheduled.map((s) => s.id).toSet(), hasLength(30));
+    expect(scheduler.scheduled.map((s) => s.id).toSet(), hasLength(59));
     expect(scheduler.scheduled.first.when, DateTime(2026, 10, 2, 8));
+    expect(scheduler.scheduled.last.when, DateTime(2026, 11, 29, 8));
 
-    // Repeating fallback starts on day 31
-    final fallback = scheduler.scheduled.firstWhere((s) => s.id == 999);
-    expect(fallback.when, DateTime(2026, 10, 31, 8));
-    expect(fallback.matchDateTimeComponents, DateTimeComponents.time);
-    expect(
-      fallback.body,
-      "Your daily verse is waiting for you - tap to read today's scripture and reflection.",
+    final generic = scheduler.scheduled.where(
+      (s) => s.body == ReminderService.fallbackBody,
     );
+    expect(generic, hasLength(30));
+    expect(generic.first.when, DateTime(2026, 10, 31, 8));
+  });
+
+  test(
+    'never more than one reminder per day (no duplicate fallback)',
+    () async {
+      await service(_FakeApi()).reschedule(_settings(enabled: true, hour: 8));
+
+      final days = scheduler.scheduled
+          .map((s) => DateTime(s.when.year, s.when.month, s.when.day))
+          .toList();
+      expect(days.toSet(), hasLength(days.length));
+    },
+  );
+
+  test('stays under the iOS limit of 64 pending notifications', () async {
+    // 10:30 is still ahead at 9:00, so today counts too: the maximum case.
+    await service(_FakeApi())
+        .reschedule(_settings(enabled: true, hour: 10, minute: 30));
+
+    expect(scheduler.scheduled.length, lessThanOrEqualTo(64));
   });
 
   test('each reminder shows that day\'s verse quote', () async {
-    await service(_FakeApi())
-        .reschedule(_settings(enabled: true, hour: 8));
+    await service(_FakeApi()).reschedule(_settings(enabled: true, hour: 8));
 
     final oct2 = scheduler.scheduled.firstWhere(
       (s) => s.when == DateTime(2026, 10, 2, 8),
@@ -172,14 +175,13 @@ void main() {
     final settings = _settings(enabled: true, hour: 10, minute: 30);
     await service(_FakeApi()).reschedule(settings);
 
-    // 10:30 AM is after 9:00 AM, so today + next 29 days = 30 daily quotes + 1 fallback = 31 total.
-    expect(scheduler.scheduled, hasLength(31));
-    final quotes = scheduler.scheduled.where((s) => s.id != 999);
-    expect(quotes, hasLength(30));
-    expect(
-      quotes.every((s) => s.title == 'Daily Verse'),
-      isTrue,
+    // 10:30 AM is after 9:00 AM, so today counts: 30 verse days + 30 generic days.
+    expect(scheduler.scheduled, hasLength(60));
+    final quotes = scheduler.scheduled.where(
+      (s) => s.body != ReminderService.fallbackBody,
     );
+    expect(quotes, hasLength(30));
+    expect(quotes.every((s) => s.title == 'Daily Verse'), isTrue);
     expect(quotes.first.when, DateTime(2026, 10, 1, 10, 30));
   });
 
@@ -187,12 +189,9 @@ void main() {
     await service(_FakeApi(offline: true))
         .reschedule(_settings(enabled: true, hour: 10));
 
-    expect(scheduler.scheduled, hasLength(31));
+    expect(scheduler.scheduled, hasLength(60));
     final firstQuote = scheduler.scheduled.firstWhere((s) => s.id == 0);
-    expect(
-      firstQuote.body,
-      'Take a moment with today\'s verse.',
-    );
+    expect(firstQuote.body, 'Take a moment with today\'s verse.');
   });
 
   test('rescheduling replaces previous reminders', () async {
@@ -200,7 +199,7 @@ void main() {
     await s.reschedule(_settings(enabled: true, hour: 8));
     await s.reschedule(_settings(enabled: true, hour: 10));
 
-    expect(scheduler.scheduled, hasLength(31));
+    expect(scheduler.scheduled, hasLength(60));
     expect(scheduler.cancelAllCalls, 2);
   });
 

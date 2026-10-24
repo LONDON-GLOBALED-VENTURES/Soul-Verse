@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/utils/date_format.dart';
@@ -11,9 +10,12 @@ import '../data/reminder_settings.dart';
 
 part 'reminder_service.g.dart';
 
-/// Schedules the next [daysAhead] days of verse reminders with the actual verse text.
-/// Starting on day 31, a daily repeating fallback notification keeps reminding the user
-/// even if they haven't opened the app for a month.
+/// Schedules [daysAhead] days of verse reminders with the actual verse text, then
+/// [fallbackDays] more with generic text, so reminders keep coming for two months
+/// even if the app isn't opened. Every launch reschedules from today.
+///
+/// All one-shot: a repeating daily notification would fire from tomorrow on both
+/// platforms (they ignore its start date), duplicating the verse reminders.
 class ReminderService {
   ReminderService(this._api, this._scheduler, {DateTime Function()? now})
     : _now = now ?? DateTime.now;
@@ -23,7 +25,9 @@ class ReminderService {
   final DateTime Function() _now;
 
   static const daysAhead = 30;
-  static const fallbackNotificationId = 999;
+
+  /// Keeps the total at 60, under iOS's limit of 64 pending notifications per app.
+  static const fallbackDays = 30;
   static const fallbackBody =
       "Your daily verse is waiting for you - tap to read today's scripture and reflection.";
 
@@ -37,9 +41,8 @@ class ReminderService {
     final setting = settings.daily;
     if (!setting.enabled) return;
 
-    for (var day = 0; day < daysAhead; day++) {
+    for (var day = 0; day < daysAhead + fallbackDays; day++) {
       final date = DateTime(now.year, now.month, now.day + day);
-      final entry = entries[formatIsoDate(date)];
       final when = DateTime(
         date.year,
         date.month,
@@ -52,25 +55,11 @@ class ReminderService {
         id: day,
         when: when,
         title: 'Daily Verse',
-        body: _formatNotificationBody(entry),
+        body: day < daysAhead
+            ? _formatNotificationBody(entries[formatIsoDate(date)])
+            : fallbackBody,
       );
     }
-
-    // Schedule a repeating fallback notification starting from day 31 onwards
-    final fallbackWhen = DateTime(
-      now.year,
-      now.month,
-      now.day + daysAhead,
-      setting.hour,
-      setting.minute,
-    );
-    await _scheduler.schedule(
-      id: fallbackNotificationId,
-      when: fallbackWhen,
-      title: 'Daily Verse',
-      body: fallbackBody,
-      matchDateTimeComponents: DateTimeComponents.time,
-    );
   }
 
   static String _formatNotificationBody(DailyVerse? entry) {

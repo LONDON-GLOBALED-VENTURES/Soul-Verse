@@ -166,15 +166,12 @@ class NotificationScheduler {
     return true;
   }
 
-  /// Schedules a notification at [when], a local wall-clock time.
-  /// If [matchDateTimeComponents] is provided (e.g. [DateTimeComponents.time]),
-  /// the notification repeats at that time.
+  /// Schedules a one-time notification at [when], a local wall-clock time.
   Future<void> schedule({
     required int id,
     required DateTime when,
     required String title,
     required String body,
-    DateTimeComponents? matchDateTimeComponents,
   }) async {
     await _ensureInitialized();
     await _plugin.zonedSchedule(
@@ -189,7 +186,6 @@ class NotificationScheduler {
       ),
       notificationDetails: _detailsFor(body, title),
       androidScheduleMode: scheduleModeFor(await _canScheduleExact()),
-      matchDateTimeComponents: matchDateTimeComponents,
       title: title,
       body: body,
     );
