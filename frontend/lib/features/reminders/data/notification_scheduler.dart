@@ -58,21 +58,27 @@ class NotificationScheduler {
         tz.setLocalLocation(tz.getLocation(id));
         debugPrint('Timezone set to: ${tz.local.name}');
       } catch (e) {
-        debugPrint('tz.getLocation("$id") failed: $e — falling back to UTC offset');
+        debugPrint(
+          'tz.getLocation("$id") failed: $e — falling back to UTC offset',
+        );
         // Try to find timezone by UTC offset from the device
         try {
           final now = DateTime.now();
           final offset = now.timeZoneOffset;
           // Search for a timezone matching this offset
           final candidates = tz.timeZoneDatabase.locations.values
-              .where((loc) => loc.currentTimeZone.offset == offset.inMilliseconds)
+              .where(
+                (loc) => loc.currentTimeZone.offset == offset.inMilliseconds,
+              )
               .toList();
           if (candidates.isNotEmpty) {
             tz.setLocalLocation(candidates.first);
             debugPrint('Timezone resolved via offset to: ${tz.local.name}');
           } else {
             tz.setLocalLocation(tz.UTC);
-            debugPrint('No timezone found for offset ${offset.inHours}h — using UTC');
+            debugPrint(
+              'No timezone found for offset ${offset.inHours}h — using UTC',
+            );
           }
         } catch (_) {
           tz.setLocalLocation(tz.UTC);
@@ -118,7 +124,8 @@ class NotificationScheduler {
       );
       await _plugin
           .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
+            AndroidFlutterLocalNotificationsPlugin
+          >()
           ?.createNotificationChannel(channel);
     }
   }
@@ -128,8 +135,10 @@ class NotificationScheduler {
     try {
       await _ensureInitialized();
       if (Platform.isAndroid) {
-        final android = _plugin.resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
+        final android = _plugin
+            .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin
+            >();
 
         // If already granted / enabled at OS level, return true immediately.
         final areEnabled = await android?.areNotificationsEnabled();
@@ -184,13 +193,36 @@ class NotificationScheduler {
         when.minute,
       ),
       notificationDetails: _detailsFor(body, title),
-      // Exact timing ensures the notification fires when expected, even on
-      // Huawei/EMUI devices with aggressive power management.
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: scheduleModeFor(await _canScheduleExact()),
       matchDateTimeComponents: matchDateTimeComponents,
       title: title,
       body: body,
     );
+  }
+
+  /// Exact timing keeps reminders on time on phones with aggressive battery saving.
+  /// Android 14+ denies exact alarms by default (the user grants SCHEDULE_EXACT_ALARM
+  /// in settings), and scheduling an exact alarm without it throws, so fall back to
+  /// inexact delivery, which may arrive a few minutes late.
+  @visibleForTesting
+  static AndroidScheduleMode scheduleModeFor(bool? canScheduleExact) =>
+      canScheduleExact == false
+      ? AndroidScheduleMode.inexactAllowWhileIdle
+      : AndroidScheduleMode.exactAllowWhileIdle;
+
+  /// Null off Android or below Android 12, where exact alarms need no permission.
+  Future<bool?> _canScheduleExact() async {
+    if (!Platform.isAndroid) return null;
+    try {
+      return await _plugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >()
+          ?.canScheduleExactNotifications();
+    } catch (e) {
+      debugPrint('Could not check exact alarm permission: $e');
+      return false;
+    }
   }
 
   Future<void> cancelAll() async {
