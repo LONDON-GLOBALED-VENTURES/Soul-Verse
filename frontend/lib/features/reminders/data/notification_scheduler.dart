@@ -48,59 +48,54 @@ class NotificationScheduler {
 
   Future<void> _ensureInitialized() => _initialized ??= _initialize();
 
-  Future<void> _initialize() async {
-    tz_data.initializeTimeZones();
-    try {
-      final zone = await FlutterTimezone.getLocalTimezone();
-      final id = zone.identifier;
-      debugPrint('Device timezone identifier: $id');
+  static const _sixMonths = Duration(days: 182);
+
+  /// The zone reminders are scheduled in: the device's zone by name, or when that
+  /// name is unknown to the timezone database, a zone whose UTC offset matches the
+  /// device both now and six months ahead (so summer-time changes line up too).
+  /// UTC only as a last resort.
+  @visibleForTesting
+  static tz.Location resolveLocation(
+    String? identifier, {
+    required int nowMillis,
+    required Duration offsetNow,
+    required Duration offsetInSixMonths,
+  }) {
+    if (identifier != null) {
       try {
-        tz.setLocalLocation(tz.getLocation(id));
-        debugPrint('Timezone set to: ${tz.local.name}');
-      } catch (e) {
-        debugPrint(
-          'tz.getLocation("$id") failed: $e — falling back to UTC offset',
-        );
-        // Try to find timezone by UTC offset from the device
-        try {
-          final now = DateTime.now();
-          final offset = now.timeZoneOffset;
-          // Search for a timezone matching this offset
-          final candidates = tz.timeZoneDatabase.locations.values
-              .where(
-                (loc) => loc.currentTimeZone.offset == offset.inMilliseconds,
-              )
-              .toList();
-          if (candidates.isNotEmpty) {
-            tz.setLocalLocation(candidates.first);
-            debugPrint('Timezone resolved via offset to: ${tz.local.name}');
-          } else {
-            tz.setLocalLocation(tz.UTC);
-            debugPrint(
-              'No timezone found for offset ${offset.inHours}h — using UTC',
-            );
-          }
-        } catch (_) {
-          tz.setLocalLocation(tz.UTC);
-          debugPrint('Timezone offset fallback failed — using UTC');
-        }
-      }
-    } catch (e) {
-      debugPrint('Could not resolve local timezone: $e');
-      // Try offset-based fallback even when FlutterTimezone fails
-      try {
-        final offset = DateTime.now().timeZoneOffset;
-        final candidates = tz.timeZoneDatabase.locations.values
-            .where((loc) => loc.currentTimeZone.offset == offset.inMilliseconds)
-            .toList();
-        if (candidates.isNotEmpty) {
-          tz.setLocalLocation(candidates.first);
-          debugPrint('Timezone resolved via offset to: ${tz.local.name}');
-        }
-      } catch (_) {
-        // Already defaults to UTC
+        return tz.getLocation(identifier);
+      } on tz.LocationNotFoundException {
+        // Fall through to matching by offset.
       }
     }
+    final later = nowMillis + _sixMonths.inMilliseconds;
+    bool offsetsMatch(tz.Location location) =>
+        location.timeZone(nowMillis).offset == offsetNow &&
+        location.timeZone(later).offset == offsetInSixMonths;
+    return tz.timeZoneDatabase.locations.values
+            .where(offsetsMatch)
+            .firstOrNull ??
+        tz.UTC;
+  }
+
+  Future<void> _initialize() async {
+    tz_data.initializeTimeZones();
+    String? identifier;
+    try {
+      identifier = (await FlutterTimezone.getLocalTimezone()).identifier;
+    } catch (e) {
+      debugPrint('Could not read device timezone: $e');
+    }
+    final now = DateTime.now();
+    tz.setLocalLocation(
+      resolveLocation(
+        identifier,
+        nowMillis: now.millisecondsSinceEpoch,
+        offsetNow: now.timeZoneOffset,
+        offsetInSixMonths: now.add(_sixMonths).timeZoneOffset,
+      ),
+    );
+    debugPrint('Reminder timezone: ${tz.local.name} (device: $identifier)');
     await _plugin.initialize(
       settings: const InitializationSettings(
         android: AndroidInitializationSettings('ic_notification'),
