@@ -25,6 +25,4 @@ ReminderSettings _$ReminderSettingsFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ReminderSettingsToJson(ReminderSettings instance) =>
-    <String, dynamic>{
-      'daily': instance.daily.toJson(),
-    };
+    <String, dynamic>{'daily': instance.daily.toJson()};

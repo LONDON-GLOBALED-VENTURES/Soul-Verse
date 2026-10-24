@@ -36,7 +36,7 @@ final class FavouritesProvider
   Favourites create() => Favourites();
 }
 
-String _$favouritesHash() => r'52f00ed568a0b4a95b4017827cf30cff40188095';
+String _$favouritesHash() => r'10b849a7ad66c57e8c4fbbf57a40bd57408b2201';
 
 /// Saved verses, newest first. Kept alive so every screen shares one list.
 

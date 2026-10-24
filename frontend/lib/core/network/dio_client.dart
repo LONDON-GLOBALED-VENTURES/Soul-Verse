@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../features/auth/application/auth_service.dart';
 import '../../features/auth/data/auth_token_storage.dart';
+import 'auth_interceptor.dart';
 
 part 'dio_client.g.dart';
 
@@ -12,26 +14,23 @@ const _baseUrl = String.fromEnvironment(
   defaultValue: 'https://api.example.com/api',
 );
 
+BaseOptions _baseOptions() => BaseOptions(
+  baseUrl: _baseUrl,
+  connectTimeout: const Duration(seconds: 10),
+  receiveTimeout: const Duration(seconds: 10),
+  headers: {'Content-Type': 'application/json'},
+);
+
 @riverpod
 Dio dioClient(Ref ref) {
-  final dio = Dio(
-    BaseOptions(
-      baseUrl: _baseUrl,
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 10),
-      headers: {'Content-Type': 'application/json'},
-    ),
-  );
+  final dio = Dio(_baseOptions());
 
   dio.interceptors.add(
-    QueuedInterceptorsWrapper(
-      onRequest: (options, handler) async {
-        final token = await ref.read(authTokenStorageProvider).getAccessToken();
-        if (token != null && !options.headers.containsKey('Authorization')) {
-          options.headers['Authorization'] = 'Bearer $token';
-        }
-        handler.next(options);
-      },
+    AuthInterceptor(
+      ref.read(authTokenStorageProvider),
+      Dio(_baseOptions()),
+      // Re-reads the (now cleared) tokens, so the app shows the user as signed out.
+      () => ref.invalidate(authProvider),
     ),
   );
 
