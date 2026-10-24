@@ -126,6 +126,9 @@ class NotificationScheduler {
   }
 
   /// Shows the system permission prompt (Android 13+ / iOS). Returns whether it was granted.
+  /// Only true when notifications will actually be shown. Anything uncertain
+  /// (an error, an unsupported platform) is false, so the app never saves a
+  /// reminder as "on" that can't arrive; the caller explains how to enable it.
   Future<bool> requestPermission() async {
     try {
       await _ensureInitialized();
@@ -134,22 +137,12 @@ class NotificationScheduler {
             .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin
             >();
-
-        // If already granted / enabled at OS level, return true immediately.
-        final areEnabled = await android?.areNotificationsEnabled();
-        if (areEnabled == true) return true;
-
-        final requested = await android?.requestNotificationsPermission();
-        if (requested == true) return true;
-
-        final recheck = await android?.areNotificationsEnabled();
-        if (recheck == true) return true;
-
-        // On Android versions prior to 13 (API < 33), runtime permission prompt is not supported.
-        // If areNotificationsEnabled returned null, default to true.
-        if (recheck == null) return true;
-
-        return false;
+        if (await android?.areNotificationsEnabled() == true) return true;
+        // Shows the prompt on Android 13+. Below 13 there is no prompt, and
+        // notifications are off only if the user turned them off in settings.
+        await android?.requestNotificationsPermission();
+        // Trust the system's current state rather than the prompt's result.
+        return await android?.areNotificationsEnabled() ?? false;
       }
       if (Platform.isIOS) {
         return await _plugin
@@ -159,11 +152,11 @@ class NotificationScheduler {
                 ?.requestPermissions(alert: true, badge: true, sound: true) ??
             false;
       }
+      return false;
     } catch (e) {
       debugPrint('Error requesting notification permission: $e');
-      return true;
+      return false;
     }
-    return true;
   }
 
   /// Schedules a one-time notification at [when], a local wall-clock time.

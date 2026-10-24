@@ -29,6 +29,13 @@ void main() {
     });
   });
 
+  test('permission is not reported as granted when it can\'t be confirmed', () async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    // No real notification plugin runs in tests: initialising fails or the
+    // platform is unsupported. Previously both paths answered "granted".
+    expect(await NotificationScheduler().requestPermission(), isFalse);
+  });
+
   test('manifest avoids permissions Google Play restricts', () {
     final manifest = File('android/app/src/main/AndroidManifest.xml')
         .readAsStringSync();
