@@ -25,7 +25,8 @@
     "reference": "Deuteronomy 31:6",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "courage"
     ],
     "reflection": "A broken heart can make you feel abandoned. God promises the opposite: He walks right beside you and will never leave."
   },
@@ -225,7 +226,8 @@
     "reference": "Psalm 23:4",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "courage"
     ],
     "reflection": "This valley is real, but you are not walking it alone. The Shepherd is with you, every step."
   },
@@ -255,7 +257,8 @@
     "reference": "Psalm 27:14",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "courage"
     ],
     "reflection": "Waiting is hard when your heart is hurting. Be strong one small moment at a time, and wait for the Lord."
   },
@@ -805,7 +808,8 @@
     "reference": "Isaiah 40:31",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "courage"
     ],
     "reflection": "When grief leaves you weary, wait on the Lord. He will renew your strength to rise again."
   },
@@ -815,7 +819,8 @@
     "reference": "Isaiah 41:10",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "courage"
     ],
     "reflection": "Don't fear, and don't be dismayed. God is with you, strengthening you and holding you up."
   },
@@ -1037,7 +1042,8 @@
     "reference": "John 14:27",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "courage"
     ],
     "reflection": "Jesus gives a peace the world can't offer. Let His peace settle your troubled heart."
   },
@@ -1057,7 +1063,8 @@
     "reference": "John 16:33",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "courage"
     ],
     "reflection": "Trouble is part of life in this world, but Jesus has overcome it. Take heart."
   },
@@ -1277,7 +1284,8 @@
     "reference": "Psalm 28:7",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "courage"
     ],
     "reflection": "Trust leads to help, and help leads to praise. Thank God for the times He has shielded you."
   },
@@ -2160,5 +2168,925 @@
       "thankful"
     ],
     "reflection": "Thank God, the Almighty, who is and who was. He reigns, and that is reason for gratitude."
+  },
+  {
+    "id": "exodus-14-13-14",
+    "text": "Don’t be afraid. Stand still, and see the salvation of the LORD... The LORD will fight for you, and you shall be still.",
+    "reference": "Exodus 14:13-14",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "With the sea ahead and an army behind, God told His people to stand still. Some battles are His to fight; your part is to trust."
+  },
+  {
+    "id": "numbers-13-30",
+    "text": "We should go up at once, and possess it; for we are well able to overcome it.",
+    "reference": "Numbers 13:30",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Caleb saw the same giants as everyone else, but he also saw God. Courage looks past the obstacle to the One who is with you."
+  },
+  {
+    "id": "deuteronomy-3-22",
+    "text": "You shall not fear them; for the LORD your God himself fights for you.",
+    "reference": "Deuteronomy 3:22",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "You don't have to fight alone. The Lord Himself fights for you, so fear doesn't get the final word."
+  },
+  {
+    "id": "deuteronomy-20-4",
+    "text": "For the LORD your God is he who goes with you, to fight for you against your enemies, to save you.",
+    "reference": "Deuteronomy 20:4",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "God doesn't send you out and wait at a distance. He goes with you into the fight, to save you."
+  },
+  {
+    "id": "deuteronomy-31-8",
+    "text": "The LORD himself is the one who goes before you. He will be with you. He will not fail you nor forsake you. Don’t be afraid. Don’t be dismayed.",
+    "reference": "Deuteronomy 31:8",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Whatever is ahead of you, God is already there. He goes before you and will not leave you."
+  },
+  {
+    "id": "joshua-1-5",
+    "text": "No man will be able to stand before you all the days of your life. As I was with Moses, so I will be with you. I will not fail you nor forsake you.",
+    "reference": "Joshua 1:5",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "The God who was with Moses promised the same presence to Joshua. He will not fail you or forsake you either."
+  },
+  {
+    "id": "joshua-1-6",
+    "text": "Be strong and courageous; for you shall cause this people to inherit the land which I swore to their fathers to give them.",
+    "reference": "Joshua 1:6",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Courage often comes with a calling. God gives strength for the task He has set in front of you."
+  },
+  {
+    "id": "joshua-1-9",
+    "text": "Haven’t I commanded you? Be strong and courageous. Don’t be afraid. Don’t be dismayed, for the LORD your God is with you wherever you go.",
+    "reference": "Joshua 1:9",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Be strong and courageous, not because you feel brave, but because God is with you wherever you go."
+  },
+  {
+    "id": "joshua-1-18",
+    "text": "Only be strong and courageous.",
+    "reference": "Joshua 1:18",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Sometimes the whole message is simple: be strong and courageous. Take the next faithful step."
+  },
+  {
+    "id": "joshua-10-25",
+    "text": "Don’t be afraid, nor be dismayed. Be strong and courageous, for thus will the LORD do to all your enemies against whom you fight.",
+    "reference": "Joshua 10:25",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Remember what God has already done. Past victories give you courage for the battles still ahead."
+  },
+  {
+    "id": "judges-6-12",
+    "text": "The LORD is with you, you mighty man of valor.",
+    "reference": "Judges 6:12",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Gideon felt small and afraid, yet God called him a mighty warrior. God sees strength in you that you may not see yet."
+  },
+  {
+    "id": "1-samuel-17-45",
+    "text": "You come to me with a sword, with a spear, and with a javelin; but I come to you in the name of the LORD of Armies.",
+    "reference": "1 Samuel 17:45",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "David faced Goliath with no armour, only the name of the Lord. Your courage rests on who God is, not on what you carry."
+  },
+  {
+    "id": "1-samuel-17-47",
+    "text": "For the battle is the LORD’s, and he will give you into our hand.",
+    "reference": "1 Samuel 17:47",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "The battle belongs to the Lord. You can face what's in front of you knowing He is the one who wins it."
+  },
+  {
+    "id": "1-chronicles-19-13",
+    "text": "Be courageous, and let us be strong for our people and for the cities of our God. May the LORD do that which seems good to him.",
+    "reference": "1 Chronicles 19:13",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Be courageous for the people you love, and leave the outcome with God. He will do what is good."
+  },
+  {
+    "id": "1-chronicles-22-13",
+    "text": "Be strong and courageous. Don’t be afraid, and don’t be dismayed.",
+    "reference": "1 Chronicles 22:13",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Strength and courage are a choice you can make today. Don't let fear or discouragement take the lead."
+  },
+  {
+    "id": "2-chronicles-15-7",
+    "text": "But you, be strong! Don’t let your hands be slack, for your work will be rewarded.",
+    "reference": "2 Chronicles 15:7",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Don't give up halfway. Keep your hands to the work, because faithful effort is never wasted with God."
+  },
+  {
+    "id": "2-chronicles-16-9",
+    "text": "For the eyes of the LORD run back and forth throughout the whole earth, to show himself strong on behalf of those whose heart is perfect toward him.",
+    "reference": "2 Chronicles 16:9",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "God is searching the earth for hearts that are fully His, so He can strengthen them. Let yours be one."
+  },
+  {
+    "id": "2-chronicles-32-7-8",
+    "text": "Be strong and courageous. Don’t be afraid or dismayed... for there is a greater one with us than with him... with us is the LORD our God to help us, and to fight our battles.",
+    "reference": "2 Chronicles 32:7-8",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "The one with you is greater than whatever stands against you. The Lord your God helps you and fights your battles."
+  },
+  {
+    "id": "ezra-10-4",
+    "text": "Arise; for this matter belongs to you, and we are with you. Be courageous, and do it.",
+    "reference": "Ezra 10:4",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Some things are yours to do, and you don't have to do them alone. Rise up, take courage, and act."
+  },
+  {
+    "id": "nehemiah-4-14",
+    "text": "Don’t be afraid of them! Remember the Lord, who is great and awesome, and fight for your brothers, your sons, your daughters, your wives, and your houses.",
+    "reference": "Nehemiah 4:14",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When fear rises, remember the Lord, great and awesome. Then stand firm for the people and things you love."
+  },
+  {
+    "id": "esther-4-14",
+    "text": "Who knows if you haven’t come to the kingdom for such a time as this?",
+    "reference": "Esther 4:14",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "You may be exactly where you are for a reason. Courage sometimes means accepting the moment God has placed you in."
+  },
+  {
+    "id": "psalm-3-6",
+    "text": "I will not be afraid of tens of thousands of people who have set themselves against me on every side.",
+    "reference": "Psalm 3:6",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Even when it feels like everything is against you, God's protection is bigger. You don't have to live afraid."
+  },
+  {
+    "id": "psalm-27-1",
+    "text": "The LORD is my light and my salvation. Whom shall I fear? The LORD is the strength of my life. Of whom shall I be afraid?",
+    "reference": "Psalm 27:1",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When God is your light and salvation, fear loses its grip. Who could be stronger than the strength of your life?"
+  },
+  {
+    "id": "psalm-27-3",
+    "text": "Though an army should encamp against me, my heart shall not fear.",
+    "reference": "Psalm 27:3",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Even surrounded, your heart can stay steady. Confidence in God holds firm when everything else shakes."
+  },
+  {
+    "id": "psalm-29-11",
+    "text": "The LORD will give strength to his people. The LORD will bless his people with peace.",
+    "reference": "Psalm 29:11",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "God gives strength to His people, and with it, peace. Ask Him for both today."
+  },
+  {
+    "id": "psalm-46-2",
+    "text": "Therefore we won’t be afraid, though the earth changes, though the mountains are shaken into the heart of the seas.",
+    "reference": "Psalm 46:2",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Even if the world feels like it's falling apart, God is still your refuge. You don't have to be afraid."
+  },
+  {
+    "id": "psalm-56-3-4",
+    "text": "When I am afraid, I will put my trust in you. In God, I praise his word. In God, I have put my trust. I will not be afraid.",
+    "reference": "Psalm 56:3-4",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Courage isn't the absence of fear. It's choosing to trust God at the very moment you feel afraid."
+  },
+  {
+    "id": "psalm-56-11",
+    "text": "I have put my trust in God. I will not be afraid. What can man do to me?",
+    "reference": "Psalm 56:11",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When your trust is in God, the opinions and threats of people lose their power over you."
+  },
+  {
+    "id": "psalm-60-12",
+    "text": "Through God we will do valiantly, for it is he who will tread down our adversaries.",
+    "reference": "Psalm 60:12",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "With God, you can act boldly. He is the one who brings the victory."
+  },
+  {
+    "id": "psalm-91-5",
+    "text": "You shall not be afraid of the terror by night, nor of the arrow that flies by day.",
+    "reference": "Psalm 91:5",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "God's protection covers the fears of the night and the dangers of the day. Rest in His care."
+  },
+  {
+    "id": "psalm-91-11",
+    "text": "For he will put his angels in charge of you, to guard you in all your ways.",
+    "reference": "Psalm 91:11",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "You are watched over more than you know. God cares about every step you take."
+  },
+  {
+    "id": "psalm-112-7",
+    "text": "He will not be afraid of evil news. His heart is steadfast, trusting in the LORD.",
+    "reference": "Psalm 112:7",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "A heart anchored in God doesn't have to panic at bad news. Trust keeps it steady."
+  },
+  {
+    "id": "psalm-112-8",
+    "text": "His heart is established. He will not be afraid.",
+    "reference": "Psalm 112:8",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "A heart established in God can stand firm. Let His faithfulness steady you against fear."
+  },
+  {
+    "id": "psalm-118-6",
+    "text": "The LORD is on my side. I will not be afraid. What can man do to me?",
+    "reference": "Psalm 118:6",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "The Lord is on your side. With Him beside you, what can anyone really take from you?"
+  },
+  {
+    "id": "psalm-118-14",
+    "text": "The LORD is my strength and song. He has become my salvation.",
+    "reference": "Psalm 118:14",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When your own strength runs out, God becomes your strength, your song and your salvation."
+  },
+  {
+    "id": "psalm-138-3",
+    "text": "In the day that I called, you answered me. You encouraged me with strength in my soul.",
+    "reference": "Psalm 138:3",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When you call, God answers, and He puts fresh strength in your soul. Call on Him today."
+  },
+  {
+    "id": "psalm-144-1",
+    "text": "Blessed be the LORD, my rock, who teaches my hands to war, and my fingers to fight.",
+    "reference": "Psalm 144:1",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "God is your rock, and He prepares you for the battles you face. You are not unequipped."
+  },
+  {
+    "id": "proverbs-3-25-26",
+    "text": "Don’t be afraid of sudden fear... for the LORD will be your confidence, and will keep your foot from being taken.",
+    "reference": "Proverbs 3:25-26",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Sudden fears don't have to shake you. The Lord is your confidence, and He keeps your feet steady."
+  },
+  {
+    "id": "proverbs-14-26",
+    "text": "In the fear of the LORD is a secure fortress, and he will be a place of refuge for his children.",
+    "reference": "Proverbs 14:26",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Reverence for God is a strong fortress. In Him, His children find a safe place."
+  },
+  {
+    "id": "proverbs-18-10",
+    "text": "The name of the LORD is a strong tower: the righteous run to him, and are safe.",
+    "reference": "Proverbs 18:10",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When you're afraid, run to God. His name is a strong tower, and in Him you are safe."
+  },
+  {
+    "id": "proverbs-28-1",
+    "text": "The wicked flee when no one pursues; but the righteous are as bold as a lion.",
+    "reference": "Proverbs 28:1",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Living right before God gives a quiet boldness. You can stand as bold as a lion."
+  },
+  {
+    "id": "proverbs-29-25",
+    "text": "The fear of man brings a snare, but whoever puts his trust in the LORD is kept safe.",
+    "reference": "Proverbs 29:25",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Worrying about what people think can trap you. Trusting God sets you free and keeps you safe."
+  },
+  {
+    "id": "proverbs-31-25",
+    "text": "Strength and dignity are her clothing. She laughs at the time to come.",
+    "reference": "Proverbs 31:25",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Strength and dignity can be what you wear. With God, you can face the future without fear, even with a smile."
+  },
+  {
+    "id": "isaiah-6-8",
+    "text": "Here I am. Send me!",
+    "reference": "Isaiah 6:8",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Courage can be as simple as saying yes to God. 'Here I am. Send me.'"
+  },
+  {
+    "id": "isaiah-12-2",
+    "text": "Behold, God is my salvation. I will trust, and will not be afraid; for the LORD, the LORD, is my strength and song.",
+    "reference": "Isaiah 12:2",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Trust is the opposite of fear. When God is your salvation, you can choose not to be afraid."
+  },
+  {
+    "id": "isaiah-26-3",
+    "text": "You will keep whoever’s mind is steadfast in perfect peace, because he trusts in you.",
+    "reference": "Isaiah 26:3",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Peace comes from fixing your mind on God. A trusting heart is a steady heart."
+  },
+  {
+    "id": "isaiah-30-15",
+    "text": "In quietness and in confidence shall be your strength.",
+    "reference": "Isaiah 30:15",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Strength isn't always loud. Sometimes it's found in quiet trust and calm confidence in God."
+  },
+  {
+    "id": "isaiah-35-4",
+    "text": "Tell those who have a fearful heart, ‘Be strong! Don’t be afraid!... He will come and save you.’",
+    "reference": "Isaiah 35:4",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "If your heart is afraid, hear this: be strong, don't fear. God will come and save you."
+  },
+  {
+    "id": "isaiah-41-13",
+    "text": "For I, the LORD your God, will hold your right hand, saying to you, ‘Don’t be afraid. I will help you.’",
+    "reference": "Isaiah 41:13",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Picture God holding your right hand as He says, 'Don't be afraid. I will help you.'"
+  },
+  {
+    "id": "isaiah-43-1",
+    "text": "Don’t be afraid, for I have redeemed you. I have called you by your name. You are mine.",
+    "reference": "Isaiah 43:1",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "You are not alone or forgotten. God knows you by name, and you belong to Him."
+  },
+  {
+    "id": "isaiah-50-7",
+    "text": "For the Lord GOD will help me; therefore I have not been confounded. Therefore I have set my face like a flint.",
+    "reference": "Isaiah 50:7",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Because God helps you, you can set your face like flint and keep going, even when it's hard."
+  },
+  {
+    "id": "isaiah-54-4",
+    "text": "Don’t be afraid, for you will not be disappointed. Don’t be confounded, for you will not be put to shame.",
+    "reference": "Isaiah 54:4",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Don't let fear of failure or shame hold you back. God will not let you be put to shame."
+  },
+  {
+    "id": "isaiah-54-17",
+    "text": "No weapon that is formed against you will prevail.",
+    "reference": "Isaiah 54:17",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Whatever is formed against you won't have the last word. God is your defender."
+  },
+  {
+    "id": "jeremiah-1-8",
+    "text": "Don’t be afraid because of them, for I am with you to deliver you, says the LORD.",
+    "reference": "Jeremiah 1:8",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When people intimidate you, remember God's promise: 'I am with you to deliver you.'"
+  },
+  {
+    "id": "jeremiah-17-7-8",
+    "text": "Blessed is the man who trusts in the LORD, and whose confidence is in the LORD. For he will be like a tree planted by the waters.",
+    "reference": "Jeremiah 17:7-8",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Trusting God makes you like a tree by the water: rooted, steady, still fruitful in hard seasons."
+  },
+  {
+    "id": "jeremiah-32-17",
+    "text": "Behold, you have made the heavens and the earth by your great power and by your outstretched arm; there is nothing too hard for you.",
+    "reference": "Jeremiah 32:17",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "The God who made the heavens and the earth is with you. Nothing you face is too hard for Him."
+  },
+  {
+    "id": "jeremiah-33-3",
+    "text": "Call to me, and I will answer you, and will show you great and mighty things, which you don’t know.",
+    "reference": "Jeremiah 33:3",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Call to God. He promises to answer and to show you things you couldn't see on your own."
+  },
+  {
+    "id": "ezekiel-2-6",
+    "text": "You, son of man, don’t be afraid of them, neither be afraid of their words.",
+    "reference": "Ezekiel 2:6",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Don't let harsh words or people make you shrink back. God has sent you, and He stands with you."
+  },
+  {
+    "id": "daniel-3-17-18",
+    "text": "Our God whom we serve is able to deliver us from the burning fiery furnace; and he will deliver us out of your hand, O king. But if not, be it known to you, O king, that we will not serve your gods.",
+    "reference": "Daniel 3:17-18",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "True courage says, 'God is able, but even if not, I will stay faithful.' That kind of trust can't be burned away."
+  },
+  {
+    "id": "daniel-10-19",
+    "text": "Man greatly beloved, don’t be afraid. Peace be to you. Be strong. Yes, be strong.",
+    "reference": "Daniel 10:19",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "You are greatly loved. Let that love bring you peace and strength: be strong, yes, be strong."
+  },
+  {
+    "id": "daniel-11-32",
+    "text": "But the people who know their God will be strong, and do exploits.",
+    "reference": "Daniel 11:32",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Knowing God makes you strong. The closer you walk with Him, the bolder you become."
+  },
+  {
+    "id": "joel-2-21",
+    "text": "Don’t be afraid, land; be glad and rejoice: for the LORD has done great things.",
+    "reference": "Joel 2:21",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Fear gives way to gladness when you remember the great things God has done."
+  },
+  {
+    "id": "micah-3-8",
+    "text": "But as for me, I am full of power by the Spirit of the LORD, and of justice, and of might.",
+    "reference": "Micah 3:8",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Real power comes from God's Spirit. He fills you with the strength to stand for what is right."
+  },
+  {
+    "id": "habakkuk-3-19",
+    "text": "The Lord, the LORD, is my strength.",
+    "reference": "Habakkuk 3:19",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When your strength is gone, His remains. The Lord is your strength."
+  },
+  {
+    "id": "haggai-2-4",
+    "text": "Be strong... and work, for I am with you, says the LORD of Armies.",
+    "reference": "Haggai 2:4",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Be strong and keep working. You're not building alone; God is with you."
+  },
+  {
+    "id": "zechariah-4-6",
+    "text": "‘Not by might, nor by power, but by my Spirit,’ says the LORD of Armies.",
+    "reference": "Zechariah 4:6",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "It's not by your might or your power, but by God's Spirit. Lean on Him, not on yourself."
+  },
+  {
+    "id": "matthew-10-28",
+    "text": "Don’t fear those who kill the body, but are unable to kill the soul.",
+    "reference": "Matthew 10:28",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "People can hurt the body, but they can't touch your soul. Your deepest life is safe with God."
+  },
+  {
+    "id": "matthew-10-31",
+    "text": "Therefore don’t be afraid. You are of more value than many sparrows.",
+    "reference": "Matthew 10:31",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "If God cares for every sparrow, He surely cares for you. You are worth far more to Him."
+  },
+  {
+    "id": "matthew-14-27",
+    "text": "Cheer up! It’s me! Don’t be afraid.",
+    "reference": "Matthew 14:27",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "In the middle of the storm, Jesus says, 'It's me. Don't be afraid.' He comes to you in the waves."
+  },
+  {
+    "id": "matthew-17-7",
+    "text": "Get up, and don’t be afraid.",
+    "reference": "Matthew 17:7",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Jesus' touch lifts us up. Get up, and don't be afraid; He is right here."
+  },
+  {
+    "id": "matthew-19-26",
+    "text": "With men this is impossible, but with God all things are possible.",
+    "reference": "Matthew 19:26",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "What feels impossible to you is not impossible for God. Bring Him the thing that looks too big."
+  },
+  {
+    "id": "mark-5-36",
+    "text": "Don’t be afraid, only believe.",
+    "reference": "Mark 5:36",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "When fear says it's too late, Jesus says, 'Don't be afraid, only believe.'"
+  },
+  {
+    "id": "mark-9-23",
+    "text": "All things are possible to him who believes.",
+    "reference": "Mark 9:23",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Faith opens the door to what God can do. Bring Him even a small, honest belief."
+  },
+  {
+    "id": "luke-12-7",
+    "text": "Don’t be afraid therefore. You are of more value than many sparrows.",
+    "reference": "Luke 12:7",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "God knows every detail of your life. You are precious to Him, so you don't have to be afraid."
+  },
+  {
+    "id": "luke-12-32",
+    "text": "Don’t be afraid, little flock, for it is your Father’s good pleasure to give you the Kingdom.",
+    "reference": "Luke 12:32",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Your Father delights to give you His kingdom. You can face today without fear."
+  },
+  {
+    "id": "acts-4-29",
+    "text": "Now, Lord, look at their threats, and grant to your servants to speak your word with all boldness.",
+    "reference": "Acts 4:29",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "The early church didn't pray for the threats to stop, but for boldness. Ask God for courage to speak."
+  },
+  {
+    "id": "acts-4-31",
+    "text": "They were all filled with the Holy Spirit, and they spoke the word of God with boldness.",
+    "reference": "Acts 4:31",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Boldness is a gift of the Holy Spirit. Ask Him to fill you and give you courage today."
+  },
+  {
+    "id": "acts-18-9-10",
+    "text": "Don’t be afraid, but speak and don’t be silent; for I am with you.",
+    "reference": "Acts 18:9-10",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Don't go quiet out of fear. Speak up, because God says, 'I am with you.'"
+  },
+  {
+    "id": "acts-27-25",
+    "text": "Therefore, sirs, cheer up! For I believe God, that it will be just as it has been spoken to me.",
+    "reference": "Acts 27:25",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "In the middle of the storm, Paul took heart because he believed God's word. You can too."
+  },
+  {
+    "id": "romans-1-16",
+    "text": "For I am not ashamed of the Good News of Christ, for it is the power of God for salvation to everyone who believes.",
+    "reference": "Romans 1:16",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "There is no need to be ashamed of the Good News. It is God's own power to save."
+  },
+  {
+    "id": "romans-8-15",
+    "text": "For you didn’t receive the spirit of bondage again to fear.",
+    "reference": "Romans 8:15",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "You are not a slave to fear. God's Spirit makes you His child, and you can call Him Father."
+  },
+  {
+    "id": "romans-8-31",
+    "text": "If God is for us, who can be against us?",
+    "reference": "Romans 8:31",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "If God is for you, nothing that stands against you can win in the end."
+  },
+  {
+    "id": "romans-8-37",
+    "text": "But in all these things, we are more than conquerors through him who loved us.",
+    "reference": "Romans 8:37",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "In everything you face, you are more than a conqueror through the One who loves you."
+  },
+  {
+    "id": "1-corinthians-16-13",
+    "text": "Watch! Stand firm in the faith! Be courageous! Be strong!",
+    "reference": "1 Corinthians 16:13",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Stay alert, stand firm in your faith, and be courageous. God gives strength to those who stand."
+  },
+  {
+    "id": "2-corinthians-4-16",
+    "text": "Therefore we don’t faint; but though our outward man is decaying, yet our inward man is renewed day by day.",
+    "reference": "2 Corinthians 4:16",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Even when you feel worn down outwardly, God renews your inner life day by day. Don't lose heart."
+  },
+  {
+    "id": "2-corinthians-12-10",
+    "text": "For when I am weak, then am I strong.",
+    "reference": "2 Corinthians 12:10",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Your weakness is not the end of the story. It's where God's strength shows up most."
+  },
+  {
+    "id": "ephesians-6-10",
+    "text": "Finally, be strong in the Lord, and in the strength of his might.",
+    "reference": "Ephesians 6:10",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "You don't have to manufacture strength. Be strong in the Lord and in His mighty power."
+  },
+  {
+    "id": "philippians-4-13",
+    "text": "I can do all things through Christ who strengthens me.",
+    "reference": "Philippians 4:13",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Whatever God calls you to, Christ gives you the strength to face it."
+  },
+  {
+    "id": "2-timothy-1-7",
+    "text": "For God didn’t give us a spirit of fear, but of power, love, and self-control.",
+    "reference": "2 Timothy 1:7",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Fear isn't from God. He has given you a spirit of power, love and a sound mind."
+  },
+  {
+    "id": "hebrews-10-35",
+    "text": "Therefore don’t throw away your boldness, which has a great reward.",
+    "reference": "Hebrews 10:35",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Don't throw away your confidence in God. Holding on to it brings a great reward."
+  },
+  {
+    "id": "hebrews-13-6",
+    "text": "So that with good courage we say, ‘The Lord is my helper. I will not fear. What can man do to me?’",
+    "reference": "Hebrews 13:6",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "Say it with confidence: the Lord is my helper; I will not fear. What can anyone do to me?"
+  },
+  {
+    "id": "1-john-4-4",
+    "text": "Greater is he who is in you than he who is in the world.",
+    "reference": "1 John 4:4",
+    "translation": "WEB",
+    "moods": [
+      "courage"
+    ],
+    "reflection": "The One who lives in you is greater than anything in the world. You can face today with courage."
   }
 ]
