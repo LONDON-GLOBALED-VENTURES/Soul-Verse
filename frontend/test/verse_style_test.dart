@@ -97,6 +97,68 @@ void main() {
     );
   });
 
+  test('a style survives being saved and loaded', () {
+    const styles = [
+      VerseStyle(
+        font: VerseFont.handwritten,
+        textScale: 1.3,
+        textColor: Color(0xFF3A3A3A),
+        textAlign: TextAlign.right,
+        lineHeight: 1.7,
+        letterSpacing: 0.1,
+        effect: TextEffect.outline,
+        textPosition: Alignment(0.2, -0.6),
+        reference: ReferencePlacement.corner,
+        showQuotes: false,
+        showWatermark: false,
+        overlayDarkness: 0.5,
+        blur: 4,
+        filter: BackgroundFilter.faded,
+        customBackground: GradientBackground([
+          Color(0xFF0F2027),
+          Color(0xFF2C5364),
+        ]),
+        highlightBold: false,
+        highlightColor: null,
+      ),
+      VerseStyle(customBackground: PhotoBackground('/photos/a.jpg')),
+      VerseStyle(customBackground: ColourBackground(Color(0xFFD5E1C8))),
+      VerseStyle.standard,
+    ];
+    for (final style in styles) {
+      expect(VerseStyle.fromJson(style.toJson()), style);
+    }
+  });
+
+  test('damaged saved values fall back to the defaults', () {
+    final style = VerseStyle.fromJson({
+      'font': 'comic-sans',
+      'textScale': 99,
+      'textPosition': 'middle',
+      'effect': 42,
+      'customBackground': {
+        'type': 'gradient',
+        'colors': [1],
+      },
+    });
+    expect(style.font, VerseFont.classic);
+    expect(style.textScale, VerseStyle.maxTextScale);
+    expect(style.textPosition, Alignment.center);
+    expect(style.effect, TextEffect.soft);
+    expect(style.customBackground, isNull, reason: 'one colour is no gradient');
+    expect(style.highlightColor, VerseStyle.defaultHighlightColor);
+  });
+
+  test('next time keeps the look but not highlights or the note', () {
+    final style = VerseStyle.standard
+        .copyWith(font: VerseFont.bold, note: 'For Mum')
+        .toggleHighlight(1);
+    final next = style.forNextTime();
+    expect(next.font, VerseFont.bold);
+    expect(next.highlightedWords, isEmpty);
+    expect(next.note, isEmpty);
+  });
+
   test('styles with the same values are equal', () {
     expect(
       VerseStyle.standard.copyWith(textAlign: TextAlign.left),

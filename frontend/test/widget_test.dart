@@ -614,6 +614,96 @@ void main() {
     await tester.pump(const Duration(minutes: 1));
   });
 
+  testWidgets('share editor undoes, redoes and resets edits', (tester) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+    VerseStyle previewStyle() =>
+        tester.widget<VerseCard>(find.byType(VerseCard)).style;
+    bool enabled(String tooltip) =>
+        tester
+            .widget<IconButton>(
+              find.ancestor(
+                of: find.byTooltip(tooltip),
+                matching: find.byType(IconButton),
+              ),
+            )
+            .onPressed !=
+        null;
+    Future<void> tapAndSettle(Finder finder) async {
+      await tester.tap(finder);
+      await tester.pumpAndSettle();
+    }
+
+    expect(enabled('Undo'), isFalse);
+    expect(enabled('Redo'), isFalse);
+
+    await tapAndSettle(find.text('Font'));
+    await tapAndSettle(find.bySemanticsLabel('Script font'));
+    await tapAndSettle(find.text('Size'));
+    // A whole slider drag is a single undo step.
+    await tester.drag(find.byType(Slider), const Offset(200, 0));
+    await tester.pumpAndSettle();
+    expect(previewStyle().textScale, greaterThan(1));
+
+    await tapAndSettle(find.byTooltip('Undo'));
+    expect(previewStyle().textScale, 1);
+    expect(previewStyle().font, VerseFont.script);
+    await tapAndSettle(find.byTooltip('Undo'));
+    expect(previewStyle(), VerseStyle.standard);
+    expect(enabled('Undo'), isFalse);
+
+    await tapAndSettle(find.byTooltip('Redo'));
+    expect(previewStyle().font, VerseFont.script);
+    await tapAndSettle(find.byTooltip('Redo'));
+    expect(previewStyle().textScale, greaterThan(1));
+    expect(enabled('Redo'), isFalse);
+
+    await tapAndSettle(find.text('Reset'));
+    expect(previewStyle(), VerseStyle.standard);
+    // Reset can be undone too.
+    await tapAndSettle(find.byTooltip('Undo'));
+    expect(previewStyle().font, VerseFont.script);
+
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 1));
+  });
+
+  testWidgets('share editor remembers the last style for the next verse', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+    VerseStyle previewStyle() =>
+        tester.widget<VerseCard>(find.byType(VerseCard)).style;
+
+    await tester.tap(find.text('Font'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.bySemanticsLabel('Bold font'));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('Note'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Note'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'For Mum');
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byTooltip('Back'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+
+    expect(previewStyle().font, VerseFont.bold);
+    // The note was for that one image.
+    expect(previewStyle().note, isEmpty);
+
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 1));
+  });
+
   testWidgets('home hides "A moment of reflection" when there is none', (
     tester,
   ) async {

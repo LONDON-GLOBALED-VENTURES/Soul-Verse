@@ -315,6 +315,118 @@ class VerseStyle {
     );
   }
 
+  /// The parts worth reusing on the next verse. Highlights point at words of
+  /// this verse and a note is usually for one image, so both are dropped.
+  VerseStyle forNextTime() => copyWith(highlightedWords: const {}, note: '');
+
+  Map<String, Object?> toJson() => {
+    'font': font.name,
+    'textScale': textScale,
+    'textColor': textColor?.toARGB32(),
+    'textAlign': textAlign.name,
+    'lineHeight': lineHeight,
+    'letterSpacing': letterSpacing,
+    'effect': effect.name,
+    'textPosition': [textPosition.x, textPosition.y],
+    'reference': reference.name,
+    'showQuotes': showQuotes,
+    'showWatermark': showWatermark,
+    'overlayDarkness': overlayDarkness,
+    'blur': blur,
+    'filter': filter.name,
+    'customBackground': switch (customBackground) {
+      PhotoBackground(:final path) => {'type': 'photo', 'path': path},
+      ColourBackground(:final color) => {
+        'type': 'colour',
+        'color': color.toARGB32(),
+      },
+      GradientBackground(:final colors) => {
+        'type': 'gradient',
+        'colors': [for (final c in colors) c.toARGB32()],
+      },
+      null => null,
+    },
+    'highlightBold': highlightBold,
+    'highlightColor': highlightColor?.toARGB32(),
+  };
+
+  /// Reads what [toJson] wrote. Unknown or missing values fall back to the
+  /// defaults, so an older or damaged copy still loads.
+  factory VerseStyle.fromJson(Map<String, Object?> json) {
+    T pick<T extends Enum>(List<T> values, Object? name, T fallback) =>
+        values.where((v) => v.name == name).firstOrNull ?? fallback;
+    double number(Object? value, double fallback) =>
+        value is num ? value.toDouble() : fallback;
+    Color? colour(Object? value) => value is int ? Color(value) : null;
+
+    final position = json['textPosition'];
+    final background = json['customBackground'];
+    const defaults = VerseStyle.standard;
+
+    return VerseStyle(
+      font: pick(VerseFont.values, json['font'], defaults.font),
+      textScale: number(
+        json['textScale'],
+        defaults.textScale,
+      ).clamp(minTextScale, maxTextScale),
+      textColor: colour(json['textColor']),
+      textAlign: pick(TextAlign.values, json['textAlign'], defaults.textAlign),
+      lineHeight: number(
+        json['lineHeight'],
+        defaults.lineHeight,
+      ).clamp(minLineHeight, maxLineHeight),
+      letterSpacing: number(
+        json['letterSpacing'],
+        defaults.letterSpacing,
+      ).clamp(minLetterSpacing, maxLetterSpacing),
+      effect: pick(TextEffect.values, json['effect'], defaults.effect),
+      textPosition: position is List && position.length == 2
+          ? Alignment(
+              number(position[0], 0).clamp(-1, 1),
+              number(position[1], 0).clamp(-1, 1),
+            )
+          : defaults.textPosition,
+      reference: pick(
+        ReferencePlacement.values,
+        json['reference'],
+        defaults.reference,
+      ),
+      showQuotes: json['showQuotes'] as bool? ?? defaults.showQuotes,
+      showWatermark: json['showWatermark'] as bool? ?? defaults.showWatermark,
+      overlayDarkness: json['overlayDarkness'] is num
+          ? number(json['overlayDarkness'], 0).clamp(0, maxOverlayDarkness)
+          : null,
+      blur: number(json['blur'], defaults.blur).clamp(0, maxBlur),
+      filter: pick(BackgroundFilter.values, json['filter'], defaults.filter),
+      customBackground: background is Map
+          ? switch (background['type']) {
+              'photo' when background['path'] is String => PhotoBackground(
+                background['path'] as String,
+              ),
+              'colour' when background['color'] is int => ColourBackground(
+                Color(background['color'] as int),
+              ),
+              // A gradient needs at least two colours to draw.
+              'gradient'
+                  when background['colors'] is List &&
+                      (background['colors'] as List).whereType<int>().length >=
+                          2 =>
+                GradientBackground([
+                  for (final c
+                      in (background['colors'] as List).whereType<int>())
+                    Color(c),
+                ]),
+              _ => null,
+            }
+          : null,
+      highlightBold: json['highlightBold'] as bool? ?? defaults.highlightBold,
+      // A stored null means "keep the text colour"; a missing key, the default.
+      highlightColor: json.containsKey('highlightColor')
+          ? colour(json['highlightColor'])
+          : defaults.highlightColor,
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       other is VerseStyle &&

@@ -21,6 +21,7 @@ import '../../subscription/presentation/premium_upgrade_sheet.dart';
 import '../data/models/verse_style.dart';
 import '../data/photo_picker.dart';
 import '../data/share_service.dart';
+import '../data/verse_style_store.dart';
 import 'widgets/verse_editor_controls.dart';
 
 class ShareVerseArgs {
@@ -61,6 +62,85 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
   // background, so it can be undone when the background changes again.
   bool _autoTextColour = false;
   static const _darkText = Color(0xFF3A3A3A);
+
+  // Read once: ref can't be used in dispose, where the style is saved.
+  late final VerseStyleStore _styleStore = ref.read(verseStyleStoreProvider);
+
+  final _undoStack = <_Snapshot>[];
+  final _redoStack = <_Snapshot>[];
+  static const _maxHistory = 100;
+
+  // A slider drag, a text drag or typing a note makes many changes; they are
+  // one undo step until the finger lifts (see the Listener in build).
+  bool _mergeIntoLastStep = false;
+
+  // Only an edited style is saved, so leaving before the remembered one has
+  // loaded doesn't overwrite it.
+  bool _edited = false;
+
+  _Snapshot get _snapshot =>
+      (template: _template, style: _style, autoTextColour: _autoTextColour);
+
+  bool get _isOriginal =>
+      _style == VerseStyle.standard && _template.id == widget.args.template.id;
+
+  @override
+  void initState() {
+    super.initState();
+    _styleStore.load().then((style) {
+      if (mounted && !_edited) setState(() => _style = style);
+    });
+  }
+
+  @override
+  void dispose() {
+    if (_edited) _styleStore.save(_style);
+    super.dispose();
+  }
+
+  /// Applies an edit and records the previous look for Undo.
+  void _commit(VerseStyle style, {VerseTemplate? template}) {
+    if (style == _style && (template == null || template.id == _template.id)) {
+      return;
+    }
+    if (!_mergeIntoLastStep) {
+      _undoStack.add(_snapshot);
+      if (_undoStack.length > _maxHistory) _undoStack.removeAt(0);
+      _mergeIntoLastStep = true;
+    }
+    _redoStack.clear();
+    _edited = true;
+    setState(() {
+      if (template != null) _template = template;
+      _style = style;
+    });
+  }
+
+  void _restore(_Snapshot snapshot) {
+    _edited = true;
+    _mergeIntoLastStep = false;
+    setState(() {
+      _template = snapshot.template;
+      _style = snapshot.style;
+      _autoTextColour = snapshot.autoTextColour;
+    });
+  }
+
+  void _undo() {
+    _redoStack.add(_snapshot);
+    _restore(_undoStack.removeLast());
+  }
+
+  void _redo() {
+    _undoStack.add(_snapshot);
+    _restore(_redoStack.removeLast());
+  }
+
+  /// Back to the verse's own background and the default look (undoable).
+  void _reset() {
+    _commit(VerseStyle.standard, template: widget.args.template);
+    _autoTextColour = false;
+  }
 
   Verse get _verse => widget.args.verse;
   String get _shareText =>
@@ -177,139 +257,155 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
           ),
         ],
       ),
-      body: SafeArea(
-        top: false,
-        child: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
-                child: Center(
-                  child: AspectRatio(
-                    aspectRatio: 9 / 16,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(AppRadius.card),
-                      // The boundary is inside the clip so the exported PNG has square corners.
-                      child: RepaintBoundary(
-                        key: _previewKey,
-                        child: VerseCard(
-                          verse: _verse,
-                          template: _template,
-                          borderRadius: BorderRadius.zero,
-                          showWatermark: true,
-                          style: _style,
-                          onTextPositionChanged: _busy
-                              ? null
-                              : (position) => _updateStyle(
-                                  _style.copyWith(textPosition: position),
-                                ),
-                          // Tapping words only highlights while that tool is open.
-                          onWordTapped: _busy || _tool != EditorTool.highlight
-                              ? null
-                              : (word) =>
-                                    _updateStyle(_style.toggleHighlight(word)),
+      // Lifting a finger ends the current undo step; tap handlers run after
+      // this, so a tap always starts a new one.
+      body: Listener(
+        behavior: HitTestBehavior.translucent,
+        onPointerUp: (_) => _mergeIntoLastStep = false,
+        onPointerCancel: (_) => _mergeIntoLastStep = false,
+        child: SafeArea(
+          top: false,
+          child: Column(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 8),
+                  child: Center(
+                    child: AspectRatio(
+                      aspectRatio: 9 / 16,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(AppRadius.card),
+                        // The boundary is inside the clip so the exported PNG has square corners.
+                        child: RepaintBoundary(
+                          key: _previewKey,
+                          child: VerseCard(
+                            verse: _verse,
+                            template: _template,
+                            borderRadius: BorderRadius.zero,
+                            showWatermark: true,
+                            style: _style,
+                            onTextPositionChanged: _busy
+                                ? null
+                                : (position) => _updateStyle(
+                                    _style.copyWith(textPosition: position),
+                                  ),
+                            // Tapping words only highlights while that tool is open.
+                            onWordTapped: _busy || _tool != EditorTool.highlight
+                                ? null
+                                : (word) => _updateStyle(
+                                    _style.toggleHighlight(word),
+                                  ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            // Editing while an image is being captured would make it differ from the preview.
-            IgnorePointer(
-              ignoring: _busy,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 72,
-                    child: _toolControls(choices, isPremium),
-                  ),
-                  const SizedBox(height: 4),
-                  EditorToolStrip(
-                    selected: _tool,
-                    onSelected: (tool) => setState(() => _tool = tool),
-                  ),
-                ],
-              ),
-            ),
-            const Divider(height: 1),
-            const SizedBox(height: 4),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ActionIconButton(
-                    icon: Icons.download_outlined,
-                    label: 'Save',
-                    onPressed: _busy ? null : _save,
-                  ),
-                  ActionIconButton(
-                    iconWidget: ShaderMask(
-                      blendMode: BlendMode.srcIn,
-                      shaderCallback: (bounds) => const RadialGradient(
-                        center: Alignment(-0.6, 0.8),
-                        radius: 1.5,
-                        colors: [
-                          Color(0xFFFEDA75),
-                          Color(0xFFFA7E1E),
-                          Color(0xFFD62976),
-                          Color(0xFF962FBF),
-                          Color(0xFF4F5BD5),
-                        ],
-                      ).createShader(bounds),
-                      child: const FaIcon(FontAwesomeIcons.instagram, size: 24),
+              // Editing while an image is being captured would make it differ from the preview.
+              IgnorePointer(
+                ignoring: _busy,
+                child: Column(
+                  children: [
+                    _HistoryBar(
+                      onUndo: _undoStack.isEmpty ? null : _undo,
+                      onRedo: _redoStack.isEmpty ? null : _redo,
+                      onReset: _isOriginal ? null : _reset,
                     ),
-                    label: 'Instagram',
-                    onPressed: _busy
-                        ? null
-                        : () => _shareTo(ShareTarget.instagram),
-                  ),
-                  ActionIconButton(
-                    iconWidget: const FaIcon(
-                      FontAwesomeIcons.whatsapp,
-                      color: Color(0xFF25D366),
-                      size: 24,
+                    SizedBox(
+                      height: 72,
+                      child: _toolControls(choices, isPremium),
                     ),
-                    label: 'WhatsApp',
-                    onPressed: _busy
-                        ? null
-                        : () => _shareTo(ShareTarget.whatsapp),
-                  ),
-                  ActionIconButton(
-                    icon: Icons.more_horiz,
-                    label: 'More',
-                    onPressed: _busy ? null : _shareMore,
-                  ),
-                ],
+                    const SizedBox(height: 4),
+                    EditorToolStrip(
+                      selected: _tool,
+                      onSelected: (tool) => setState(() => _tool = tool),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            if (_busy) const LinearProgressIndicator(minHeight: 2),
-          ],
+              const Divider(height: 1),
+              const SizedBox(height: 4),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ActionIconButton(
+                      icon: Icons.download_outlined,
+                      label: 'Save',
+                      onPressed: _busy ? null : _save,
+                    ),
+                    ActionIconButton(
+                      iconWidget: ShaderMask(
+                        blendMode: BlendMode.srcIn,
+                        shaderCallback: (bounds) => const RadialGradient(
+                          center: Alignment(-0.6, 0.8),
+                          radius: 1.5,
+                          colors: [
+                            Color(0xFFFEDA75),
+                            Color(0xFFFA7E1E),
+                            Color(0xFFD62976),
+                            Color(0xFF962FBF),
+                            Color(0xFF4F5BD5),
+                          ],
+                        ).createShader(bounds),
+                        child: const FaIcon(
+                          FontAwesomeIcons.instagram,
+                          size: 24,
+                        ),
+                      ),
+                      label: 'Instagram',
+                      onPressed: _busy
+                          ? null
+                          : () => _shareTo(ShareTarget.instagram),
+                    ),
+                    ActionIconButton(
+                      iconWidget: const FaIcon(
+                        FontAwesomeIcons.whatsapp,
+                        color: Color(0xFF25D366),
+                        size: 24,
+                      ),
+                      label: 'WhatsApp',
+                      onPressed: _busy
+                          ? null
+                          : () => _shareTo(ShareTarget.whatsapp),
+                    ),
+                    ActionIconButton(
+                      icon: Icons.more_horiz,
+                      label: 'More',
+                      onPressed: _busy ? null : _shareMore,
+                    ),
+                  ],
+                ),
+              ),
+              if (_busy) const LinearProgressIndicator(minHeight: 2),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  void _updateStyle(VerseStyle style) => setState(() => _style = style);
+  void _updateStyle(VerseStyle style) => _commit(style);
 
   /// Shows [background] instead of the template; null goes back to it.
   void _setBackground(CustomBackground? background, {VerseTemplate? template}) {
     // White text disappears on light colours, so pick a readable one, unless
     // the user chose a text colour themselves.
     var style = _style.copyWith(customBackground: background);
+    var autoTextColour = _autoTextColour;
     if (_style.textColor == null || _autoTextColour) {
       final light =
           (background is ColourBackground ||
               background is GradientBackground) &&
           background!.luminance > 0.5;
       style = style.copyWith(textColor: light ? _darkText : null);
-      _autoTextColour = light;
+      autoTextColour = light;
     }
-    setState(() {
-      if (template != null) _template = template;
-      _style = style;
-    });
+    // Set after the commit so Undo restores the flag from before this change.
+    _commit(style, template: template);
+    _autoTextColour = autoTextColour;
   }
 
   Future<void> _pickPhoto() async {
@@ -411,8 +507,9 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
       EditorTool.colour => TextColourPicker(
         selected: _style.textColor ?? _template.textColorValue,
         onChanged: (colour) {
-          _autoTextColour = false;
+          // After the commit, so Undo brings back the automatic colour too.
           _updateStyle(_style.copyWith(textColor: colour));
+          _autoTextColour = false;
         },
       ),
       EditorTool.align => TextAlignPicker(
@@ -449,6 +546,61 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
         onChanged: _updateStyle,
       ),
     };
+  }
+}
+
+typedef _Snapshot = ({
+  VerseTemplate template,
+  VerseStyle style,
+  bool autoTextColour,
+});
+
+/// Undo / Redo on the left, Reset on the right, just above the tools.
+class _HistoryBar extends StatelessWidget {
+  const _HistoryBar({
+    required this.onUndo,
+    required this.onRedo,
+    required this.onReset,
+  });
+
+  final VoidCallback? onUndo;
+  final VoidCallback? onRedo;
+  final VoidCallback? onReset;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 40,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Row(
+          children: [
+            IconButton(
+              tooltip: 'Undo',
+              visualDensity: VisualDensity.compact,
+              icon: const Icon(Icons.undo),
+              onPressed: onUndo,
+            ),
+            IconButton(
+              tooltip: 'Redo',
+              visualDensity: VisualDensity.compact,
+              icon: const Icon(Icons.redo),
+              onPressed: onRedo,
+            ),
+            const Spacer(),
+            TextButton.icon(
+              style: TextButton.styleFrom(
+                foregroundColor: AppColors.textSecondary,
+                visualDensity: VisualDensity.compact,
+              ),
+              icon: const Icon(Icons.restart_alt, size: 20),
+              label: const Text('Reset'),
+              onPressed: onReset,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 

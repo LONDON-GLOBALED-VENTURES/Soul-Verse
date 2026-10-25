@@ -939,6 +939,13 @@ class _NoteControlState extends State<NoteControl> {
   late final _controller = TextEditingController(text: widget.note);
 
   @override
+  void didUpdateWidget(NoteControl oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Undo, Redo and Reset change the note from outside the field.
+    if (widget.note != _controller.text) _controller.text = widget.note;
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
