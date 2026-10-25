@@ -1086,7 +1086,8 @@
     "reference": "Luke 4:18",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "healing"
     ],
     "reflection": "Jesus was sent to heal the brokenhearted. Your broken heart is exactly what He came for."
   },
@@ -8373,5 +8374,995 @@
       "helplessness"
     ],
     "reflection": "Jesus knows what it is to suffer and be tested. He is able to help you."
+  },
+  {
+    "id": "genesis-20-17",
+    "text": "God healed Abimelech, and his wife, and his female servants, and they bore children.",
+    "reference": "Genesis 20:17",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God's healing reached a whole household, even the most personal hopes of their lives. He cares about every part of you."
+  },
+  {
+    "id": "deuteronomy-30-3",
+    "text": "The LORD your God will release you from captivity, and have compassion on you.",
+    "reference": "Deuteronomy 30:3",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God is a God of restoration. He has compassion and brings His people back from what held them captive."
+  },
+  {
+    "id": "2-kings-2-21",
+    "text": "I have healed this water.",
+    "reference": "2 Kings 2:21",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God made bitter water sweet again. He can bring health to what has been poisoned in your life."
+  },
+  {
+    "id": "2-kings-5-10",
+    "text": "Go and wash in the Jordan seven times, and your flesh will be restored to you, and you will be clean.",
+    "reference": "2 Kings 5:10",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Naaman's healing came through humble obedience. Sometimes restoration begins with a simple step of trust."
+  },
+  {
+    "id": "job-8-21",
+    "text": "He will still fill your mouth with laughter, and your lips with joyful shouting.",
+    "reference": "Job 8:21",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "After seasons of pain, God can fill your mouth with laughter again. Joy is not gone for good."
+  },
+  {
+    "id": "job-11-16",
+    "text": "You will forget your misery.",
+    "reference": "Job 11:16",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "There can come a day when today's misery feels like water that has passed by. Healing takes time, and God is patient."
+  },
+  {
+    "id": "job-14-7",
+    "text": "For there is hope for a tree, if it is cut down, that it will sprout again.",
+    "reference": "Job 14:7",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Even a tree cut down can sprout again. What feels finished in your life may still hold new growth."
+  },
+  {
+    "id": "job-33-25",
+    "text": "His flesh will be fresher than a child's. He returns to the days of his youth.",
+    "reference": "Job 33:25",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God is able to renew and refresh. Ask Him to bring new life to what feels worn out."
+  },
+  {
+    "id": "job-42-10",
+    "text": "The LORD restored Job's fortunes.",
+    "reference": "Job 42:10",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "After everything Job lost, God restored him. Your story isn't over in the hardest chapter."
+  },
+  {
+    "id": "psalm-19-7",
+    "text": "The LORD's law is perfect, restoring the soul.",
+    "reference": "Psalm 19:7",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God's Word restores the soul. Let it be part of your healing today."
+  },
+  {
+    "id": "psalm-23-5",
+    "text": "My cup runs over.",
+    "reference": "Psalm 23:5",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Even after hardship, God can fill your cup until it overflows."
+  },
+  {
+    "id": "psalm-34-22",
+    "text": "The LORD redeems the soul of his servants.",
+    "reference": "Psalm 34:22",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God redeems the lives of those who trust Him. Nothing is beyond His redemption."
+  },
+  {
+    "id": "psalm-51-8",
+    "text": "Let me hear joy and gladness, that the bones which you have broken may rejoice.",
+    "reference": "Psalm 51:8",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Ask God to let you hear joy again. What feels broken can rejoice once more."
+  },
+  {
+    "id": "psalm-51-10",
+    "text": "Create in me a clean heart, O God. Renew a right spirit within me.",
+    "reference": "Psalm 51:10",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Healing often starts in the heart. Ask God to create a clean heart and a renewed spirit in you."
+  },
+  {
+    "id": "psalm-51-12",
+    "text": "Restore to me the joy of your salvation.",
+    "reference": "Psalm 51:12",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "If your joy has faded, ask God to restore it. He delights to give it back."
+  },
+  {
+    "id": "psalm-71-21",
+    "text": "Increase my greatness, and comfort me again.",
+    "reference": "Psalm 71:21",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God can comfort you again and lift you higher than before."
+  },
+  {
+    "id": "psalm-80-3",
+    "text": "Turn us again, God. Cause your face to shine, and we will be saved.",
+    "reference": "Psalm 80:3",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Ask God to turn you back toward Him and shine His face on you. In His light there is restoration."
+  },
+  {
+    "id": "psalm-85-6",
+    "text": "Won't you revive us again, that your people may rejoice in you?",
+    "reference": "Psalm 85:6",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Pray for revival in your heart. God wants His people to rejoice in Him again."
+  },
+  {
+    "id": "psalm-90-15",
+    "text": "Make us glad according to the days that you have afflicted us.",
+    "reference": "Psalm 90:15",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Ask God for days of gladness to match the days of sorrow. He can restore joy."
+  },
+  {
+    "id": "psalm-92-12",
+    "text": "The righteous will flourish like the palm tree.",
+    "reference": "Psalm 92:12",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Rooted in God, you can flourish like a palm tree, steady and fruitful."
+  },
+  {
+    "id": "psalm-103-5",
+    "text": "Who satisfies your desire with good things, so that your youth is renewed like the eagle's.",
+    "reference": "Psalm 103:5",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God satisfies you with good things and renews your strength like the eagle's."
+  },
+  {
+    "id": "psalm-104-30",
+    "text": "You send out your Spirit. They are created. You renew the face of the ground.",
+    "reference": "Psalm 104:30",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God's Spirit brings new life. He renews the earth, and He can renew you."
+  },
+  {
+    "id": "psalm-119-25",
+    "text": "Revive me according to your word.",
+    "reference": "Psalm 119:25",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "When you feel low, ask God to revive you through His Word."
+  },
+  {
+    "id": "psalm-119-93",
+    "text": "I will never forget your precepts, for with them you have revived me.",
+    "reference": "Psalm 119:93",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God's Word has the power to give you new life. Hold on to it."
+  },
+  {
+    "id": "psalm-126-3",
+    "text": "The LORD has done great things for us, and we are glad.",
+    "reference": "Psalm 126:3",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Look back on the great things God has done. Let them make you glad today."
+  },
+  {
+    "id": "psalm-126-6",
+    "text": "He who goes out weeping, carrying seed for sowing, will certainly come again with joy.",
+    "reference": "Psalm 126:6",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Tears sown in faith can become a harvest of joy. Keep going."
+  },
+  {
+    "id": "psalm-143-11",
+    "text": "Revive me, LORD, for your name's sake.",
+    "reference": "Psalm 143:11",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Ask God to revive you for His name's sake. He is faithful to His people."
+  },
+  {
+    "id": "proverbs-15-4",
+    "text": "A gentle tongue is a tree of life.",
+    "reference": "Proverbs 15:4",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Gentle words bring life and healing. Speak gently to yourself and to others today."
+  },
+  {
+    "id": "proverbs-15-13",
+    "text": "A glad heart makes a cheerful face.",
+    "reference": "Proverbs 15:13",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "A glad heart shows on your face. Let God's joy work its way outward."
+  },
+  {
+    "id": "isaiah-12-3",
+    "text": "Therefore with joy you will draw water out of the wells of salvation.",
+    "reference": "Isaiah 12:3",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God's salvation is a well that never runs dry. Draw from it with joy."
+  },
+  {
+    "id": "isaiah-35-5-6",
+    "text": "Then the eyes of the blind will be opened... Then the lame man will leap like a deer.",
+    "reference": "Isaiah 35:5-6",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Isaiah pictures a day when God makes everything whole. Hold on to that hope."
+  },
+  {
+    "id": "isaiah-44-3",
+    "text": "I will pour water on him who is thirsty.",
+    "reference": "Isaiah 44:3",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "If you're thirsty and dry, God promises to pour out refreshing water."
+  },
+  {
+    "id": "isaiah-44-22",
+    "text": "I have blotted out, as a thick cloud, your transgressions.",
+    "reference": "Isaiah 44:22",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God has swept away your sins like a cloud. Let His forgiveness heal your heart."
+  },
+  {
+    "id": "isaiah-54-13",
+    "text": "Great will be the peace of your children.",
+    "reference": "Isaiah 54:13",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God cares about the peace of your children and family. Pray for their wholeness too."
+  },
+  {
+    "id": "isaiah-55-1",
+    "text": "Come, everyone who thirsts, to the waters.",
+    "reference": "Isaiah 55:1",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Everyone who is thirsty is invited. Come to God and drink."
+  },
+  {
+    "id": "isaiah-57-19",
+    "text": "Peace, peace, to him who is far off and to him who is near, says the LORD; and I will heal him.",
+    "reference": "Isaiah 57:19",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God speaks peace to those far and near, and He says, 'I will heal him.'"
+  },
+  {
+    "id": "isaiah-58-12",
+    "text": "You will be called the repairer of the breach, the restorer of paths to dwell in.",
+    "reference": "Isaiah 58:12",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God can use you to rebuild what was broken. Healing often turns into helping others."
+  },
+  {
+    "id": "isaiah-61-4",
+    "text": "They will rebuild the old wastes.",
+    "reference": "Isaiah 61:4",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Ruins can be rebuilt. God restores what was laid waste."
+  },
+  {
+    "id": "isaiah-61-7",
+    "text": "Instead of your shame you will have double.",
+    "reference": "Isaiah 61:7",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God can replace shame with a double portion of blessing."
+  },
+  {
+    "id": "isaiah-65-17",
+    "text": "Behold, I create new heavens and a new earth.",
+    "reference": "Isaiah 65:17",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God is making a new heaven and a new earth. Ultimate healing is coming."
+  },
+  {
+    "id": "isaiah-66-14",
+    "text": "Your heart will rejoice, and your bones will flourish like the tender grass.",
+    "reference": "Isaiah 66:14",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Your heart can rejoice again, and you can flourish like fresh grass."
+  },
+  {
+    "id": "jeremiah-3-22",
+    "text": "Return, you backsliding children, and I will heal your backsliding.",
+    "reference": "Jeremiah 3:22",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "When you've drifted, God invites you back and promises to heal your heart."
+  },
+  {
+    "id": "jeremiah-31-4",
+    "text": "Again I will build you, and you will be built.",
+    "reference": "Jeremiah 31:4",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God says, 'Again I will build you.' Rebuilding is possible with Him."
+  },
+  {
+    "id": "jeremiah-31-17",
+    "text": "There is hope for your latter end.",
+    "reference": "Jeremiah 31:17",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "There is hope for your future. God isn't finished with you."
+  },
+  {
+    "id": "ezekiel-11-19",
+    "text": "I will give them one heart, and I will put a new spirit within them.",
+    "reference": "Ezekiel 11:19",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God can give you an undivided heart and a new spirit."
+  },
+  {
+    "id": "ezekiel-36-26",
+    "text": "I will give you a new heart, and I will put a new spirit within you.",
+    "reference": "Ezekiel 36:26",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God replaces a heart of stone with a heart of flesh. He makes you new inside."
+  },
+  {
+    "id": "ezekiel-47-12",
+    "text": "Their fruit will be for food, and their leaves for healing.",
+    "reference": "Ezekiel 47:12",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Ezekiel saw a river from God with leaves for healing. His presence brings life wherever it flows."
+  },
+  {
+    "id": "hosea-11-3",
+    "text": "They didn't know that I healed them.",
+    "reference": "Hosea 11:3",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God has been healing you in ways you may not even notice. He has been there all along."
+  },
+  {
+    "id": "hosea-14-5",
+    "text": "I will be like the dew to Israel.",
+    "reference": "Hosea 14:5",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God's presence is like gentle dew, quietly refreshing and renewing."
+  },
+  {
+    "id": "joel-2-25",
+    "text": "I will restore to you the years that the swarming locust has eaten.",
+    "reference": "Joel 2:25",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God can restore the years that felt wasted. Nothing is too lost for Him."
+  },
+  {
+    "id": "joel-2-26",
+    "text": "You will eat in plenty and be satisfied.",
+    "reference": "Joel 2:26",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God provides enough and more. After lean seasons, He can satisfy you again."
+  },
+  {
+    "id": "zechariah-9-12",
+    "text": "Turn to the stronghold, you prisoners of hope. Even today I declare that I will restore double to you.",
+    "reference": "Zechariah 9:12",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Be a prisoner of hope. Hold on, because God promises restoration."
+  },
+  {
+    "id": "zechariah-10-6",
+    "text": "I will strengthen the house of Judah.",
+    "reference": "Zechariah 10:6",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God strengthens His people and brings them back. He can strengthen you."
+  },
+  {
+    "id": "matthew-9-21",
+    "text": "If I just touch his garment, I will be made well.",
+    "reference": "Matthew 9:21",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "The woman reached for Jesus with hope. Reach out to Him with yours."
+  },
+  {
+    "id": "matthew-10-8",
+    "text": "Heal the sick... Freely you received, so freely give.",
+    "reference": "Matthew 10:8",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "What you've freely received from God, you can freely give to others."
+  },
+  {
+    "id": "matthew-12-13",
+    "text": "He stretched it out; and it was restored whole, just like the other.",
+    "reference": "Matthew 12:13",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Jesus restored what was withered. Bring Him the parts of your life that feel lifeless."
+  },
+  {
+    "id": "matthew-14-36",
+    "text": "As many as touched it were made whole.",
+    "reference": "Matthew 14:36",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "People reached for Jesus, and He met them with compassion. Reach for Him today."
+  },
+  {
+    "id": "matthew-15-28",
+    "text": "Woman, great is your faith. Let it be done for you even as you desire.",
+    "reference": "Matthew 15:28",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "The woman kept asking Jesus for help, and He honoured her persistence. Keep bringing your requests to Him."
+  },
+  {
+    "id": "mark-2-11",
+    "text": "Arise, take up your mat, and go to your house.",
+    "reference": "Mark 2:11",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Jesus told the man to get up and go home. Healing often comes with a new beginning."
+  },
+  {
+    "id": "mark-3-5",
+    "text": "Stretch out your hand.",
+    "reference": "Mark 3:5",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Jesus asked the man to stretch out his hand. Offer Him what is weak, and trust Him with it."
+  },
+  {
+    "id": "mark-7-37",
+    "text": "He has done all things well.",
+    "reference": "Mark 7:37",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "He has done all things well. Trust Jesus with your story."
+  },
+  {
+    "id": "mark-10-49",
+    "text": "Cheer up! Get up. He is calling you.",
+    "reference": "Mark 10:49",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Take heart and get up. Jesus is calling you."
+  },
+  {
+    "id": "luke-5-13",
+    "text": "I want to. Be made clean.",
+    "reference": "Luke 5:13",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "When asked if He was willing, Jesus said, 'I want to.' His heart toward you is compassion."
+  },
+  {
+    "id": "luke-5-24",
+    "text": "I tell you, arise, take up your cot, and go to your house.",
+    "reference": "Luke 5:24",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Jesus has authority to forgive and to heal. Bring Him your whole self."
+  },
+  {
+    "id": "luke-7-50",
+    "text": "Your faith has saved you. Go in peace.",
+    "reference": "Luke 7:50",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Jesus sends you out forgiven and at peace. Go in peace."
+  },
+  {
+    "id": "luke-10-9",
+    "text": "Heal the sick who are therein, and tell them, 'The Kingdom of God has come near to you.'",
+    "reference": "Luke 10:9",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God's kingdom comes near through healing and care. Let His kindness reach you today."
+  },
+  {
+    "id": "luke-10-34",
+    "text": "He came to him, and bound up his wounds, pouring on oil and wine.",
+    "reference": "Luke 10:34",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "The Good Samaritan bandaged wounds with care. God cares for your wounds with even greater tenderness."
+  },
+  {
+    "id": "luke-14-4",
+    "text": "He took hold of him, and healed him, and let him go.",
+    "reference": "Luke 14:4",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Jesus took hold of the man, healed him and sent him on his way. He doesn't hold back His care."
+  },
+  {
+    "id": "luke-17-14",
+    "text": "As they went, they were cleansed.",
+    "reference": "Luke 17:14",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "The lepers were healed as they went. Sometimes healing comes as you keep walking in trust."
+  },
+  {
+    "id": "luke-22-51",
+    "text": "He touched his ear, and healed him.",
+    "reference": "Luke 22:51",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Even in the middle of His arrest, Jesus stopped to heal. His compassion never switches off."
+  },
+  {
+    "id": "john-5-9",
+    "text": "Immediately the man was made well, and took up his mat and walked.",
+    "reference": "John 5:9",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "After many years of waiting, the man stood up and walked. Long waits don't have the final word."
+  },
+  {
+    "id": "john-20-19",
+    "text": "Peace be to you.",
+    "reference": "John 20:19",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "The risen Jesus' first words to His frightened friends were 'Peace be to you.' He says them to you too."
+  },
+  {
+    "id": "acts-3-6",
+    "text": "What I have, that I give you. In the name of Jesus Christ of Nazareth, rise up and walk!",
+    "reference": "Acts 3:6",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Peter had no money, but he gave what he had: Jesus. Jesus is the greatest gift for any need."
+  },
+  {
+    "id": "acts-3-16",
+    "text": "The faith which is through him has given him this perfect soundness.",
+    "reference": "Acts 3:16",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Faith in Jesus brought wholeness. Keep your trust in Him."
+  },
+  {
+    "id": "acts-4-30",
+    "text": "While you stretch out your hand to heal.",
+    "reference": "Acts 4:30",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "The early church prayed boldly for God to stretch out His hand to heal. You can pray the same."
+  },
+  {
+    "id": "acts-8-7",
+    "text": "Many who were paralyzed and lame were healed.",
+    "reference": "Acts 8:7",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "The Good News brought healing and joy to a whole city. God's power still brings life."
+  },
+  {
+    "id": "acts-14-10",
+    "text": "Stand upright on your feet!",
+    "reference": "Acts 14:10",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Stand upright. God can lift you to your feet again."
+  },
+  {
+    "id": "acts-28-8",
+    "text": "Paul entered in to him, and prayed, and laying his hands on him, healed him.",
+    "reference": "Acts 28:8",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Paul prayed and laid hands on the sick man. Prayer is a powerful part of healing."
+  },
+  {
+    "id": "romans-8-6",
+    "text": "The mind of the Spirit is life and peace.",
+    "reference": "Romans 8:6",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "A mind set on the Spirit brings life and peace. Let Him shape your thoughts."
+  },
+  {
+    "id": "1-corinthians-12-9",
+    "text": "To another gifts of healings, by the same Spirit.",
+    "reference": "1 Corinthians 12:9",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Healing is one of the Spirit's gifts to His church. God works through His people."
+  },
+  {
+    "id": "2-corinthians-5-17",
+    "text": "If anyone is in Christ, he is a new creation. The old things have passed away. Behold, all things have become new.",
+    "reference": "2 Corinthians 5:17",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "In Christ you are a new creation. The old is gone; the new has come."
+  },
+  {
+    "id": "2-corinthians-7-6",
+    "text": "God, who comforts the lowly, comforted us.",
+    "reference": "2 Corinthians 7:6",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God comforts those who are downcast. He often sends comfort through others."
+  },
+  {
+    "id": "galatians-6-1",
+    "text": "Restore such a one in a spirit of gentleness.",
+    "reference": "Galatians 6:1",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "When someone stumbles, help restore them gently. Healing grows in grace."
+  },
+  {
+    "id": "ephesians-3-16",
+    "text": "That he would grant you... to be strengthened with power through his Spirit in the inner person.",
+    "reference": "Ephesians 3:16",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God strengthens you deep inside through His Spirit. Ask Him for inner strength."
+  },
+  {
+    "id": "ephesians-4-23",
+    "text": "Be renewed in the spirit of your mind.",
+    "reference": "Ephesians 4:23",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Let God renew your thinking. Healing often begins in the mind."
+  },
+  {
+    "id": "colossians-3-10",
+    "text": "The new man, who is being renewed in knowledge.",
+    "reference": "Colossians 3:10",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "You are being made new, day by day, into the image of your Creator."
+  },
+  {
+    "id": "2-thessalonians-2-16-17",
+    "text": "Comfort your hearts and establish them in every good work and word.",
+    "reference": "2 Thessalonians 2:16-17",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "May God comfort your heart and strengthen you in every good thing."
+  },
+  {
+    "id": "2-timothy-2-1",
+    "text": "Be strong in the grace that is in Christ Jesus.",
+    "reference": "2 Timothy 2:1",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Be strong in grace, not in your own effort. God's grace carries you."
+  },
+  {
+    "id": "titus-3-5",
+    "text": "Through the washing of regeneration and renewing by the Holy Spirit.",
+    "reference": "Titus 3:5",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Renewal is a work of the Holy Spirit. He washes and makes new."
+  },
+  {
+    "id": "hebrews-11-34",
+    "text": "From weakness were made strong.",
+    "reference": "Hebrews 11:34",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "People of faith were made strong out of weakness. Your weakness is not the end."
+  },
+  {
+    "id": "james-4-10",
+    "text": "Humble yourselves in the sight of the Lord, and he will exalt you.",
+    "reference": "James 4:10",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Humble yourself before God, and He will lift you up."
+  },
+  {
+    "id": "1-peter-1-3",
+    "text": "He has given us new birth into a living hope.",
+    "reference": "1 Peter 1:3",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Through Jesus' resurrection, you have a living hope. New life is possible."
+  },
+  {
+    "id": "1-peter-2-25",
+    "text": "You have now returned to the Shepherd and Overseer of your souls.",
+    "reference": "1 Peter 2:25",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "You have returned to the Shepherd of your soul. He cares for you."
+  },
+  {
+    "id": "2-peter-1-3",
+    "text": "His divine power has given to us all things that pertain to life and godliness.",
+    "reference": "2 Peter 1:3",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God has given you everything you need for life and godliness through knowing Him."
+  },
+  {
+    "id": "1-john-1-7",
+    "text": "The blood of Jesus Christ his Son cleanses us from all sin.",
+    "reference": "1 John 1:7",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Jesus' sacrifice cleanses completely. Walk in His light and be made clean."
+  },
+  {
+    "id": "1-john-1-9",
+    "text": "If we confess our sins, he is faithful and righteous to forgive us the sins and to cleanse us from all unrighteousness.",
+    "reference": "1 John 1:9",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "Confession opens the door to healing. God is faithful to forgive and cleanse."
+  },
+  {
+    "id": "revelation-2-7",
+    "text": "To him who overcomes, I will give to eat from the tree of life.",
+    "reference": "Revelation 2:7",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God promises the tree of life to those who overcome. Keep holding on."
+  },
+  {
+    "id": "revelation-21-5",
+    "text": "Behold, I am making all things new.",
+    "reference": "Revelation 21:5",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "God is making all things new, including you."
+  },
+  {
+    "id": "revelation-22-17",
+    "text": "Let him who is thirsty come. Let him who desires take the water of life freely.",
+    "reference": "Revelation 22:17",
+    "translation": "WEB",
+    "moods": [
+      "healing"
+    ],
+    "reflection": "If you're thirsty, come. The water of life is free."
   }
 ]
