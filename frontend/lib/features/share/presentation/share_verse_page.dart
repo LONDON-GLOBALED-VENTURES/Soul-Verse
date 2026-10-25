@@ -312,6 +312,18 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
         selected: _style.textAlign,
         onChanged: (align) => _updateStyle(_style.copyWith(textAlign: align)),
       ),
+      EditorTool.spacing => SpacingControl(
+        lineHeight: _style.lineHeight,
+        letterSpacing: _style.letterSpacing,
+        onLineHeightChanged: (value) =>
+            _updateStyle(_style.copyWith(lineHeight: value)),
+        onLetterSpacingChanged: (value) =>
+            _updateStyle(_style.copyWith(letterSpacing: value)),
+      ),
+      EditorTool.effect => TextEffectPicker(
+        selected: _style.effect,
+        onChanged: (effect) => _updateStyle(_style.copyWith(effect: effect)),
+      ),
     };
   }
 }

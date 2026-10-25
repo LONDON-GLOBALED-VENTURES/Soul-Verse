@@ -10,6 +10,9 @@ void main() {
     expect(style.textScale, 1);
     expect(style.textColor, isNull);
     expect(style.textAlign, TextAlign.center);
+    expect(style.lineHeight, 1.3);
+    expect(style.letterSpacing, 0);
+    expect(style.effect, TextEffect.soft);
   });
 
   test('copyWith changes only what is given and can clear the colour', () {

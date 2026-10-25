@@ -359,6 +359,35 @@ void main() {
     expect(previewStyle().font, VerseFont.script);
     expect(previewStyle().textColor, const Color(0xFFE6C27A));
 
+    Future<void> openTool(String label) async {
+      await tester.ensureVisible(find.text(label));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(label));
+      await tester.pumpAndSettle();
+    }
+
+    await openTool('Spacing');
+    await tester.drag(find.byType(Slider).first, const Offset(150, 0));
+    await tester.drag(find.byType(Slider).last, const Offset(150, 0));
+    await tester.pumpAndSettle();
+    expect(previewStyle().lineHeight, greaterThan(1.3));
+    expect(previewStyle().letterSpacing, greaterThan(0));
+
+    await openTool('Effect');
+    await tester.tap(find.text('Outline'));
+    await tester.pumpAndSettle();
+    expect(previewStyle().effect, TextEffect.outline);
+    // The outline is a stroked copy of the verse drawn under the filled one.
+    final verseTexts = find.descendant(
+      of: find.byType(VerseCard),
+      matching: find.textContaining('Be still'),
+    );
+    expect(verseTexts, findsNWidgets(2));
+    expect(
+      tester.widget<Text>(verseTexts.first).style!.foreground!.style,
+      PaintingStyle.stroke,
+    );
+
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(minutes: 1));
   });

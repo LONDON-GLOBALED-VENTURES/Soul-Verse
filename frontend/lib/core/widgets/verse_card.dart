@@ -184,30 +184,33 @@ class _VerseText extends StatelessWidget {
                     _ => CrossAxisAlignment.center,
                   },
                   children: [
-                    Text(
+                    _EffectText(
                       '“${verse.text}”',
+                      effect: style.effect,
                       textAlign: style.textAlign,
+                      color: textColor,
                       style: TextStyle(
                         fontFamily: font.family,
                         fontVariations: font.variations,
                         fontSize: fontSize,
-                        height: 1.3,
-                        color: textColor,
-                        shadows: const [
-                          Shadow(blurRadius: 8, color: Colors.black26),
-                        ],
+                        height: style.lineHeight,
+                        letterSpacing: fontSize * style.letterSpacing,
                       ),
                     ),
                     SizedBox(height: fontSize * 0.9),
-                    Text(
+                    _EffectText(
                       verse.reference,
+                      // The reference never had the soft shadow; keep it that way.
+                      effect: style.effect == TextEffect.soft
+                          ? TextEffect.none
+                          : style.effect,
                       textAlign: style.textAlign,
+                      color: textColor.withValues(alpha: 0.9),
                       style: TextStyle(
                         fontFamily: AppFonts.sans,
                         fontSize: (fontSize * 0.45).clamp(11, 18),
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.4,
-                        color: textColor.withValues(alpha: 0.9),
                       ),
                     ),
                   ],
@@ -218,5 +221,70 @@ class _VerseText extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+/// Text drawn with a [TextEffect]. [style] must not set a colour; [color] is
+/// applied here because an outline needs a stroke paint instead.
+class _EffectText extends StatelessWidget {
+  const _EffectText(
+    this.text, {
+    required this.effect,
+    required this.textAlign,
+    required this.color,
+    required this.style,
+  });
+
+  final String text;
+  final TextEffect effect;
+  final TextAlign textAlign;
+  final Color color;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    final fontSize = style.fontSize ?? 14;
+    // Light text gets a dark outline or shadow, dark text a light one.
+    final contrast = color.computeLuminance() > 0.5
+        ? Colors.black
+        : Colors.white;
+
+    Text styled(TextStyle s) => Text(text, textAlign: textAlign, style: s);
+
+    return switch (effect) {
+      TextEffect.none => styled(style.copyWith(color: color)),
+      TextEffect.soft => styled(
+        style.copyWith(
+          color: color,
+          shadows: const [Shadow(blurRadius: 8, color: Colors.black26)],
+        ),
+      ),
+      TextEffect.strong => styled(
+        style.copyWith(
+          color: color,
+          shadows: [
+            Shadow(
+              blurRadius: fontSize * 0.3,
+              offset: Offset(0, fontSize * 0.04),
+              color: contrast.withValues(alpha: 0.85),
+            ),
+          ],
+        ),
+      ),
+      TextEffect.outline => Stack(
+        children: [
+          styled(
+            style.copyWith(
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = fontSize * 0.1
+                ..strokeJoin = StrokeJoin.round
+                ..color = contrast.withValues(alpha: 0.9),
+            ),
+          ),
+          styled(style.copyWith(color: color)),
+        ],
+      ),
+    };
   }
 }

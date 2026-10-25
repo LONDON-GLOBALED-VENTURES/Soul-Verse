@@ -27,6 +27,18 @@ enum VerseFont {
       weight == null ? null : [FontVariation('wght', weight!)];
 }
 
+/// How the verse text is set apart from the background.
+enum TextEffect {
+  none('None'),
+  soft('Soft shadow'),
+  strong('Strong shadow'),
+  outline('Outline');
+
+  const TextEffect(this.label);
+
+  final String label;
+}
+
 const _unset = Object();
 
 /// How the user has customised a verse image. [standard] matches the
@@ -38,12 +50,19 @@ class VerseStyle {
     this.textScale = 1,
     this.textColor,
     this.textAlign = TextAlign.center,
+    this.lineHeight = 1.3,
+    this.letterSpacing = 0,
+    this.effect = TextEffect.soft,
   });
 
   static const standard = VerseStyle();
 
   static const minTextScale = 0.6;
   static const maxTextScale = 1.6;
+  static const minLineHeight = 1.0;
+  static const maxLineHeight = 2.0;
+  static const minLetterSpacing = -0.05;
+  static const maxLetterSpacing = 0.25;
 
   final VerseFont font;
 
@@ -55,11 +74,22 @@ class VerseStyle {
 
   final TextAlign textAlign;
 
+  /// Line height as a multiple of the font size.
+  final double lineHeight;
+
+  /// Extra space between letters as a fraction of the font size.
+  final double letterSpacing;
+
+  final TextEffect effect;
+
   VerseStyle copyWith({
     VerseFont? font,
     double? textScale,
     Object? textColor = _unset,
     TextAlign? textAlign,
+    double? lineHeight,
+    double? letterSpacing,
+    TextEffect? effect,
   }) {
     return VerseStyle(
       font: font ?? this.font,
@@ -68,6 +98,9 @@ class VerseStyle {
           ? this.textColor
           : textColor as Color?,
       textAlign: textAlign ?? this.textAlign,
+      lineHeight: lineHeight ?? this.lineHeight,
+      letterSpacing: letterSpacing ?? this.letterSpacing,
+      effect: effect ?? this.effect,
     );
   }
 
@@ -77,8 +110,19 @@ class VerseStyle {
       other.font == font &&
       other.textScale == textScale &&
       other.textColor == textColor &&
-      other.textAlign == textAlign;
+      other.textAlign == textAlign &&
+      other.lineHeight == lineHeight &&
+      other.letterSpacing == letterSpacing &&
+      other.effect == effect;
 
   @override
-  int get hashCode => Object.hash(font, textScale, textColor, textAlign);
+  int get hashCode => Object.hash(
+    font,
+    textScale,
+    textColor,
+    textAlign,
+    lineHeight,
+    letterSpacing,
+    effect,
+  );
 }

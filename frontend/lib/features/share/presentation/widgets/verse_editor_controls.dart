@@ -9,7 +9,9 @@ enum EditorTool {
   font('Font', Icons.font_download_outlined),
   size('Size', Icons.format_size),
   colour('Colour', Icons.palette_outlined),
-  align('Align', Icons.format_align_center);
+  align('Align', Icons.format_align_center),
+  spacing('Spacing', Icons.format_line_spacing),
+  effect('Effect', Icons.auto_awesome_outlined);
 
   const EditorTool(this.label, this.icon);
 
@@ -306,6 +308,145 @@ class TextAlignPicker extends StatelessWidget {
         selected: {selected},
         onSelectionChanged: (values) => onChanged(values.first),
       ),
+    );
+  }
+}
+
+class SpacingControl extends StatelessWidget {
+  const SpacingControl({
+    super.key,
+    required this.lineHeight,
+    required this.letterSpacing,
+    required this.onLineHeightChanged,
+    required this.onLetterSpacingChanged,
+  });
+
+  final double lineHeight;
+  final double letterSpacing;
+  final ValueChanged<double> onLineHeightChanged;
+  final ValueChanged<double> onLetterSpacingChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    // Two compact sliders so both fit in the controls area.
+    return SliderTheme(
+      data: SliderTheme.of(context).copyWith(
+        trackHeight: 3,
+        overlayShape: const RoundSliderOverlayShape(overlayRadius: 14),
+        activeTrackColor: AppColors.accent,
+        thumbColor: AppColors.accent,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _LabelledSlider(
+              label: 'Lines',
+              semanticsLabel: 'Line spacing',
+              value: lineHeight,
+              min: VerseStyle.minLineHeight,
+              max: VerseStyle.maxLineHeight,
+              onChanged: onLineHeightChanged,
+            ),
+            _LabelledSlider(
+              label: 'Letters',
+              semanticsLabel: 'Letter spacing',
+              value: letterSpacing,
+              min: VerseStyle.minLetterSpacing,
+              max: VerseStyle.maxLetterSpacing,
+              onChanged: onLetterSpacingChanged,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LabelledSlider extends StatelessWidget {
+  const _LabelledSlider({
+    required this.label,
+    required this.semanticsLabel,
+    required this.value,
+    required this.min,
+    required this.max,
+    required this.onChanged,
+  });
+
+  final String label;
+  final String semanticsLabel;
+  final double value;
+  final double min;
+  final double max;
+  final ValueChanged<double> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 32,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 56,
+            child: Text(
+              label,
+              style: Theme.of(context).textTheme.labelMedium
+                  ?.copyWith(color: AppColors.textSecondary),
+            ),
+          ),
+          Expanded(
+            child: Slider(
+              value: value,
+              min: min,
+              max: max,
+              semanticFormatterCallback: (v) =>
+                  '$semanticsLabel ${((v - min) / (max - min) * 100).round()}%',
+              onChanged: onChanged,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TextEffectPicker extends StatelessWidget {
+  const TextEffectPicker({
+    super.key,
+    required this.selected,
+    required this.onChanged,
+  });
+
+  final TextEffect selected;
+  final ValueChanged<TextEffect> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      itemCount: TextEffect.values.length,
+      separatorBuilder: (_, _) => const SizedBox(width: 8),
+      itemBuilder: (context, i) {
+        final effect = TextEffect.values[i];
+        return ChoiceChip(
+          label: Text(effect.label),
+          selected: effect == selected,
+          showCheckmark: false,
+          selectedColor: AppColors.accent.withValues(alpha: 0.15),
+          labelStyle: TextStyle(
+            color: effect == selected
+                ? AppColors.accent
+                : AppColors.textSecondary,
+            fontWeight: effect == selected ? FontWeight.w600 : FontWeight.w500,
+          ),
+          side: BorderSide(
+            color: effect == selected ? AppColors.accent : AppColors.border,
+          ),
+          onSelected: (_) => onChanged(effect),
+        );
+      },
     );
   }
 }
