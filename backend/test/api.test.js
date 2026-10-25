@@ -145,6 +145,15 @@ test('emotions come with an emoji and colour, and each has a free background', a
   }
 });
 
+test('image URLs use https when the request came through an https proxy', async () => {
+  // Cloud Run ends HTTPS at its proxy and forwards plain HTTP with this header.
+  const res = await fetch(`${baseUrl}/templates`, {
+    headers: { 'X-Forwarded-Proto': 'https' },
+  });
+  const [template] = await res.json();
+  assert.match(template.imageUrl, /^https:\/\//);
+});
+
 test('templates only reference emotions that exist', async () => {
   const ids = new Set((await get('/moods')).body.map((m) => m.id));
   for (const template of (await get('/templates')).body) {

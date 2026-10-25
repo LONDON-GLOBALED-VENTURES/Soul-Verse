@@ -7,6 +7,11 @@ const { notFound, errorHandler } = require('./middlewares/error.middleware');
 
 const app = express();
 
+// Cloud Run (and most hosts) end HTTPS at a proxy and forward plain HTTP, so
+// trust its X-Forwarded-Proto. Otherwise image URLs come out as http://, which
+// release builds of the app refuse to load.
+app.set('trust proxy', 1);
+
 app.use(cors({ origin: corsOrigin }));
 app.use(express.json());
 

@@ -8,14 +8,21 @@ import 'auth_interceptor.dart';
 
 part 'dio_client.g.dart';
 
-// Must end with `/api`; endpoint paths are relative to it (e.g. '/prayers').
-const _baseUrl = String.fromEnvironment(
+const _configuredBaseUrl = String.fromEnvironment(
   'API_BASE_URL',
   defaultValue: 'https://api.example.com/api',
 );
 
+/// Endpoint paths are relative to `…/api` (e.g. '/prayers'), so a base URL
+/// given as just the server address (`https://host`) gets `/api` added.
+@visibleForTesting
+String normalizeApiBaseUrl(String url) {
+  final trimmed = url.trim().replaceAll(RegExp(r'/+$'), '');
+  return trimmed.endsWith('/api') ? trimmed : '$trimmed/api';
+}
+
 BaseOptions _baseOptions() => BaseOptions(
-  baseUrl: _baseUrl,
+  baseUrl: normalizeApiBaseUrl(_configuredBaseUrl),
   connectTimeout: const Duration(seconds: 10),
   receiveTimeout: const Duration(seconds: 10),
   headers: {'Content-Type': 'application/json'},

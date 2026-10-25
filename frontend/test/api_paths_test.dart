@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:soulverse/core/network/dio_client.dart';
 import 'package:soulverse/features/auth/data/auth_api.dart';
 import 'package:soulverse/features/prayers/data/prayers_api.dart';
 
@@ -31,6 +32,22 @@ final Map<String, dynamic> _fakeBody = {
 };
 
 void main() {
+  test('the base URL always ends with /api, however it was given', () {
+    for (final url in [
+      'https://host.run.app',
+      'https://host.run.app/',
+      'https://host.run.app/api',
+      'https://host.run.app/api/',
+      ' https://host.run.app ',
+    ]) {
+      expect(normalizeApiBaseUrl(url), 'https://host.run.app/api', reason: url);
+    }
+    expect(
+      normalizeApiBaseUrl('http://10.0.2.2:3000/api'),
+      'http://10.0.2.2:3000/api',
+    );
+  });
+
   test('auth endpoints are not prefixed with /api twice', () async {
     final (dio, urls) = _recordingDio();
     final api = AuthApi(dio);
