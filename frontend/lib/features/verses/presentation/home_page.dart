@@ -54,7 +54,10 @@ class HomePage extends ConsumerWidget {
                   data: (d) => VerseCard(
                     verse: d.verse,
                     template: d.template,
-                    header: _TodayHeader(date: DateTime.now()),
+                    header: _TodayHeader(
+                      date: DateTime.now(),
+                      color: d.template.textColorValue,
+                    ),
                     footer: _CardActions(
                       verse: d.verse,
                       template: d.template,
@@ -127,10 +130,13 @@ class _NoVersesYet extends StatelessWidget {
   }
 }
 
+// Header and actions sit on the image, so they use the template's text colour:
+// white on dark photos, dark on the light watercolour ones.
 class _TodayHeader extends StatelessWidget {
-  const _TodayHeader({required this.date});
+  const _TodayHeader({required this.date, required this.color});
 
   final DateTime date;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -141,21 +147,21 @@ class _TodayHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Today',
               style: TextStyle(
                 fontFamily: AppFonts.serif,
                 fontSize: 28,
                 fontWeight: FontWeight.w600,
-                color: Colors.white,
+                color: color,
               ),
             ),
             Text(
               formatLongDate(date),
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: AppFonts.sans,
                 fontSize: 13,
-                color: Colors.white70,
+                color: color.withValues(alpha: 0.7),
               ),
             ),
           ],
@@ -180,26 +186,23 @@ class _CardActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = template.textColorValue;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          FavouriteActionButton(
-            verse: verse,
-            template: template,
-            color: Colors.white,
-          ),
+          FavouriteActionButton(verse: verse, template: template, color: color),
           ActionIconButton(
             icon: Icons.ios_share,
             label: 'Share',
-            color: Colors.white,
+            color: color,
             onPressed: onShare,
           ),
           ActionIconButton(
             icon: Icons.edit_outlined,
             label: 'Edit',
-            color: Colors.white,
+            color: color,
             onPressed: onEdit,
           ),
         ],

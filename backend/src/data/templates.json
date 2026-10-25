@@ -6,5 +6,13 @@
   { "id": "mist", "imagePath": "images/mist.png", "moods": ["stress", "helplessness", "loneliness"], "textColor": "#FFFFFF", "overlayOpacity": 0.4, "isPremium": false },
   { "id": "forest", "imagePath": "images/forest.png", "moods": ["courage", "healing", "sick"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false },
   { "id": "golden", "imagePath": "images/golden.png", "moods": ["thankful", "love", "courage"], "textColor": "#FFFFFF", "overlayOpacity": 0.3, "isPremium": false },
-  { "id": "twilight", "imagePath": "images/twilight.png", "moods": ["heartbroken", "sadness", "stress"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false }
+  { "id": "twilight", "imagePath": "images/twilight.png", "moods": ["heartbroken", "sadness", "stress"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false },
+  { "id": "botanical", "imagePath": "images/botanical.webp", "moods": ["thankful", "healing", "loneliness"], "textColor": "#3A2E28", "overlayOpacity": 0, "isPremium": false },
+  { "id": "celestial", "imagePath": "images/celestial.webp", "moods": ["loneliness", "sadness", "helplessness", "heartbroken"], "textColor": "#2F2A3D", "overlayOpacity": 0, "isPremium": false },
+  { "id": "boho-sun", "imagePath": "images/boho-sun.webp", "moods": ["thankful", "courage", "stress"], "textColor": "#3A2E28", "overlayOpacity": 0, "isPremium": false },
+  { "id": "mountains", "imagePath": "images/mountains.webp", "moods": ["courage", "stress", "helplessness", "sick"], "textColor": "#22343A", "overlayOpacity": 0, "isPremium": false },
+  { "id": "lavender", "imagePath": "images/lavender.webp", "moods": ["love", "relationships", "healing", "thankful"], "textColor": "#2F2A3D", "overlayOpacity": 0, "isPremium": false },
+  { "id": "waves", "imagePath": "images/waves.webp", "moods": ["stress", "sadness", "sick", "healing"], "textColor": "#22343A", "overlayOpacity": 0, "isPremium": false },
+  { "id": "pressed-flowers", "imagePath": "images/pressed-flowers.webp", "moods": ["relationships", "love", "heartbroken"], "textColor": "#3A2E28", "overlayOpacity": 0, "isPremium": false },
+  { "id": "marble", "imagePath": "images/marble.webp", "moods": ["heartbroken", "love", "courage", "loneliness"], "textColor": "#22343A", "overlayOpacity": 0, "isPremium": false }
 ]
