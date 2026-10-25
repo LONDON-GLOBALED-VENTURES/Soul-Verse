@@ -14,6 +14,8 @@ enum EditorTool {
   align('Align', Icons.format_align_center),
   spacing('Spacing', Icons.format_line_spacing),
   effect('Effect', Icons.auto_awesome_outlined),
+  highlight('Highlight', Icons.border_color_outlined),
+  note('Note', Icons.edit_note),
   position('Position', Icons.open_with),
   details('Details', Icons.tune);
 
@@ -782,6 +784,200 @@ class BackgroundTile extends StatelessWidget {
               child: SizedBox.expand(child: child),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Colours for highlighted words; null keeps the text colour.
+const highlightColours = <({String name, Color? color})>[
+  (name: 'Gold', color: VerseStyle.defaultHighlightColor),
+  (name: 'Blush', color: Color(0xFFF4A6B8)),
+  (name: 'Sky', color: Color(0xFF9CC9F0)),
+  (name: 'Sage', color: Color(0xFFB5D19C)),
+  (name: 'Charcoal', color: Color(0xFF3A3A3A)),
+  (name: 'Text colour', color: null),
+];
+
+class HighlightControl extends StatelessWidget {
+  const HighlightControl({
+    super.key,
+    required this.style,
+    required this.onChanged,
+  });
+
+  final VerseStyle style;
+  final ValueChanged<VerseStyle> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          style.highlightedWords.isEmpty
+              ? 'Tap words in the verse to highlight them'
+              : 'Tap a highlighted word again to remove it',
+          style: Theme.of(context).textTheme.labelSmall
+              ?.copyWith(color: AppColors.textSecondary),
+        ),
+        const SizedBox(height: 4),
+        SizedBox(
+          height: 40,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            children: [
+              Center(
+                child: _OptionChip(
+                  label: 'Bold',
+                  selected: style.highlightBold,
+                  onTap: () => onChanged(
+                    style.copyWith(highlightBold: !style.highlightBold),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              for (final swatch in highlightColours) ...[
+                Center(
+                  child: _HighlightSwatch(
+                    name: swatch.name,
+                    color: swatch.color,
+                    selected: style.highlightColor == swatch.color,
+                    onTap: () =>
+                        onChanged(style.copyWith(highlightColor: swatch.color)),
+                  ),
+                ),
+                const SizedBox(width: 8),
+              ],
+              if (style.highlightedWords.isNotEmpty) ...[
+                const SizedBox(width: 4),
+                Center(
+                  child: _OptionChip(
+                    label: 'Clear',
+                    selected: false,
+                    onTap: () =>
+                        onChanged(style.copyWith(highlightedWords: const {})),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _HighlightSwatch extends StatelessWidget {
+  const _HighlightSwatch({
+    required this.name,
+    required this.color,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final String name;
+  final Color? color;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: '$name highlight',
+      excludeSemantics: true,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 32,
+          height: 32,
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: selected ? AppColors.accent : Colors.transparent,
+              width: 2,
+            ),
+          ),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: color ?? AppColors.surface,
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.border),
+            ),
+            // No colour: highlighted words keep the text colour.
+            child: color == null
+                ? const Icon(
+                    Icons.format_color_reset,
+                    size: 14,
+                    color: AppColors.textSecondary,
+                  )
+                : null,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A short personal line shown under the verse.
+class NoteControl extends StatefulWidget {
+  const NoteControl({super.key, required this.note, required this.onChanged});
+
+  final String note;
+  final ValueChanged<String> onChanged;
+
+  @override
+  State<NoteControl> createState() => _NoteControlState();
+}
+
+class _NoteControlState extends State<NoteControl> {
+  late final _controller = TextEditingController(text: widget.note);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      child: TextField(
+        controller: _controller,
+        maxLength: VerseStyle.maxNoteLength,
+        textCapitalization: TextCapitalization.sentences,
+        textInputAction: TextInputAction.done,
+        onChanged: widget.onChanged,
+        decoration: InputDecoration(
+          hintText: 'Add a note, e.g. For Mum ❤️',
+          counterText: '',
+          isDense: true,
+          filled: true,
+          fillColor: AppColors.surface,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: AppColors.border),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: AppColors.border),
+          ),
+          suffixIcon: _controller.text.isEmpty
+              ? null
+              : IconButton(
+                  tooltip: 'Remove note',
+                  icon: const Icon(Icons.close, size: 18),
+                  onPressed: () {
+                    _controller.clear();
+                    widget.onChanged('');
+                  },
+                ),
         ),
       ),
     );

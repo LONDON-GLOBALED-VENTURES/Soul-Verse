@@ -4,6 +4,7 @@ import 'dart:ui' show ImageFilter;
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show RenderParagraph;
 
 import '../../features/share/data/models/verse_style.dart';
 import '../../features/verses/data/models/verse.dart';
@@ -52,6 +53,7 @@ class VerseCard extends StatelessWidget {
     this.showWatermark = false,
     this.style = VerseStyle.standard,
     this.onTextPositionChanged,
+    this.onWordTapped,
   });
 
   final Verse verse;
@@ -64,6 +66,9 @@ class VerseCard extends StatelessWidget {
 
   /// When set, the verse can be dragged and this reports its new position.
   final ValueChanged<Alignment>? onTextPositionChanged;
+
+  /// When set, tapping a word of the verse reports its index (for highlighting).
+  final ValueChanged<int>? onWordTapped;
 
   /// Replaces the network image, e.g. with an already-decoded image for offscreen rendering.
   final Widget? background;
@@ -139,6 +144,7 @@ class VerseCard extends StatelessWidget {
                   style: style,
                   textColor: textColor,
                   onPositionChanged: onTextPositionChanged,
+                  onWordTapped: onWordTapped,
                 ),
               ),
               ?footer,
@@ -210,18 +216,43 @@ class _Watermark extends StatelessWidget {
 TextEffect _referenceEffect(TextEffect effect) =>
     effect == TextEffect.soft ? TextEffect.none : effect;
 
+// Words and the spaces between them; word indexes count only the words.
+final _tokens = RegExp(r'\S+|\s+');
+
+/// The index of the word at character [offset] of [text], or null for a space.
+int? _wordAtOffset(String text, int offset) {
+  var word = -1;
+  for (final token in _tokens.allMatches(text)) {
+    final isWord = token[0]!.trim().isNotEmpty;
+    if (isWord) word++;
+    // A tap on the right half of a word's last letter lands just after it.
+    final end = isWord ? token.end + 1 : token.end;
+    if (offset >= token.start && offset < end) return isWord ? word : null;
+  }
+  return null;
+}
+
+RenderParagraph? _paragraphIn(RenderObject? object) {
+  if (object is RenderParagraph) return object;
+  RenderParagraph? found;
+  object?.visitChildren((child) => found ??= _paragraphIn(child));
+  return found;
+}
+
 class _VerseText extends StatefulWidget {
   const _VerseText({
     required this.verse,
     required this.style,
     required this.textColor,
     this.onPositionChanged,
+    this.onWordTapped,
   });
 
   final Verse verse;
   final VerseStyle style;
   final Color textColor;
   final ValueChanged<Alignment>? onPositionChanged;
+  final ValueChanged<int>? onWordTapped;
 
   @override
   State<_VerseText> createState() => _VerseTextState();
@@ -230,6 +261,19 @@ class _VerseText extends StatefulWidget {
 class _VerseTextState extends State<_VerseText> {
   // Measures the text block so a drag moves it exactly with the finger.
   final _blockKey = GlobalKey();
+
+  // Finds which word a tap lands on.
+  final _verseKey = GlobalKey();
+
+  int? _wordAt(Offset globalPosition, String text) {
+    final paragraph = _paragraphIn(
+      _verseKey.currentContext?.findRenderObject(),
+    );
+    if (paragraph == null) return null;
+    final local = paragraph.globalToLocal(globalPosition);
+    if (!(Offset.zero & paragraph.size).contains(local)) return null;
+    return _wordAtOffset(text, paragraph.getPositionForOffset(local).offset);
+  }
 
   // A drag is measured from where it started; several updates can arrive
   // before the new position is rebuilt, so adding to the current one loses moves.
@@ -275,6 +319,9 @@ class _VerseTextState extends State<_VerseText> {
         final vMargin = math.min(width, height) * 0.06;
         final area = Size(width - hMargin * 2, height - vMargin * 2);
         final onPositionChanged = widget.onPositionChanged;
+        final onWordTapped = widget.onWordTapped;
+        final verseText = style.showQuotes ? '“${verse.text}”' : verse.text;
+        final note = style.note.trim();
 
         Widget block = FittedBox(
           key: _blockKey,
@@ -290,7 +337,8 @@ class _VerseTextState extends State<_VerseText> {
               },
               children: [
                 _EffectText(
-                  style.showQuotes ? '“${verse.text}”' : verse.text,
+                  verseText,
+                  textKey: _verseKey,
                   effect: style.effect,
                   textAlign: style.textAlign,
                   color: textColor,
@@ -301,6 +349,16 @@ class _VerseTextState extends State<_VerseText> {
                     height: style.lineHeight,
                     letterSpacing: fontSize * style.letterSpacing,
                   ),
+                  highlightedWords: style.highlightedWords,
+                  highlightStyle: style.highlightBold
+                      ? TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontVariations: font.weight == null
+                              ? null
+                              : const [FontVariation('wght', 700)],
+                        )
+                      : const TextStyle(),
+                  highlightColor: style.highlightColor,
                 ),
                 if (style.reference == ReferencePlacement.below) ...[
                   SizedBox(height: fontSize * 0.9),
@@ -317,22 +375,49 @@ class _VerseTextState extends State<_VerseText> {
                     ),
                   ),
                 ],
+                if (note.isNotEmpty) ...[
+                  SizedBox(height: fontSize * 0.7),
+                  _EffectText(
+                    note,
+                    effect: style.effect,
+                    textAlign: style.textAlign,
+                    color: textColor,
+                    style: TextStyle(
+                      fontFamily: font.family,
+                      fontVariations: font.variations,
+                      fontSize: (fontSize * 0.55).clamp(12, 26),
+                      height: 1.2,
+                    ),
+                  ),
+                ],
               ],
             ),
           ),
         );
 
-        if (onPositionChanged != null) {
+        if (onPositionChanged != null || onWordTapped != null) {
           block = GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onPanStart: (_) {
-              _dragStart = style.textPosition;
-              _dragDistance = Offset.zero;
-            },
-            onPanUpdate: (details) {
-              _dragDistance += details.delta;
-              onPositionChanged(_dragged(_dragStart, _dragDistance, area));
-            },
+            onTapUp: onWordTapped == null
+                ? null
+                : (details) {
+                    final word = _wordAt(details.globalPosition, verseText);
+                    if (word != null) onWordTapped(word);
+                  },
+            onPanStart: onPositionChanged == null
+                ? null
+                : (_) {
+                    _dragStart = style.textPosition;
+                    _dragDistance = Offset.zero;
+                  },
+            onPanUpdate: onPositionChanged == null
+                ? null
+                : (details) {
+                    _dragDistance += details.delta;
+                    onPositionChanged(
+                      _dragged(_dragStart, _dragDistance, area),
+                    );
+                  },
             child: block,
           );
         }
@@ -355,6 +440,10 @@ class _EffectText extends StatelessWidget {
     required this.textAlign,
     required this.color,
     required this.style,
+    this.textKey,
+    this.highlightedWords = const {},
+    this.highlightStyle = const TextStyle(),
+    this.highlightColor,
   });
 
   final String text;
@@ -362,6 +451,38 @@ class _EffectText extends StatelessWidget {
   final TextAlign textAlign;
   final Color color;
   final TextStyle style;
+
+  /// Put on the filled (top) text so taps can be matched to its words.
+  final Key? textKey;
+
+  final Set<int> highlightedWords;
+
+  /// Weight for highlighted words; must not set a colour (see [highlightColor]).
+  final TextStyle highlightStyle;
+  final Color? highlightColor;
+
+  /// The text split so highlighted words get their own style. The outline copy
+  /// skips the colour so it stays a stroke, but keeps the weight so both line up.
+  InlineSpan _span({required bool withColour}) {
+    if (highlightedWords.isEmpty) return TextSpan(text: text);
+    final highlight = withColour && highlightColor != null
+        ? highlightStyle.copyWith(color: highlightColor)
+        : highlightStyle;
+    final spans = <TextSpan>[];
+    var word = -1;
+    for (final token in _tokens.allMatches(text)) {
+      final value = token[0]!;
+      final isWord = value.trim().isNotEmpty;
+      if (isWord) word++;
+      spans.add(
+        TextSpan(
+          text: value,
+          style: isWord && highlightedWords.contains(word) ? highlight : null,
+        ),
+      );
+    }
+    return TextSpan(children: spans);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -371,7 +492,12 @@ class _EffectText extends StatelessWidget {
         ? Colors.black
         : Colors.white;
 
-    Text styled(TextStyle s) => Text(text, textAlign: textAlign, style: s);
+    Text styled(TextStyle s, {bool fill = true}) => Text.rich(
+      _span(withColour: fill),
+      key: fill ? textKey : null,
+      textAlign: textAlign,
+      style: s,
+    );
 
     return switch (effect) {
       TextEffect.none => styled(style.copyWith(color: color)),
@@ -403,6 +529,7 @@ class _EffectText extends StatelessWidget {
                 ..strokeJoin = StrokeJoin.round
                 ..color = contrast.withValues(alpha: 0.9),
             ),
+            fill: false,
           ),
           styled(style.copyWith(color: color)),
         ],

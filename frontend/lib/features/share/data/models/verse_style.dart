@@ -174,7 +174,14 @@ class VerseStyle {
     this.blur = 0,
     this.filter = BackgroundFilter.none,
     this.customBackground,
+    this.highlightedWords = const {},
+    this.highlightBold = true,
+    this.highlightColor = defaultHighlightColor,
+    this.note = '',
   });
+
+  static const defaultHighlightColor = Color(0xFFE6C27A);
+  static const maxNoteLength = 60;
 
   static const topPosition = Alignment(0, -0.8);
   static const middlePosition = Alignment.center;
@@ -230,6 +237,23 @@ class VerseStyle {
   /// Replaces the template's photo; null shows the template.
   final CustomBackground? customBackground;
 
+  /// Indexes of the verse's words (split on spaces) that stand out.
+  final Set<int> highlightedWords;
+  final bool highlightBold;
+
+  /// Colour of highlighted words; null keeps the text colour.
+  final Color? highlightColor;
+
+  /// A short personal line shown under the verse, e.g. "For Mum".
+  final String note;
+
+  /// Highlights [word] if it isn't already, otherwise removes it.
+  VerseStyle toggleHighlight(int word) => copyWith(
+    highlightedWords: highlightedWords.contains(word)
+        ? ({...highlightedWords}..remove(word))
+        : {...highlightedWords, word},
+  );
+
   /// The overlay darkness actually used. Plain colours and gradients start
   /// with no overlay so they keep their colour; photos use the template's.
   double effectiveDarkness(double templateDarkness) =>
@@ -255,6 +279,10 @@ class VerseStyle {
     double? blur,
     BackgroundFilter? filter,
     Object? customBackground = _unset,
+    Set<int>? highlightedWords,
+    bool? highlightBold,
+    Object? highlightColor = _unset,
+    String? note,
   }) {
     return VerseStyle(
       font: font ?? this.font,
@@ -278,6 +306,12 @@ class VerseStyle {
       customBackground: identical(customBackground, _unset)
           ? this.customBackground
           : customBackground as CustomBackground?,
+      highlightedWords: highlightedWords ?? this.highlightedWords,
+      highlightBold: highlightBold ?? this.highlightBold,
+      highlightColor: identical(highlightColor, _unset)
+          ? this.highlightColor
+          : highlightColor as Color?,
+      note: note ?? this.note,
     );
   }
 
@@ -298,7 +332,11 @@ class VerseStyle {
       other.overlayDarkness == overlayDarkness &&
       other.blur == blur &&
       other.filter == filter &&
-      other.customBackground == customBackground;
+      other.customBackground == customBackground &&
+      setEquals(other.highlightedWords, highlightedWords) &&
+      other.highlightBold == highlightBold &&
+      other.highlightColor == highlightColor &&
+      other.note == note;
 
   @override
   int get hashCode => Object.hash(
@@ -317,5 +355,9 @@ class VerseStyle {
     blur,
     filter,
     customBackground,
+    Object.hashAllUnordered(highlightedWords),
+    highlightBold,
+    highlightColor,
+    note,
   );
 }

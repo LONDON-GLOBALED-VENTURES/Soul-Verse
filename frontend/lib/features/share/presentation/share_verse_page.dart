@@ -203,6 +203,11 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                               : (position) => _updateStyle(
                                   _style.copyWith(textPosition: position),
                                 ),
+                          // Tapping words only highlights while that tool is open.
+                          onWordTapped: _busy || _tool != EditorTool.highlight
+                              ? null
+                              : (word) =>
+                                    _updateStyle(_style.toggleHighlight(word)),
                         ),
                       ),
                     ),
@@ -425,6 +430,14 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
       EditorTool.effect => TextEffectPicker(
         selected: _style.effect,
         onChanged: (effect) => _updateStyle(_style.copyWith(effect: effect)),
+      ),
+      EditorTool.highlight => HighlightControl(
+        style: _style,
+        onChanged: _updateStyle,
+      ),
+      EditorTool.note => NoteControl(
+        note: _style.note,
+        onChanged: (note) => _updateStyle(_style.copyWith(note: note)),
       ),
       EditorTool.position => TextPositionPicker(
         selected: _style.textPosition,

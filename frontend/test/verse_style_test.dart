@@ -80,6 +80,23 @@ void main() {
     );
   });
 
+  test('toggling a word highlights it, then removes it', () {
+    final once = VerseStyle.standard.toggleHighlight(2);
+    expect(once.highlightedWords, {2});
+    expect(once.toggleHighlight(4).highlightedWords, {2, 4});
+    expect(once.toggleHighlight(2).highlightedWords, isEmpty);
+    // Sets compare by contents, so order doesn't matter.
+    expect(
+      VerseStyle.standard.toggleHighlight(1).toggleHighlight(3),
+      VerseStyle.standard.toggleHighlight(3).toggleHighlight(1),
+    );
+    expect(
+      once.copyWith(highlightColor: null).highlightColor,
+      isNull,
+      reason: 'no colour keeps the text colour',
+    );
+  });
+
   test('styles with the same values are equal', () {
     expect(
       VerseStyle.standard.copyWith(textAlign: TextAlign.left),

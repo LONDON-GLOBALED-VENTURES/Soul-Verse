@@ -555,6 +555,65 @@ void main() {
     await tester.pump(const Duration(minutes: 1));
   });
 
+  testWidgets('share editor highlights tapped words and adds a note', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+    VerseStyle previewStyle() =>
+        tester.widget<VerseCard>(find.byType(VerseCard)).style;
+    Finder inCard(Finder finder) =>
+        find.descendant(of: find.byType(VerseCard), matching: finder);
+    Future<void> openTool(String label) async {
+      await tester.ensureVisible(find.text(label));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(label));
+      await tester.pumpAndSettle();
+    }
+
+    final verse = inCard(find.textContaining('Be still'));
+    // Outside the Highlight tool, tapping the verse does nothing.
+    await tester.tap(verse);
+    await tester.pumpAndSettle();
+    expect(previewStyle().highlightedWords, isEmpty);
+
+    await openTool('Highlight');
+    await tester.tap(verse);
+    await tester.pumpAndSettle();
+    expect(previewStyle().highlightedWords, hasLength(1));
+    // The tapped word is drawn bold in its own span.
+    final spans = (tester.widget<Text>(verse).textSpan! as TextSpan).children!;
+    expect(
+      spans.where((s) => s.style?.fontWeight == FontWeight.w700),
+      hasLength(1),
+    );
+
+    // Tapping the same word again removes it.
+    await tester.tap(verse);
+    await tester.pumpAndSettle();
+    expect(previewStyle().highlightedWords, isEmpty);
+
+    await tester.tap(verse);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Clear'));
+    await tester.pumpAndSettle();
+    expect(previewStyle().highlightedWords, isEmpty);
+
+    await openTool('Note');
+    await tester.enterText(find.byType(TextField), 'For Mum');
+    await tester.pumpAndSettle();
+    expect(previewStyle().note, 'For Mum');
+    expect(inCard(find.text('For Mum')), findsOneWidget);
+    await tester.tap(find.byTooltip('Remove note'));
+    await tester.pumpAndSettle();
+    expect(inCard(find.text('For Mum')), findsNothing);
+
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 1));
+  });
+
   testWidgets('home hides "A moment of reflection" when there is none', (
     tester,
   ) async {
