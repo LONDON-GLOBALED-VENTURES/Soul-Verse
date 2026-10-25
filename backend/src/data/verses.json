@@ -3219,7 +3219,8 @@
     "reference": "Psalm 68:6",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "God cares about the lonely and makes a place for them. Ask Him to lead you toward people who can become family."
   },
@@ -3474,7 +3475,8 @@
     "reference": "1 Thessalonians 5:11",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "Encouragement grows in both directions. Reach out to build someone up today; it may lift you too."
   },
@@ -3556,7 +3558,8 @@
     "reference": "John 15:15",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "Jesus calls you His friend. Whoever else is or isn't around, you have a friend in Him."
   },
@@ -3658,7 +3661,8 @@
     "reference": "Ruth 1:16",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "Ruth chose loyalty and found a new family. God often brings belonging through faithful people."
   },
@@ -3678,7 +3682,8 @@
     "reference": "Ecclesiastes 4:12",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "Friendship with God at the centre is strong. Ask Him to weave lasting bonds in your life."
   },
@@ -3688,7 +3693,8 @@
     "reference": "Genesis 2:18",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "From the very beginning, God said it isn't good to be alone. Your longing for connection is part of how He made you."
   },
@@ -3698,7 +3704,8 @@
     "reference": "Proverbs 18:24",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "There is a friend who sticks closer than a brother. In Jesus, you have that kind of friend."
   },
@@ -3708,7 +3715,8 @@
     "reference": "Proverbs 17:17",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "True friends love at all times. Thank God for the ones you have, and be that kind of friend to someone."
   },
@@ -3718,7 +3726,8 @@
     "reference": "Romans 12:15",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "Sharing joy and sorrow draws people together. Reach out and share life with someone today."
   },
@@ -3728,7 +3737,8 @@
     "reference": "Galatians 6:2",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "You weren't meant to carry everything alone. Let others help bear your burdens, and help bear theirs."
   },
@@ -3738,7 +3748,8 @@
     "reference": "Psalm 133:1",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "relationships"
     ],
     "reflection": "Unity and togetherness are good gifts from God. Look for a place where you can belong and be known."
   },
@@ -4841,5 +4852,895 @@
       "stress"
     ],
     "reflection": "God's peace goes beyond understanding, and it guards your heart and mind in Christ."
+  },
+  {
+    "id": "genesis-2-24",
+    "text": "Therefore a man will leave his father and his mother, and will join with his wife, and they will be one flesh.",
+    "reference": "Genesis 2:24",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Marriage is a new oneness God designed. Ask Him to help you build a home where two lives grow together."
+  },
+  {
+    "id": "1-samuel-18-1",
+    "text": "The soul of Jonathan was knit with the soul of David, and Jonathan loved him as his own soul.",
+    "reference": "1 Samuel 18:1",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Jonathan and David show what deep friendship can be: loyal, loving and soul-close. Thank God for friends like that."
+  },
+  {
+    "id": "ecclesiastes-4-9",
+    "text": "Two are better than one, because they have a good reward for their labor.",
+    "reference": "Ecclesiastes 4:9",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Life and work go better together. Don't be afraid to share the load with others."
+  },
+  {
+    "id": "ecclesiastes-4-10",
+    "text": "For if they fall, the one will lift up his fellow.",
+    "reference": "Ecclesiastes 4:10",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Everyone falls sometimes. Be the friend who helps someone up, and let others help you."
+  },
+  {
+    "id": "psalm-127-3",
+    "text": "Behold, children are a heritage of the LORD.",
+    "reference": "Psalm 127:3",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Children are a gift from the Lord. Treat the young lives around you as the treasure they are."
+  },
+  {
+    "id": "psalm-141-3",
+    "text": "Set a guard, LORD, over my mouth. Keep the door of my lips.",
+    "reference": "Psalm 141:3",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Many hurts begin with careless words. Ask God to guard your mouth today."
+  },
+  {
+    "id": "psalm-34-14",
+    "text": "Depart from evil, and do good. Seek peace, and pursue it.",
+    "reference": "Psalm 34:14",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Peace doesn't always happen by itself. Seek it, and actively pursue it in your relationships."
+  },
+  {
+    "id": "proverbs-10-12",
+    "text": "Hatred stirs up strife, but love covers all wrongs.",
+    "reference": "Proverbs 10:12",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Hatred keeps conflict alive, but love chooses to cover wrongs. Choose love today."
+  },
+  {
+    "id": "proverbs-13-20",
+    "text": "He who walks with wise men grows wise, but the companion of fools suffers harm.",
+    "reference": "Proverbs 13:20",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "The people you spend time with shape who you become. Walk with those who are wise."
+  },
+  {
+    "id": "proverbs-15-18",
+    "text": "One who is slow to anger appeases strife.",
+    "reference": "Proverbs 15:18",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "A patient, calm response can defuse a quarrel. Take a breath before you answer."
+  },
+  {
+    "id": "proverbs-16-7",
+    "text": "When a man's ways please the LORD, he makes even his enemies to be at peace with him.",
+    "reference": "Proverbs 16:7",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "When your life pleases God, He can bring peace even in strained relationships."
+  },
+  {
+    "id": "proverbs-17-9",
+    "text": "He who covers an offense promotes love.",
+    "reference": "Proverbs 17:9",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Not every offence needs to be repeated. Covering a fault with grace makes room for love."
+  },
+  {
+    "id": "proverbs-18-21",
+    "text": "Death and life are in the power of the tongue.",
+    "reference": "Proverbs 18:21",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Your words carry real power. Use them to bring life to the people around you."
+  },
+  {
+    "id": "proverbs-19-11",
+    "text": "It is his glory to overlook a transgression.",
+    "reference": "Proverbs 19:11",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "There is honour in letting small offences go. Patience is a strength, not a weakness."
+  },
+  {
+    "id": "proverbs-22-6",
+    "text": "Train up a child in the way he should go, and when he is old he will not depart from it.",
+    "reference": "Proverbs 22:6",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "The way we guide children shapes the rest of their lives. Lead them toward God with patience and love."
+  },
+  {
+    "id": "proverbs-25-11",
+    "text": "A word fitly spoken is like apples of gold in settings of silver.",
+    "reference": "Proverbs 25:11",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "The right word at the right time is a beautiful gift. Look for a chance to give one today."
+  },
+  {
+    "id": "proverbs-27-6",
+    "text": "Faithful are the wounds of a friend.",
+    "reference": "Proverbs 27:6",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "A true friend will tell you hard truths out of love. Value honesty that comes with care."
+  },
+  {
+    "id": "proverbs-27-9",
+    "text": "Perfume and incense bring joy to the heart; so does earnest counsel from a man's friend.",
+    "reference": "Proverbs 27:9",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Good counsel from a friend is sweet to the soul. Thank God for the people who speak into your life."
+  },
+  {
+    "id": "proverbs-27-17",
+    "text": "Iron sharpens iron; so a man sharpens his friend's countenance.",
+    "reference": "Proverbs 27:17",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Good friends sharpen each other. Look for relationships that help you grow."
+  },
+  {
+    "id": "proverbs-31-26",
+    "text": "She opens her mouth with wisdom. Kindly instruction is on her tongue.",
+    "reference": "Proverbs 31:26",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Speak with wisdom and kindness. Gentle words leave a lasting mark on those you love."
+  },
+  {
+    "id": "song-of-solomon-8-7",
+    "text": "Many waters can't quench love, neither can floods drown it.",
+    "reference": "Song of Solomon 8:7",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "True love is strong and enduring. Many waters can't put it out."
+  },
+  {
+    "id": "micah-6-8",
+    "text": "What does the LORD require of you, but to act justly, to love mercy, and to walk humbly with your God?",
+    "reference": "Micah 6:8",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Justice, mercy and humility: this is how God asks us to treat others and walk with Him."
+  },
+  {
+    "id": "malachi-4-6",
+    "text": "He will turn the hearts of the fathers to the children, and the hearts of the children to their fathers.",
+    "reference": "Malachi 4:6",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "God cares about families coming back together. Pray for healing between generations."
+  },
+  {
+    "id": "matthew-5-9",
+    "text": "Blessed are the peacemakers, for they shall be called children of God.",
+    "reference": "Matthew 5:9",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Peacemaking is holy work. When you help bring peace, you reflect your Father in heaven."
+  },
+  {
+    "id": "matthew-5-23-24",
+    "text": "First be reconciled to your brother, and then come and offer your gift.",
+    "reference": "Matthew 5:23-24",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Reconciliation matters to God. If something stands between you and someone else, take a step to make it right."
+  },
+  {
+    "id": "matthew-5-44",
+    "text": "Love your enemies, bless those who curse you, do good to those who hate you.",
+    "reference": "Matthew 5:44",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Loving people who hurt you is hard. Start by praying for them and asking God to change your heart."
+  },
+  {
+    "id": "matthew-6-14",
+    "text": "For if you forgive men their trespasses, your heavenly Father will also forgive you.",
+    "reference": "Matthew 6:14",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Forgiveness flows both ways. As you forgive others, you live in the freedom of God's forgiveness."
+  },
+  {
+    "id": "matthew-7-3",
+    "text": "Why do you see the speck that is in your brother's eye, but don't consider the beam that is in your own eye?",
+    "reference": "Matthew 7:3",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Before pointing out someone else's faults, look honestly at your own. Humility heals relationships."
+  },
+  {
+    "id": "matthew-7-12",
+    "text": "Whatever you desire for men to do to you, you shall also do to them.",
+    "reference": "Matthew 7:12",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Treat others the way you want to be treated. It's a simple rule that changes everything."
+  },
+  {
+    "id": "matthew-18-15",
+    "text": "If your brother sins against you, go, show him his fault between you and him alone.",
+    "reference": "Matthew 18:15",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "When someone hurts you, Jesus invites you to talk with them privately and honestly. It's a path toward peace."
+  },
+  {
+    "id": "matthew-18-20",
+    "text": "Where two or three are gathered together in my name, there I am in the middle of them.",
+    "reference": "Matthew 18:20",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Jesus is present when His people gather. Your relationships can be a place where He dwells."
+  },
+  {
+    "id": "matthew-18-22",
+    "text": "I don't tell you until seven times, but, until seventy times seven.",
+    "reference": "Matthew 18:22",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Forgiveness isn't a one-time act. Ask God for the grace to keep forgiving."
+  },
+  {
+    "id": "matthew-19-6",
+    "text": "What therefore God has joined together, let no man separate.",
+    "reference": "Matthew 19:6",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Marriage is something God joins together. Treat it as sacred, and invite Him into it."
+  },
+  {
+    "id": "matthew-22-39",
+    "text": "You shall love your neighbor as yourself.",
+    "reference": "Matthew 22:39",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love your neighbour as yourself. Ask who God has placed near you to love today."
+  },
+  {
+    "id": "mark-10-14",
+    "text": "Allow the little children to come to me!",
+    "reference": "Mark 10:14",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Jesus welcomed children warmly. Make room for the little ones around you to come to Him."
+  },
+  {
+    "id": "mark-11-25",
+    "text": "Whenever you stand praying, forgive, if you have anything against anyone.",
+    "reference": "Mark 11:25",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Bring any grudge with you to prayer, and let God help you release it."
+  },
+  {
+    "id": "luke-6-31",
+    "text": "As you would like people to do to you, do exactly so to them.",
+    "reference": "Luke 6:31",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Treat others the way you'd like to be treated. Kindness starts with you."
+  },
+  {
+    "id": "luke-6-36",
+    "text": "Therefore be merciful, even as your Father is also merciful.",
+    "reference": "Luke 6:36",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "God has been merciful to you. Let that mercy flow to the people in your life."
+  },
+  {
+    "id": "luke-6-37",
+    "text": "Don't judge, and you won't be judged. Forgive, and you will be forgiven.",
+    "reference": "Luke 6:37",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Instead of judging, choose to forgive. Grace shown to others shapes your own heart."
+  },
+  {
+    "id": "luke-6-38",
+    "text": "Give, and it will be given to you.",
+    "reference": "Luke 6:38",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Generosity is never wasted. Give freely of your time, love and kindness."
+  },
+  {
+    "id": "luke-15-20",
+    "text": "While he was still far off, his father saw him, and was moved with compassion, and ran, and fell on his neck, and kissed him.",
+    "reference": "Luke 15:20",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "The father ran to his returning son. Let God's welcome shape how you welcome those who come back."
+  },
+  {
+    "id": "luke-17-3",
+    "text": "If your brother sins against you, rebuke him. If he repents, forgive him.",
+    "reference": "Luke 17:3",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Honesty and forgiveness belong together. Speak truthfully, and be ready to forgive."
+  },
+  {
+    "id": "john-13-34",
+    "text": "A new commandment I give to you, that you love one another, just as I have loved you.",
+    "reference": "John 13:34",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Jesus calls us to love one another the way He loves us: patiently and sacrificially."
+  },
+  {
+    "id": "john-13-35",
+    "text": "By this everyone will know that you are my disciples, if you have love for one another.",
+    "reference": "John 13:35",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love for one another is how the world recognises Jesus' followers. Let your love be visible."
+  },
+  {
+    "id": "john-15-12",
+    "text": "This is my commandment, that you love one another, even as I have loved you.",
+    "reference": "John 15:12",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Jesus' command is clear: love one another as He has loved you."
+  },
+  {
+    "id": "john-15-13",
+    "text": "Greater love has no one than this, that someone lay down his life for his friends.",
+    "reference": "John 15:13",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "The greatest love gives itself for others. Look for a way to put someone else first today."
+  },
+  {
+    "id": "acts-2-42",
+    "text": "They continued steadfastly in the apostles' teaching and fellowship, in the breaking of bread, and prayers.",
+    "reference": "Acts 2:42",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "The early church grew through shared teaching, meals and prayer. Real fellowship takes showing up."
+  },
+  {
+    "id": "acts-20-35",
+    "text": "It is more blessed to give than to receive.",
+    "reference": "Acts 20:35",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "There is real joy in giving. Look for someone you can bless today."
+  },
+  {
+    "id": "romans-12-10",
+    "text": "In love of the brothers be tenderly affectionate to one another; in honor preferring one another.",
+    "reference": "Romans 12:10",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Be devoted to one another in love. Try to outdo each other in showing honour."
+  },
+  {
+    "id": "romans-12-16",
+    "text": "Be of the same mind one toward another.",
+    "reference": "Romans 12:16",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Seek harmony with others. Humility makes unity possible."
+  },
+  {
+    "id": "romans-12-17",
+    "text": "Repay no one evil for evil.",
+    "reference": "Romans 12:17",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Don't pay back hurt with hurt. Ask God to help you respond with goodness."
+  },
+  {
+    "id": "romans-12-21",
+    "text": "Don't be overcome by evil, but overcome evil with good.",
+    "reference": "Romans 12:21",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "You can overcome evil with good. Kindness is stronger than it looks."
+  },
+  {
+    "id": "romans-13-8",
+    "text": "Owe no one anything, except to love one another.",
+    "reference": "Romans 13:8",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love is the one debt we never finish paying. Keep loving the people around you."
+  },
+  {
+    "id": "romans-14-19",
+    "text": "Let us follow after things which make for peace, and things by which we may build up one another.",
+    "reference": "Romans 14:19",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Choose what builds others up and brings peace. Small choices make strong relationships."
+  },
+  {
+    "id": "romans-15-5",
+    "text": "Now the God of patience and of encouragement grant you to be of the same mind one with another.",
+    "reference": "Romans 15:5",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Ask the God of patience and encouragement to give you unity with the people in your life."
+  },
+  {
+    "id": "romans-15-7",
+    "text": "Therefore accept one another, even as Christ also accepted you, to the glory of God.",
+    "reference": "Romans 15:7",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Christ accepted you as you are. Welcome others in the same way."
+  },
+  {
+    "id": "1-corinthians-13-4",
+    "text": "Love is patient and is kind; love doesn't envy. Love doesn't brag, is not proud.",
+    "reference": "1 Corinthians 13:4",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love is patient and kind. Ask God to grow this kind of love in your heart."
+  },
+  {
+    "id": "1-corinthians-13-5",
+    "text": "Love doesn't seek its own way, is not provoked, takes no account of evil.",
+    "reference": "1 Corinthians 13:5",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love doesn't insist on its own way or keep score. Let go of a record of wrongs."
+  },
+  {
+    "id": "1-corinthians-13-7",
+    "text": "Love bears all things, believes all things, hopes all things, endures all things.",
+    "reference": "1 Corinthians 13:7",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love keeps hoping and keeps going. Ask God for love that perseveres."
+  },
+  {
+    "id": "1-corinthians-13-13",
+    "text": "Now faith, hope, and love remain—these three. The greatest of these is love.",
+    "reference": "1 Corinthians 13:13",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Faith, hope and love all remain, but love is the greatest. Make it your priority."
+  },
+  {
+    "id": "1-corinthians-16-14",
+    "text": "Let all that you do be done in love.",
+    "reference": "1 Corinthians 16:14",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Let love be the motive behind everything you do today."
+  },
+  {
+    "id": "2-corinthians-13-11",
+    "text": "Be perfected. Be comforted. Be of the same mind. Live in peace.",
+    "reference": "2 Corinthians 13:11",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Aim for restoration, comfort and peace with one another. The God of love and peace is with you."
+  },
+  {
+    "id": "galatians-5-13",
+    "text": "Through love be servants to one another.",
+    "reference": "Galatians 5:13",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Freedom in Christ is for serving one another in love, not just pleasing ourselves."
+  },
+  {
+    "id": "galatians-5-22-23",
+    "text": "The fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faith, gentleness, self-control.",
+    "reference": "Galatians 5:22-23",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Patience, kindness and gentleness are fruit the Spirit grows in you. They transform every relationship."
+  },
+  {
+    "id": "ephesians-4-2",
+    "text": "With all lowliness and humility, with patience, bearing with one another in love.",
+    "reference": "Ephesians 4:2",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Be humble, gentle and patient. Bear with one another in love."
+  },
+  {
+    "id": "ephesians-4-3",
+    "text": "Being eager to keep the unity of the Spirit in the bond of peace.",
+    "reference": "Ephesians 4:3",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Unity takes effort. Work to keep the peace that the Spirit brings."
+  },
+  {
+    "id": "ephesians-4-26",
+    "text": "Be angry, and don't sin. Don't let the sun go down on your wrath.",
+    "reference": "Ephesians 4:26",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Anger is human, but don't let it settle in. Try to resolve conflict before the day ends."
+  },
+  {
+    "id": "ephesians-4-29",
+    "text": "Let no corrupt speech proceed out of your mouth, but only what is good for building others up.",
+    "reference": "Ephesians 4:29",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Let your words build others up. Speak what will help, not what will hurt."
+  },
+  {
+    "id": "ephesians-4-32",
+    "text": "Be kind to one another, tenderhearted, forgiving each other, just as God also in Christ forgave you.",
+    "reference": "Ephesians 4:32",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Be kind and tenderhearted. Forgive others as God in Christ has forgiven you."
+  },
+  {
+    "id": "ephesians-5-21",
+    "text": "Subjecting yourselves to one another in the fear of Christ.",
+    "reference": "Ephesians 5:21",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Healthy relationships are marked by mutual respect. Put others first out of reverence for Christ."
+  },
+  {
+    "id": "ephesians-5-25",
+    "text": "Husbands, love your wives, even as Christ also loved the assembly, and gave himself up for it.",
+    "reference": "Ephesians 5:25",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Christ's love is self-giving. Love your spouse with that same kind of care."
+  },
+  {
+    "id": "ephesians-6-4",
+    "text": "You fathers, don't provoke your children to wrath, but nurture them in the discipline and instruction of the Lord.",
+    "reference": "Ephesians 6:4",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Parents shape hearts. Guide children with patience, not frustration, and point them to the Lord."
+  },
+  {
+    "id": "philippians-2-3",
+    "text": "In humility, count others better than yourselves.",
+    "reference": "Philippians 2:3",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Humility values others highly. Look for ways to honour the people around you."
+  },
+  {
+    "id": "philippians-2-4",
+    "text": "Each of you should not just look to his own things, but each person also to the things of others.",
+    "reference": "Philippians 2:4",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Notice the needs of others, not just your own. Love pays attention."
+  },
+  {
+    "id": "colossians-3-12",
+    "text": "Put on a heart of compassion, kindness, lowliness, humility, and perseverance.",
+    "reference": "Colossians 3:12",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Each day you can choose compassion, kindness, humility and patience. Put them on like clothes."
+  },
+  {
+    "id": "colossians-3-13",
+    "text": "Bearing with one another, and forgiving each other.",
+    "reference": "Colossians 3:13",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Bear with one another and forgive. God's forgiveness gives you the strength to forgive."
+  },
+  {
+    "id": "colossians-3-14",
+    "text": "Above all these things, walk in love, which is the bond of perfection.",
+    "reference": "Colossians 3:14",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love ties every other virtue together. Above everything, choose love."
+  },
+  {
+    "id": "colossians-3-19",
+    "text": "Husbands, love your wives, and don't be bitter against them.",
+    "reference": "Colossians 3:19",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love your spouse, and don't let bitterness take root. Tenderness keeps a marriage strong."
+  },
+  {
+    "id": "colossians-4-6",
+    "text": "Let your speech always be with grace, seasoned with salt.",
+    "reference": "Colossians 4:6",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Let your conversations be full of grace. Kind words make a lasting difference."
+  },
+  {
+    "id": "1-thessalonians-3-12",
+    "text": "May the Lord make you to increase and abound in love one toward another, and toward all men.",
+    "reference": "1 Thessalonians 3:12",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Ask God to make your love grow and overflow toward others."
+  },
+  {
+    "id": "1-thessalonians-5-15",
+    "text": "Always follow after that which is good, for one another, and for all men.",
+    "reference": "1 Thessalonians 5:15",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Always seek what is good for one another, not just for yourself."
+  },
+  {
+    "id": "hebrews-10-24",
+    "text": "Let's consider how to provoke one another to love and good works.",
+    "reference": "Hebrews 10:24",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Think about how you can encourage someone toward love and good works today."
+  },
+  {
+    "id": "hebrews-13-1",
+    "text": "Let brotherly love continue.",
+    "reference": "Hebrews 13:1",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Keep loving each other. Love is meant to continue, not fade."
+  },
+  {
+    "id": "james-1-19",
+    "text": "Let every man be swift to hear, slow to speak, and slow to anger.",
+    "reference": "James 1:19",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Listen first, speak slowly, and be slow to anger. It's a recipe for healthier relationships."
+  },
+  {
+    "id": "james-3-18",
+    "text": "The fruit of righteousness is sown in peace by those who make peace.",
+    "reference": "James 3:18",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Peacemakers sow seeds that grow into a harvest of righteousness. Be someone who brings peace."
+  },
+  {
+    "id": "1-peter-3-8",
+    "text": "Be like-minded, compassionate, loving as brothers, tenderhearted, courteous.",
+    "reference": "1 Peter 3:8",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Be like-minded, compassionate and humble. These qualities make love real."
+  },
+  {
+    "id": "1-peter-4-8",
+    "text": "Above all things be earnest in your love among yourselves, for love covers a multitude of sins.",
+    "reference": "1 Peter 4:8",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love deeply. Earnest love covers a multitude of wrongs."
+  },
+  {
+    "id": "1-john-3-18",
+    "text": "Let's not love in word only, neither with the tongue only, but in deed and truth.",
+    "reference": "1 John 3:18",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love shows up in actions, not just words. Find a practical way to love someone today."
+  },
+  {
+    "id": "1-john-4-7",
+    "text": "Beloved, let's love one another, for love is of God.",
+    "reference": "1 John 4:7",
+    "translation": "WEB",
+    "moods": [
+      "relationships"
+    ],
+    "reflection": "Love comes from God. Every time you love others, you reflect Him."
   }
 ]
