@@ -18,6 +18,7 @@ import 'package:soulverse/features/auth/data/models/user.dart';
 import 'package:soulverse/features/home_widget/home_widget_service.dart';
 import 'package:soulverse/features/reminders/data/notification_scheduler.dart';
 import 'package:soulverse/features/share/data/models/verse_style.dart';
+import 'package:soulverse/features/share/data/photo_picker.dart';
 import 'package:soulverse/features/share/data/share_service.dart';
 import 'package:soulverse/features/verses/application/verses_providers.dart';
 import 'package:soulverse/features/verses/data/models/daily_verse.dart';
@@ -184,6 +185,13 @@ class _FakeShareService implements ShareService {
   }
 }
 
+class _FakePhotoPicker implements PhotoPicker {
+  String? path = '/fake/photo.jpg';
+
+  @override
+  Future<String?> pickFromGallery() async => path;
+}
+
 class _FakeGoogleSignInService implements GoogleSignInService {
   String? idToken = 'mock-google-token:john@gmail.com:John Doe';
   var signOutCalls = 0;
@@ -223,6 +231,7 @@ class _FakeAuthApi implements AuthApi {
 
 void main() {
   late _FakeShareService shareService;
+  late _FakePhotoPicker photoPicker;
   late _FakeHomeWidgetService homeWidgetService;
   late _FakeVersesApi versesApi;
   late _NoopScheduler notificationScheduler;
@@ -250,6 +259,7 @@ void main() {
           'has_completed_onboarding': true,
         });
     shareService = _FakeShareService();
+    photoPicker = _FakePhotoPicker();
     homeWidgetService = _FakeHomeWidgetService();
     versesApi = _FakeVersesApi();
     notificationScheduler = _NoopScheduler();
@@ -262,6 +272,7 @@ void main() {
     overrides: [
       versesApiProvider.overrideWithValue(versesApi),
       shareServiceProvider.overrideWithValue(shareService),
+      photoPickerProvider.overrideWithValue(photoPicker),
       homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
       notificationSchedulerProvider.overrideWithValue(notificationScheduler),
       googleSignInServiceProvider.overrideWithValue(googleSignInService),
@@ -475,6 +486,70 @@ void main() {
     await tester.pumpAndSettle();
     expect(previewStyle().filter, BackgroundFilter.mono);
     expect(inCard(find.byType(ColorFiltered)), findsOneWidget);
+
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 1));
+  });
+
+  testWidgets('share editor uses your photo, plain colours and gradients', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+    VerseStyle previewStyle() =>
+        tester.widget<VerseCard>(find.byType(VerseCard)).style;
+    // The background row is the first sideways list (the tool strip is below it).
+    final backgroundRow = find
+        .byWidgetPredicate(
+          (w) => w is Scrollable && w.axisDirection == AxisDirection.right,
+        )
+        .first;
+    Future<void> tapTile(String label) async {
+      await tester.scrollUntilVisible(
+        find.bySemanticsLabel(label),
+        100,
+        scrollable: backgroundRow,
+      );
+      await tester.tap(find.bySemanticsLabel(label));
+      await tester.pumpAndSettle();
+    }
+
+    // Cancelling the gallery leaves the background as it was.
+    photoPicker.path = null;
+    await tapTile('Your photo');
+    expect(previewStyle().customBackground, isNull);
+
+    photoPicker.path = '/fake/photo.jpg';
+    await tapTile('Your photo');
+    expect(
+      previewStyle().customBackground,
+      const PhotoBackground('/fake/photo.jpg'),
+    );
+
+    // A light colour switches the white text to a dark one…
+    await tapTile('Sage background');
+    expect(
+      previewStyle().customBackground,
+      const ColourBackground(Color(0xFFD5E1C8)),
+    );
+    expect(previewStyle().textColor, isNotNull);
+    expect(previewStyle().textColor!.computeLuminance(), lessThan(0.5));
+
+    // …and a dark gradient switches it back.
+    await tapTile('Night gradient');
+    expect(previewStyle().customBackground, isA<GradientBackground>());
+    expect(previewStyle().textColor, isNull);
+
+    await tester.scrollUntilVisible(
+      find.bySemanticsLabel('Background dawn'),
+      -100,
+      scrollable: backgroundRow,
+    );
+    await tester.tap(find.bySemanticsLabel('Background dawn'));
+    await tester.pumpAndSettle();
+    expect(previewStyle().customBackground, isNull);
 
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(minutes: 1));

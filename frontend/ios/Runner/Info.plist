@@ -11,7 +11,7 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>SoulVerse saves your verse images to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>SoulVerse needs photo library access to save your verses.</string>
+	<string>SoulVerse uses your photos so you can pick one as a verse background and save your verses.</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

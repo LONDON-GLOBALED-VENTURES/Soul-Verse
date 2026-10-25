@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math' as math;
 import 'dart:ui' show ImageFilter;
 
@@ -9,6 +10,35 @@ import '../../features/verses/data/models/verse.dart';
 import '../../features/verses/data/models/verse_template.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
+
+/// The background before filters, blur and overlay: the user's photo, colour
+/// or gradient when one is chosen, otherwise the template's photo.
+Widget verseBackground(VerseTemplate template, CustomBackground? custom) {
+  const placeholder = ColoredBox(color: AppColors.placeholder);
+  return switch (custom) {
+    PhotoBackground(:final path) => Image.file(
+      File(path),
+      fit: BoxFit.cover,
+      errorBuilder: (_, _, _) => placeholder,
+    ),
+    ColourBackground(:final color) => ColoredBox(color: color),
+    GradientBackground(:final colors) => DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: colors,
+        ),
+      ),
+    ),
+    null => CachedNetworkImage(
+      imageUrl: template.imageUrl,
+      fit: BoxFit.cover,
+      placeholder: (_, _) => placeholder,
+      errorWidget: (_, _, _) => placeholder,
+    ),
+  };
+}
 
 class VerseCard extends StatelessWidget {
   const VerseCard({
@@ -53,17 +83,10 @@ class VerseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = style.textColor ?? template.textColorValue;
-    final darkness = style.overlayDarkness ?? template.overlayOpacity;
+    final darkness = style.effectiveDarkness(template.overlayOpacity);
 
     Widget photo =
-        background ??
-        CachedNetworkImage(
-          imageUrl: template.imageUrl,
-          fit: BoxFit.cover,
-          placeholder: (_, _) => const ColoredBox(color: AppColors.placeholder),
-          errorWidget: (_, _, _) =>
-              const ColoredBox(color: AppColors.placeholder),
-        );
+        background ?? verseBackground(template, style.customBackground);
     final colorFilter = style.filter.colorFilter;
     if (colorFilter != null) {
       photo = ColorFiltered(colorFilter: colorFilter, child: photo);

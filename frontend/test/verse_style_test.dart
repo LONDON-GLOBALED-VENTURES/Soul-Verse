@@ -43,6 +43,43 @@ void main() {
     expect(edited.copyWith(textColor: null).textColor, isNull);
   });
 
+  test('plain colours and gradients start without the photo overlay', () {
+    expect(VerseStyle.standard.effectiveDarkness(0.35), 0.35);
+    expect(
+      const VerseStyle(customBackground: PhotoBackground('/a.jpg'))
+          .effectiveDarkness(0.35),
+      0.35,
+    );
+    expect(
+      const VerseStyle(customBackground: ColourBackground(Color(0xFFD5E1C8)))
+          .effectiveDarkness(0.35),
+      0,
+    );
+    // Once the user moves the slider, their value wins.
+    expect(
+      const VerseStyle(
+        customBackground: GradientBackground([Color(0xFF000000)]),
+        overlayDarkness: 0.5,
+      ).effectiveDarkness(0.35),
+      0.5,
+    );
+  });
+
+  test('backgrounds compare by value', () {
+    expect(
+      const GradientBackground([Color(0xFF111111), Color(0xFF222222)]),
+      GradientBackground(const [Color(0xFF111111), Color(0xFF222222)]),
+    );
+    expect(const ColourBackground(Color(0xFFFFFFFF)).luminance, 1);
+    expect(
+      VerseStyle.standard
+          .copyWith(customBackground: const PhotoBackground('/a.jpg'))
+          .copyWith(customBackground: null)
+          .customBackground,
+      isNull,
+    );
+  });
+
   test('styles with the same values are equal', () {
     expect(
       VerseStyle.standard.copyWith(textAlign: TextAlign.left),

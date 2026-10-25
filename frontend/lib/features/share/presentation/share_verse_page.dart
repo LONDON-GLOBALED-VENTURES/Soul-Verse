@@ -1,7 +1,8 @@
-import 'dart:typed_data';
+import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,6 +19,7 @@ import '../../favourites/presentation/toggle_favourite.dart';
 import '../../auth/application/auth_service.dart';
 import '../../subscription/presentation/premium_upgrade_sheet.dart';
 import '../data/models/verse_style.dart';
+import '../data/photo_picker.dart';
 import '../data/share_service.dart';
 import 'widgets/verse_editor_controls.dart';
 
@@ -55,6 +57,11 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
   late EditorTool _tool = widget.args.initialTool;
   bool _busy = false;
 
+  // True while the text colour was picked automatically for a light
+  // background, so it can be undone when the background changes again.
+  bool _autoTextColour = false;
+  static const _darkText = Color(0xFF3A3A3A);
+
   Verse get _verse => widget.args.verse;
   String get _shareText =>
       '${_verse.reference} (${_verse.translation}) — SoulVerse';
@@ -62,11 +69,15 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
   Future<Uint8List> _render() async {
     // Make sure the background has loaded so it isn't captured as a placeholder.
     // If it fails to load, still share what's on screen rather than failing.
-    await precacheImage(
-      CachedNetworkImageProvider(_template.imageUrl),
-      context,
-      onError: (_, _) {},
-    );
+    final ImageProvider? image = switch (_style.customBackground) {
+      PhotoBackground(:final path) => FileImage(File(path)),
+      null => CachedNetworkImageProvider(_template.imageUrl),
+      // Colours and gradients have nothing to load.
+      _ => null,
+    };
+    if (image != null) {
+      await precacheImage(image, context, onError: (_, _) {});
+    }
     await WidgetsBinding.instance.endOfFrame;
     return captureBoundaryAsPng(_previewKey);
   }
@@ -277,39 +288,110 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
 
   void _updateStyle(VerseStyle style) => setState(() => _style = style);
 
+  /// Shows [background] instead of the template; null goes back to it.
+  void _setBackground(CustomBackground? background, {VerseTemplate? template}) {
+    // White text disappears on light colours, so pick a readable one, unless
+    // the user chose a text colour themselves.
+    var style = _style.copyWith(customBackground: background);
+    if (_style.textColor == null || _autoTextColour) {
+      final light =
+          (background is ColourBackground ||
+              background is GradientBackground) &&
+          background!.luminance > 0.5;
+      style = style.copyWith(textColor: light ? _darkText : null);
+      _autoTextColour = light;
+    }
+    setState(() {
+      if (template != null) _template = template;
+      _style = style;
+    });
+  }
+
+  Future<void> _pickPhoto() async {
+    try {
+      final path = await ref.read(photoPickerProvider).pickFromGallery();
+      if (path != null && mounted) _setBackground(PhotoBackground(path));
+    } on PlatformException {
+      _toast('Couldn\'t open your photos. Please try again.');
+    }
+  }
+
+  Widget _backgroundChoices(List<VerseTemplate> choices, bool isPremium) {
+    final custom = _style.customBackground;
+    final tiles = <Widget>[
+      BackgroundTile(
+        label: 'Your photo',
+        selected: custom is PhotoBackground,
+        onTap: _pickPhoto,
+        child: custom is PhotoBackground
+            ? Stack(
+                fit: StackFit.expand,
+                children: [
+                  verseBackground(_template, custom),
+                  const ColoredBox(color: Colors.black26),
+                  const Icon(Icons.swap_horiz, color: Colors.white, size: 20),
+                ],
+              )
+            : const ColoredBox(
+                color: AppColors.surface,
+                child: Icon(
+                  Icons.add_photo_alternate_outlined,
+                  color: AppColors.accent,
+                ),
+              ),
+      ),
+      for (final choice in choices)
+        _TemplateThumb(
+          template: choice,
+          selected: custom == null && choice.id == _template.id,
+          isLocked: choice.isPremium && !isPremium,
+          onTap: () {
+            if (choice.isPremium && !isPremium) {
+              showPremiumUpgradeSheet(context);
+            } else {
+              _setBackground(null, template: choice);
+            }
+          },
+        ),
+      for (final colour in backgroundColours)
+        BackgroundTile(
+          label: '${colour.name} background',
+          selected: custom == ColourBackground(colour.color),
+          onTap: () => _setBackground(ColourBackground(colour.color)),
+          child: ColoredBox(color: colour.color),
+        ),
+      for (final gradient in backgroundGradients)
+        BackgroundTile(
+          label: '${gradient.name} gradient',
+          selected: custom == GradientBackground(gradient.colors),
+          onTap: () => _setBackground(GradientBackground(gradient.colors)),
+          child: verseBackground(
+            _template,
+            GradientBackground(gradient.colors),
+          ),
+        ),
+    ];
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      scrollDirection: Axis.horizontal,
+      itemCount: tiles.length,
+      separatorBuilder: (_, _) => const SizedBox(width: 10),
+      itemBuilder: (_, i) => tiles[i],
+    );
+  }
+
   Widget _toolControls(List<VerseTemplate> choices, bool isPremium) {
     return switch (_tool) {
-      EditorTool.background => ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        scrollDirection: Axis.horizontal,
-        itemCount: choices.length,
-        separatorBuilder: (_, _) => const SizedBox(width: 10),
-        itemBuilder: (context, i) {
-          final choice = choices[i];
-          final isLocked = choice.isPremium && !isPremium;
-          return _TemplateThumb(
-            template: choice,
-            selected: choice.id == _template.id,
-            isLocked: isLocked,
-            onTap: () {
-              if (isLocked) {
-                showPremiumUpgradeSheet(context);
-              } else {
-                setState(() => _template = choice);
-              }
-            },
-          );
-        },
-      ),
+      EditorTool.background => _backgroundChoices(choices, isPremium),
       EditorTool.adjust => BackgroundAdjustControl(
-        darkness: _style.overlayDarkness ?? _template.overlayOpacity,
+        darkness: _style.effectiveDarkness(_template.overlayOpacity),
         blur: _style.blur,
         onDarknessChanged: (value) =>
             _updateStyle(_style.copyWith(overlayDarkness: value)),
         onBlurChanged: (value) => _updateStyle(_style.copyWith(blur: value)),
       ),
       EditorTool.filter => BackgroundFilterPicker(
-        imageUrl: _template.imageUrl,
+        background: verseBackground(_template, _style.customBackground),
         selected: _style.filter,
         onChanged: (filter) => _updateStyle(_style.copyWith(filter: filter)),
       ),
@@ -323,7 +405,10 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
       ),
       EditorTool.colour => TextColourPicker(
         selected: _style.textColor ?? _template.textColorValue,
-        onChanged: (colour) => _updateStyle(_style.copyWith(textColor: colour)),
+        onChanged: (colour) {
+          _autoTextColour = false;
+          _updateStyle(_style.copyWith(textColor: colour));
+        },
       ),
       EditorTool.align => TextAlignPicker(
         selected: _style.textAlign,

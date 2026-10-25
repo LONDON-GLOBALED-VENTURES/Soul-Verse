@@ -90,6 +90,68 @@ enum BackgroundFilter {
       matrix == null ? null : ColorFilter.matrix(matrix!);
 }
 
+/// A background chosen in the editor instead of the template's photo.
+@immutable
+sealed class CustomBackground {
+  const CustomBackground();
+
+  /// Rough brightness from 0 (black) to 1 (white), for picking readable text.
+  double get luminance;
+}
+
+/// A photo from the user's gallery.
+class PhotoBackground extends CustomBackground {
+  const PhotoBackground(this.path);
+
+  final String path;
+
+  // Unknown without decoding the photo; treat it like the templates.
+  @override
+  double get luminance => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      other is PhotoBackground && other.path == path;
+
+  @override
+  int get hashCode => path.hashCode;
+}
+
+class ColourBackground extends CustomBackground {
+  const ColourBackground(this.color);
+
+  final Color color;
+
+  @override
+  double get luminance => color.computeLuminance();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ColourBackground && other.color == color;
+
+  @override
+  int get hashCode => color.hashCode;
+}
+
+/// A top-to-bottom gradient.
+class GradientBackground extends CustomBackground {
+  const GradientBackground(this.colors);
+
+  final List<Color> colors;
+
+  @override
+  double get luminance =>
+      colors.map((c) => c.computeLuminance()).reduce((a, b) => a + b) /
+      colors.length;
+
+  @override
+  bool operator ==(Object other) =>
+      other is GradientBackground && listEquals(other.colors, colors);
+
+  @override
+  int get hashCode => Object.hashAll(colors);
+}
+
 const _unset = Object();
 
 /// How the user has customised a verse image. [standard] matches the
@@ -111,6 +173,7 @@ class VerseStyle {
     this.overlayDarkness,
     this.blur = 0,
     this.filter = BackgroundFilter.none,
+    this.customBackground,
   });
 
   static const topPosition = Alignment(0, -0.8);
@@ -164,6 +227,18 @@ class VerseStyle {
 
   final BackgroundFilter filter;
 
+  /// Replaces the template's photo; null shows the template.
+  final CustomBackground? customBackground;
+
+  /// The overlay darkness actually used. Plain colours and gradients start
+  /// with no overlay so they keep their colour; photos use the template's.
+  double effectiveDarkness(double templateDarkness) =>
+      overlayDarkness ??
+      switch (customBackground) {
+        ColourBackground() || GradientBackground() => 0,
+        _ => templateDarkness,
+      };
+
   VerseStyle copyWith({
     VerseFont? font,
     double? textScale,
@@ -179,6 +254,7 @@ class VerseStyle {
     Object? overlayDarkness = _unset,
     double? blur,
     BackgroundFilter? filter,
+    Object? customBackground = _unset,
   }) {
     return VerseStyle(
       font: font ?? this.font,
@@ -199,6 +275,9 @@ class VerseStyle {
           : overlayDarkness as double?,
       blur: blur ?? this.blur,
       filter: filter ?? this.filter,
+      customBackground: identical(customBackground, _unset)
+          ? this.customBackground
+          : customBackground as CustomBackground?,
     );
   }
 
@@ -218,7 +297,8 @@ class VerseStyle {
       other.showWatermark == showWatermark &&
       other.overlayDarkness == overlayDarkness &&
       other.blur == blur &&
-      other.filter == filter;
+      other.filter == filter &&
+      other.customBackground == customBackground;
 
   @override
   int get hashCode => Object.hash(
@@ -236,5 +316,6 @@ class VerseStyle {
     overlayDarkness,
     blur,
     filter,
+    customBackground,
   );
 }

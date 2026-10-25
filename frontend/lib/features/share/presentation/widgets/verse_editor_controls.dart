@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
@@ -634,12 +633,13 @@ class _OptionChip extends StatelessWidget {
 class BackgroundFilterPicker extends StatelessWidget {
   const BackgroundFilterPicker({
     super.key,
-    required this.imageUrl,
+    required this.background,
     required this.selected,
     required this.onChanged,
   });
 
-  final String imageUrl;
+  /// The current background (photo, colour or gradient) before filtering.
+  final Widget background;
   final BackgroundFilter selected;
   final ValueChanged<BackgroundFilter> onChanged;
 
@@ -653,13 +653,7 @@ class BackgroundFilterPicker extends StatelessWidget {
       itemBuilder: (context, i) {
         final filter = BackgroundFilter.values[i];
         final isSelected = filter == selected;
-        Widget image = CachedNetworkImage(
-          imageUrl: imageUrl,
-          fit: BoxFit.cover,
-          placeholder: (_, _) => const ColoredBox(color: AppColors.placeholder),
-          errorWidget: (_, _, _) =>
-              const ColoredBox(color: AppColors.placeholder),
-        );
+        Widget image = background;
         final colorFilter = filter.colorFilter;
         if (colorFilter != null) {
           image = ColorFiltered(colorFilter: colorFilter, child: image);
@@ -718,6 +712,78 @@ class BackgroundFilterPicker extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+/// Plain backgrounds offered after the template photos.
+const backgroundColours = <({String name, Color color})>[
+  (name: 'Cream', color: Color(0xFFF7F1E8)),
+  (name: 'Blush', color: Color(0xFFF2D7D5)),
+  (name: 'Sage', color: Color(0xFFD5E1C8)),
+  (name: 'Sky', color: Color(0xFFD6E4F0)),
+  (name: 'Lavender', color: Color(0xFFE2DAF0)),
+  (name: 'Navy', color: Color(0xFF1F2A44)),
+  (name: 'Forest', color: Color(0xFF2F4A3A)),
+  (name: 'Charcoal', color: Color(0xFF2B2B2B)),
+];
+
+const backgroundGradients = <({String name, List<Color> colors})>[
+  (name: 'Sunrise', colors: [Color(0xFFF6D365), Color(0xFFFDA085)]),
+  (name: 'Rose', colors: [Color(0xFFF3C4CF), Color(0xFFE8A2B8)]),
+  (name: 'Mint', colors: [Color(0xFFD4F1E4), Color(0xFF9FD8C4)]),
+  (name: 'Ocean', colors: [Color(0xFF1F4E79), Color(0xFF6CA6C1)]),
+  (name: 'Dusk', colors: [Color(0xFF2B2D5B), Color(0xFF8E5C8E)]),
+  (name: 'Night', colors: [Color(0xFF0F2027), Color(0xFF2C5364)]),
+];
+
+/// A square background choice in the Background row.
+class BackgroundTile extends StatelessWidget {
+  const BackgroundTile({
+    super.key,
+    required this.label,
+    required this.selected,
+    required this.onTap,
+    required this.child,
+  });
+
+  final String label;
+  final bool selected;
+  final VoidCallback? onTap;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: label,
+      excludeSemantics: true,
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          width: 56,
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: selected ? AppColors.accent : Colors.transparent,
+              width: 2,
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(9),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                border: Border.all(color: AppColors.border),
+                borderRadius: BorderRadius.circular(9),
+              ),
+              child: SizedBox.expand(child: child),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
