@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 
+import 'package:soulverse/core/network/retry_policy.dart';
 import 'package:soulverse/core/widgets/verse_card.dart';
 import 'package:soulverse/features/auth/application/auth_service.dart';
 import 'package:soulverse/features/auth/data/auth_api.dart';
@@ -50,6 +53,8 @@ const _template = VerseTemplate(
 );
 
 class _FakeVersesApi implements VersesApi {
+  /// When set, the daily verse request fails with this HTTP status.
+  int? dailyStatusCode;
   final requestedDailyDates = <String?>[];
 
   @override
@@ -71,6 +76,17 @@ class _FakeVersesApi implements VersesApi {
   @override
   Future<DailyVerse> getDailyVerse({String? date}) async {
     requestedDailyDates.add(date);
+    if (dailyStatusCode != null) {
+      final request = RequestOptions(path: '/verses/daily');
+      throw DioException(
+        requestOptions: request,
+        response: Response(
+          requestOptions: request,
+          statusCode: dailyStatusCode,
+        ),
+        type: DioExceptionType.badResponse,
+      );
+    }
     return const DailyVerse(
       date: '2026-01-01',
       verse: _stillVerse,
@@ -239,6 +255,7 @@ void main() {
   });
 
   Widget app() => ProviderScope(
+    retry: appRetry,
     overrides: [
       versesApiProvider.overrideWithValue(versesApi),
       shareServiceProvider.overrideWithValue(shareService),
@@ -296,6 +313,31 @@ void main() {
     // Let the image cache's delayed write timer finish before the test ends.
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(minutes: 1));
+  });
+
+  testWidgets('home explains when there are no verses yet', (tester) async {
+    versesApi.dailyStatusCode = 404;
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    expect(find.text('No verses yet'), findsOneWidget);
+    expect(find.text('Try again'), findsNothing);
+    expect(versesApi.requestedDailyDates, hasLength(1), reason: 'no retries');
+  });
+
+  testWidgets('home still offers retry when loading genuinely fails', (
+    tester,
+  ) async {
+    versesApi.dailyStatusCode = 500;
+    await tester.pumpWidget(app());
+    // Server errors are retried with backoff first; let those play out.
+    await tester.pump(const Duration(minutes: 2));
+    await tester.pumpAndSettle();
+
+    expect(versesApi.requestedDailyDates.length, greaterThan(1));
+    expect(find.text('We couldn\'t load today\'s verse.'), findsOneWidget);
+    expect(find.text('Try again'), findsOneWidget);
+    expect(find.text('No verses yet'), findsNothing);
   });
 
   testWidgets('home shows the daily verse and its reflection', (tester) async {

@@ -2,11 +2,23 @@ process.env.NODE_ENV = 'test';
 const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const app = require('../src/app');
+const verseService = require('../src/services/verse.service');
+
+// Tests use their own verses so they don't depend on (or break with) the real data file.
+const sampleVerses = ['a', 'b', 'c'].map((id) => ({
+  id: `v-${id}`,
+  text: `Verse ${id}`,
+  reference: `Ref ${id}`,
+  translation: 'KJV',
+  moods: ['hopeful'],
+  reflection: `Reflection ${id}`,
+}));
 
 let server;
 let baseUrl;
 
 before(async () => {
+  verseService._setVersesForTests(sampleVerses);
   server = app.listen(0);
   await new Promise((resolve) => server.once('listening', resolve));
   baseUrl = `http://127.0.0.1:${server.address().port}/api`;
@@ -89,6 +101,34 @@ test('the API is served only under /api; root keeps info and health', async () =
 
   const info = await (await fetch(`${root}/`)).json();
   assert.equal(info.endpoints.prayers, '/api/prayers');
+});
+
+test('with no verses, the daily verse is a clear 404 and the range is empty', async () => {
+  verseService._setVersesForTests([]);
+  try {
+    const daily = await get('/verses/daily?date=2026-10-01');
+    assert.equal(daily.status, 404);
+    assert.equal(daily.body.message, 'No verses available yet');
+
+    const range = await get('/verses/daily/range?start=2026-10-01&days=7');
+    assert.equal(range.status, 200);
+    assert.deepEqual(range.body, []);
+
+    const mood = await get('/verses?mood=hopeful');
+    assert.deepEqual(mood.body, []);
+  } finally {
+    verseService._setVersesForTests(sampleVerses);
+  }
+});
+
+test('with no verses, invalid dates are still rejected with 400', async () => {
+  verseService._setVersesForTests([]);
+  try {
+    assert.equal((await get('/verses/daily?date=2026-02-30')).status, 400);
+    assert.equal((await get('/verses/daily/range?start=2026-10-01&days=0')).status, 400);
+  } finally {
+    verseService._setVersesForTests(sampleVerses);
+  }
 });
 
 test('unknown routes return a JSON 404', async () => {

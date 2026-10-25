@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/router/app_routes.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/date_format.dart';
 import '../../../core/widgets/action_icon_button.dart';
@@ -52,10 +54,14 @@ class HomePage extends ConsumerWidget {
                     ),
                   ),
                   loading: () => const LoadingBox(radius: AppRadius.card),
-                  error: (_, _) => ErrorRetry(
-                    message: 'We couldn\'t load today\'s verse.',
-                    onRetry: () => ref.invalidate(dailyVerseProvider),
-                  ),
+                  // 404 means the backend has no verses yet, not a failure.
+                  error: (e, _) =>
+                      e is DioException && e.response?.statusCode == 404
+                      ? const _NoVersesYet()
+                      : ErrorRetry(
+                          message: 'We couldn\'t load today\'s verse.',
+                          onRetry: () => ref.invalidate(dailyVerseProvider),
+                        ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -68,6 +74,38 @@ class HomePage extends ConsumerWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NoVersesYet extends StatelessWidget {
+  const _NoVersesYet();
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.auto_stories_outlined,
+              size: 40,
+              color: AppColors.accent,
+            ),
+            const SizedBox(height: 12),
+            Text('No verses yet', style: textTheme.titleMedium),
+            const SizedBox(height: 4),
+            Text(
+              'Today\'s verse will appear here once verses are added.',
+              textAlign: TextAlign.center,
+              style: textTheme.bodyMedium,
+            ),
+          ],
         ),
       ),
     );

@@ -1,4 +1,4 @@
-const verses = require('../data/verses.json');
+let verses = require('../data/verses.json');
 const moodService = require('./mood.service');
 const templateService = require('./template.service');
 const HttpError = require('../utils/http-error');
@@ -33,6 +33,7 @@ const dayIndex = (date) => Math.floor(date.getTime() / DAY_MS);
 /** The verse and background for one calendar date (YYYY-MM-DD). */
 const getDaily = (dateString = todayUtc()) => {
   const date = parseDate(dateString);
+  if (verses.length === 0) throw new HttpError(404, 'No verses available yet');
   const index = dayIndex(date);
   return {
     date: toDateString(date),
@@ -48,9 +49,14 @@ const getDailyRange = (start, days) => {
   if (!Number.isInteger(count) || count < 1 || count > MAX_RANGE_DAYS) {
     throw new HttpError(400, `Invalid days: expected 1-${MAX_RANGE_DAYS}`);
   }
+  if (verses.length === 0) return [];
   return Array.from({ length: count }, (_, i) =>
     getDaily(toDateString(new Date(first.getTime() + i * DAY_MS))),
   );
 };
 
-module.exports = { list, getDaily, getDailyRange, MAX_RANGE_DAYS };
+const _setVersesForTests = (list) => {
+  verses = list;
+};
+
+module.exports = { list, getDaily, getDailyRange, MAX_RANGE_DAYS, _setVersesForTests };

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'core/network/retry_policy.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'features/home_widget/home_widget_service.dart';
@@ -9,7 +10,7 @@ import 'features/reminders/application/reminders_provider.dart';
 import 'features/verses/application/verses_providers.dart';
 
 void main() {
-  runApp(const ProviderScope(child: SoulVerseApp()));
+  runApp(const ProviderScope(retry: appRetry, child: SoulVerseApp()));
 }
 
 class SoulVerseApp extends ConsumerWidget {
