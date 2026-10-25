@@ -20,6 +20,7 @@ class VerseCard extends StatelessWidget {
     this.background,
     this.showWatermark = false,
     this.style = VerseStyle.standard,
+    this.onTextPositionChanged,
   });
 
   final Verse verse;
@@ -29,6 +30,9 @@ class VerseCard extends StatelessWidget {
 
   /// The user's edits from the share screen; [VerseStyle.standard] elsewhere.
   final VerseStyle style;
+
+  /// When set, the verse can be dragged and this reports its new position.
+  final ValueChanged<Alignment>? onTextPositionChanged;
 
   /// Replaces the network image, e.g. with an already-decoded image for offscreen rendering.
   final Widget? background;
@@ -84,12 +88,30 @@ class VerseCard extends StatelessWidget {
                   verse: verse,
                   style: style,
                   textColor: textColor,
+                  onPositionChanged: onTextPositionChanged,
                 ),
               ),
               ?footer,
             ],
           ),
-          if (showWatermark)
+          if (style.reference == ReferencePlacement.corner)
+            Positioned(
+              left: 18,
+              bottom: 18,
+              child: _EffectText(
+                verse.reference,
+                effect: _referenceEffect(style.effect),
+                textAlign: TextAlign.left,
+                color: textColor.withValues(alpha: 0.9),
+                style: const TextStyle(
+                  fontFamily: AppFonts.sans,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.4,
+                ),
+              ),
+            ),
+          if (showWatermark && style.showWatermark)
             Positioned(
               right: 18,
               bottom: 18,
@@ -134,19 +156,52 @@ class _Watermark extends StatelessWidget {
   }
 }
 
-class _VerseText extends StatelessWidget {
+// The reference never had the soft shadow; keep it plain for that effect.
+TextEffect _referenceEffect(TextEffect effect) =>
+    effect == TextEffect.soft ? TextEffect.none : effect;
+
+class _VerseText extends StatefulWidget {
   const _VerseText({
     required this.verse,
     required this.style,
     required this.textColor,
+    this.onPositionChanged,
   });
 
   final Verse verse;
   final VerseStyle style;
   final Color textColor;
+  final ValueChanged<Alignment>? onPositionChanged;
+
+  @override
+  State<_VerseText> createState() => _VerseTextState();
+}
+
+class _VerseTextState extends State<_VerseText> {
+  // Measures the text block so a drag moves it exactly with the finger.
+  final _blockKey = GlobalKey();
+
+  // A drag is measured from where it started; several updates can arrive
+  // before the new position is rebuilt, so adding to the current one loses moves.
+  Alignment _dragStart = Alignment.center;
+  Offset _dragDistance = Offset.zero;
+
+  /// Converts a drag of [delta] pixels into a new position in [area].
+  Alignment _dragged(Alignment from, Offset delta, Size area) {
+    final block = _blockKey.currentContext?.size ?? Size.zero;
+    double move(double current, double d, double free) =>
+        free < 1 ? current : (current + 2 * d / free).clamp(-1.0, 1.0);
+    return Alignment(
+      move(from.x, delta.dx, area.width - block.width),
+      move(from.y, delta.dy, area.height - block.height),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final verse = widget.verse;
+    final style = widget.style;
+    final textColor = widget.textColor;
     final font = style.font;
 
     return LayoutBuilder(
@@ -164,60 +219,77 @@ class _VerseText extends StatelessWidget {
             style.textScale *
             font.sizeFactor;
         final hPadding = width * 0.1;
+        // The block is 80% of the width; the narrower margin leaves room to
+        // drag it sideways. Centred, it lays out exactly as before.
+        final hMargin = width * 0.04;
+        final vMargin = math.min(width, height) * 0.06;
+        final area = Size(width - hMargin * 2, height - vMargin * 2);
+        final onPositionChanged = widget.onPositionChanged;
 
-        return Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: hPadding,
-            vertical: math.min(width, height) * 0.06,
-          ),
-          child: Center(
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: SizedBox(
-                width: width - hPadding * 2,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: switch (style.textAlign) {
-                    TextAlign.left ||
-                    TextAlign.start => CrossAxisAlignment.start,
-                    TextAlign.right || TextAlign.end => CrossAxisAlignment.end,
-                    _ => CrossAxisAlignment.center,
-                  },
-                  children: [
-                    _EffectText(
-                      '“${verse.text}”',
-                      effect: style.effect,
-                      textAlign: style.textAlign,
-                      color: textColor,
-                      style: TextStyle(
-                        fontFamily: font.family,
-                        fontVariations: font.variations,
-                        fontSize: fontSize,
-                        height: style.lineHeight,
-                        letterSpacing: fontSize * style.letterSpacing,
-                      ),
-                    ),
-                    SizedBox(height: fontSize * 0.9),
-                    _EffectText(
-                      verse.reference,
-                      // The reference never had the soft shadow; keep it that way.
-                      effect: style.effect == TextEffect.soft
-                          ? TextEffect.none
-                          : style.effect,
-                      textAlign: style.textAlign,
-                      color: textColor.withValues(alpha: 0.9),
-                      style: TextStyle(
-                        fontFamily: AppFonts.sans,
-                        fontSize: (fontSize * 0.45).clamp(11, 18),
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 0.4,
-                      ),
-                    ),
-                  ],
+        Widget block = FittedBox(
+          key: _blockKey,
+          fit: BoxFit.scaleDown,
+          child: SizedBox(
+            width: width - hPadding * 2,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: switch (style.textAlign) {
+                TextAlign.left || TextAlign.start => CrossAxisAlignment.start,
+                TextAlign.right || TextAlign.end => CrossAxisAlignment.end,
+                _ => CrossAxisAlignment.center,
+              },
+              children: [
+                _EffectText(
+                  style.showQuotes ? '“${verse.text}”' : verse.text,
+                  effect: style.effect,
+                  textAlign: style.textAlign,
+                  color: textColor,
+                  style: TextStyle(
+                    fontFamily: font.family,
+                    fontVariations: font.variations,
+                    fontSize: fontSize,
+                    height: style.lineHeight,
+                    letterSpacing: fontSize * style.letterSpacing,
+                  ),
                 ),
-              ),
+                if (style.reference == ReferencePlacement.below) ...[
+                  SizedBox(height: fontSize * 0.9),
+                  _EffectText(
+                    verse.reference,
+                    effect: _referenceEffect(style.effect),
+                    textAlign: style.textAlign,
+                    color: textColor.withValues(alpha: 0.9),
+                    style: TextStyle(
+                      fontFamily: AppFonts.sans,
+                      fontSize: (fontSize * 0.45).clamp(11, 18),
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.4,
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
+        );
+
+        if (onPositionChanged != null) {
+          block = GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onPanStart: (_) {
+              _dragStart = style.textPosition;
+              _dragDistance = Offset.zero;
+            },
+            onPanUpdate: (details) {
+              _dragDistance += details.delta;
+              onPositionChanged(_dragged(_dragStart, _dragDistance, area));
+            },
+            child: block,
+          );
+        }
+
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: hMargin, vertical: vMargin),
+          child: Align(alignment: style.textPosition, child: block),
         );
       },
     );

@@ -13,6 +13,10 @@ void main() {
     expect(style.lineHeight, 1.3);
     expect(style.letterSpacing, 0);
     expect(style.effect, TextEffect.soft);
+    expect(style.textPosition, Alignment.center);
+    expect(style.reference, ReferencePlacement.below);
+    expect(style.showQuotes, isTrue);
+    expect(style.showWatermark, isTrue);
   });
 
   test('copyWith changes only what is given and can clear the colour', () {

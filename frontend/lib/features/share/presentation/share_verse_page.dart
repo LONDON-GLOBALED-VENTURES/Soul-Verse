@@ -187,6 +187,11 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                           borderRadius: BorderRadius.zero,
                           showWatermark: true,
                           style: _style,
+                          onTextPositionChanged: _busy
+                              ? null
+                              : (position) => _updateStyle(
+                                  _style.copyWith(textPosition: position),
+                                ),
                         ),
                       ),
                     ),
@@ -323,6 +328,15 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
       EditorTool.effect => TextEffectPicker(
         selected: _style.effect,
         onChanged: (effect) => _updateStyle(_style.copyWith(effect: effect)),
+      ),
+      EditorTool.position => TextPositionPicker(
+        selected: _style.textPosition,
+        onChanged: (position) =>
+            _updateStyle(_style.copyWith(textPosition: position)),
+      ),
+      EditorTool.details => VerseDetailsControl(
+        style: _style,
+        onChanged: _updateStyle,
       ),
     };
   }

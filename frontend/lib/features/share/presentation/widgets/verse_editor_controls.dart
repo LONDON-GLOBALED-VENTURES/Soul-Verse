@@ -11,7 +11,9 @@ enum EditorTool {
   colour('Colour', Icons.palette_outlined),
   align('Align', Icons.format_align_center),
   spacing('Spacing', Icons.format_line_spacing),
-  effect('Effect', Icons.auto_awesome_outlined);
+  effect('Effect', Icons.auto_awesome_outlined),
+  position('Position', Icons.open_with),
+  details('Details', Icons.tune);
 
   const EditorTool(this.label, this.icon);
 
@@ -430,23 +432,144 @@ class TextEffectPicker extends StatelessWidget {
       separatorBuilder: (_, _) => const SizedBox(width: 8),
       itemBuilder: (context, i) {
         final effect = TextEffect.values[i];
-        return ChoiceChip(
-          label: Text(effect.label),
+        return _OptionChip(
+          label: effect.label,
           selected: effect == selected,
-          showCheckmark: false,
-          selectedColor: AppColors.accent.withValues(alpha: 0.15),
-          labelStyle: TextStyle(
-            color: effect == selected
-                ? AppColors.accent
-                : AppColors.textSecondary,
-            fontWeight: effect == selected ? FontWeight.w600 : FontWeight.w500,
-          ),
-          side: BorderSide(
-            color: effect == selected ? AppColors.accent : AppColors.border,
-          ),
-          onSelected: (_) => onChanged(effect),
+          onTap: () => onChanged(effect),
         );
       },
+    );
+  }
+}
+
+class TextPositionPicker extends StatelessWidget {
+  const TextPositionPicker({
+    super.key,
+    required this.selected,
+    required this.onChanged,
+  });
+
+  final Alignment selected;
+  final ValueChanged<Alignment> onChanged;
+
+  static const _presets = [
+    (label: 'Top', position: VerseStyle.topPosition),
+    (label: 'Middle', position: VerseStyle.middlePosition),
+    (label: 'Bottom', position: VerseStyle.bottomPosition),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Wrap(
+          spacing: 8,
+          children: [
+            for (final preset in _presets)
+              _OptionChip(
+                label: preset.label,
+                selected: preset.position == selected,
+                onTap: () => onChanged(preset.position),
+              ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        Text(
+          'Or drag the verse to move it',
+          style: Theme.of(context).textTheme.labelSmall
+              ?.copyWith(color: AppColors.textSecondary),
+        ),
+      ],
+    );
+  }
+}
+
+class VerseDetailsControl extends StatelessWidget {
+  const VerseDetailsControl({
+    super.key,
+    required this.style,
+    required this.onChanged,
+  });
+
+  final VerseStyle style;
+  final ValueChanged<VerseStyle> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final labelStyle = Theme.of(context).textTheme.labelMedium
+        ?.copyWith(color: AppColors.textSecondary);
+
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      children: [
+        Center(child: Text('Reference', style: labelStyle)),
+        const SizedBox(width: 8),
+        for (final placement in ReferencePlacement.values) ...[
+          Center(
+            child: _OptionChip(
+              label: placement.label,
+              semanticsLabel: 'Reference ${placement.label}',
+              selected: style.reference == placement,
+              onTap: () => onChanged(style.copyWith(reference: placement)),
+            ),
+          ),
+          const SizedBox(width: 8),
+        ],
+        const SizedBox(width: 8),
+        Center(
+          child: _OptionChip(
+            label: 'Quote marks',
+            selected: style.showQuotes,
+            onTap: () =>
+                onChanged(style.copyWith(showQuotes: !style.showQuotes)),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Center(
+          child: _OptionChip(
+            label: 'Watermark',
+            selected: style.showWatermark,
+            onTap: () =>
+                onChanged(style.copyWith(showWatermark: !style.showWatermark)),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// A rounded on/off option in the editor's accent colours.
+class _OptionChip extends StatelessWidget {
+  const _OptionChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+    this.semanticsLabel,
+  });
+
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+  final String? semanticsLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      label: semanticsLabel,
+      child: ChoiceChip(
+        label: Text(label),
+        selected: selected,
+        showCheckmark: false,
+        selectedColor: AppColors.accent.withValues(alpha: 0.15),
+        labelStyle: TextStyle(
+          color: selected ? AppColors.accent : AppColors.textSecondary,
+          fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
+        ),
+        side: BorderSide(color: selected ? AppColors.accent : AppColors.border),
+        onSelected: (_) => onTap(),
+      ),
     );
   }
 }

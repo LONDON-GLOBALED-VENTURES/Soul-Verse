@@ -392,6 +392,58 @@ void main() {
     await tester.pump(const Duration(minutes: 1));
   });
 
+  testWidgets('share editor positions the verse and toggles its details', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+    VerseStyle previewStyle() =>
+        tester.widget<VerseCard>(find.byType(VerseCard)).style;
+    Finder inCard(Finder finder) =>
+        find.descendant(of: find.byType(VerseCard), matching: finder);
+    Future<void> openTool(String label) async {
+      await tester.ensureVisible(find.text(label));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(label));
+      await tester.pumpAndSettle();
+    }
+
+    await openTool('Position');
+    await tester.tap(find.text('Top'));
+    await tester.pumpAndSettle();
+    expect(previewStyle().textPosition, VerseStyle.topPosition);
+    // Dragging the verse down moves it towards the bottom.
+    await tester.drag(
+      inCard(find.textContaining('Be still')),
+      const Offset(0, 80),
+    );
+    await tester.pumpAndSettle();
+    expect(previewStyle().textPosition.y, greaterThan(-0.8));
+
+    await openTool('Details');
+    await tester.tap(find.text('Quote marks'));
+    await tester.pumpAndSettle();
+    expect(
+      inCard(find.text('Be still, and know that I am God.')),
+      findsWidgets,
+    );
+    await tester.tap(find.text('Watermark'));
+    await tester.pumpAndSettle();
+    expect(inCard(find.text('SoulVerse')), findsNothing);
+    await tester.tap(find.text('Off'));
+    await tester.pumpAndSettle();
+    expect(previewStyle().reference, ReferencePlacement.hidden);
+    expect(inCard(find.text('Psalm 46:10')), findsNothing);
+    await tester.tap(find.text('Corner'));
+    await tester.pumpAndSettle();
+    expect(inCard(find.text('Psalm 46:10')), findsWidgets);
+
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 1));
+  });
+
   testWidgets('home hides "A moment of reflection" when there is none', (
     tester,
   ) async {

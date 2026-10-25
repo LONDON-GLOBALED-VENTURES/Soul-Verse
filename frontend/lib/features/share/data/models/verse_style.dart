@@ -39,6 +39,17 @@ enum TextEffect {
   final String label;
 }
 
+/// Where the verse reference (e.g. "Psalm 34:18") is shown.
+enum ReferencePlacement {
+  below('Below'),
+  corner('Corner'),
+  hidden('Off');
+
+  const ReferencePlacement(this.label);
+
+  final String label;
+}
+
 const _unset = Object();
 
 /// How the user has customised a verse image. [standard] matches the
@@ -53,7 +64,15 @@ class VerseStyle {
     this.lineHeight = 1.3,
     this.letterSpacing = 0,
     this.effect = TextEffect.soft,
+    this.textPosition = Alignment.center,
+    this.reference = ReferencePlacement.below,
+    this.showQuotes = true,
+    this.showWatermark = true,
   });
+
+  static const topPosition = Alignment(0, -0.8);
+  static const middlePosition = Alignment.center;
+  static const bottomPosition = Alignment(0, 0.8);
 
   static const standard = VerseStyle();
 
@@ -82,6 +101,16 @@ class VerseStyle {
 
   final TextEffect effect;
 
+  /// Where the verse sits in the free space of the card; set by the
+  /// Top / Middle / Bottom buttons or by dragging the text.
+  final Alignment textPosition;
+
+  final ReferencePlacement reference;
+  final bool showQuotes;
+
+  /// Only applies where the card shows a watermark (the share screen).
+  final bool showWatermark;
+
   VerseStyle copyWith({
     VerseFont? font,
     double? textScale,
@@ -90,6 +119,10 @@ class VerseStyle {
     double? lineHeight,
     double? letterSpacing,
     TextEffect? effect,
+    Alignment? textPosition,
+    ReferencePlacement? reference,
+    bool? showQuotes,
+    bool? showWatermark,
   }) {
     return VerseStyle(
       font: font ?? this.font,
@@ -101,6 +134,10 @@ class VerseStyle {
       lineHeight: lineHeight ?? this.lineHeight,
       letterSpacing: letterSpacing ?? this.letterSpacing,
       effect: effect ?? this.effect,
+      textPosition: textPosition ?? this.textPosition,
+      reference: reference ?? this.reference,
+      showQuotes: showQuotes ?? this.showQuotes,
+      showWatermark: showWatermark ?? this.showWatermark,
     );
   }
 
@@ -113,7 +150,11 @@ class VerseStyle {
       other.textAlign == textAlign &&
       other.lineHeight == lineHeight &&
       other.letterSpacing == letterSpacing &&
-      other.effect == effect;
+      other.effect == effect &&
+      other.textPosition == textPosition &&
+      other.reference == reference &&
+      other.showQuotes == showQuotes &&
+      other.showWatermark == showWatermark;
 
   @override
   int get hashCode => Object.hash(
@@ -124,5 +165,9 @@ class VerseStyle {
     lineHeight,
     letterSpacing,
     effect,
+    textPosition,
+    reference,
+    showQuotes,
+    showWatermark,
   );
 }
