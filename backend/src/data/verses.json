@@ -141,7 +141,8 @@
     "reference": "Psalm 6:6",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "Even the psalmist cried himself to sleep. Your tears are not weakness, and God has made room for them."
   },
@@ -259,7 +260,8 @@
     "reference": "Psalm 27:13",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "Hold on to this confidence: you will still see God's goodness, not only someday, but here in this life."
   },
@@ -303,7 +305,8 @@
     "translation": "WEB",
     "moods": [
       "heartbroken",
-      "loneliness"
+      "loneliness",
+      "sadness"
     ],
     "reflection": "God specializes in turning mourning into dancing. Trust Him to bring gladness back into your life."
   },
@@ -388,7 +391,8 @@
     "reference": "Psalm 42:3",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "Some days tears feel like your only food. God does not shame your sorrow; He stays with you in it."
   },
@@ -705,7 +709,8 @@
     "reference": "Psalm 119:143",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "Trouble and anguish may surround you, but God's Word can still be a source of delight and steadiness."
   },
@@ -820,7 +825,8 @@
     "reference": "Ecclesiastes 3:4",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "This is a season to weep and mourn, and that's okay. A time to laugh and dance will come again."
   },
@@ -901,7 +907,8 @@
     "reference": "Isaiah 53:3",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "Jesus knows sorrow and grief firsthand. You are loved by a Savior who truly understands your pain."
   },
@@ -911,7 +918,8 @@
     "reference": "Isaiah 53:4",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "Jesus carried our griefs and sorrows. You don't have to carry yours alone."
   },
@@ -1097,7 +1105,8 @@
     "reference": "John 11:35",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "Jesus wept. He does not stand far off from your grief; He enters it and weeps with you."
   },
@@ -1132,7 +1141,8 @@
     "reference": "John 16:20",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "sadness"
     ],
     "reflection": "Your sorrow is real, but Jesus promises it will be turned into joy."
   },
@@ -1611,7 +1621,8 @@
     "reference": "Psalm 107:9",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "sadness"
     ],
     "reflection": "God satisfies the longing soul and fills the hungry with good things. Thank Him for His provision."
   },
@@ -1682,7 +1693,8 @@
     "reference": "Psalm 118:24",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "sadness"
     ],
     "reflection": "Today is a gift God has made. Choose to rejoice and be glad in it."
   },
@@ -3242,7 +3254,8 @@
     "reference": "Psalm 27:10",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "sadness"
     ],
     "reflection": "Even if the people closest to you let you down, God will take you in. You are never without a home in Him."
   },
@@ -9364,5 +9377,875 @@
       "healing"
     ],
     "reflection": "If you're thirsty, come. The water of life is free."
+  },
+  {
+    "id": "exodus-2-25",
+    "text": "God saw the children of Israel, and God was concerned about them.",
+    "reference": "Exodus 2:25",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God saw His people's suffering and cared. He sees your sadness, and He is concerned for you."
+  },
+  {
+    "id": "exodus-4-31",
+    "text": "He had seen their affliction, then they bowed their heads and worshiped.",
+    "reference": "Exodus 4:31",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "When the people heard that God had seen their misery, they worshipped. Being seen by God can be the start of hope."
+  },
+  {
+    "id": "deuteronomy-4-31",
+    "text": "For the LORD your God is a merciful God; he will not fail you.",
+    "reference": "Deuteronomy 4:31",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God is merciful. Even in your lowest moments, He will not abandon you."
+  },
+  {
+    "id": "1-samuel-1-18",
+    "text": "The woman went her way, and ate; and her facial expression was no more sad.",
+    "reference": "1 Samuel 1:18",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Hannah poured out her sorrow to God and left with a lighter heart. You can bring Him your sadness too."
+  },
+  {
+    "id": "nehemiah-8-11",
+    "text": "Be still, for the day is holy; don't be grieved.",
+    "reference": "Nehemiah 8:11",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "There are days when God gently says, 'Be still, don't grieve.' Let Him quiet your heart."
+  },
+  {
+    "id": "job-1-21",
+    "text": "The LORD gave, and the LORD has taken away. Blessed be the name of the LORD.",
+    "reference": "Job 1:21",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Job worshipped even in loss. You can bring your grief and your faith to God together."
+  },
+  {
+    "id": "job-35-10",
+    "text": "Where is God my Maker, who gives songs in the night?",
+    "reference": "Job 35:10",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God gives songs in the night. Even in the dark, He can put a quiet hope in your heart."
+  },
+  {
+    "id": "psalm-3-5",
+    "text": "I laid myself down and slept. I awakened, for the LORD sustains me.",
+    "reference": "Psalm 3:5",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "You lay down, slept and woke again because God sustains you. He carries you through the night."
+  },
+  {
+    "id": "psalm-5-12",
+    "text": "You will surround him with favor as with a shield.",
+    "reference": "Psalm 5:12",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God surrounds His people with favour like a shield. You are covered by His care."
+  },
+  {
+    "id": "psalm-13-1",
+    "text": "How long, LORD? Will you forget me forever?",
+    "reference": "Psalm 13:1",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "It's okay to ask God, 'How long?' He isn't offended by your honest sadness."
+  },
+  {
+    "id": "psalm-13-6",
+    "text": "I will sing to the LORD, because he has been good to me.",
+    "reference": "Psalm 13:6",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Even after asking 'How long?', the psalmist remembered God's goodness. Hold on to what He has done for you."
+  },
+  {
+    "id": "psalm-16-9",
+    "text": "Therefore my heart is glad, and my glory rejoices.",
+    "reference": "Psalm 16:9",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "In God's presence, your heart can find gladness again."
+  },
+  {
+    "id": "psalm-17-6",
+    "text": "I have called on you, for you will answer me, God.",
+    "reference": "Psalm 17:6",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Call on God. He hears and He answers."
+  },
+  {
+    "id": "psalm-17-8",
+    "text": "Keep me as the apple of your eye.",
+    "reference": "Psalm 17:8",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "You are the apple of God's eye, precious and protected."
+  },
+  {
+    "id": "psalm-22-1",
+    "text": "My God, my God, why have you forsaken me?",
+    "reference": "Psalm 22:1",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Jesus prayed these words from the cross. When you feel forsaken, you're not alone; He has been there."
+  },
+  {
+    "id": "psalm-25-1",
+    "text": "To you, LORD, I lift up my soul.",
+    "reference": "Psalm 25:1",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "When you have nothing else, lift your soul to God. That's enough."
+  },
+  {
+    "id": "psalm-25-20",
+    "text": "Oh keep my soul, and deliver me.",
+    "reference": "Psalm 25:20",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Ask God to guard your soul. He is a safe place to bring your sorrow."
+  },
+  {
+    "id": "psalm-33-22",
+    "text": "Let your loving kindness, LORD, be on us, since we have hoped in you.",
+    "reference": "Psalm 33:22",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Let God's unfailing love rest on you as you put your hope in Him."
+  },
+  {
+    "id": "psalm-34-8",
+    "text": "Oh taste and see that the LORD is good.",
+    "reference": "Psalm 34:8",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Taste and see that the Lord is good. His goodness is still real, even on sad days."
+  },
+  {
+    "id": "psalm-38-21",
+    "text": "Don't forsake me, LORD. My God, don't be far from me.",
+    "reference": "Psalm 38:21",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "You can ask God not to be far from you. He draws near when you call."
+  },
+  {
+    "id": "psalm-42-1",
+    "text": "As the deer pants for the water brooks, so my soul pants after you, God.",
+    "reference": "Psalm 42:1",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Sadness can make you thirsty for God. Let that longing draw you to Him."
+  },
+  {
+    "id": "psalm-43-5",
+    "text": "Hope in God, for I will still praise him.",
+    "reference": "Psalm 43:5",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Speak hope to your own soul. You will praise Him again."
+  },
+  {
+    "id": "psalm-51-17",
+    "text": "A broken and contrite heart, God, you will not despise.",
+    "reference": "Psalm 51:17",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God never despises a broken heart. Bring yours to Him just as it is."
+  },
+  {
+    "id": "psalm-57-7",
+    "text": "My heart is steadfast, God.",
+    "reference": "Psalm 57:7",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Even when you're sad, you can choose to keep your heart steady on God."
+  },
+  {
+    "id": "psalm-63-1",
+    "text": "God, you are my God. I will earnestly seek you.",
+    "reference": "Psalm 63:1",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Seek God earnestly, even in dry places. He is the one your soul longs for."
+  },
+  {
+    "id": "psalm-63-8",
+    "text": "My soul stays close to you. Your right hand holds me up.",
+    "reference": "Psalm 63:8",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Cling to God. His right hand holds you up."
+  },
+  {
+    "id": "psalm-69-29",
+    "text": "But I am in pain and distress. Let your salvation, God, protect me.",
+    "reference": "Psalm 69:29",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "It's okay to tell God you're in pain. Ask Him to protect and lift you."
+  },
+  {
+    "id": "psalm-77-2",
+    "text": "In the day of my trouble I sought the Lord.",
+    "reference": "Psalm 77:2",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "In your day of trouble, seek the Lord. He is there to be found."
+  },
+  {
+    "id": "psalm-86-4",
+    "text": "Bring joy to the soul of your servant.",
+    "reference": "Psalm 86:4",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Ask God to bring joy to your soul. He loves to answer that prayer."
+  },
+  {
+    "id": "psalm-88-1",
+    "text": "LORD, the God of my salvation, I have cried day and night before you.",
+    "reference": "Psalm 88:1",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "You can cry out to God day and night. He is the God who saves."
+  },
+  {
+    "id": "psalm-102-17",
+    "text": "He has respected the prayer of the destitute.",
+    "reference": "Psalm 102:17",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God listens to the prayers of the destitute. He doesn't dismiss your cry."
+  },
+  {
+    "id": "psalm-107-14",
+    "text": "He brought them out of darkness and the shadow of death, and broke their chains apart.",
+    "reference": "Psalm 107:14",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God brings His people out of darkness and breaks their chains. He can bring you out too."
+  },
+  {
+    "id": "psalm-112-4",
+    "text": "Light dawns in the darkness for the upright.",
+    "reference": "Psalm 112:4",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Even in darkness, light can dawn. Hold on for the morning."
+  },
+  {
+    "id": "psalm-119-71",
+    "text": "It is good for me that I was afflicted, that I may learn your statutes.",
+    "reference": "Psalm 119:71",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Hard seasons can teach us things nothing else can. God can bring good even out of sorrow."
+  },
+  {
+    "id": "psalm-119-92",
+    "text": "Unless your law had been my delight, I would have perished in my affliction.",
+    "reference": "Psalm 119:92",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God's Word can keep you going when sorrow is heavy. Let it be your delight."
+  },
+  {
+    "id": "psalm-126-2",
+    "text": "Then our mouth was filled with laughter, and our tongue with singing.",
+    "reference": "Psalm 126:2",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God has filled mouths with laughter before. He can do it again."
+  },
+  {
+    "id": "psalm-130-7",
+    "text": "Israel, hope in the LORD, for with the LORD there is loving kindness.",
+    "reference": "Psalm 130:7",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Put your hope in the Lord. With Him there is unfailing love."
+  },
+  {
+    "id": "psalm-139-11-12",
+    "text": "Even the darkness doesn't hide from you, but the night shines as the day.",
+    "reference": "Psalm 139:11-12",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Even darkness isn't dark to God. He sees you clearly in your sadness."
+  },
+  {
+    "id": "psalm-145-9",
+    "text": "The LORD is good to all. His tender mercies are over all his works.",
+    "reference": "Psalm 145:9",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God is good to all, and His compassion covers everything He has made, including you."
+  },
+  {
+    "id": "psalm-149-4",
+    "text": "For the LORD takes pleasure in his people.",
+    "reference": "Psalm 149:4",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God takes pleasure in His people. He delights in you, even on sad days."
+  },
+  {
+    "id": "proverbs-15-15",
+    "text": "One who has a cheerful heart has a continual feast.",
+    "reference": "Proverbs 15:15",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "A cheerful heart is like a continual feast. Ask God to grow joy in you, little by little."
+  },
+  {
+    "id": "ecclesiastes-7-3",
+    "text": "By the sadness of the face the heart is made good.",
+    "reference": "Ecclesiastes 7:3",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Sorrow isn't wasted. Sometimes it deepens and softens the heart."
+  },
+  {
+    "id": "isaiah-9-2",
+    "text": "The people who walked in darkness have seen a great light.",
+    "reference": "Isaiah 9:2",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "People walking in darkness have seen a great light. Light is coming."
+  },
+  {
+    "id": "isaiah-12-1",
+    "text": "Though you were angry with me, your anger has turned away, and you comfort me.",
+    "reference": "Isaiah 12:1",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God turns from anger to comfort. He comforts you."
+  },
+  {
+    "id": "isaiah-35-10",
+    "text": "Sorrow and sighing will flee away.",
+    "reference": "Isaiah 35:10",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "One day sorrow and sighing will flee away. Hold on to that promise."
+  },
+  {
+    "id": "isaiah-51-11",
+    "text": "Everlasting joy will be on their heads.",
+    "reference": "Isaiah 51:11",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God promises everlasting joy to His people. Sadness won't last forever."
+  },
+  {
+    "id": "isaiah-60-20",
+    "text": "The days of your mourning will be ended.",
+    "reference": "Isaiah 60:20",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Your days of mourning will end. God promises a lasting light."
+  },
+  {
+    "id": "isaiah-61-2",
+    "text": "To comfort all who mourn.",
+    "reference": "Isaiah 61:2",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God's heart is to comfort all who mourn. That includes you."
+  },
+  {
+    "id": "isaiah-61-10",
+    "text": "I will greatly rejoice in the LORD.",
+    "reference": "Isaiah 61:10",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Joy in God can rise even after sorrow. He clothes you in His goodness."
+  },
+  {
+    "id": "jeremiah-15-16",
+    "text": "Your words were to me a joy and the rejoicing of my heart.",
+    "reference": "Jeremiah 15:16",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God's words can bring joy to a heavy heart. Spend time with them today."
+  },
+  {
+    "id": "jeremiah-31-16",
+    "text": "Restrain your voice from weeping, and your eyes from tears; for your work will be rewarded.",
+    "reference": "Jeremiah 31:16",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God sees your tears, and they are not for nothing. There is hope ahead."
+  },
+  {
+    "id": "lamentations-3-31",
+    "text": "For the Lord will not cast off forever.",
+    "reference": "Lamentations 3:31",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God won't reject you forever. Sorrow is not the final chapter."
+  },
+  {
+    "id": "lamentations-3-33",
+    "text": "For he does not afflict willingly, nor grieve the children of men.",
+    "reference": "Lamentations 3:33",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God doesn't delight in your pain. His heart toward you is compassion."
+  },
+  {
+    "id": "habakkuk-3-17-18",
+    "text": "Yet I will rejoice in the LORD. I will be joyful in the God of my salvation.",
+    "reference": "Habakkuk 3:17-18",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Even when everything seems to fail, you can still rejoice in God Himself."
+  },
+  {
+    "id": "zechariah-2-10",
+    "text": "Sing and rejoice, daughter of Zion! For behold, I come, and I will dwell within you.",
+    "reference": "Zechariah 2:10",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God says, 'I am coming to live among you.' His presence is cause for joy."
+  },
+  {
+    "id": "matthew-5-3",
+    "text": "Blessed are the poor in spirit, for theirs is the Kingdom of Heaven.",
+    "reference": "Matthew 5:3",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Blessed are the poor in spirit. When you feel empty, the kingdom of heaven is still yours."
+  },
+  {
+    "id": "matthew-26-38",
+    "text": "My soul is exceedingly sorrowful, even to death.",
+    "reference": "Matthew 26:38",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Jesus knew deep sorrow. You can bring your sadness to someone who truly understands."
+  },
+  {
+    "id": "luke-6-21",
+    "text": "Blessed are you who weep now, for you will laugh.",
+    "reference": "Luke 6:21",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Blessed are you who weep now, because you will laugh. Your tears will not be the end."
+  },
+  {
+    "id": "luke-7-13",
+    "text": "When the Lord saw her, he had compassion on her, and said to her, 'Don't cry.'",
+    "reference": "Luke 7:13",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Jesus saw the grieving widow and was moved with compassion. He sees your tears too."
+  },
+  {
+    "id": "luke-22-43",
+    "text": "An angel from heaven appeared to him, strengthening him.",
+    "reference": "Luke 22:43",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "In His darkest hour, Jesus was strengthened from heaven. God can strengthen you too."
+  },
+  {
+    "id": "john-11-25",
+    "text": "I am the resurrection and the life.",
+    "reference": "John 11:25",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Jesus is the resurrection and the life. Death and sorrow don't have the final word."
+  },
+  {
+    "id": "john-16-24",
+    "text": "Ask, and you will receive, that your joy may be made full.",
+    "reference": "John 16:24",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Ask God for what you need. He wants your joy to be full."
+  },
+  {
+    "id": "john-20-15",
+    "text": "Woman, why are you weeping?",
+    "reference": "John 20:15",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Jesus gently asked Mary why she was weeping. He cares about the reason behind your tears."
+  },
+  {
+    "id": "john-20-16",
+    "text": "Jesus said to her, 'Mary.'",
+    "reference": "John 20:16",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Jesus called Mary by name, and her grief turned to joy. He knows your name too."
+  },
+  {
+    "id": "john-20-20",
+    "text": "The disciples therefore were glad when they saw the Lord.",
+    "reference": "John 20:20",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "When the disciples saw the risen Lord, their sadness turned to gladness. Look for Him."
+  },
+  {
+    "id": "acts-2-28",
+    "text": "You will make me full of gladness with your presence.",
+    "reference": "Acts 2:28",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God's presence fills you with joy. Spend time with Him today."
+  },
+  {
+    "id": "romans-8-34",
+    "text": "Christ Jesus... is at the right hand of God, who also makes intercession for us.",
+    "reference": "Romans 8:34",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Jesus is praying for you right now at the right hand of God."
+  },
+  {
+    "id": "romans-14-17",
+    "text": "The Kingdom of God is... righteousness, peace, and joy in the Holy Spirit.",
+    "reference": "Romans 14:17",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God's kingdom is full of righteousness, peace and joy in the Holy Spirit."
+  },
+  {
+    "id": "romans-15-4",
+    "text": "Through patience and through encouragement of the scriptures we might have hope.",
+    "reference": "Romans 15:4",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Scripture was written to encourage you and give you hope. Let it speak to you today."
+  },
+  {
+    "id": "2-corinthians-1-5",
+    "text": "As the sufferings of Christ abound to us, even so our comfort also abounds through Christ.",
+    "reference": "2 Corinthians 1:5",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "As suffering overflows, so does comfort through Christ. You won't be left without comfort."
+  },
+  {
+    "id": "2-corinthians-4-18",
+    "text": "The things which are seen are temporal, but the things which are not seen are eternal.",
+    "reference": "2 Corinthians 4:18",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "What you see now is temporary. What God is doing is eternal."
+  },
+  {
+    "id": "2-corinthians-6-10",
+    "text": "As sorrowful, yet always rejoicing.",
+    "reference": "2 Corinthians 6:10",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "You can be sorrowful and still have joy underneath. Both can be true in Christ."
+  },
+  {
+    "id": "ephesians-1-18",
+    "text": "Having the eyes of your hearts enlightened, that you may know what is the hope of his calling.",
+    "reference": "Ephesians 1:18",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Ask God to open the eyes of your heart to the hope He has given you."
+  },
+  {
+    "id": "philippians-4-4",
+    "text": "Rejoice in the Lord always! Again I will say, Rejoice!",
+    "reference": "Philippians 4:4",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Joy in the Lord doesn't deny sadness, but it holds you steady through it."
+  },
+  {
+    "id": "colossians-1-27",
+    "text": "Christ in you, the hope of glory.",
+    "reference": "Colossians 1:27",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Christ in you is your hope of glory. He is with you in this sadness."
+  },
+  {
+    "id": "1-thessalonians-4-13",
+    "text": "That you don't grieve, even as the rest, who have no hope.",
+    "reference": "1 Thessalonians 4:13",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Grief is real, but in Christ you grieve with hope."
+  },
+  {
+    "id": "1-thessalonians-4-18",
+    "text": "Therefore comfort one another with these words.",
+    "reference": "1 Thessalonians 4:18",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Comfort one another with God's promises. Shared hope lightens sorrow."
+  },
+  {
+    "id": "2-timothy-4-17",
+    "text": "But the Lord stood by me, and strengthened me.",
+    "reference": "2 Timothy 4:17",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "When others weren't there, the Lord stood by Paul and strengthened him. He stands by you."
+  },
+  {
+    "id": "hebrews-12-2",
+    "text": "Looking to Jesus, the author and perfecter of faith.",
+    "reference": "Hebrews 12:2",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Keep looking to Jesus. He endured sorrow and knows the way through."
+  },
+  {
+    "id": "james-5-11",
+    "text": "The Lord is full of compassion and mercy.",
+    "reference": "James 5:11",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "The Lord is full of compassion and mercy. He is tender toward you."
+  },
+  {
+    "id": "1-peter-1-6",
+    "text": "You greatly rejoice, though now for a little while... you have been put to grief in various trials.",
+    "reference": "1 Peter 1:6",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Trials and grief may last for a little while, but there is joy that outlasts them."
+  },
+  {
+    "id": "1-peter-1-8",
+    "text": "Believing, you rejoice greatly with joy unspeakable and full of glory.",
+    "reference": "1 Peter 1:8",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "Even when you can't see Him, loving Jesus can bring an inexpressible joy."
+  },
+  {
+    "id": "1-peter-3-12",
+    "text": "For the eyes of the Lord are on the righteous, and his ears open to their prayer.",
+    "reference": "1 Peter 3:12",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God's eyes are on you, and His ears are open to your prayer."
+  },
+  {
+    "id": "1-john-3-20",
+    "text": "God is greater than our heart, and knows all things.",
+    "reference": "1 John 3:20",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "When your heart condemns you, God is greater than your heart. He knows everything."
+  },
+  {
+    "id": "1-john-5-14",
+    "text": "If we ask anything according to his will, he listens to us.",
+    "reference": "1 John 5:14",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God listens when you pray. Bring Him your heart with confidence."
+  },
+  {
+    "id": "revelation-7-17",
+    "text": "God will wipe away every tear from their eyes.",
+    "reference": "Revelation 7:17",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "One day God Himself will wipe every tear from your eyes."
+  },
+  {
+    "id": "revelation-21-3",
+    "text": "God himself will be with them as their God.",
+    "reference": "Revelation 21:3",
+    "translation": "WEB",
+    "moods": [
+      "sadness"
+    ],
+    "reflection": "God will dwell with His people. One day sadness will give way to His presence forever."
   }
 ]
