@@ -411,7 +411,8 @@
     "translation": "WEB",
     "moods": [
       "heartbroken",
-      "loneliness"
+      "loneliness",
+      "love"
     ],
     "reflection": "By day His love is near, and by night His song is with you. You are held around the clock."
   },
@@ -1292,7 +1293,8 @@
     "reference": "2 Chronicles 5:13",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "love"
     ],
     "reflection": "When the people sang this simple truth, God's presence filled the temple. Let it fill your day too."
   },
@@ -1544,7 +1546,8 @@
     "reference": "Psalm 100:5",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "love"
     ],
     "reflection": "God's goodness reaches across generations. The faithfulness that held others will hold you too."
   },
@@ -1574,7 +1577,8 @@
     "reference": "Psalm 106:1",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "love"
     ],
     "reflection": "Praise the Lord for His enduring love. It has outlasted every hard season you've walked through."
   },
@@ -1594,7 +1598,8 @@
     "reference": "Psalm 107:8",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "love"
     ],
     "reflection": "Notice God's wonderful works in your life, and let your thanks rise in return."
   },
@@ -1654,7 +1659,8 @@
     "reference": "Psalm 118:1",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "love"
     ],
     "reflection": "Start here: God is good, and His love endures forever. Let this truth anchor your gratitude."
   },
@@ -1714,7 +1720,8 @@
     "reference": "Psalm 136:1",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "love"
     ],
     "reflection": "Psalm 136 repeats it again and again: His love endures forever. Some truths are worth saying many times."
   },
@@ -3401,7 +3408,8 @@
     "reference": "Psalm 33:18",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "love"
     ],
     "reflection": "God's eye is on you. You are seen by the One who loves you."
   },
@@ -6553,5 +6561,925 @@
       "sick"
     ],
     "reflection": "Hope in God doesn't disappoint, because His love is poured into your heart."
+  },
+  {
+    "id": "exodus-20-6",
+    "text": "Showing loving kindness to thousands of those who love me and keep my commandments.",
+    "reference": "Exodus 20:6",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's loving kindness reaches across generations. His love is far bigger than one lifetime."
+  },
+  {
+    "id": "exodus-34-6",
+    "text": "The LORD, the LORD, a merciful and gracious God, slow to anger, and abundant in loving kindness and truth.",
+    "reference": "Exodus 34:6",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "This is how God describes Himself: merciful, gracious, patient and overflowing with love."
+  },
+  {
+    "id": "leviticus-19-18",
+    "text": "You shall love your neighbor as yourself. I am the LORD.",
+    "reference": "Leviticus 19:18",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Loving your neighbour isn't optional for God's people. It's how we reflect who He is."
+  },
+  {
+    "id": "leviticus-19-34",
+    "text": "You shall love him as yourself.",
+    "reference": "Leviticus 19:34",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God asks us to love the outsider as ourselves. Look for someone who needs welcome today."
+  },
+  {
+    "id": "deuteronomy-6-5",
+    "text": "You shall love the LORD your God with all your heart, with all your soul, and with all your might.",
+    "reference": "Deuteronomy 6:5",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Love God with everything you are: heart, soul and strength. He is worthy of all of it."
+  },
+  {
+    "id": "deuteronomy-7-9",
+    "text": "The LORD your God, he is God, the faithful God, who keeps covenant and loving kindness.",
+    "reference": "Deuteronomy 7:9",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God is faithful. He keeps His promises and His love, generation after generation."
+  },
+  {
+    "id": "deuteronomy-10-18",
+    "text": "He executes justice for the fatherless and widow, and loves the foreigner.",
+    "reference": "Deuteronomy 10:18",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love reaches the vulnerable and the overlooked. He calls us to love them too."
+  },
+  {
+    "id": "deuteronomy-30-6",
+    "text": "The LORD your God will circumcise your heart... to love the LORD your God with all your heart and with all your soul, that you may live.",
+    "reference": "Deuteronomy 30:6",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God Himself softens our hearts so we can love Him. Love for God is His gift to us."
+  },
+  {
+    "id": "deuteronomy-33-3",
+    "text": "Yes, he loves the people.",
+    "reference": "Deuteronomy 33:3",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Simply and surely, God loves His people. That includes you."
+  },
+  {
+    "id": "1-samuel-20-17",
+    "text": "He loved him as he loved his own soul.",
+    "reference": "1 Samuel 20:17",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Jonathan loved David as his own soul. Friendship like that is a gift from God."
+  },
+  {
+    "id": "2-samuel-1-26",
+    "text": "Your love to me was wonderful.",
+    "reference": "2 Samuel 1:26",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "David treasured Jonathan's love. Thank God for the people whose love has shaped your life."
+  },
+  {
+    "id": "1-kings-8-23",
+    "text": "You who keep covenant and loving kindness with your servants.",
+    "reference": "1 Kings 8:23",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "There is no God like ours, who keeps His promises and His loving kindness."
+  },
+  {
+    "id": "nehemiah-9-17",
+    "text": "You are a God ready to pardon, gracious and merciful, slow to anger, and abundant in loving kindness.",
+    "reference": "Nehemiah 9:17",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Even when His people failed, God remained ready to forgive, gracious and full of love."
+  },
+  {
+    "id": "psalm-5-11",
+    "text": "Let those also who love your name be joyful in you.",
+    "reference": "Psalm 5:11",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Those who love God can find their joy in Him. Let His love make your heart glad."
+  },
+  {
+    "id": "psalm-18-1",
+    "text": "I love you, LORD, my strength.",
+    "reference": "Psalm 18:1",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Tell God you love Him. He is your strength."
+  },
+  {
+    "id": "psalm-25-6",
+    "text": "Remember, LORD, your tender mercies and your loving kindnesses; for they have been ever of old.",
+    "reference": "Psalm 25:6",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's tender mercy and love are ancient and unchanging. You can lean on them today."
+  },
+  {
+    "id": "psalm-26-3",
+    "text": "For your loving kindness is before my eyes.",
+    "reference": "Psalm 26:3",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Keep God's loving kindness before your eyes. Let it shape how you see everything."
+  },
+  {
+    "id": "psalm-31-7",
+    "text": "I will be glad and rejoice in your loving kindness.",
+    "reference": "Psalm 31:7",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Rejoice in God's love. He sees your troubles and knows your soul."
+  },
+  {
+    "id": "psalm-31-23",
+    "text": "Oh love the LORD, all you his saints!",
+    "reference": "Psalm 31:23",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Love the Lord. He is faithful to those who are His."
+  },
+  {
+    "id": "psalm-33-5",
+    "text": "The earth is full of the loving kindness of the LORD.",
+    "reference": "Psalm 33:5",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Look around: the earth is full of God's loving kindness."
+  },
+  {
+    "id": "psalm-36-5",
+    "text": "Your loving kindness, LORD, is in the heavens.",
+    "reference": "Psalm 36:5",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love reaches to the heavens. It is bigger than you can measure."
+  },
+  {
+    "id": "psalm-36-7",
+    "text": "How precious is your loving kindness, God!",
+    "reference": "Psalm 36:7",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's loving kindness is precious. Take refuge in the shadow of His wings."
+  },
+  {
+    "id": "psalm-40-11",
+    "text": "Let your loving kindness and your truth continually preserve me.",
+    "reference": "Psalm 40:11",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Ask God to keep you safe in His love and truth every day."
+  },
+  {
+    "id": "psalm-48-9",
+    "text": "We have thought about your loving kindness, God, in the midst of your temple.",
+    "reference": "Psalm 48:9",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Take time to think about God's loving kindness. Meditating on it fills your heart."
+  },
+  {
+    "id": "psalm-51-1",
+    "text": "Have mercy on me, God, according to your loving kindness.",
+    "reference": "Psalm 51:1",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "When you've failed, you can still come to God. His mercy flows from His great love."
+  },
+  {
+    "id": "psalm-52-8",
+    "text": "I trust in God's loving kindness forever and ever.",
+    "reference": "Psalm 52:8",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Trust God's loving kindness forever. His love is a firm foundation."
+  },
+  {
+    "id": "psalm-57-10",
+    "text": "For your loving kindness is great to the heavens.",
+    "reference": "Psalm 57:10",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love is great beyond the heavens. You can't reach the end of it."
+  },
+  {
+    "id": "psalm-85-10",
+    "text": "Mercy and truth meet together. Righteousness and peace have kissed each other.",
+    "reference": "Psalm 85:10",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "In God, love and truth meet, and righteousness and peace embrace."
+  },
+  {
+    "id": "psalm-86-13",
+    "text": "For your loving kindness is great toward me.",
+    "reference": "Psalm 86:13",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love toward you is great. He has rescued you from the depths."
+  },
+  {
+    "id": "psalm-89-1",
+    "text": "I will sing of the loving kindnesses of the LORD forever.",
+    "reference": "Psalm 89:1",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Let your life be a song about God's love that never ends."
+  },
+  {
+    "id": "psalm-89-2",
+    "text": "For I have said, 'Loving kindness will be built up forever.'",
+    "reference": "Psalm 89:2",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love is built to last forever. It will never be torn down."
+  },
+  {
+    "id": "psalm-90-14",
+    "text": "Satisfy us in the morning with your loving kindness, that we may rejoice and be glad all our days.",
+    "reference": "Psalm 90:14",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Start your day by receiving God's love. It satisfies in a way nothing else does."
+  },
+  {
+    "id": "psalm-92-2",
+    "text": "To proclaim your loving kindness in the morning, and your faithfulness every night.",
+    "reference": "Psalm 92:2",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Speak of His love in the morning and His faithfulness at night. Bookend your day with Him."
+  },
+  {
+    "id": "psalm-103-11",
+    "text": "For as the heavens are high above the earth, so great is his loving kindness toward those who fear him.",
+    "reference": "Psalm 103:11",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "As high as the heavens are above the earth, that's how great God's love is."
+  },
+  {
+    "id": "psalm-103-12",
+    "text": "As far as the east is from the west, so far has he removed our transgressions from us.",
+    "reference": "Psalm 103:12",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love removes your sins as far as the east is from the west. You are forgiven."
+  },
+  {
+    "id": "psalm-103-17",
+    "text": "But the LORD's loving kindness is from everlasting to everlasting with those who fear him.",
+    "reference": "Psalm 103:17",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love stretches from everlasting to everlasting. It has no beginning and no end."
+  },
+  {
+    "id": "psalm-119-41",
+    "text": "Let your loving kindnesses also come to me, LORD.",
+    "reference": "Psalm 119:41",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Ask God to let His loving kindness come to you today. He delights to give it."
+  },
+  {
+    "id": "psalm-119-64",
+    "text": "The earth, LORD, is full of your loving kindness.",
+    "reference": "Psalm 119:64",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love fills the whole earth. Look for signs of it today."
+  },
+  {
+    "id": "psalm-119-97",
+    "text": "Oh how I love your law!",
+    "reference": "Psalm 119:97",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Loving God includes loving His Word. Let it become a delight to you."
+  },
+  {
+    "id": "psalm-145-8",
+    "text": "The LORD is gracious, and merciful; slow to anger, and of great loving kindness.",
+    "reference": "Psalm 145:8",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God is gracious and merciful, slow to anger and rich in love. That's who He is toward you."
+  },
+  {
+    "id": "psalm-145-20",
+    "text": "The LORD preserves all those who love him.",
+    "reference": "Psalm 145:20",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God watches over all who love Him. You are kept by His care."
+  },
+  {
+    "id": "proverbs-3-3",
+    "text": "Don't let kindness and truth forsake you. Bind them around your neck.",
+    "reference": "Proverbs 3:3",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Keep kindness and truth close, like something you wear every day."
+  },
+  {
+    "id": "proverbs-3-12",
+    "text": "For whom the LORD loves, he corrects, even as a father reproves the son in whom he delights.",
+    "reference": "Proverbs 3:12",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's correction comes from love, the way a good father guides a child he delights in."
+  },
+  {
+    "id": "proverbs-8-17",
+    "text": "I love those who love me. Those who seek me diligently will find me.",
+    "reference": "Proverbs 8:17",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Wisdom loves those who love her. Seek God's wisdom, and you will find it."
+  },
+  {
+    "id": "proverbs-15-9",
+    "text": "He loves him who follows after righteousness.",
+    "reference": "Proverbs 15:9",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God loves those who pursue what is right. Keep following Him."
+  },
+  {
+    "id": "proverbs-15-17",
+    "text": "Better is a dinner of herbs where love is, than a fattened calf with hatred.",
+    "reference": "Proverbs 15:17",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "A simple meal shared in love is worth more than a feast without it."
+  },
+  {
+    "id": "proverbs-16-6",
+    "text": "By mercy and truth iniquity is atoned for.",
+    "reference": "Proverbs 16:6",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Mercy and truth go together. God's love deals with our wrongs."
+  },
+  {
+    "id": "proverbs-19-22",
+    "text": "That which makes a man to be desired is his kindness.",
+    "reference": "Proverbs 19:22",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Kindness is what makes a person truly attractive. Let love show in how you treat others."
+  },
+  {
+    "id": "proverbs-21-21",
+    "text": "He who follows after righteousness and kindness finds life, righteousness, and honor.",
+    "reference": "Proverbs 21:21",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Pursue kindness and doing what is right, and you'll find real life."
+  },
+  {
+    "id": "song-of-solomon-2-4",
+    "text": "His banner over me is love.",
+    "reference": "Song of Solomon 2:4",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God's love is like a banner over you, declaring that you belong."
+  },
+  {
+    "id": "song-of-solomon-2-16",
+    "text": "My beloved is mine, and I am his.",
+    "reference": "Song of Solomon 2:16",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Belonging to someone and having them belong to you is a beautiful gift of love."
+  },
+  {
+    "id": "song-of-solomon-8-6",
+    "text": "Set me as a seal on your heart... for love is strong as death.",
+    "reference": "Song of Solomon 8:6",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "True love is fierce and enduring, stronger than anything that tries to break it."
+  },
+  {
+    "id": "isaiah-38-17",
+    "text": "You have, in love for my soul, delivered it from the pit of corruption.",
+    "reference": "Isaiah 38:17",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Out of love, God rescues. He cares about your soul."
+  },
+  {
+    "id": "isaiah-43-4",
+    "text": "Since you are precious in my sight, and honored, and I love you.",
+    "reference": "Isaiah 43:4",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "You are precious in God's sight, honoured, and loved. Let that sink in."
+  },
+  {
+    "id": "isaiah-49-16",
+    "text": "Behold, I have engraved you on the palms of my hands.",
+    "reference": "Isaiah 49:16",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Your name is engraved on God's hands. He will never forget you."
+  },
+  {
+    "id": "isaiah-63-9",
+    "text": "In his love and in his pity he redeemed them.",
+    "reference": "Isaiah 63:9",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "In His love and pity, God redeems His people. He carries them through every season."
+  },
+  {
+    "id": "jeremiah-9-24",
+    "text": "I am the LORD who exercises loving kindness, justice, and righteousness, in the earth.",
+    "reference": "Jeremiah 9:24",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God delights in loving kindness, justice and righteousness. Knowing Him is the greatest treasure."
+  },
+  {
+    "id": "hosea-2-19",
+    "text": "I will betroth you to me in righteousness, in justice, in loving kindness, and in compassion.",
+    "reference": "Hosea 2:19",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God commits Himself to His people with faithfulness, love and compassion."
+  },
+  {
+    "id": "hosea-6-6",
+    "text": "For I desire mercy, and not sacrifice.",
+    "reference": "Hosea 6:6",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God values a loving, merciful heart more than empty ritual."
+  },
+  {
+    "id": "hosea-11-4",
+    "text": "I drew them with cords of a man, with ties of love.",
+    "reference": "Hosea 11:4",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God draws His people with ties of love, gently and patiently."
+  },
+  {
+    "id": "joel-2-13",
+    "text": "For he is gracious and merciful, slow to anger, and abundant in loving kindness.",
+    "reference": "Joel 2:13",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Turn back to God anytime. He is gracious, merciful and full of love."
+  },
+  {
+    "id": "micah-7-18",
+    "text": "He doesn't retain his anger forever, because he delights in loving kindness.",
+    "reference": "Micah 7:18",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God delights in showing mercy. His anger doesn't last, but His love does."
+  },
+  {
+    "id": "zechariah-7-9",
+    "text": "Show kindness and compassion every man to his brother.",
+    "reference": "Zechariah 7:9",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Show kindness and compassion to those around you. It's the heart of true faith."
+  },
+  {
+    "id": "malachi-1-2",
+    "text": "‘I have loved you,’ says the LORD.",
+    "reference": "Malachi 1:2",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Before anything else, God says this: 'I have loved you.'"
+  },
+  {
+    "id": "matthew-5-46",
+    "text": "For if you love those who love you, what reward do you have?",
+    "reference": "Matthew 5:46",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Loving those who love you is easy. Jesus calls us to a bigger, bolder love."
+  },
+  {
+    "id": "matthew-22-37",
+    "text": "You shall love the Lord your God with all your heart, with all your soul, and with all your mind.",
+    "reference": "Matthew 22:37",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Love God with all your heart, soul and mind. Everything else flows from this."
+  },
+  {
+    "id": "mark-10-21",
+    "text": "Jesus looking at him loved him.",
+    "reference": "Mark 10:21",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Jesus looked at the young man and loved him. He looks at you with that same love."
+  },
+  {
+    "id": "mark-12-31",
+    "text": "You shall love your neighbor as yourself. There is no other commandment greater than these.",
+    "reference": "Mark 12:31",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Loving your neighbour as yourself is one of the greatest commands. Start with the person in front of you."
+  },
+  {
+    "id": "luke-6-35",
+    "text": "Love your enemies, and do good, and lend, expecting nothing in return.",
+    "reference": "Luke 6:35",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Jesus calls us to love even our enemies and to give without expecting anything back."
+  },
+  {
+    "id": "luke-7-47",
+    "text": "But to whom little is forgiven, the same loves little.",
+    "reference": "Luke 7:47",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "When you realise how much you've been forgiven, love overflows."
+  },
+  {
+    "id": "john-3-16",
+    "text": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+    "reference": "John 3:16",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God loved the world so much that He gave His Son. That love includes you."
+  },
+  {
+    "id": "john-11-5",
+    "text": "Now Jesus loved Martha, and her sister, and Lazarus.",
+    "reference": "John 11:5",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Jesus loved His friends personally, by name. He knows and loves you by name too."
+  },
+  {
+    "id": "john-14-15",
+    "text": "If you love me, keep my commandments.",
+    "reference": "John 14:15",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Love for Jesus shows itself in following Him. Let your love become action."
+  },
+  {
+    "id": "john-14-21",
+    "text": "He who loves me will be loved by my Father, and I will love him.",
+    "reference": "John 14:21",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Those who love Jesus are loved by the Father, and Jesus reveals Himself to them."
+  },
+  {
+    "id": "john-15-9",
+    "text": "Even as the Father has loved me, I also have loved you. Remain in my love.",
+    "reference": "John 15:9",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Jesus loves you the way the Father loves Him. Stay in that love."
+  },
+  {
+    "id": "john-17-26",
+    "text": "That the love with which you loved me may be in them, and I in them.",
+    "reference": "John 17:26",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Jesus prayed that the Father's love would live in you. That prayer is still at work."
+  },
+  {
+    "id": "romans-5-8",
+    "text": "But God commends his own love toward us, in that while we were yet sinners, Christ died for us.",
+    "reference": "Romans 5:8",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God didn't wait for you to be good enough. Christ died for you while you were still a sinner."
+  },
+  {
+    "id": "romans-8-35",
+    "text": "Who will separate us from the love of Christ?",
+    "reference": "Romans 8:35",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Nothing can separate you from the love of Christ. Not hardship, not fear, not anything."
+  },
+  {
+    "id": "romans-13-10",
+    "text": "Love doesn't harm a neighbor. Therefore love is the fulfillment of the law.",
+    "reference": "Romans 13:10",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Love never harms a neighbour. It fulfils everything God asks."
+  },
+  {
+    "id": "2-corinthians-5-14",
+    "text": "For the love of Christ constrains us.",
+    "reference": "2 Corinthians 5:14",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Christ's love is a powerful force. Let it shape your choices."
+  },
+  {
+    "id": "ephesians-2-4-5",
+    "text": "God, being rich in mercy, for his great love with which he loved us, even when we were dead through our trespasses, made us alive together with Christ.",
+    "reference": "Ephesians 2:4-5",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God is rich in mercy. Because of His great love, He made you alive in Christ."
+  },
+  {
+    "id": "ephesians-3-17",
+    "text": "Being rooted and grounded in love.",
+    "reference": "Ephesians 3:17",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Let your life be rooted and grounded in love. It holds you steady."
+  },
+  {
+    "id": "ephesians-3-19",
+    "text": "And to know Christ's love which surpasses knowledge.",
+    "reference": "Ephesians 3:19",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Christ's love is bigger than anything you can understand. Keep discovering it."
+  },
+  {
+    "id": "ephesians-5-2",
+    "text": "Walk in love, even as Christ also loved you.",
+    "reference": "Ephesians 5:2",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Walk in love, the same love Christ showed when He gave Himself for you."
+  },
+  {
+    "id": "philippians-1-9",
+    "text": "This I pray, that your love may abound yet more and more in knowledge and all discernment.",
+    "reference": "Philippians 1:9",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Pray that your love would grow in wisdom and insight, not just in feeling."
+  },
+  {
+    "id": "1-timothy-1-5",
+    "text": "Now the goal of this command is love, from a pure heart.",
+    "reference": "1 Timothy 1:5",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "The goal of faith is love from a pure heart. Let love be your aim."
+  },
+  {
+    "id": "1-peter-1-22",
+    "text": "Love one another from the heart fervently.",
+    "reference": "1 Peter 1:22",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Love one another deeply, from the heart."
+  },
+  {
+    "id": "1-john-3-1",
+    "text": "Behold, how great a love the Father has given to us, that we should be called children of God!",
+    "reference": "1 John 3:1",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "See how great the Father's love is: He calls you His child."
+  },
+  {
+    "id": "1-john-4-10",
+    "text": "In this is love, not that we loved God, but that he loved us.",
+    "reference": "1 John 4:10",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Love starts with God, not with us. He loved you first."
+  },
+  {
+    "id": "1-john-4-16",
+    "text": "God is love, and he who remains in love remains in God, and God remains in him.",
+    "reference": "1 John 4:16",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "God is love. When you live in love, you live in Him."
+  },
+  {
+    "id": "1-john-4-19",
+    "text": "We love him, because he first loved us.",
+    "reference": "1 John 4:19",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "We love because He first loved us. His love makes our love possible."
+  },
+  {
+    "id": "jude-1-21",
+    "text": "Keep yourselves in the love of God.",
+    "reference": "Jude 1:21",
+    "translation": "WEB",
+    "moods": [
+      "love"
+    ],
+    "reflection": "Keep yourself in God's love. Stay close to the One who loves you."
   }
 ]
