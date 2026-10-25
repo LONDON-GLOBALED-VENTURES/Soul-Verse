@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:ui' show ImageFilter;
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -52,30 +53,56 @@ class VerseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = style.textColor ?? template.textColorValue;
+    final darkness = style.overlayDarkness ?? template.overlayOpacity;
+
+    Widget photo =
+        background ??
+        CachedNetworkImage(
+          imageUrl: template.imageUrl,
+          fit: BoxFit.cover,
+          placeholder: (_, _) => const ColoredBox(color: AppColors.placeholder),
+          errorWidget: (_, _, _) =>
+              const ColoredBox(color: AppColors.placeholder),
+        );
+    final colorFilter = style.filter.colorFilter;
+    if (colorFilter != null) {
+      photo = ColorFiltered(colorFilter: colorFilter, child: photo);
+    }
+    if (style.blur > 0) {
+      // Blur pulls in empty space at the edges, leaving a pale border, so the
+      // photo is drawn larger than the card and the soft edge is clipped off.
+      final bleed = style.blur * 3;
+      photo = Positioned(
+        left: -bleed,
+        top: -bleed,
+        right: -bleed,
+        bottom: -bleed,
+        child: ImageFiltered(
+          imageFilter: ImageFilter.blur(
+            sigmaX: style.blur,
+            sigmaY: style.blur,
+            tileMode: TileMode.clamp,
+          ),
+          child: photo,
+        ),
+      );
+    }
 
     return ClipRRect(
       borderRadius: borderRadius,
       child: Stack(
         fit: StackFit.expand,
         children: [
-          background ??
-              CachedNetworkImage(
-                imageUrl: template.imageUrl,
-                fit: BoxFit.cover,
-                placeholder: (_, _) =>
-                    const ColoredBox(color: AppColors.placeholder),
-                errorWidget: (_, _, _) =>
-                    const ColoredBox(color: AppColors.placeholder),
-              ),
+          photo,
           DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Colors.black.withValues(alpha: template.overlayOpacity * 0.6),
-                  Colors.black.withValues(alpha: template.overlayOpacity),
-                  Colors.black.withValues(alpha: template.overlayOpacity * 1.4),
+                  Colors.black.withValues(alpha: darkness * 0.6),
+                  Colors.black.withValues(alpha: darkness),
+                  Colors.black.withValues(alpha: (darkness * 1.4).clamp(0, 1)),
                 ],
               ),
             ),

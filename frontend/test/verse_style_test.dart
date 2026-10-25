@@ -17,6 +17,17 @@ void main() {
     expect(style.reference, ReferencePlacement.below);
     expect(style.showQuotes, isTrue);
     expect(style.showWatermark, isTrue);
+    expect(style.overlayDarkness, isNull);
+    expect(style.blur, 0);
+    expect(style.filter, BackgroundFilter.none);
+    expect(style.filter.colorFilter, isNull);
+  });
+
+  test('every filter except Original changes the colours', () {
+    for (final filter in BackgroundFilter.values) {
+      if (filter == BackgroundFilter.none) continue;
+      expect(filter.matrix, hasLength(20), reason: filter.name);
+    }
   });
 
   test('copyWith changes only what is given and can clear the colour', () {

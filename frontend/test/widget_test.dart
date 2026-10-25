@@ -444,6 +444,42 @@ void main() {
     await tester.pump(const Duration(minutes: 1));
   });
 
+  testWidgets('share editor darkens, blurs and filters the background', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+    VerseStyle previewStyle() =>
+        tester.widget<VerseCard>(find.byType(VerseCard)).style;
+    Finder inCard(Finder finder) =>
+        find.descendant(of: find.byType(VerseCard), matching: finder);
+    // An unedited card has no extra layers.
+    expect(inCard(find.byType(ColorFiltered)), findsNothing);
+    expect(inCard(find.byType(ImageFiltered)), findsNothing);
+
+    await tester.tap(find.text('Adjust'));
+    await tester.pumpAndSettle();
+    await tester.drag(find.byType(Slider).first, const Offset(150, 0));
+    await tester.drag(find.byType(Slider).last, const Offset(150, 0));
+    await tester.pumpAndSettle();
+    // The template starts at 0.3; dragging right darkens it.
+    expect(previewStyle().overlayDarkness, greaterThan(0.3));
+    expect(previewStyle().blur, greaterThan(0));
+    expect(inCard(find.byType(ImageFiltered)), findsOneWidget);
+
+    await tester.tap(find.text('Filter'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.bySemanticsLabel('B&W filter'));
+    await tester.pumpAndSettle();
+    expect(previewStyle().filter, BackgroundFilter.mono);
+    expect(inCard(find.byType(ColorFiltered)), findsOneWidget);
+
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 1));
+  });
+
   testWidgets('home hides "A moment of reflection" when there is none', (
     tester,
   ) async {

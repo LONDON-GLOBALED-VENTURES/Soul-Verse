@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
@@ -6,6 +7,8 @@ import '../../data/models/verse_style.dart';
 /// The editing tools shown in the strip under the share preview.
 enum EditorTool {
   background('Background', Icons.image_outlined),
+  adjust('Adjust', Icons.contrast),
+  filter('Filter', Icons.filter_vintage_outlined),
   font('Font', Icons.font_download_outlined),
   size('Size', Icons.format_size),
   colour('Colour', Icons.palette_outlined),
@@ -47,52 +50,56 @@ class EditorToolStrip extends StatelessWidget {
   Widget build(BuildContext context) {
     final labelStyle = Theme.of(context).textTheme.labelSmall;
 
+    // A Row rather than a lazy list: every tool is always built, so each can
+    // be scrolled into view (the strip is wider than a phone).
     return SizedBox(
       height: 56,
-      child: ListView(
+      child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        children: [
-          for (final tool in EditorTool.values)
-            Semantics(
-              button: true,
-              selected: tool == selected,
-              child: InkWell(
-                onTap: () => onSelected(tool),
-                borderRadius: BorderRadius.circular(12),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        tool.icon,
-                        size: 22,
-                        color: tool == selected
-                            ? AppColors.accent
-                            : AppColors.textSecondary,
-                      ),
-                      const SizedBox(height: 3),
-                      Text(
-                        tool.label,
-                        style: labelStyle?.copyWith(
+        child: Row(
+          children: [
+            for (final tool in EditorTool.values)
+              Semantics(
+                button: true,
+                selected: tool == selected,
+                child: InkWell(
+                  onTap: () => onSelected(tool),
+                  borderRadius: BorderRadius.circular(12),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          tool.icon,
+                          size: 22,
                           color: tool == selected
                               ? AppColors.accent
                               : AppColors.textSecondary,
-                          fontWeight: tool == selected
-                              ? FontWeight.w600
-                              : FontWeight.w500,
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 3),
+                        Text(
+                          tool.label,
+                          style: labelStyle?.copyWith(
+                            color: tool == selected
+                                ? AppColors.accent
+                                : AppColors.textSecondary,
+                            fontWeight: tool == selected
+                                ? FontWeight.w600
+                                : FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -330,7 +337,36 @@ class SpacingControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Two compact sliders so both fit in the controls area.
+    return _SliderPair(
+      first: _LabelledSlider(
+        label: 'Lines',
+        semanticsLabel: 'Line spacing',
+        value: lineHeight,
+        min: VerseStyle.minLineHeight,
+        max: VerseStyle.maxLineHeight,
+        onChanged: onLineHeightChanged,
+      ),
+      second: _LabelledSlider(
+        label: 'Letters',
+        semanticsLabel: 'Letter spacing',
+        value: letterSpacing,
+        min: VerseStyle.minLetterSpacing,
+        max: VerseStyle.maxLetterSpacing,
+        onChanged: onLetterSpacingChanged,
+      ),
+    );
+  }
+}
+
+/// Two compact sliders stacked so both fit in the controls area.
+class _SliderPair extends StatelessWidget {
+  const _SliderPair({required this.first, required this.second});
+
+  final Widget first;
+  final Widget second;
+
+  @override
+  Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
         trackHeight: 3,
@@ -342,25 +378,45 @@ class SpacingControl extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _LabelledSlider(
-              label: 'Lines',
-              semanticsLabel: 'Line spacing',
-              value: lineHeight,
-              min: VerseStyle.minLineHeight,
-              max: VerseStyle.maxLineHeight,
-              onChanged: onLineHeightChanged,
-            ),
-            _LabelledSlider(
-              label: 'Letters',
-              semanticsLabel: 'Letter spacing',
-              value: letterSpacing,
-              min: VerseStyle.minLetterSpacing,
-              max: VerseStyle.maxLetterSpacing,
-              onChanged: onLetterSpacingChanged,
-            ),
-          ],
+          children: [first, second],
         ),
+      ),
+    );
+  }
+}
+
+class BackgroundAdjustControl extends StatelessWidget {
+  const BackgroundAdjustControl({
+    super.key,
+    required this.darkness,
+    required this.blur,
+    required this.onDarknessChanged,
+    required this.onBlurChanged,
+  });
+
+  final double darkness;
+  final double blur;
+  final ValueChanged<double> onDarknessChanged;
+  final ValueChanged<double> onBlurChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return _SliderPair(
+      first: _LabelledSlider(
+        label: 'Darken',
+        semanticsLabel: 'Background darkness',
+        value: darkness,
+        min: 0,
+        max: VerseStyle.maxOverlayDarkness,
+        onChanged: onDarknessChanged,
+      ),
+      second: _LabelledSlider(
+        label: 'Blur',
+        semanticsLabel: 'Background blur',
+        value: blur,
+        min: 0,
+        max: VerseStyle.maxBlur,
+        onChanged: onBlurChanged,
       ),
     );
   }
@@ -570,6 +626,98 @@ class _OptionChip extends StatelessWidget {
         side: BorderSide(color: selected ? AppColors.accent : AppColors.border),
         onSelected: (_) => onTap(),
       ),
+    );
+  }
+}
+
+/// Thumbnails of the current background with each filter applied.
+class BackgroundFilterPicker extends StatelessWidget {
+  const BackgroundFilterPicker({
+    super.key,
+    required this.imageUrl,
+    required this.selected,
+    required this.onChanged,
+  });
+
+  final String imageUrl;
+  final BackgroundFilter selected;
+  final ValueChanged<BackgroundFilter> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      itemCount: BackgroundFilter.values.length,
+      separatorBuilder: (_, _) => const SizedBox(width: 10),
+      itemBuilder: (context, i) {
+        final filter = BackgroundFilter.values[i];
+        final isSelected = filter == selected;
+        Widget image = CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.cover,
+          placeholder: (_, _) => const ColoredBox(color: AppColors.placeholder),
+          errorWidget: (_, _, _) =>
+              const ColoredBox(color: AppColors.placeholder),
+        );
+        final colorFilter = filter.colorFilter;
+        if (colorFilter != null) {
+          image = ColorFiltered(colorFilter: colorFilter, child: image);
+        }
+        return Semantics(
+          button: true,
+          selected: isSelected,
+          label: '${filter.label} filter',
+          excludeSemantics: true,
+          child: GestureDetector(
+            onTap: () => onChanged(filter),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              width: 64,
+              padding: const EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: isSelected ? AppColors.accent : Colors.transparent,
+                  width: 2,
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(9),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    image,
+                    const DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.transparent, Colors.black54],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text(
+                          filter.label,
+                          style: Theme.of(context).textTheme.labelSmall
+                              ?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

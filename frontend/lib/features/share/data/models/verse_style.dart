@@ -50,6 +50,46 @@ enum ReferencePlacement {
   final String label;
 }
 
+/// Colour treatments for the background photo.
+enum BackgroundFilter {
+  none('Original'),
+  warm('Warm', [
+    1.1, 0, 0, 0, 12, //
+    0, 1.02, 0, 0, 4,
+    0, 0, 0.86, 0, 0,
+    0, 0, 0, 1, 0,
+  ]),
+  cool('Cool', [
+    0.9, 0, 0, 0, 0, //
+    0, 1, 0, 0, 4,
+    0, 0, 1.12, 0, 14,
+    0, 0, 0, 1, 0,
+  ]),
+  mono('B&W', [
+    0.2126, 0.7152, 0.0722, 0, 0, //
+    0.2126, 0.7152, 0.0722, 0, 0,
+    0.2126, 0.7152, 0.0722, 0, 0,
+    0, 0, 0, 1, 0,
+  ]),
+  // Lower contrast, lifted shadows and a little less colour.
+  faded('Faded', [
+    0.75, 0.08, 0.02, 0, 34, //
+    0.05, 0.78, 0.02, 0, 32,
+    0.05, 0.08, 0.72, 0, 36,
+    0, 0, 0, 1, 0,
+  ]);
+
+  const BackgroundFilter(this.label, [this.matrix]);
+
+  final String label;
+
+  /// A 5x4 colour matrix; null leaves the photo unchanged.
+  final List<double>? matrix;
+
+  ColorFilter? get colorFilter =>
+      matrix == null ? null : ColorFilter.matrix(matrix!);
+}
+
 const _unset = Object();
 
 /// How the user has customised a verse image. [standard] matches the
@@ -68,6 +108,9 @@ class VerseStyle {
     this.reference = ReferencePlacement.below,
     this.showQuotes = true,
     this.showWatermark = true,
+    this.overlayDarkness,
+    this.blur = 0,
+    this.filter = BackgroundFilter.none,
   });
 
   static const topPosition = Alignment(0, -0.8);
@@ -82,6 +125,8 @@ class VerseStyle {
   static const maxLineHeight = 2.0;
   static const minLetterSpacing = -0.05;
   static const maxLetterSpacing = 0.25;
+  static const maxOverlayDarkness = 0.8;
+  static const maxBlur = 12.0;
 
   final VerseFont font;
 
@@ -111,6 +156,14 @@ class VerseStyle {
   /// Only applies where the card shows a watermark (the share screen).
   final bool showWatermark;
 
+  /// How dark the overlay on the photo is; null uses the template's own.
+  final double? overlayDarkness;
+
+  /// Blur radius applied to the background photo.
+  final double blur;
+
+  final BackgroundFilter filter;
+
   VerseStyle copyWith({
     VerseFont? font,
     double? textScale,
@@ -123,6 +176,9 @@ class VerseStyle {
     ReferencePlacement? reference,
     bool? showQuotes,
     bool? showWatermark,
+    Object? overlayDarkness = _unset,
+    double? blur,
+    BackgroundFilter? filter,
   }) {
     return VerseStyle(
       font: font ?? this.font,
@@ -138,6 +194,11 @@ class VerseStyle {
       reference: reference ?? this.reference,
       showQuotes: showQuotes ?? this.showQuotes,
       showWatermark: showWatermark ?? this.showWatermark,
+      overlayDarkness: identical(overlayDarkness, _unset)
+          ? this.overlayDarkness
+          : overlayDarkness as double?,
+      blur: blur ?? this.blur,
+      filter: filter ?? this.filter,
     );
   }
 
@@ -154,7 +215,10 @@ class VerseStyle {
       other.textPosition == textPosition &&
       other.reference == reference &&
       other.showQuotes == showQuotes &&
-      other.showWatermark == showWatermark;
+      other.showWatermark == showWatermark &&
+      other.overlayDarkness == overlayDarkness &&
+      other.blur == blur &&
+      other.filter == filter;
 
   @override
   int get hashCode => Object.hash(
@@ -169,5 +233,8 @@ class VerseStyle {
     reference,
     showQuotes,
     showWatermark,
+    overlayDarkness,
+    blur,
+    filter,
   );
 }

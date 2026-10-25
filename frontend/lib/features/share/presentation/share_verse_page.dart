@@ -301,6 +301,18 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
           );
         },
       ),
+      EditorTool.adjust => BackgroundAdjustControl(
+        darkness: _style.overlayDarkness ?? _template.overlayOpacity,
+        blur: _style.blur,
+        onDarknessChanged: (value) =>
+            _updateStyle(_style.copyWith(overlayDarkness: value)),
+        onBlurChanged: (value) => _updateStyle(_style.copyWith(blur: value)),
+      ),
+      EditorTool.filter => BackgroundFilterPicker(
+        imageUrl: _template.imageUrl,
+        selected: _style.filter,
+        onChanged: (filter) => _updateStyle(_style.copyWith(filter: filter)),
+      ),
       EditorTool.font => FontPicker(
         selected: _style.font,
         onChanged: (font) => _updateStyle(_style.copyWith(font: font)),
