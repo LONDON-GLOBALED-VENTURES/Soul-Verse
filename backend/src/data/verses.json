@@ -1253,7 +1253,8 @@
     "reference": "Exodus 15:2",
     "translation": "WEB",
     "moods": [
-      "thankful"
+      "thankful",
+      "helplessness"
     ],
     "reflection": "Thanksgiving remembers rescue. God has been your strength and your song; let that memory lift your heart today."
   },
@@ -2378,7 +2379,8 @@
     "reference": "Judges 6:12",
     "translation": "WEB",
     "moods": [
-      "courage"
+      "courage",
+      "helplessness"
     ],
     "reflection": "Gideon felt small and afraid, yet God called him a mighty warrior. God sees strength in you that you may not see yet."
   },
@@ -2398,7 +2400,8 @@
     "reference": "1 Samuel 17:47",
     "translation": "WEB",
     "moods": [
-      "courage"
+      "courage",
+      "helplessness"
     ],
     "reflection": "The battle belongs to the Lord. You can face what's in front of you knowing He is the one who wins it."
   },
@@ -2438,7 +2441,8 @@
     "reference": "2 Chronicles 16:9",
     "translation": "WEB",
     "moods": [
-      "courage"
+      "courage",
+      "helplessness"
     ],
     "reflection": "God is searching the earth for hearts that are fully His, so He can strengthen them. Let yours be one."
   },
@@ -2625,7 +2629,8 @@
     "reference": "Psalm 118:14",
     "translation": "WEB",
     "moods": [
-      "courage"
+      "courage",
+      "helplessness"
     ],
     "reflection": "When your own strength runs out, God becomes your strength, your song and your salvation."
   },
@@ -2795,7 +2800,8 @@
     "reference": "Isaiah 50:7",
     "translation": "WEB",
     "moods": [
-      "courage"
+      "courage",
+      "helplessness"
     ],
     "reflection": "Because God helps you, you can set your face like flint and keep going, even when it's hard."
   },
@@ -2846,7 +2852,8 @@
     "reference": "Jeremiah 32:17",
     "translation": "WEB",
     "moods": [
-      "courage"
+      "courage",
+      "helplessness"
     ],
     "reflection": "The God who made the heavens and the earth is with you. Nothing you face is too hard for Him."
   },
@@ -3126,7 +3133,8 @@
     "reference": "Romans 8:37",
     "translation": "WEB",
     "moods": [
-      "courage"
+      "courage",
+      "helplessness"
     ],
     "reflection": "In everything you face, you are more than a conqueror through the One who loves you."
   },
@@ -3156,7 +3164,8 @@
     "reference": "2 Corinthians 12:10",
     "translation": "WEB",
     "moods": [
-      "courage"
+      "courage",
+      "helplessness"
     ],
     "reflection": "Your weakness is not the end of the story. It's where God's strength shows up most."
   },
@@ -3210,7 +3219,8 @@
     "translation": "WEB",
     "moods": [
       "courage",
-      "loneliness"
+      "loneliness",
+      "helplessness"
     ],
     "reflection": "Say it with confidence: the Lord is my helper; I will not fear. What can anyone do to me?"
   },
@@ -3293,7 +3303,8 @@
     "reference": "Psalm 10:14",
     "translation": "WEB",
     "moods": [
-      "loneliness"
+      "loneliness",
+      "helplessness"
     ],
     "reflection": "God sees your trouble and your grief, even what no one else notices. He takes it into His hands."
   },
@@ -4398,7 +4409,8 @@
     "reference": "John 15:5",
     "translation": "WEB",
     "moods": [
-      "stress"
+      "stress",
+      "helplessness"
     ],
     "reflection": "You're a branch, not the vine. You don't have to produce everything yourself; stay connected to Jesus."
   },
@@ -7481,5 +7493,885 @@
       "love"
     ],
     "reflection": "Keep yourself in God's love. Stay close to the One who loves you."
+  },
+  {
+    "id": "genesis-16-13",
+    "text": "You are a God who sees.",
+    "reference": "Genesis 16:13",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Hagar was alone and powerless, yet God saw her. When you feel unseen, He is the God who sees you."
+  },
+  {
+    "id": "genesis-21-17",
+    "text": "Don't be afraid, for God has heard the voice of the boy where he is.",
+    "reference": "Genesis 21:17",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God heard the boy right where he was. He hears you in the exact place you are now."
+  },
+  {
+    "id": "exodus-3-7",
+    "text": "I have surely seen the affliction of my people... and have heard their cry.",
+    "reference": "Exodus 3:7",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God sees the suffering of His people and hears their cry. Your situation is not hidden from Him."
+  },
+  {
+    "id": "exodus-14-13",
+    "text": "Don't be afraid. Stand still, and see the salvation of the LORD.",
+    "reference": "Exodus 14:13",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When there's nothing you can do, stand still and watch for God. Some rescues are His alone."
+  },
+  {
+    "id": "deuteronomy-33-26",
+    "text": "There is none like God... who rides on the heavens to your help.",
+    "reference": "Deuteronomy 33:26",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "There is no one like God. He rides across the heavens to come to your help."
+  },
+  {
+    "id": "judges-6-14",
+    "text": "Go in this your might... Haven't I sent you?",
+    "reference": "Judges 6:14",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Gideon felt weak, but God said, 'Go in the strength you have. Haven't I sent you?' Your little is enough with Him."
+  },
+  {
+    "id": "1-samuel-2-8",
+    "text": "He raises up the poor out of the dust.",
+    "reference": "1 Samuel 2:8",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God lifts people up from the dust. Even the lowest place isn't beyond His reach."
+  },
+  {
+    "id": "1-samuel-2-9",
+    "text": "He will keep the feet of his holy ones.",
+    "reference": "1 Samuel 2:9",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God guards the steps of His people. You won't walk this road unprotected."
+  },
+  {
+    "id": "2-samuel-22-3",
+    "text": "My God, my rock, in him will I take refuge.",
+    "reference": "2 Samuel 22:3",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you have nowhere else to turn, God is your rock and your refuge."
+  },
+  {
+    "id": "2-samuel-22-33",
+    "text": "God is my strong fortress. He makes my way perfect.",
+    "reference": "2 Samuel 22:33",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is your strong fortress. He guides your way even when you can't see it."
+  },
+  {
+    "id": "2-samuel-22-37",
+    "text": "You have enlarged my steps under me.",
+    "reference": "2 Samuel 22:37",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God makes room for your steps so you don't slip. He widens the path beneath you."
+  },
+  {
+    "id": "1-kings-19-7",
+    "text": "Arise and eat, because the journey is too great for you.",
+    "reference": "1 Kings 19:7",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When Elijah was exhausted and hopeless, God gave him food and rest. He cares for your body and your soul."
+  },
+  {
+    "id": "2-chronicles-14-11",
+    "text": "LORD, there is no one besides you to help, between the mighty and the weak.",
+    "reference": "2 Chronicles 14:11",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you're the weak one facing something mighty, God is the helper who makes the difference."
+  },
+  {
+    "id": "2-chronicles-20-12",
+    "text": "We don't know what to do, but our eyes are on you.",
+    "reference": "2 Chronicles 20:12",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "It's okay not to know what to do. Keep your eyes on God; that's enough for now."
+  },
+  {
+    "id": "ezra-8-22",
+    "text": "The hand of our God is on all those who seek him, for good.",
+    "reference": "Ezra 8:22",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God's gracious hand is on those who seek Him. Keep seeking Him."
+  },
+  {
+    "id": "nehemiah-4-20",
+    "text": "Our God will fight for us.",
+    "reference": "Nehemiah 4:20",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "You don't have to win this alone. Our God will fight for us."
+  },
+  {
+    "id": "job-5-11",
+    "text": "He sets up on high those who are low.",
+    "reference": "Job 5:11",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God lifts up the lowly. Being brought low is never the end of the story with Him."
+  },
+  {
+    "id": "job-42-2",
+    "text": "I know that you can do all things, and that no purpose of yours can be restrained.",
+    "reference": "Job 42:2",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Nothing God purposes can be stopped. He is able to do all things."
+  },
+  {
+    "id": "psalm-12-5",
+    "text": "Now I will arise, says the LORD; I will set him in safety.",
+    "reference": "Psalm 12:5",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God rises to protect the weak and oppressed. He sees, and He acts."
+  },
+  {
+    "id": "psalm-18-16",
+    "text": "He sent from on high, he took me. He drew me out of many waters.",
+    "reference": "Psalm 18:16",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you feel like you're drowning, God reaches down and draws you out."
+  },
+  {
+    "id": "psalm-18-35",
+    "text": "Your right hand sustains me.",
+    "reference": "Psalm 18:35",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God's right hand holds you up. You are sustained by Him."
+  },
+  {
+    "id": "psalm-20-2",
+    "text": "Send you help from the sanctuary, grant you support from Zion.",
+    "reference": "Psalm 20:2",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "May God send you help and support. He is ready to strengthen you."
+  },
+  {
+    "id": "psalm-22-11",
+    "text": "Don't be far from me, for trouble is near.",
+    "reference": "Psalm 22:11",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When trouble is close and help seems far, ask God to stay near. He hears."
+  },
+  {
+    "id": "psalm-25-15",
+    "text": "My eyes are ever on the LORD, for he will pluck my feet out of the net.",
+    "reference": "Psalm 25:15",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Keep your eyes on the Lord. He can free your feet from whatever has trapped you."
+  },
+  {
+    "id": "psalm-33-19",
+    "text": "To deliver their soul from death, and to keep them alive in famine.",
+    "reference": "Psalm 33:19",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God watches over His people, even in seasons of lack. He keeps them alive."
+  },
+  {
+    "id": "psalm-35-2",
+    "text": "Take hold of shield and buckler, and stand up for my help.",
+    "reference": "Psalm 35:2",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "You can ask God to stand up for you. He is your defender."
+  },
+  {
+    "id": "psalm-35-10",
+    "text": "LORD, who is like you, who delivers the poor from him who is too strong for him?",
+    "reference": "Psalm 35:10",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God rescues the weak from those too strong for them. There is no one like Him."
+  },
+  {
+    "id": "psalm-37-23",
+    "text": "A man's steps are established by the LORD.",
+    "reference": "Psalm 37:23",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God directs the steps of His people. You are not wandering without a guide."
+  },
+  {
+    "id": "psalm-40-13",
+    "text": "Be pleased, LORD, to deliver me. Hurry to help me, LORD.",
+    "reference": "Psalm 40:13",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "You can ask God to hurry to your help. He welcomes that honest prayer."
+  },
+  {
+    "id": "psalm-44-26",
+    "text": "Rise up to help us. Redeem us for your loving kindness' sake.",
+    "reference": "Psalm 44:26",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Ask God to rise up and help you, because of His unfailing love."
+  },
+  {
+    "id": "psalm-46-7",
+    "text": "The LORD of hosts is with us. The God of Jacob is our refuge.",
+    "reference": "Psalm 46:7",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "The Lord of armies is with you. You are not facing this alone."
+  },
+  {
+    "id": "psalm-54-4",
+    "text": "Behold, God is my helper. The Lord is the one who sustains my soul.",
+    "reference": "Psalm 54:4",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is your helper. He holds up your soul."
+  },
+  {
+    "id": "psalm-60-11",
+    "text": "Give us help against the adversary, for the help of man is vain.",
+    "reference": "Psalm 60:11",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Human help has its limits. God's help does not."
+  },
+  {
+    "id": "psalm-62-2",
+    "text": "He alone is my rock and my salvation, my fortress. I will not be greatly shaken.",
+    "reference": "Psalm 62:2",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God alone is your rock and fortress. With Him, you won't be shaken."
+  },
+  {
+    "id": "psalm-62-7",
+    "text": "My salvation and my honor depend on God.",
+    "reference": "Psalm 62:7",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Your safety and your worth rest in God, not in your own strength."
+  },
+  {
+    "id": "psalm-69-33",
+    "text": "For the LORD hears the needy, and doesn't despise his captive people.",
+    "reference": "Psalm 69:33",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God hears the needy. He never looks down on those who are trapped."
+  },
+  {
+    "id": "psalm-72-12",
+    "text": "He will deliver the needy when he cries; the poor, who has no helper.",
+    "reference": "Psalm 72:12",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you have no one to help you, God hears your cry and comes."
+  },
+  {
+    "id": "psalm-72-13",
+    "text": "He will have pity on the poor and needy.",
+    "reference": "Psalm 72:13",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God has compassion on the weak and needy. He cares about you."
+  },
+  {
+    "id": "psalm-79-9",
+    "text": "Help us, God of our salvation, for the glory of your name.",
+    "reference": "Psalm 79:9",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Ask God for help for the sake of His name. He is the God who saves."
+  },
+  {
+    "id": "psalm-81-7",
+    "text": "You called in trouble, and I delivered you.",
+    "reference": "Psalm 81:7",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "You called in trouble, and God rescued you. He can do it again."
+  },
+  {
+    "id": "psalm-84-5",
+    "text": "Blessed are those whose strength is in you.",
+    "reference": "Psalm 84:5",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Those whose strength is in God are blessed. Let Him be your strength."
+  },
+  {
+    "id": "psalm-84-7",
+    "text": "They go from strength to strength.",
+    "reference": "Psalm 84:7",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "With God, you can go from strength to strength, one step at a time."
+  },
+  {
+    "id": "psalm-86-1",
+    "text": "Hear, LORD, and answer me, for I am poor and needy.",
+    "reference": "Psalm 86:1",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "You can come to God just as you are: poor and needy. He listens and answers."
+  },
+  {
+    "id": "psalm-86-17",
+    "text": "You, LORD, have helped me, and comforted me.",
+    "reference": "Psalm 86:17",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Remember the times God has helped and comforted you. He is the same today."
+  },
+  {
+    "id": "psalm-89-21",
+    "text": "My hand will be established with him. My arm will also strengthen him.",
+    "reference": "Psalm 89:21",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God's hand steadies His servants, and His arm gives them strength."
+  },
+  {
+    "id": "psalm-91-14",
+    "text": "Because he has set his love on me, therefore I will deliver him.",
+    "reference": "Psalm 91:14",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God rescues those who cling to Him in love. Hold on to Him."
+  },
+  {
+    "id": "psalm-94-17",
+    "text": "Unless the LORD had been my help, my soul would have soon lived in silence.",
+    "reference": "Psalm 94:17",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "If the Lord had not helped, we would have gone silent. He is still your help."
+  },
+  {
+    "id": "psalm-109-26",
+    "text": "Help me, LORD my God. Save me according to your loving kindness.",
+    "reference": "Psalm 109:26",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Help me, Lord, according to Your love. Pray it simply and honestly."
+  },
+  {
+    "id": "psalm-109-31",
+    "text": "He will stand at the right hand of the needy.",
+    "reference": "Psalm 109:31",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God stands beside the needy. He is at your right hand."
+  },
+  {
+    "id": "psalm-113-7",
+    "text": "He raises up the poor out of the dust.",
+    "reference": "Psalm 113:7",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God lifts the poor from the dust. He doesn't leave anyone there."
+  },
+  {
+    "id": "psalm-115-9",
+    "text": "He is their help and their shield.",
+    "reference": "Psalm 115:9",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Trust in the Lord. He is your help and your shield."
+  },
+  {
+    "id": "psalm-116-6",
+    "text": "I was brought low, and he saved me.",
+    "reference": "Psalm 116:6",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you are brought low, God saves. He is gentle with the weak."
+  },
+  {
+    "id": "psalm-118-13",
+    "text": "You pushed me back hard, to make me fall, but the LORD helped me.",
+    "reference": "Psalm 118:13",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you were pushed toward falling, the Lord helped you. He is your helper still."
+  },
+  {
+    "id": "psalm-118-25",
+    "text": "Save us now, we beg you, LORD.",
+    "reference": "Psalm 118:25",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "'Save us, Lord' is a prayer God welcomes. You can pray it today."
+  },
+  {
+    "id": "psalm-119-117",
+    "text": "Hold me up, and I will be safe.",
+    "reference": "Psalm 119:117",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Ask God to hold you up. In His hands, you are safe."
+  },
+  {
+    "id": "psalm-119-173",
+    "text": "Let your hand be ready to help me.",
+    "reference": "Psalm 119:173",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Ask God to keep His hand ready to help you. He is near."
+  },
+  {
+    "id": "psalm-119-175",
+    "text": "Let my soul live, and it will praise you.",
+    "reference": "Psalm 119:175",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Ask God for life, and let your life become praise to Him."
+  },
+  {
+    "id": "psalm-124-8",
+    "text": "Our help is in the name of the LORD, who made heaven and earth.",
+    "reference": "Psalm 124:8",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Your help comes from the One who made heaven and earth. There is no greater help."
+  },
+  {
+    "id": "psalm-140-12",
+    "text": "I know that the LORD will maintain the cause of the afflicted.",
+    "reference": "Psalm 140:12",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God stands up for the afflicted. He cares about justice for you."
+  },
+  {
+    "id": "psalm-144-2",
+    "text": "My loving kindness, my fortress, my high tower, my deliverer.",
+    "reference": "Psalm 144:2",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is your love, your fortress and your deliverer. He has you covered."
+  },
+  {
+    "id": "psalm-146-5",
+    "text": "Happy is he who has the God of Jacob for his help.",
+    "reference": "Psalm 146:5",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Happy are those whose help is God. He doesn't fail."
+  },
+  {
+    "id": "proverbs-30-5",
+    "text": "He is a shield to those who take refuge in him.",
+    "reference": "Proverbs 30:5",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is a shield to those who take refuge in Him. Run to Him."
+  },
+  {
+    "id": "isaiah-25-4",
+    "text": "For you have been a stronghold to the poor, a stronghold to the needy in his distress.",
+    "reference": "Isaiah 25:4",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is a refuge for the poor and needy in distress. He shelters you."
+  },
+  {
+    "id": "isaiah-40-28",
+    "text": "The everlasting God, the LORD, the Creator of the ends of the earth, doesn't faint. He isn't weary.",
+    "reference": "Isaiah 40:28",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you are tired, remember: God never grows weary. His strength never runs out."
+  },
+  {
+    "id": "isaiah-41-14",
+    "text": "Don't be afraid... I will help you, says the LORD.",
+    "reference": "Isaiah 41:14",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Even when you feel small and weak, God says, 'Don't be afraid. I will help you.'"
+  },
+  {
+    "id": "isaiah-42-16",
+    "text": "I will bring the blind by a way that they don't know.",
+    "reference": "Isaiah 42:16",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you can't see the way, God will lead you along paths you don't know."
+  },
+  {
+    "id": "isaiah-43-19",
+    "text": "Behold, I will do a new thing.",
+    "reference": "Isaiah 43:19",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is doing a new thing. Look for it, even in the wilderness."
+  },
+  {
+    "id": "isaiah-45-2",
+    "text": "I will go before you, and make the rough places smooth.",
+    "reference": "Isaiah 45:2",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God goes ahead of you to make the rough places level."
+  },
+  {
+    "id": "isaiah-59-1",
+    "text": "Behold, the LORD's hand is not shortened, that it can't save.",
+    "reference": "Isaiah 59:1",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God's arm is not too short to save. Nothing is beyond His reach."
+  },
+  {
+    "id": "jeremiah-20-11",
+    "text": "But the LORD is with me as an awesome mighty one.",
+    "reference": "Jeremiah 20:11",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "The Lord is with you like a mighty warrior. You don't stand alone."
+  },
+  {
+    "id": "lamentations-3-55-56",
+    "text": "I called on your name, LORD, out of the lowest dungeon. You heard my voice.",
+    "reference": "Lamentations 3:55-56",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Even from the lowest pit, God heard. He hears you too."
+  },
+  {
+    "id": "habakkuk-2-3",
+    "text": "Though it takes time, wait for it.",
+    "reference": "Habakkuk 2:3",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God's timing may feel slow, but it is never late. Keep waiting on Him."
+  },
+  {
+    "id": "zechariah-4-10",
+    "text": "Who has despised the day of small things?",
+    "reference": "Zechariah 4:10",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Don't despise small beginnings. God works through little things."
+  },
+  {
+    "id": "matthew-14-30-31",
+    "text": "'Lord, save me!' Immediately Jesus stretched out his hand, and took hold of him.",
+    "reference": "Matthew 14:30-31",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When Peter began to sink, he cried out and Jesus immediately took his hand. Cry out; He reaches for you."
+  },
+  {
+    "id": "matthew-15-25",
+    "text": "Lord, help me.",
+    "reference": "Matthew 15:25",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Sometimes the only prayer you have is 'Lord, help me.' It's enough."
+  },
+  {
+    "id": "matthew-26-41",
+    "text": "The spirit indeed is willing, but the flesh is weak.",
+    "reference": "Matthew 26:41",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Jesus understands human weakness. Pray, and lean on His strength."
+  },
+  {
+    "id": "mark-9-22",
+    "text": "Have compassion on us, and help us.",
+    "reference": "Mark 9:22",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "You can ask Jesus for compassion and help. He is moved by your need."
+  },
+  {
+    "id": "luke-1-52",
+    "text": "He has put down princes from their thrones, and has exalted the lowly.",
+    "reference": "Luke 1:52",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God lifts up the humble. He sees those who feel powerless."
+  },
+  {
+    "id": "luke-11-9",
+    "text": "Ask, and it will be given you. Seek, and you will find. Knock, and it will be opened to you.",
+    "reference": "Luke 11:9",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Keep asking, seeking and knocking. God responds to those who persist in prayer."
+  },
+  {
+    "id": "luke-18-1",
+    "text": "Men ought always to pray, and not to give up.",
+    "reference": "Luke 18:1",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Jesus taught us to keep praying and not give up. Your prayers matter."
+  },
+  {
+    "id": "john-6-68",
+    "text": "Lord, to whom would we go? You have the words of eternal life.",
+    "reference": "John 6:68",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When you don't know where else to turn, turn to Jesus. He has the words of life."
+  },
+  {
+    "id": "john-14-16",
+    "text": "I will pray to the Father, and he will give you another Counselor, that he may be with you forever.",
+    "reference": "John 14:16",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Jesus promised the Holy Spirit as your Helper, who stays with you forever."
+  },
+  {
+    "id": "acts-17-28",
+    "text": "In him we live, and move, and have our being.",
+    "reference": "Acts 17:28",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "In God you live and move and exist. You are held by Him every moment."
+  },
+  {
+    "id": "1-corinthians-10-13",
+    "text": "God is faithful, who will not allow you to be tempted above what you are able.",
+    "reference": "1 Corinthians 10:13",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is faithful. He won't let you be tested beyond what you can bear, and He provides a way through."
+  },
+  {
+    "id": "2-corinthians-1-9",
+    "text": "That we should not trust in ourselves, but in God who raises the dead.",
+    "reference": "2 Corinthians 1:9",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "When we reach the end of ourselves, we learn to rely on the God who raises the dead."
+  },
+  {
+    "id": "ephesians-3-20",
+    "text": "Now to him who is able to do exceedingly abundantly above all that we ask or think.",
+    "reference": "Ephesians 3:20",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is able to do far more than you can ask or imagine. Your limits are not His."
+  },
+  {
+    "id": "philippians-2-13",
+    "text": "For it is God who works in you both to will and to work, for his good pleasure.",
+    "reference": "Philippians 2:13",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "God is at work in you, giving you both the desire and the strength to do what pleases Him."
+  },
+  {
+    "id": "hebrews-2-18",
+    "text": "He is able to help those who are tempted.",
+    "reference": "Hebrews 2:18",
+    "translation": "WEB",
+    "moods": [
+      "helplessness"
+    ],
+    "reflection": "Jesus knows what it is to suffer and be tested. He is able to help you."
   }
 ]
