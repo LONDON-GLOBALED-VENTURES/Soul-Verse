@@ -64,14 +64,15 @@ class HomePage extends ConsumerWidget {
                         ),
                 ),
               ),
-              const SizedBox(height: 16),
-              PillButton(
-                label: 'A moment of reflection',
-                onPressed: () {
-                  final verse = daily.value?.verse;
-                  if (verse != null) showReflectionSheet(context, verse);
-                },
-              ),
+              // Only when today's verse has a reflection to show.
+              if (daily.value?.verse case final verse?
+                  when verse.reflection.trim().isNotEmpty) ...[
+                const SizedBox(height: 16),
+                PillButton(
+                  label: 'A moment of reflection',
+                  onPressed: () => showReflectionSheet(context, verse),
+                ),
+              ],
             ],
           ),
         ),

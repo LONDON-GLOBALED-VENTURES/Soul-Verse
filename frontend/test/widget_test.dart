@@ -55,6 +55,7 @@ const _template = VerseTemplate(
 class _FakeVersesApi implements VersesApi {
   /// When set, the daily verse request fails with this HTTP status.
   int? dailyStatusCode;
+  Verse dailyVerse = _stillVerse;
   final requestedDailyDates = <String?>[];
 
   @override
@@ -88,9 +89,9 @@ class _FakeVersesApi implements VersesApi {
         type: DioExceptionType.badResponse,
       );
     }
-    return const DailyVerse(
+    return DailyVerse(
       date: '2026-01-01',
-      verse: _stillVerse,
+      verse: dailyVerse,
       template: _template,
     );
   }
@@ -314,6 +315,24 @@ void main() {
     // Let the image cache's delayed write timer finish before the test ends.
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(minutes: 1));
+  });
+
+  testWidgets('home hides "A moment of reflection" when there is none', (
+    tester,
+  ) async {
+    versesApi.dailyVerse = const Verse(
+      id: 'john-11-35',
+      text: 'Jesus wept.',
+      reference: 'John 11:35',
+      translation: 'WEB',
+      moods: ['heartbroken'],
+      reflection: '',
+    );
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    expect(find.text('“Jesus wept.”'), findsOneWidget);
+    expect(find.text('A moment of reflection'), findsNothing);
   });
 
   testWidgets('home explains when there are no verses yet', (tester) async {

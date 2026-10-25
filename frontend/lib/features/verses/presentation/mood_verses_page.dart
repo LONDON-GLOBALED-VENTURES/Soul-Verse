@@ -135,25 +135,27 @@ class _VerseDetail extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 16),
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Reflection', style: textTheme.titleLarge),
-                const SizedBox(height: 8),
-                Text(
-                  verse.reflection,
-                  style: textTheme.bodyLarge?.copyWith(
-                    color: AppColors.textSecondary,
+        if (verse.reflection.trim().isNotEmpty) ...[
+          const SizedBox(height: 16),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Reflection', style: textTheme.titleLarge),
+                  const SizedBox(height: 8),
+                  Text(
+                    verse.reflection,
+                    style: textTheme.bodyLarge?.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
+        ],
         const SizedBox(height: 16),
         PillButton(label: 'Show more verses', onPressed: onNext),
       ],
