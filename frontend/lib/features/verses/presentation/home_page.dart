@@ -13,16 +13,25 @@ import '../../../core/widgets/pill_button.dart';
 import '../../../core/widgets/verse_card.dart';
 import '../../favourites/presentation/toggle_favourite.dart';
 import '../../share/presentation/share_verse_page.dart';
+import '../../share/presentation/widgets/verse_editor_controls.dart';
 import '../application/verses_providers.dart';
 import '../data/models/verse.dart';
 import '../data/models/verse_template.dart';
 import 'widgets/reflection_sheet.dart';
 
-void _openShare(BuildContext context, Verse verse, VerseTemplate template) =>
-    context.push(
-      AppRoutes.share,
-      extra: ShareVerseArgs(verse: verse, template: template),
-    );
+void _openShare(
+  BuildContext context,
+  Verse verse,
+  VerseTemplate template, {
+  EditorTool initialTool = EditorTool.background,
+}) => context.push(
+  AppRoutes.share,
+  extra: ShareVerseArgs(
+    verse: verse,
+    template: template,
+    initialTool: initialTool,
+  ),
+);
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -50,7 +59,12 @@ class HomePage extends ConsumerWidget {
                       verse: d.verse,
                       template: d.template,
                       onShare: () => _openShare(context, d.verse, d.template),
-                      onEdit: () => _openShare(context, d.verse, d.template),
+                      onEdit: () => _openShare(
+                        context,
+                        d.verse,
+                        d.template,
+                        initialTool: EditorTool.font,
+                      ),
                     ),
                   ),
                   loading: () => const LoadingBox(radius: AppRadius.card),

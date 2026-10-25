@@ -17,6 +17,7 @@ import 'package:soulverse/features/auth/data/auth_api.dart';
 import 'package:soulverse/features/auth/data/models/user.dart';
 import 'package:soulverse/features/home_widget/home_widget_service.dart';
 import 'package:soulverse/features/reminders/data/notification_scheduler.dart';
+import 'package:soulverse/features/share/data/models/verse_style.dart';
 import 'package:soulverse/features/share/data/share_service.dart';
 import 'package:soulverse/features/verses/application/verses_providers.dart';
 import 'package:soulverse/features/verses/data/models/daily_verse.dart';
@@ -313,6 +314,51 @@ void main() {
     expect(shareService.calls, ['app:instagram']);
 
     // Let the image cache's delayed write timer finish before the test ends.
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(minutes: 1));
+  });
+
+  // Capturing the preview is covered by the share screen test above; a second
+  // capture in this file hangs on the image cache the first one leaves behind.
+  testWidgets('share editor restyles the verse text and keeps earlier edits', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Share').first);
+    await tester.pumpAndSettle();
+    VerseStyle previewStyle() =>
+        tester.widget<VerseCard>(find.byType(VerseCard)).style;
+    expect(previewStyle(), VerseStyle.standard);
+
+    await tester.tap(find.text('Font'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.bySemanticsLabel('Script font'));
+    await tester.pumpAndSettle();
+    expect(previewStyle().font, VerseFont.script);
+
+    await tester.tap(find.text('Colour'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.bySemanticsLabel('Gold text'));
+    await tester.pumpAndSettle();
+    expect(previewStyle().textColor, const Color(0xFFE6C27A));
+
+    await tester.tap(find.text('Align'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byIcon(Icons.format_align_left));
+    await tester.pumpAndSettle();
+    expect(previewStyle().textAlign, TextAlign.left);
+
+    await tester.tap(find.text('Size'));
+    await tester.pumpAndSettle();
+    await tester.drag(find.byType(Slider), const Offset(200, 0));
+    await tester.pumpAndSettle();
+    expect(previewStyle().textScale, greaterThan(1));
+    // Earlier edits are kept while using another tool.
+    expect(previewStyle().font, VerseFont.script);
+    expect(previewStyle().textColor, const Color(0xFFE6C27A));
+
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(minutes: 1));
   });

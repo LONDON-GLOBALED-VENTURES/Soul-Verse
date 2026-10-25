@@ -95,6 +95,19 @@ flutter:
           weight: 500
         - asset: assets/fonts/Inter-SemiBold.ttf
           weight: 600
+    # Variable fonts for the verse editor; the weight is set in VerseFont.
+    - family: CormorantGaramond
+      fonts:
+        - asset: assets/fonts/CormorantGaramond-Variable.ttf
+    - family: DancingScript
+      fonts:
+        - asset: assets/fonts/DancingScript-Variable.ttf
+    - family: Caveat
+      fonts:
+        - asset: assets/fonts/Caveat-Variable.ttf
+    - family: Oswald
+      fonts:
+        - asset: assets/fonts/Oswald-Variable.ttf
 
   assets:
     - assets/icon/

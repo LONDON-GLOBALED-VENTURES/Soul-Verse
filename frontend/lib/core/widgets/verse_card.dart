@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/share/data/models/verse_style.dart';
 import '../../features/verses/data/models/verse.dart';
 import '../../features/verses/data/models/verse_template.dart';
 import '../theme/app_colors.dart';
@@ -18,12 +19,16 @@ class VerseCard extends StatelessWidget {
     this.footer,
     this.background,
     this.showWatermark = false,
+    this.style = VerseStyle.standard,
   });
 
   final Verse verse;
   final VerseTemplate template;
   final BorderRadius borderRadius;
   final bool showWatermark;
+
+  /// The user's edits from the share screen; [VerseStyle.standard] elsewhere.
+  final VerseStyle style;
 
   /// Replaces the network image, e.g. with an already-decoded image for offscreen rendering.
   final Widget? background;
@@ -42,6 +47,8 @@ class VerseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textColor = style.textColor ?? template.textColorValue;
+
     return ClipRRect(
       borderRadius: borderRadius,
       child: Stack(
@@ -73,7 +80,11 @@ class VerseCard extends StatelessWidget {
             children: [
               ?header,
               Expanded(
-                child: _VerseText(verse: verse, template: template),
+                child: _VerseText(
+                  verse: verse,
+                  style: style,
+                  textColor: textColor,
+                ),
               ),
               ?footer,
             ],
@@ -82,7 +93,7 @@ class VerseCard extends StatelessWidget {
             Positioned(
               right: 18,
               bottom: 18,
-              child: _Watermark(textColor: template.textColorValue),
+              child: _Watermark(textColor: textColor),
             ),
         ],
       ),
@@ -115,9 +126,7 @@ class _Watermark extends StatelessWidget {
             fontWeight: FontWeight.w600,
             letterSpacing: 0.8,
             color: textColor.withValues(alpha: 0.8),
-            shadows: const [
-              Shadow(blurRadius: 6, color: Colors.black45),
-            ],
+            shadows: const [Shadow(blurRadius: 6, color: Colors.black45)],
           ),
         ),
       ],
@@ -126,14 +135,19 @@ class _Watermark extends StatelessWidget {
 }
 
 class _VerseText extends StatelessWidget {
-  const _VerseText({required this.verse, required this.template});
+  const _VerseText({
+    required this.verse,
+    required this.style,
+    required this.textColor,
+  });
 
   final Verse verse;
-  final VerseTemplate template;
+  final VerseStyle style;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
-    final textColor = template.textColorValue;
+    final font = style.font;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -142,10 +156,13 @@ class _VerseText extends StatelessWidget {
         final length = verse.text.length;
         // Width-based size, capped by what fits the area (matters for small/wide widgets).
         // FittedBox below is the final guard against overflow.
-        final fontSize = math.min(
-          width * VerseCard._fontFactor(length),
-          math.sqrt(width * height * 0.5 / length),
-        );
+        final fontSize =
+            math.min(
+              width * VerseCard._fontFactor(length),
+              math.sqrt(width * height * 0.5 / length),
+            ) *
+            style.textScale *
+            font.sizeFactor;
         final hPadding = width * 0.1;
 
         return Padding(
@@ -160,12 +177,19 @@ class _VerseText extends StatelessWidget {
                 width: width - hPadding * 2,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: switch (style.textAlign) {
+                    TextAlign.left ||
+                    TextAlign.start => CrossAxisAlignment.start,
+                    TextAlign.right || TextAlign.end => CrossAxisAlignment.end,
+                    _ => CrossAxisAlignment.center,
+                  },
                   children: [
                     Text(
                       '“${verse.text}”',
-                      textAlign: TextAlign.center,
+                      textAlign: style.textAlign,
                       style: TextStyle(
-                        fontFamily: AppFonts.serif,
+                        fontFamily: font.family,
+                        fontVariations: font.variations,
                         fontSize: fontSize,
                         height: 1.3,
                         color: textColor,
@@ -177,6 +201,7 @@ class _VerseText extends StatelessWidget {
                     SizedBox(height: fontSize * 0.9),
                     Text(
                       verse.reference,
+                      textAlign: style.textAlign,
                       style: TextStyle(
                         fontFamily: AppFonts.sans,
                         fontSize: (fontSize * 0.45).clamp(11, 18),

@@ -17,17 +17,23 @@ import '../../favourites/application/favourites_provider.dart';
 import '../../favourites/presentation/toggle_favourite.dart';
 import '../../auth/application/auth_service.dart';
 import '../../subscription/presentation/premium_upgrade_sheet.dart';
+import '../data/models/verse_style.dart';
 import '../data/share_service.dart';
+import 'widgets/verse_editor_controls.dart';
 
 class ShareVerseArgs {
   const ShareVerseArgs({
     required this.verse,
     required this.template,
     this.moodId,
+    this.initialTool = EditorTool.background,
   });
 
   final Verse verse;
   final VerseTemplate template;
+
+  /// The editing tool shown first, e.g. Font when opened from an Edit button.
+  final EditorTool initialTool;
 
   /// Limits background choices to this mood; null offers every template.
   final String? moodId;
@@ -45,6 +51,8 @@ class ShareVersePage extends ConsumerStatefulWidget {
 class _ShareVersePageState extends ConsumerState<ShareVersePage> {
   final _previewKey = GlobalKey();
   late VerseTemplate _template = widget.args.template;
+  VerseStyle _style = VerseStyle.standard;
+  late EditorTool _tool = widget.args.initialTool;
   bool _busy = false;
 
   Verse get _verse => widget.args.verse;
@@ -178,6 +186,7 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                           template: _template,
                           borderRadius: BorderRadius.zero,
                           showWatermark: true,
+                          style: _style,
                         ),
                       ),
                     ),
@@ -185,34 +194,25 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 72,
-              child: ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                scrollDirection: Axis.horizontal,
-                itemCount: choices.length,
-                separatorBuilder: (_, _) => const SizedBox(width: 10),
-                itemBuilder: (context, i) {
-                  final choice = choices[i];
-                  final isLocked = choice.isPremium && !isPremium;
-                  return _TemplateThumb(
-                    template: choice,
-                    selected: choice.id == _template.id,
-                    isLocked: isLocked,
-                    onTap: _busy
-                        ? null
-                        : () {
-                            if (isLocked) {
-                              showPremiumUpgradeSheet(context);
-                            } else {
-                              setState(() => _template = choice);
-                            }
-                          },
-                  );
-                },
+            // Editing while an image is being captured would make it differ from the preview.
+            IgnorePointer(
+              ignoring: _busy,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 72,
+                    child: _toolControls(choices, isPremium),
+                  ),
+                  const SizedBox(height: 4),
+                  EditorToolStrip(
+                    selected: _tool,
+                    onSelected: (tool) => setState(() => _tool = tool),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 12),
+            const Divider(height: 1),
+            const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: Row(
@@ -237,10 +237,7 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                           Color(0xFF4F5BD5),
                         ],
                       ).createShader(bounds),
-                      child: const FaIcon(
-                        FontAwesomeIcons.instagram,
-                        size: 24,
-                      ),
+                      child: const FaIcon(FontAwesomeIcons.instagram, size: 24),
                     ),
                     label: 'Instagram',
                     onPressed: _busy
@@ -271,6 +268,51 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
         ),
       ),
     );
+  }
+
+  void _updateStyle(VerseStyle style) => setState(() => _style = style);
+
+  Widget _toolControls(List<VerseTemplate> choices, bool isPremium) {
+    return switch (_tool) {
+      EditorTool.background => ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        scrollDirection: Axis.horizontal,
+        itemCount: choices.length,
+        separatorBuilder: (_, _) => const SizedBox(width: 10),
+        itemBuilder: (context, i) {
+          final choice = choices[i];
+          final isLocked = choice.isPremium && !isPremium;
+          return _TemplateThumb(
+            template: choice,
+            selected: choice.id == _template.id,
+            isLocked: isLocked,
+            onTap: () {
+              if (isLocked) {
+                showPremiumUpgradeSheet(context);
+              } else {
+                setState(() => _template = choice);
+              }
+            },
+          );
+        },
+      ),
+      EditorTool.font => FontPicker(
+        selected: _style.font,
+        onChanged: (font) => _updateStyle(_style.copyWith(font: font)),
+      ),
+      EditorTool.size => TextSizeControl(
+        value: _style.textScale,
+        onChanged: (scale) => _updateStyle(_style.copyWith(textScale: scale)),
+      ),
+      EditorTool.colour => TextColourPicker(
+        selected: _style.textColor ?? _template.textColorValue,
+        onChanged: (colour) => _updateStyle(_style.copyWith(textColor: colour)),
+      ),
+      EditorTool.align => TextAlignPicker(
+        selected: _style.textAlign,
+        onChanged: (align) => _updateStyle(_style.copyWith(textAlign: align)),
+      ),
+    };
   }
 }
 
