@@ -935,7 +935,8 @@
     "reference": "Lamentations 3:22-23",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "thankful"
     ],
     "reflection": "Because of God's great love, you are not consumed. His mercies are brand new this morning."
   },
@@ -975,7 +976,8 @@
     "reference": "Zephaniah 3:17",
     "translation": "WEB",
     "moods": [
-      "heartbroken"
+      "heartbroken",
+      "thankful"
     ],
     "reflection": "God is with you, mighty to save. He quiets you with His love and rejoices over you."
   },
@@ -1138,5 +1140,1025 @@
       "heartbroken"
     ],
     "reflection": "One day there will be no more tears, death, sorrow, or pain. Hold on to that promise."
+  },
+  {
+    "id": "genesis-29-35",
+    "text": "This time I will praise the LORD.",
+    "reference": "Genesis 29:35",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Leah named her son from a place of praise, not from what she lacked. Today, choose to praise God for what He has given."
+  },
+  {
+    "id": "exodus-15-2",
+    "text": "The LORD is my strength and song. He has become my salvation.",
+    "reference": "Exodus 15:2",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thanksgiving remembers rescue. God has been your strength and your song; let that memory lift your heart today."
+  },
+  {
+    "id": "1-chronicles-16-8",
+    "text": "Give thanks to the LORD! Call on his name! Make his doings known among the peoples.",
+    "reference": "1 Chronicles 16:8",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Gratitude grows when we tell it. Share one thing God has done for you with someone today."
+  },
+  {
+    "id": "1-chronicles-16-34",
+    "text": "Oh give thanks to the LORD, for he is good, for his loving kindness endures forever.",
+    "reference": "1 Chronicles 16:34",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "God's goodness isn't seasonal. His loving kindness has never run out, and it never will."
+  },
+  {
+    "id": "1-chronicles-29-13",
+    "text": "Now therefore, our God, we thank you, and praise your glorious name.",
+    "reference": "1 Chronicles 29:13",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Everything we have comes from His hand. Pause and thank Him by name for His glory and generosity."
+  },
+  {
+    "id": "2-chronicles-5-13",
+    "text": "For he is good, for his loving kindness endures forever.",
+    "reference": "2 Chronicles 5:13",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "When the people sang this simple truth, God's presence filled the temple. Let it fill your day too."
+  },
+  {
+    "id": "2-chronicles-7-3",
+    "text": "They bowed themselves with their faces to the ground on the pavement, and worshiped, and gave thanks to the LORD, saying, ‘For he is good, for his loving kindness endures forever.’",
+    "reference": "2 Chronicles 7:3",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Sometimes the right response to God's goodness is simply to bow. Worship Him for who He is."
+  },
+  {
+    "id": "ezra-3-11",
+    "text": "They sang to one another in praise and thanksgiving to the LORD: ‘For he is good, for his loving kindness endures forever.’",
+    "reference": "Ezra 3:11",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "They sang thanks while the foundation was still being laid. You can give thanks before the work is finished."
+  },
+  {
+    "id": "nehemiah-8-10",
+    "text": "The joy of the LORD is your strength.",
+    "reference": "Nehemiah 8:10",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Joy in the Lord isn't just a feeling; it's strength. Let gratitude fuel you for whatever today holds."
+  },
+  {
+    "id": "nehemiah-12-43",
+    "text": "They offered great sacrifices that day, and rejoiced; for God had made them rejoice with great joy.",
+    "reference": "Nehemiah 12:43",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "God Himself gives the joy worth celebrating. Let your heart rejoice in what He has done."
+  },
+  {
+    "id": "psalm-7-17",
+    "text": "I will give thanks to the LORD according to his righteousness, and will sing praise to the name of the LORD Most High.",
+    "reference": "Psalm 7:17",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank God for being righteous and fair. He always does what is right, and you can trust His ways."
+  },
+  {
+    "id": "psalm-9-1",
+    "text": "I will give thanks to the LORD with my whole heart. I will tell of all your marvelous works.",
+    "reference": "Psalm 9:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Whole-hearted thanks means holding nothing back. Recall His wonderful works and tell of them."
+  },
+  {
+    "id": "psalm-18-49",
+    "text": "Therefore I will give thanks to you, LORD, among the nations, and will sing praises to your name.",
+    "reference": "Psalm 18:49",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Gratitude doesn't have to stay private. Let your thanks to God be heard and seen."
+  },
+  {
+    "id": "psalm-28-7",
+    "text": "The LORD is my strength and my shield. My heart trusts in him, and I am helped.",
+    "reference": "Psalm 28:7",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Trust leads to help, and help leads to praise. Thank God for the times He has shielded you."
+  },
+  {
+    "id": "psalm-30-4",
+    "text": "Sing praise to the LORD, you saints of his, and give thanks to his holy name.",
+    "reference": "Psalm 30:4",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thanksgiving is something we share. Join with God's people in thanking Him for His holiness."
+  },
+  {
+    "id": "psalm-30-12",
+    "text": "To the end that my heart may sing praise to you, and not be silent. LORD my God, I will give thanks to you forever.",
+    "reference": "Psalm 30:12",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Let your heart sing rather than stay silent. Gratitude is meant to last a lifetime."
+  },
+  {
+    "id": "psalm-34-1",
+    "text": "I will bless the LORD at all times. His praise will always be in my mouth.",
+    "reference": "Psalm 34:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Praise isn't only for good days. Practise blessing the Lord at all times, in every circumstance."
+  },
+  {
+    "id": "psalm-35-18",
+    "text": "I will give you thanks in the great assembly. I will praise you among many people.",
+    "reference": "Psalm 35:18",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Your story of God's faithfulness can encourage others. Give thanks where others can hear."
+  },
+  {
+    "id": "psalm-40-5",
+    "text": "Many, LORD my God, are the wonderful works which you have done, and your thoughts which are toward us.",
+    "reference": "Psalm 40:5",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "God's thoughts toward you are too many to count. Try naming a few of His wonderful works today."
+  },
+  {
+    "id": "psalm-50-14",
+    "text": "Offer to God the sacrifice of thanksgiving. Pay your vows to the Most High.",
+    "reference": "Psalm 50:14",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thanksgiving is an offering we bring to God. Give Him the gift of a grateful heart today."
+  },
+  {
+    "id": "psalm-50-23",
+    "text": "Whoever offers the sacrifice of thanksgiving glorifies me.",
+    "reference": "Psalm 50:23",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "A thankful heart honours God. Every 'thank You' becomes an act of worship."
+  },
+  {
+    "id": "psalm-66-16",
+    "text": "Come and hear, all you who fear God. I will declare what he has done for my soul.",
+    "reference": "Psalm 66:16",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Tell someone what God has done for your soul. Gratitude multiplies when it's shared."
+  },
+  {
+    "id": "psalm-69-30",
+    "text": "I will praise the name of God with a song, and will magnify him with thanksgiving.",
+    "reference": "Psalm 69:30",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thanksgiving makes God look as great as He is. Sing your praise and let Him be magnified."
+  },
+  {
+    "id": "psalm-75-1",
+    "text": "We give thanks to you, God. We give thanks, for your name is near. Men tell about your wondrous works.",
+    "reference": "Psalm 75:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "God's name is near; He is not distant. Give thanks for His presence and His wondrous works."
+  },
+  {
+    "id": "psalm-86-12",
+    "text": "I will praise you, Lord my God, with my whole heart. I will glorify your name forevermore.",
+    "reference": "Psalm 86:12",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Praise with your whole heart, forever. God is worthy of more than half-hearted thanks."
+  },
+  {
+    "id": "psalm-92-1",
+    "text": "It is a good thing to give thanks to the LORD, to sing praises to your name, Most High.",
+    "reference": "Psalm 92:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Giving thanks is simply good for the soul. Start and end your day by thanking Him."
+  },
+  {
+    "id": "psalm-95-2",
+    "text": "Let’s come before his presence with thanksgiving. Let’s extol him with songs!",
+    "reference": "Psalm 95:2",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Come into God's presence with thanksgiving on your lips. It's the best way to begin."
+  },
+  {
+    "id": "psalm-96-2",
+    "text": "Sing to the LORD! Bless his name! Proclaim his salvation from day to day!",
+    "reference": "Psalm 96:2",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Every day holds a reason to bless God. Proclaim His salvation again today."
+  },
+  {
+    "id": "psalm-100-1-2",
+    "text": "Make a joyful noise to the LORD, all you lands! Serve the LORD with gladness. Come before his presence with singing.",
+    "reference": "Psalm 100:1-2",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Gladness is a beautiful way to serve God. Let your worship be joyful today."
+  },
+  {
+    "id": "psalm-100-4",
+    "text": "Enter into his gates with thanksgiving, and into his courts with praise. Give thanks to him, and bless his name.",
+    "reference": "Psalm 100:4",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thanksgiving is the gateway into God's presence. Enter with gratitude, and you will find Him there."
+  },
+  {
+    "id": "psalm-100-5",
+    "text": "For the LORD is good. His loving kindness endures forever, and his faithfulness to all generations.",
+    "reference": "Psalm 100:5",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "God's goodness reaches across generations. The faithfulness that held others will hold you too."
+  },
+  {
+    "id": "psalm-103-1-2",
+    "text": "Praise the LORD, my soul, and all that is within me, praise his holy name. Praise the LORD, my soul, and don’t forget all his benefits.",
+    "reference": "Psalm 103:1-2",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "It's easy to forget His benefits. Take a moment to remember what God has done for you."
+  },
+  {
+    "id": "psalm-105-1",
+    "text": "Give thanks to the LORD! Call on his name! Make his doings known among the peoples.",
+    "reference": "Psalm 105:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Make His deeds known. Your gratitude can point others to a faithful God."
+  },
+  {
+    "id": "psalm-106-1",
+    "text": "Praise the LORD! Give thanks to the LORD, for he is good, for his loving kindness endures forever.",
+    "reference": "Psalm 106:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Praise the Lord for His enduring love. It has outlasted every hard season you've walked through."
+  },
+  {
+    "id": "psalm-107-1",
+    "text": "Give thanks to the LORD, for he is good, for his loving kindness endures forever.",
+    "reference": "Psalm 107:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "His goodness and love endure forever. That's always reason enough to say thank You."
+  },
+  {
+    "id": "psalm-107-8",
+    "text": "Oh that men would praise the LORD for his goodness, and for his wonderful works to the children of men!",
+    "reference": "Psalm 107:8",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Notice God's wonderful works in your life, and let your thanks rise in return."
+  },
+  {
+    "id": "psalm-107-9",
+    "text": "For he satisfies the longing soul. He fills the hungry soul with good.",
+    "reference": "Psalm 107:9",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "God satisfies the longing soul and fills the hungry with good things. Thank Him for His provision."
+  },
+  {
+    "id": "psalm-109-30",
+    "text": "I will give great thanks to the LORD with my mouth. Yes, I will praise him among the multitude.",
+    "reference": "Psalm 109:30",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Let your mouth be full of thanks. Praise God openly for His goodness to you."
+  },
+  {
+    "id": "psalm-111-1",
+    "text": "Praise the LORD! I will give thanks to the LORD with my whole heart, in the council of the upright, and in the congregation.",
+    "reference": "Psalm 111:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Give thanks with your whole heart among God's people. Gratitude grows stronger when it is shared."
+  },
+  {
+    "id": "psalm-116-12",
+    "text": "What will I give to the LORD for all his benefits toward me?",
+    "reference": "Psalm 116:12",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Ask the psalmist's question: what can I give back for all His goodness? A grateful heart is a good start."
+  },
+  {
+    "id": "psalm-116-17",
+    "text": "I will offer to you the sacrifice of thanksgiving, and will call on the name of the LORD.",
+    "reference": "Psalm 116:17",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "A sacrifice of thanksgiving costs something when life is hard. Offer it anyway; God treasures it."
+  },
+  {
+    "id": "psalm-118-1",
+    "text": "Give thanks to the LORD, for he is good, for his loving kindness endures forever.",
+    "reference": "Psalm 118:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Start here: God is good, and His love endures forever. Let this truth anchor your gratitude."
+  },
+  {
+    "id": "psalm-118-21",
+    "text": "I will give thanks to you, for you have answered me, and have become my salvation.",
+    "reference": "Psalm 118:21",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank God for the prayers He has answered. Remembering them builds faith for today."
+  },
+  {
+    "id": "psalm-118-24",
+    "text": "This is the day that the LORD has made. We will rejoice and be glad in it!",
+    "reference": "Psalm 118:24",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Today is a gift God has made. Choose to rejoice and be glad in it."
+  },
+  {
+    "id": "psalm-118-28-29",
+    "text": "You are my God, and I will give thanks to you. You are my God, I will exalt you. Oh give thanks to the LORD, for he is good, for his loving kindness endures forever.",
+    "reference": "Psalm 118:28-29",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Make it personal: You are my God, and I will thank You. His goodness is for you."
+  },
+  {
+    "id": "psalm-119-7",
+    "text": "I will give thanks to you with uprightness of heart, when I learn your righteous judgments.",
+    "reference": "Psalm 119:7",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "As you learn God's ways, gratitude grows. Thank Him for guiding you with His truth."
+  },
+  {
+    "id": "psalm-119-62",
+    "text": "At midnight I will rise to give thanks to you, because of your righteous ordinances.",
+    "reference": "Psalm 119:62",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Even in the middle of the night, there is reason to give thanks. Let gratitude be your midnight song."
+  },
+  {
+    "id": "psalm-136-1",
+    "text": "Give thanks to the LORD, for he is good, for his loving kindness endures forever.",
+    "reference": "Psalm 136:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Psalm 136 repeats it again and again: His love endures forever. Some truths are worth saying many times."
+  },
+  {
+    "id": "psalm-136-26",
+    "text": "Oh give thanks to the God of heaven, for his loving kindness endures forever.",
+    "reference": "Psalm 136:26",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "The God of heaven loves you with a love that never ends. Thank Him for it today."
+  },
+  {
+    "id": "psalm-138-1",
+    "text": "I will give you thanks with my whole heart. Before the gods, I will sing praises to you.",
+    "reference": "Psalm 138:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Give God whole-hearted praise. He is greater than anything else that competes for your heart."
+  },
+  {
+    "id": "psalm-138-2",
+    "text": "I will bow toward your holy temple, and give thanks to your name for your loving kindness and for your truth.",
+    "reference": "Psalm 138:2",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank God for His loving kindness and His truth. He keeps every promise He makes."
+  },
+  {
+    "id": "psalm-139-14",
+    "text": "I will give thanks to you, for I am fearfully and wonderfully made. Your works are wonderful. My soul knows that very well.",
+    "reference": "Psalm 139:14",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "You are fearfully and wonderfully made. Thank God for the person He created you to be."
+  },
+  {
+    "id": "psalm-140-13",
+    "text": "Surely the righteous will give thanks to your name. The upright will dwell in your presence.",
+    "reference": "Psalm 140:13",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "A thankful heart is at home in God's presence. Give thanks, and draw near to Him."
+  },
+  {
+    "id": "psalm-145-1-2",
+    "text": "I will exalt you, my God, the King. I will bless your name forever and ever. Every day I will bless you. I will praise your name forever and ever.",
+    "reference": "Psalm 145:1-2",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Let blessing God become a daily habit. Every day holds something to praise Him for."
+  },
+  {
+    "id": "psalm-145-10",
+    "text": "All your works will give thanks to you, LORD. Your saints will extol you.",
+    "reference": "Psalm 145:10",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "All of creation thanks God. Join the chorus with your own grateful heart."
+  },
+  {
+    "id": "psalm-147-7",
+    "text": "Sing to the LORD with thanksgiving. Sing praises on the harp to our God.",
+    "reference": "Psalm 147:7",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Sing your thanks to God. Music has a way of lifting gratitude to Him."
+  },
+  {
+    "id": "psalm-150-6",
+    "text": "Let everything that has breath praise the LORD! Praise the LORD!",
+    "reference": "Psalm 150:6",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "If you have breath, you have a reason to praise. Thank God for the gift of life today."
+  },
+  {
+    "id": "isaiah-12-4",
+    "text": "In that day you will say, ‘Give thanks to the LORD, call on his name. Declare his doings among the peoples.’",
+    "reference": "Isaiah 12:4",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Call on His name and declare what He has done. Gratitude is a story worth telling."
+  },
+  {
+    "id": "isaiah-25-1",
+    "text": "LORD, you are my God. I will exalt you, I will praise your name; for you have done wonderful things.",
+    "reference": "Isaiah 25:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "God has done wonderful things, planned long ago and carried out faithfully. Praise His name."
+  },
+  {
+    "id": "isaiah-63-7",
+    "text": "I will make mention of the loving kindnesses of the LORD, and the praises of the LORD, according to all that the LORD has bestowed on us.",
+    "reference": "Isaiah 63:7",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Recount the Lord's loving kindnesses. Remembering His goodness is the root of thanksgiving."
+  },
+  {
+    "id": "jeremiah-33-11",
+    "text": "Give thanks to the LORD of Armies, for the LORD is good, for his loving kindness endures forever.",
+    "reference": "Jeremiah 33:11",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Even after hardship, songs of thanks return. God's goodness restores joy to His people."
+  },
+  {
+    "id": "daniel-2-23",
+    "text": "I thank you and praise you, you God of my fathers, who have given me wisdom and might.",
+    "reference": "Daniel 2:23",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank God for the wisdom and strength He gives exactly when you need it."
+  },
+  {
+    "id": "daniel-6-10",
+    "text": "He went to his house... and he kneeled on his knees three times a day, and prayed, and gave thanks before his God.",
+    "reference": "Daniel 6:10",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Daniel gave thanks even when it was dangerous. Make gratitude a steady habit, whatever comes."
+  },
+  {
+    "id": "jonah-2-9",
+    "text": "But I will sacrifice to you with the voice of thanksgiving. I will pay that which I have vowed. Salvation belongs to the LORD.",
+    "reference": "Jonah 2:9",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "From the belly of the fish, Jonah chose thanksgiving. Salvation belongs to the Lord."
+  },
+  {
+    "id": "habakkuk-3-18",
+    "text": "Yet I will rejoice in the LORD. I will be joyful in the God of my salvation.",
+    "reference": "Habakkuk 3:18",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Even when things are lacking, you can rejoice in God Himself. He is your salvation."
+  },
+  {
+    "id": "matthew-11-25",
+    "text": "I thank you, Father, Lord of heaven and earth, that you hid these things from the wise and understanding, and revealed them to infants.",
+    "reference": "Matthew 11:25",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Jesus thanked the Father for revealing truth to the humble. Thank God for opening your eyes to Him."
+  },
+  {
+    "id": "matthew-15-36",
+    "text": "He took the seven loaves and the fish; and he gave thanks and broke them.",
+    "reference": "Matthew 15:36",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Jesus gave thanks for a little, and it became more than enough. Bring Him what you have, with thanks."
+  },
+  {
+    "id": "matthew-26-27",
+    "text": "He took a cup, and gave thanks, and gave to them, saying, ‘All of you drink it.’",
+    "reference": "Matthew 26:27",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Jesus gave thanks on the night He was betrayed. Gratitude can be offered even in the hardest hours."
+  },
+  {
+    "id": "luke-17-15-16",
+    "text": "One of them, when he saw that he was healed, turned back, glorifying God with a loud voice. He fell on his face at Jesus’ feet, giving him thanks.",
+    "reference": "Luke 17:15-16",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "One leper came back to say thank you. Don't let God's blessings pass without returning to thank Him."
+  },
+  {
+    "id": "luke-17-17",
+    "text": "Weren’t the ten cleansed? But where are the nine?",
+    "reference": "Luke 17:17",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Jesus noticed who came back to give thanks. Be the one who returns to Him with gratitude."
+  },
+  {
+    "id": "john-6-11",
+    "text": "Jesus took the loaves; and having given thanks, he distributed to the disciples.",
+    "reference": "John 6:11",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Jesus thanked the Father before the miracle, not after. Give thanks in faith for what God will do."
+  },
+  {
+    "id": "john-11-41",
+    "text": "Father, I thank you that you listened to me.",
+    "reference": "John 11:41",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Jesus thanked the Father for hearing Him before Lazarus walked out. Thank God that He hears you."
+  },
+  {
+    "id": "acts-2-46-47",
+    "text": "Day by day, continuing steadfastly with one accord in the temple, and breaking bread at home, they took their food with gladness and singleness of heart, praising God.",
+    "reference": "Acts 2:46-47",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "The early church shared meals with glad and simple hearts. Gratitude grows in community."
+  },
+  {
+    "id": "romans-1-21",
+    "text": "Because, knowing God, they didn’t glorify him as God, neither were thankful.",
+    "reference": "Romans 1:21",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Forgetting to be thankful dims the heart. Choosing gratitude keeps your eyes on the God who gives."
+  },
+  {
+    "id": "romans-6-17",
+    "text": "But thanks be to God, that, whereas you were bondservants of sin, you became obedient from the heart.",
+    "reference": "Romans 6:17",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank God for setting you free. Through Christ, you are no longer bound to what once held you."
+  },
+  {
+    "id": "romans-7-25",
+    "text": "I thank God through Jesus Christ, our Lord!",
+    "reference": "Romans 7:25",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "When you see your own weakness, remember Jesus. Thank God for rescuing you through Him."
+  },
+  {
+    "id": "romans-14-6",
+    "text": "He who eats, eats to the Lord, for he gives God thanks.",
+    "reference": "Romans 14:6",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Even ordinary meals can become worship. Give thanks for the simple gifts of every day."
+  },
+  {
+    "id": "1-corinthians-1-4",
+    "text": "I always thank my God concerning you, for the grace of God which was given you in Christ Jesus.",
+    "reference": "1 Corinthians 1:4",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank God for the grace at work in the people around you. Gratitude for others is a gift too."
+  },
+  {
+    "id": "1-corinthians-15-57",
+    "text": "But thanks be to God, who gives us the victory through our Lord Jesus Christ.",
+    "reference": "1 Corinthians 15:57",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Victory is yours through Jesus. Thank God that the final outcome is already won."
+  },
+  {
+    "id": "2-corinthians-2-14",
+    "text": "Now thanks be to God, who always leads us in triumph in Christ.",
+    "reference": "2 Corinthians 2:14",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "God leads you in triumph in Christ. Thank Him for walking ahead of you."
+  },
+  {
+    "id": "2-corinthians-4-15",
+    "text": "For all things are for your sakes, that the grace, being multiplied through the many, may cause the thanksgiving to abound to the glory of God.",
+    "reference": "2 Corinthians 4:15",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "As grace spreads, thanksgiving overflows. Your gratitude adds to God's glory."
+  },
+  {
+    "id": "2-corinthians-9-15",
+    "text": "Now thanks be to God for his unspeakable gift!",
+    "reference": "2 Corinthians 9:15",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Some gifts are beyond words. Thank God for Jesus, His indescribable gift."
+  },
+  {
+    "id": "ephesians-1-16",
+    "text": "I don’t cease to give thanks for you, making mention of you in my prayers.",
+    "reference": "Ephesians 1:16",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank God for the people in your life, and pray for them. Gratitude and prayer belong together."
+  },
+  {
+    "id": "ephesians-5-19-20",
+    "text": "Singing and making melody in your heart to the Lord; giving thanks always concerning all things in the name of our Lord Jesus Christ to God, even the Father.",
+    "reference": "Ephesians 5:19-20",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Let thanks fill your heart and your songs, always and for everything, in Jesus' name."
+  },
+  {
+    "id": "philippians-1-3",
+    "text": "I thank my God whenever I remember you.",
+    "reference": "Philippians 1:3",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Think of someone who has blessed you, and thank God for them today."
+  },
+  {
+    "id": "philippians-4-6",
+    "text": "In nothing be anxious, but in everything, by prayer and petition with thanksgiving, let your requests be made known to God.",
+    "reference": "Philippians 4:6",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Bring your requests to God wrapped in thanksgiving. Gratitude loosens the grip of worry."
+  },
+  {
+    "id": "colossians-1-12",
+    "text": "Giving thanks to the Father, who made us fit to be partakers of the inheritance of the saints in light.",
+    "reference": "Colossians 1:12",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank the Father who has made you part of His family and given you a share in the light."
+  },
+  {
+    "id": "colossians-2-6-7",
+    "text": "As therefore you received Christ Jesus the Lord, walk in him, rooted and built up in him, and established in the faith, even as you were taught, abounding in it in thanksgiving.",
+    "reference": "Colossians 2:6-7",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Rooted in Christ, let your faith overflow with thankfulness. Gratitude keeps you grounded."
+  },
+  {
+    "id": "colossians-3-15",
+    "text": "Let the peace of God rule in your hearts, to which also you were called in one body, and be thankful.",
+    "reference": "Colossians 3:15",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Let Christ's peace rule your heart, and be thankful. Peace and gratitude grow side by side."
+  },
+  {
+    "id": "colossians-3-16",
+    "text": "Let the word of Christ dwell in you richly; in all wisdom teaching and admonishing one another with psalms, hymns, and spiritual songs, singing with grace in your heart to the Lord.",
+    "reference": "Colossians 3:16",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Let the word of Christ dwell in you richly, and let it overflow in songs sung with grace in your heart."
+  },
+  {
+    "id": "colossians-3-17",
+    "text": "Whatever you do, in word or in deed, do all in the name of the Lord Jesus, giving thanks to God the Father through him.",
+    "reference": "Colossians 3:17",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Whatever you do today, do it in Jesus' name, giving thanks to God through Him."
+  },
+  {
+    "id": "colossians-4-2",
+    "text": "Continue steadfastly in prayer, watching therein with thanksgiving.",
+    "reference": "Colossians 4:2",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Stay devoted to prayer, watchful and thankful. Gratitude keeps your prayers hopeful."
+  },
+  {
+    "id": "1-thessalonians-5-16-18",
+    "text": "Always rejoice. Pray without ceasing. In everything give thanks, for this is the will of God in Christ Jesus toward you.",
+    "reference": "1 Thessalonians 5:16-18",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Give thanks in all circumstances, not for everything, but in everything. That's God's will for you."
+  },
+  {
+    "id": "1-timothy-2-1",
+    "text": "I exhort therefore, first of all, that petitions, prayers, intercessions, and givings of thanks, be made for all men.",
+    "reference": "1 Timothy 2:1",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Let thanksgiving be part of how you pray for others. Gratitude makes intercession warm."
+  },
+  {
+    "id": "1-timothy-4-4",
+    "text": "For every creature of God is good, and nothing is to be rejected, if it is received with thanksgiving.",
+    "reference": "1 Timothy 4:4",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Everything God made is good when received with thanks. Gratitude turns ordinary things into gifts."
+  },
+  {
+    "id": "hebrews-12-28",
+    "text": "Therefore, receiving a Kingdom that can’t be shaken, let’s have grace, through which we serve God acceptably, with reverence and awe.",
+    "reference": "Hebrews 12:28",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "You belong to a kingdom that cannot be shaken. Let that steady gratitude shape your worship."
+  },
+  {
+    "id": "hebrews-13-15",
+    "text": "Through him, then, let’s offer up a sacrifice of praise to God continually, that is, the fruit of lips which proclaim his name.",
+    "reference": "Hebrews 13:15",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Offer God a continual sacrifice of praise. Let thankful words be the fruit of your lips."
+  },
+  {
+    "id": "james-1-17",
+    "text": "Every good gift and every perfect gift is from above, coming down from the Father of lights, with whom can be no variation, nor turning shadow.",
+    "reference": "James 1:17",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Every good gift comes from above. Trace today's blessings back to the Father who never changes."
+  },
+  {
+    "id": "1-peter-2-9",
+    "text": "But you are a chosen race, a royal priesthood, a holy nation, a people for God’s own possession, that you may show forth the excellent qualities of him who called you out of darkness into his marvelous light.",
+    "reference": "1 Peter 2:9",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "You were called out of darkness into His marvelous light. Let your life be a thank-you that shows His goodness."
+  },
+  {
+    "id": "revelation-4-9",
+    "text": "Whenever the living creatures give glory, honor, and thanks to him who sits on the throne, to him who lives forever and ever.",
+    "reference": "Revelation 4:9",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Heaven is full of thanksgiving to the One on the throne. Join that worship today."
+  },
+  {
+    "id": "revelation-7-12",
+    "text": "Amen! Blessing, and glory, and wisdom, and thanksgiving, and honor, and power, and might, be to our God forever and ever. Amen.",
+    "reference": "Revelation 7:12",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Blessing, glory and thanksgiving belong to God forever. Add your own 'Amen' to heaven's praise."
+  },
+  {
+    "id": "revelation-11-17",
+    "text": "We give you thanks, Lord God, the Almighty, the one who is and who was.",
+    "reference": "Revelation 11:17",
+    "translation": "WEB",
+    "moods": [
+      "thankful"
+    ],
+    "reflection": "Thank God, the Almighty, who is and who was. He reigns, and that is reason for gratitude."
   }
 ]
