@@ -1,10 +1,13 @@
 [
-  { "id": "anxious", "name": "Anxious", "title": "Verses for Anxiety", "imagePath": "images/mist.png" },
-  { "id": "hopeful", "name": "Hopeful", "title": "Verses for Hope", "imagePath": "images/dawn.png" },
-  { "id": "grateful", "name": "Grateful", "title": "Verses for Gratitude", "imagePath": "images/meadow.png" },
-  { "id": "sad", "name": "Sad", "title": "Verses for Sadness", "imagePath": "images/ocean.png" },
-  { "id": "stressed", "name": "Stressed", "title": "Verses for Stress", "imagePath": "images/twilight.png" },
-  { "id": "need-strength", "name": "Need Strength", "title": "Verses for Strength", "imagePath": "images/forest.png" },
-  { "id": "lost", "name": "Lost", "title": "Verses for Guidance", "imagePath": "images/dusk.png" },
-  { "id": "joyful", "name": "Joyful", "title": "Verses for Joy", "imagePath": "images/golden.png" }
+  { "id": "heartbroken", "name": "Heartbroken", "title": "Verses for the Heartbroken", "emoji": "💔", "color": "#E8C4C4" },
+  { "id": "thankful", "name": "Thankful", "title": "Verses of Thanksgiving", "emoji": "🙏", "color": "#F1DDB0" },
+  { "id": "courage", "name": "Courage", "title": "Verses for Courage", "emoji": "🦁", "color": "#EBCB9E" },
+  { "id": "loneliness", "name": "Loneliness", "title": "Verses for Loneliness", "emoji": "🌙", "color": "#CFCDE3" },
+  { "id": "stress", "name": "Stress", "title": "Verses for Stress", "emoji": "🌧️", "color": "#C9D6DF" },
+  { "id": "relationships", "name": "Relationships", "title": "Verses for Relationships", "emoji": "💞", "color": "#EBC9D6" },
+  { "id": "sick", "name": "Sick", "title": "Verses for the Sick", "emoji": "🤒", "color": "#CFE0D3" },
+  { "id": "love", "name": "Love", "title": "Verses about Love", "emoji": "💖", "color": "#EFC6C0" },
+  { "id": "helplessness", "name": "Helplessness", "title": "Verses for Helplessness", "emoji": "🕊️", "color": "#D9DEE6" },
+  { "id": "healing", "name": "Healing", "title": "Verses for Healing", "emoji": "🌿", "color": "#D5E3C3" },
+  { "id": "sadness", "name": "Sadness", "title": "Verses for Sadness", "emoji": "😢", "color": "#C7D3E3" }
 ]

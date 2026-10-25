@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../data/models/mood.dart';
 
+/// An emotion: its emoji in a soft circle on a lightly tinted card.
 class MoodTile extends StatelessWidget {
   const MoodTile({super.key, required this.mood, required this.onTap});
 
@@ -13,44 +13,47 @@ class MoodTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(AppRadius.tile),
-      child: Material(
-        color: AppColors.placeholder,
-        child: InkWell(
-          onTap: onTap,
-          child: Stack(
-            fit: StackFit.expand,
+    final tint = mood.colorValue;
+
+    return Material(
+      color: Color.alphaBlend(tint.withValues(alpha: 0.35), AppColors.surface),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.tile),
+        side: BorderSide(color: tint.withValues(alpha: 0.9)),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CachedNetworkImage(
-                imageUrl: mood.imageUrl,
-                fit: BoxFit.cover,
-                errorWidget: (_, _, _) => const SizedBox.shrink(),
-              ),
-              const DecoratedBox(
+              Container(
+                width: 64,
+                height: 64,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.transparent, Colors.black54],
-                    stops: [0.45, 1],
-                  ),
+                  color: AppColors.surface.withValues(alpha: 0.85),
+                  shape: BoxShape.circle,
+                ),
+                child: Text(
+                  mood.emoji,
+                  style: const TextStyle(fontSize: 32),
+                  semanticsLabel: '',
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Text(
-                    mood.name,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontFamily: AppFonts.serif,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
+              const SizedBox(height: 12),
+              Text(
+                mood.name,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontFamily: AppFonts.serif,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textPrimary,
                 ),
               ),
             ],

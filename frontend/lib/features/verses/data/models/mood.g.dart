@@ -10,12 +10,14 @@ Mood _$MoodFromJson(Map<String, dynamic> json) => Mood(
   id: json['id'] as String,
   name: json['name'] as String,
   title: json['title'] as String,
-  imageUrl: json['imageUrl'] as String,
+  emoji: json['emoji'] as String,
+  color: json['color'] as String,
 );
 
 Map<String, dynamic> _$MoodToJson(Mood instance) => <String, dynamic>{
   'id': instance.id,
   'name': instance.name,
   'title': instance.title,
-  'imageUrl': instance.imageUrl,
+  'emoji': instance.emoji,
+  'color': instance.color,
 };

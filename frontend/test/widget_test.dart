@@ -63,7 +63,8 @@ class _FakeVersesApi implements VersesApi {
       id: 'anxious',
       name: 'Anxious',
       title: 'Verses for Anxiety',
-      imageUrl: 'http://test/mist.png',
+      emoji: '🌧️',
+      color: '#C9D6DF',
     ),
   ];
 
@@ -360,6 +361,7 @@ void main() {
     await tester.tap(find.text('Explore'));
     await tester.pumpAndSettle();
     expect(find.text('How are you feeling?'), findsOneWidget);
+    expect(find.text('🌧️'), findsOneWidget, reason: 'tiles show the emoji');
 
     await tester.tap(find.text('Anxious'));
     await tester.pumpAndSettle();

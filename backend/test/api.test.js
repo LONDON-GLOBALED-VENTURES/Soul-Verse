@@ -10,7 +10,7 @@ const sampleVerses = ['a', 'b', 'c'].map((id) => ({
   text: `Verse ${id}`,
   reference: `Ref ${id}`,
   translation: 'KJV',
-  moods: ['hopeful'],
+  moods: ['thankful'],
   reflection: `Reflection ${id}`,
 }));
 
@@ -114,7 +114,7 @@ test('with no verses, the daily verse is a clear 404 and the range is empty', as
     assert.equal(range.status, 200);
     assert.deepEqual(range.body, []);
 
-    const mood = await get('/verses?mood=hopeful');
+    const mood = await get('/verses?mood=thankful');
     assert.deepEqual(mood.body, []);
   } finally {
     verseService._setVersesForTests(sampleVerses);
@@ -128,6 +128,27 @@ test('with no verses, invalid dates are still rejected with 400', async () => {
     assert.equal((await get('/verses/daily/range?start=2026-10-01&days=0')).status, 400);
   } finally {
     verseService._setVersesForTests(sampleVerses);
+  }
+});
+
+test('emotions come with an emoji and colour, and each has a free background', async () => {
+  const moods = (await get('/moods')).body;
+  const templates = (await get('/templates')).body;
+
+  assert.equal(moods.length, 11);
+  for (const mood of moods) {
+    assert.ok(mood.emoji, `${mood.id} has an emoji`);
+    assert.match(mood.color, /^#[0-9A-F]{6}$/i, `${mood.id} has a colour`);
+    const free = templates.filter((t) => !t.isPremium && t.moods.includes(mood.id));
+    // Without one, the mood's page has nothing to draw verses on.
+    assert.ok(free.length > 0, `${mood.id} has a free background`);
+  }
+});
+
+test('templates only reference emotions that exist', async () => {
+  const ids = new Set((await get('/moods')).body.map((m) => m.id));
+  for (const template of (await get('/templates')).body) {
+    for (const mood of template.moods) assert.ok(ids.has(mood), `${template.id}: ${mood}`);
   }
 });
 

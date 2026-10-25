@@ -1,11 +1,10 @@
 [
-  { "id": "dawn", "imagePath": "images/dawn.png", "moods": ["hopeful", "joyful", "grateful"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false },
-  { "id": "dusk", "imagePath": "images/dusk.png", "moods": ["lost", "sad", "hopeful"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false },
-  { "id": "meadow", "imagePath": "images/meadow.png", "moods": ["grateful", "joyful"], "textColor": "#FFFFFF", "overlayOpacity": 0.3, "isPremium": false },
-  { "id": "ocean", "imagePath": "images/ocean.png", "moods": ["sad", "anxious", "stressed"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false },
-  { "id": "mist", "imagePath": "images/mist.png", "moods": ["anxious", "stressed", "lost"], "textColor": "#FFFFFF", "overlayOpacity": 0.4, "isPremium": true },
-  { "id": "forest", "imagePath": "images/forest.png", "moods": ["need-strength", "lost", "anxious"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": true },
-  { "id": "golden", "imagePath": "images/golden.png", "moods": ["joyful", "grateful", "hopeful"], "textColor": "#FFFFFF", "overlayOpacity": 0.3, "isPremium": true },
-  { "id": "twilight", "imagePath": "images/twilight.png", "moods": ["stressed", "sad", "need-strength"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": true }
+  { "id": "dawn", "imagePath": "images/dawn.png", "moods": ["thankful", "courage", "healing", "love"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false },
+  { "id": "dusk", "imagePath": "images/dusk.png", "moods": ["sadness", "loneliness", "heartbroken", "relationships"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false },
+  { "id": "meadow", "imagePath": "images/meadow.png", "moods": ["thankful", "healing", "love", "relationships"], "textColor": "#FFFFFF", "overlayOpacity": 0.3, "isPremium": false },
+  { "id": "ocean", "imagePath": "images/ocean.png", "moods": ["sadness", "stress", "sick", "helplessness"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": false },
+  { "id": "mist", "imagePath": "images/mist.png", "moods": ["stress", "helplessness", "loneliness"], "textColor": "#FFFFFF", "overlayOpacity": 0.4, "isPremium": true },
+  { "id": "forest", "imagePath": "images/forest.png", "moods": ["courage", "healing", "sick"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": true },
+  { "id": "golden", "imagePath": "images/golden.png", "moods": ["thankful", "love", "courage"], "textColor": "#FFFFFF", "overlayOpacity": 0.3, "isPremium": true },
+  { "id": "twilight", "imagePath": "images/twilight.png", "moods": ["heartbroken", "sadness", "stress"], "textColor": "#FFFFFF", "overlayOpacity": 0.35, "isPremium": true }
 ]
-
