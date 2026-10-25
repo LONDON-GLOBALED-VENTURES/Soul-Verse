@@ -50,7 +50,6 @@ class VerseCard extends StatelessWidget {
     this.header,
     this.footer,
     this.background,
-    this.showWatermark = false,
     this.style = VerseStyle.standard,
     this.onTextPositionChanged,
     this.onWordTapped,
@@ -59,7 +58,6 @@ class VerseCard extends StatelessWidget {
   final Verse verse;
   final VerseTemplate template;
   final BorderRadius borderRadius;
-  final bool showWatermark;
 
   /// The user's edits from the share screen; [VerseStyle.standard] elsewhere.
   final VerseStyle style;
@@ -167,47 +165,8 @@ class VerseCard extends StatelessWidget {
                 ),
               ),
             ),
-          if (showWatermark && style.showWatermark)
-            Positioned(
-              right: 18,
-              bottom: 18,
-              child: _Watermark(textColor: textColor),
-            ),
         ],
       ),
-    );
-  }
-}
-
-class _Watermark extends StatelessWidget {
-  const _Watermark({required this.textColor});
-
-  final Color textColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image.asset(
-          'assets/icon/app_icon_foreground.png',
-          width: 15,
-          height: 15,
-        ),
-        const SizedBox(width: 5),
-        Text(
-          'SoulVerse',
-          style: TextStyle(
-            fontFamily: AppFonts.serif,
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.8,
-            color: textColor.withValues(alpha: 0.8),
-            shadows: const [Shadow(blurRadius: 6, color: Colors.black45)],
-          ),
-        ),
-      ],
     );
   }
 }

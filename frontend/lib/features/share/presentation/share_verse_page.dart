@@ -282,7 +282,6 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                             verse: _verse,
                             template: _template,
                             borderRadius: BorderRadius.zero,
-                            showWatermark: true,
                             style: _style,
                             onTextPositionChanged: _busy
                                 ? null

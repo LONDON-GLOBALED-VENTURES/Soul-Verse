@@ -169,7 +169,6 @@ class VerseStyle {
     this.textPosition = Alignment.center,
     this.reference = ReferencePlacement.below,
     this.showQuotes = true,
-    this.showWatermark = true,
     this.overlayDarkness,
     this.blur = 0,
     this.filter = BackgroundFilter.none,
@@ -223,9 +222,6 @@ class VerseStyle {
   final ReferencePlacement reference;
   final bool showQuotes;
 
-  /// Only applies where the card shows a watermark (the share screen).
-  final bool showWatermark;
-
   /// How dark the overlay on the photo is; null uses the template's own.
   final double? overlayDarkness;
 
@@ -274,7 +270,6 @@ class VerseStyle {
     Alignment? textPosition,
     ReferencePlacement? reference,
     bool? showQuotes,
-    bool? showWatermark,
     Object? overlayDarkness = _unset,
     double? blur,
     BackgroundFilter? filter,
@@ -297,7 +292,6 @@ class VerseStyle {
       textPosition: textPosition ?? this.textPosition,
       reference: reference ?? this.reference,
       showQuotes: showQuotes ?? this.showQuotes,
-      showWatermark: showWatermark ?? this.showWatermark,
       overlayDarkness: identical(overlayDarkness, _unset)
           ? this.overlayDarkness
           : overlayDarkness as double?,
@@ -330,7 +324,6 @@ class VerseStyle {
     'textPosition': [textPosition.x, textPosition.y],
     'reference': reference.name,
     'showQuotes': showQuotes,
-    'showWatermark': showWatermark,
     'overlayDarkness': overlayDarkness,
     'blur': blur,
     'filter': filter.name,
@@ -392,7 +385,6 @@ class VerseStyle {
         defaults.reference,
       ),
       showQuotes: json['showQuotes'] as bool? ?? defaults.showQuotes,
-      showWatermark: json['showWatermark'] as bool? ?? defaults.showWatermark,
       overlayDarkness: json['overlayDarkness'] is num
           ? number(json['overlayDarkness'], 0).clamp(0, maxOverlayDarkness)
           : null,
@@ -440,7 +432,6 @@ class VerseStyle {
       other.textPosition == textPosition &&
       other.reference == reference &&
       other.showQuotes == showQuotes &&
-      other.showWatermark == showWatermark &&
       other.overlayDarkness == overlayDarkness &&
       other.blur == blur &&
       other.filter == filter &&
@@ -462,7 +453,6 @@ class VerseStyle {
     textPosition,
     reference,
     showQuotes,
-    showWatermark,
     overlayDarkness,
     blur,
     filter,

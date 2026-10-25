@@ -16,7 +16,6 @@ void main() {
     expect(style.textPosition, Alignment.center);
     expect(style.reference, ReferencePlacement.below);
     expect(style.showQuotes, isTrue);
-    expect(style.showWatermark, isTrue);
     expect(style.overlayDarkness, isNull);
     expect(style.blur, 0);
     expect(style.filter, BackgroundFilter.none);
@@ -110,7 +109,6 @@ void main() {
         textPosition: Alignment(0.2, -0.6),
         reference: ReferencePlacement.corner,
         showQuotes: false,
-        showWatermark: false,
         overlayDarkness: 0.5,
         blur: 4,
         filter: BackgroundFilter.faded,

@@ -583,15 +583,6 @@ class VerseDetailsControl extends StatelessWidget {
                 onChanged(style.copyWith(showQuotes: !style.showQuotes)),
           ),
         ),
-        const SizedBox(width: 8),
-        Center(
-          child: _OptionChip(
-            label: 'Watermark',
-            selected: style.showWatermark,
-            onTap: () =>
-                onChanged(style.copyWith(showWatermark: !style.showWatermark)),
-          ),
-        ),
       ],
     );
   }

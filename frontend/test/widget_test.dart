@@ -440,8 +440,7 @@ void main() {
       inCard(find.text('Be still, and know that I am God.')),
       findsWidgets,
     );
-    await tester.tap(find.text('Watermark'));
-    await tester.pumpAndSettle();
+    // Shared images carry no SoulVerse watermark.
     expect(inCard(find.text('SoulVerse')), findsNothing);
     await tester.tap(find.text('Off'));
     await tester.pumpAndSettle();
