@@ -1,12 +1,6 @@
-const crypto = require('crypto');
 const { adminApiKey } = require('../config/env');
 const HttpError = require('../utils/http-error');
-
-const sameSecret = (given, expected) => {
-  const a = Buffer.from(given);
-  const b = Buffer.from(expected);
-  return a.length === b.length && crypto.timingSafeEqual(a, b);
-};
+const sameSecret = require('../utils/same-secret');
 
 /**
  * Moderator-only routes: the request must send the ADMIN_API_KEY in the

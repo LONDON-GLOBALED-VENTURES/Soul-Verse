@@ -131,6 +131,34 @@ test('deleting a user removes their prayers and likes and fixes the counts', { s
   assert.equal(await dbUser.deleteUser(anna.id), false, 'already gone');
 });
 
+test('subscription updates from the billing webhook are stored', { skip }, async () => {
+  await resetSchema();
+  await migrate();
+  const anna = await dbUser.findOrCreateFromGoogle({
+    googleId: 'g_anna',
+    email: 'anna@example.com',
+    name: 'Anna',
+    avatarUrl: '',
+  });
+  const expiresAt = '2026-12-01T10:00:00.000Z';
+
+  await dbUser.updateSubscription(anna.id, { status: 'active', tier: 'premium', expiresAt });
+  assert.deepEqual((await dbUser.findById(anna.id)).subscription, {
+    status: 'active',
+    tier: 'premium',
+    purchaseToken: null,
+    expiresAt,
+  });
+
+  // An expiry-less update (e.g. a transfer) keeps the stored date.
+  await dbUser.updateSubscription(anna.id, { status: 'free', tier: 'none' });
+  const free = (await dbUser.findById(anna.id)).subscription;
+  assert.equal(free.status, 'free');
+  assert.equal(free.expiresAt, expiresAt);
+
+  assert.equal(await dbUser.updateSubscription('usr_missing', { status: 'active' }), null);
+});
+
 test('reports, hiding and blocks shape each person\'s feed', { skip }, async () => {
   await resetSchema();
   await migrate();

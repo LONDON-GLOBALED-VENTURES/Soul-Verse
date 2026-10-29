@@ -8,6 +8,7 @@ const prayerRoutes = require('./prayer.routes');
 const userRoutes = require('./user.routes');
 const adminRoutes = require('./admin.routes');
 const configRoutes = require('./config.routes');
+const billingRoutes = require('./billing.routes');
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use('/prayers', prayerRoutes);
 router.use('/users', userRoutes);
 router.use('/admin', adminRoutes);
 router.use('/config', configRoutes);
+router.use('/billing', billingRoutes);
 
 module.exports = router;

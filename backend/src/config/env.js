@@ -50,6 +50,8 @@ module.exports = {
   // QA switch: 'false' unlocks every Premium feature in the app (no purchases).
   // Only for a staging backend; on production it would make Premium free for everyone.
   billingEnabled: process.env.BILLING_ENABLED !== 'false',
+  // The Authorization value set on the RevenueCat webhook. Unset: the webhook route doesn't exist.
+  revenueCatWebhookSecret: process.env.REVENUECAT_WEBHOOK_SECRET || '',
   jwtSecret,
   jwtRefreshSecret,
   // Fake "mock-google-token:" sign-ins: always in tests, in development only on request.
