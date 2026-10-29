@@ -7,11 +7,48 @@ class PrayerCard extends StatelessWidget {
     required this.prayer,
     required this.onLike,
     this.onDelete,
+    this.onReport,
+    this.onBlock,
   });
 
   final Prayer prayer;
   final VoidCallback onLike;
+
+  /// Shown in the menu of your own prayers.
   final VoidCallback? onDelete;
+
+  /// Shown in the menu of other people's prayers.
+  final VoidCallback? onReport;
+  final VoidCallback? onBlock;
+
+  List<PopupMenuEntry<VoidCallback>> get _menuItems {
+    PopupMenuItem<VoidCallback> item(
+      VoidCallback action,
+      IconData icon,
+      String label, {
+      Color? color,
+    }) => PopupMenuItem(
+      value: action,
+      child: Row(
+        children: [
+          Icon(icon, size: 18, color: color),
+          const SizedBox(width: 8),
+          Text(label, style: TextStyle(color: color)),
+        ],
+      ),
+    );
+
+    if (prayer.isMine) {
+      return [
+        if (onDelete != null)
+          item(onDelete!, Icons.delete_outline, 'Delete', color: Colors.red),
+      ];
+    }
+    return [
+      if (onReport != null) item(onReport!, Icons.flag_outlined, 'Report'),
+      if (onBlock != null) item(onBlock!, Icons.block, 'Block user'),
+    ];
+  }
 
   String _formatDate(DateTime date) {
     final now = DateTime.now();
@@ -125,29 +162,17 @@ class PrayerCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (prayer.isMine && onDelete != null) ...[
+                if (_menuItems.isNotEmpty) ...[
                   const SizedBox(width: 4),
-                  PopupMenuButton<String>(
+                  PopupMenuButton<VoidCallback>(
+                    tooltip: 'More options',
                     icon: Icon(
                       Icons.more_vert,
                       size: 20,
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
-                    onSelected: (val) {
-                      if (val == 'delete') onDelete!();
-                    },
-                    itemBuilder: (context) => [
-                      const PopupMenuItem(
-                        value: 'delete',
-                        child: Row(
-                          children: [
-                            Icon(Icons.delete_outline, size: 18, color: Colors.red),
-                            SizedBox(width: 8),
-                            Text('Delete', style: TextStyle(color: Colors.red)),
-                          ],
-                        ),
-                      ),
-                    ],
+                    onSelected: (action) => action(),
+                    itemBuilder: (context) => _menuItems,
                   ),
                 ],
               ],

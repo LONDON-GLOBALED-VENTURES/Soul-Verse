@@ -84,4 +84,67 @@ class PrayersApi {
   Future<void> deletePrayer(String prayerId) async {
     await _dio.delete<void>('/prayers/$prayerId');
   }
+
+  /// Reports a prayer to the moderators. [reason] is one of [ReportReason].
+  Future<void> reportPrayer(
+    String prayerId, {
+    required ReportReason reason,
+    String details = '',
+  }) async {
+    await _dio.post<Map<String, dynamic>>(
+      '/prayers/$prayerId/report',
+      data: {'reason': reason.name, 'details': details},
+    );
+  }
+
+  /// Blocks whoever wrote [prayerId]; their prayers stop showing for this user.
+  Future<void> blockAuthor(String prayerId) async {
+    await _dio.post<Map<String, dynamic>>('/prayers/$prayerId/block-author');
+  }
+
+  Future<List<BlockedUser>> getBlockedUsers() async {
+    final response = await _dio.get<Map<String, dynamic>>('/users/me/blocks');
+    final items =
+        (response.data!['data'] as Map<String, dynamic>)['items']
+            as List<dynamic>;
+    return items
+        .map((item) => BlockedUser.fromJson(item as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<void> unblockUser(String userId) async {
+    await _dio.delete<Map<String, dynamic>>('/users/me/blocks/$userId');
+  }
+}
+
+/// Why a prayer is being reported; names match the backend's reasons.
+enum ReportReason {
+  spam('Spam or advertising'),
+  offensive('Offensive or inappropriate'),
+  harassment('Harassment or bullying'),
+  other('Something else');
+
+  const ReportReason(this.label);
+
+  final String label;
+}
+
+/// Someone the user has blocked, shown under the name they posted with.
+class BlockedUser {
+  const BlockedUser({
+    required this.userId,
+    required this.name,
+    required this.blockedAt,
+  });
+
+  factory BlockedUser.fromJson(Map<String, dynamic> json) => BlockedUser(
+    userId: json['userId'] as String,
+    name: json['name'] as String? ?? 'Believer',
+    blockedAt:
+        DateTime.tryParse(json['blockedAt'] as String? ?? '') ?? DateTime.now(),
+  );
+
+  final String userId;
+  final String name;
+  final DateTime blockedAt;
 }

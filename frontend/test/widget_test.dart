@@ -17,6 +17,9 @@ import 'package:soulverse/features/auth/application/auth_service.dart';
 import 'package:soulverse/features/auth/data/auth_api.dart';
 import 'package:soulverse/features/auth/data/models/user.dart';
 import 'package:soulverse/features/home_widget/home_widget_service.dart';
+import 'package:soulverse/features/prayers/data/models/prayer.dart';
+import 'package:soulverse/features/prayers/data/prayers_api.dart';
+import 'package:soulverse/features/prayers/presentation/widgets/prayer_card.dart';
 import 'package:soulverse/features/reminders/data/notification_scheduler.dart';
 import 'package:soulverse/features/share/data/models/verse_style.dart';
 import 'package:soulverse/features/share/data/photo_picker.dart';
@@ -193,6 +196,81 @@ class _FakePhotoPicker implements PhotoPicker {
   Future<String?> pickFromGallery() async => path;
 }
 
+Prayer _prayer(String id, String author, {bool mine = false}) =>
+    Prayer.fromJson({
+      'id': id,
+      'authorName': author,
+      'title': '$author needs prayer',
+      'content': 'Please pray for strength this week.',
+      'isMine': mine,
+    });
+
+class _FakePrayersApi implements PrayersApi {
+  List<Prayer> prayers = [
+    _prayer('p_grace', 'Grace'),
+    _prayer('p_mine', 'John Doe', mine: true),
+  ];
+  final blocked = <BlockedUser>[];
+  final reports = <(String, ReportReason, String)>[];
+  var createCalls = 0;
+
+  @override
+  Future<List<Prayer>> getPrayers({
+    String sort = 'recent',
+    String category = 'All',
+    String type = 'all',
+    bool mine = false,
+    int page = 1,
+    int limit = 50,
+  }) async => page == 1 ? List.of(prayers) : [];
+
+  @override
+  Future<Prayer> createPrayer({
+    required String title,
+    required String content,
+    String category = 'General',
+    String type = 'request',
+    bool isAnonymous = false,
+  }) async {
+    createCalls++;
+    return _prayer('p_new', 'John Doe', mine: true);
+  }
+
+  @override
+  Future<Map<String, dynamic>> toggleLike(String prayerId) async => {};
+
+  @override
+  Future<void> deletePrayer(String prayerId) async =>
+      prayers.removeWhere((p) => p.id == prayerId);
+
+  @override
+  Future<void> reportPrayer(
+    String prayerId, {
+    required ReportReason reason,
+    String details = '',
+  }) async => reports.add((prayerId, reason, details));
+
+  @override
+  Future<void> blockAuthor(String prayerId) async {
+    final author = prayers.firstWhere((p) => p.id == prayerId).authorName;
+    blocked.add(
+      BlockedUser(
+        userId: 'usr_$author',
+        name: author,
+        blockedAt: DateTime(2026),
+      ),
+    );
+    prayers.removeWhere((p) => p.authorName == author);
+  }
+
+  @override
+  Future<List<BlockedUser>> getBlockedUsers() async => List.of(blocked);
+
+  @override
+  Future<void> unblockUser(String userId) async =>
+      blocked.removeWhere((b) => b.userId == userId);
+}
+
 class _FakeGoogleSignInService implements GoogleSignInService {
   String? idToken = 'mock-google-token:john@gmail.com:John Doe';
   var signOutCalls = 0;
@@ -251,6 +329,7 @@ class _FakeAuthApi implements AuthApi {
 void main() {
   late _FakeShareService shareService;
   late _FakePhotoPicker photoPicker;
+  late _FakePrayersApi prayersApi;
   late _FakeHomeWidgetService homeWidgetService;
   late _FakeVersesApi versesApi;
   late _NoopScheduler notificationScheduler;
@@ -279,6 +358,7 @@ void main() {
         });
     shareService = _FakeShareService();
     photoPicker = _FakePhotoPicker();
+    prayersApi = _FakePrayersApi();
     homeWidgetService = _FakeHomeWidgetService();
     versesApi = _FakeVersesApi();
     notificationScheduler = _NoopScheduler();
@@ -292,6 +372,7 @@ void main() {
       versesApiProvider.overrideWithValue(versesApi),
       shareServiceProvider.overrideWithValue(shareService),
       photoPickerProvider.overrideWithValue(photoPicker),
+      prayersApiProvider.overrideWithValue(prayersApi),
       homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
       notificationSchedulerProvider.overrideWithValue(notificationScheduler),
       googleSignInServiceProvider.overrideWithValue(googleSignInService),
@@ -1080,6 +1161,155 @@ void main() {
     expect(authApi.deleteAccountCalls, 2);
     expect(find.text('Continue with Google'), findsOneWidget);
   });
+
+  Future<void> openPrayers(WidgetTester tester) async {
+    // Taller than the default, so both cards fit above the Share Prayer button.
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Prayers').last);
+    await tester.pumpAndSettle();
+  }
+
+  Future<void> openMenuOf(WidgetTester tester, String title) async {
+    final card = find.ancestor(
+      of: find.text(title),
+      matching: find.byType(PrayerCard),
+    );
+    await tester.tap(
+      find.descendant(of: card, matching: find.byTooltip('More options')),
+    );
+    await tester.pumpAndSettle();
+  }
+
+  testWidgets('prayer menus: others get Report and Block, yours get Delete', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await openPrayers(tester);
+
+    await openMenuOf(tester, 'Grace needs prayer');
+    expect(find.text('Report'), findsOneWidget);
+    expect(find.text('Block user'), findsOneWidget);
+    expect(find.text('Delete'), findsNothing);
+    await tester.tapAt(Offset.zero);
+    await tester.pumpAndSettle();
+
+    await openMenuOf(tester, 'John Doe needs prayer');
+    expect(find.text('Delete'), findsOneWidget);
+    expect(find.text('Report'), findsNothing);
+  });
+
+  testWidgets('guests are asked to sign in before reporting', (tester) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await openPrayers(tester);
+
+    await openMenuOf(tester, 'Grace needs prayer');
+    await tester.tap(find.text('Report'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Report a prayer'), findsOneWidget);
+    expect(find.text('Report this prayer'), findsNothing);
+    expect(prayersApi.reports, isEmpty);
+  });
+
+  testWidgets('reporting sends the reason and removes the prayer', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await signInFromProfile(tester);
+    await openPrayers(tester);
+
+    await openMenuOf(tester, 'Grace needs prayer');
+    await tester.tap(find.text('Report'));
+    await tester.pumpAndSettle();
+    expect(find.text('Report this prayer'), findsOneWidget);
+    // A reason is required.
+    final reportButton = find.widgetWithText(FilledButton, 'Report');
+    expect(tester.widget<FilledButton>(reportButton).onPressed, isNull);
+
+    await tester.tap(find.text(ReportReason.spam.label));
+    await tester.enterText(find.byType(TextField), 'Selling things');
+    await tester.pumpAndSettle();
+    await tester.tap(reportButton);
+    await tester.pumpAndSettle();
+
+    expect(prayersApi.reports, [
+      ('p_grace', ReportReason.spam, 'Selling things'),
+    ]);
+    expect(find.text('Grace needs prayer'), findsNothing);
+    expect(
+      find.text('Thanks for reporting. Our team will review it.'),
+      findsOne,
+    );
+  });
+
+  testWidgets('blocking hides their prayers; Profile lists them to unblock', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await signInFromProfile(tester);
+    await openPrayers(tester);
+
+    await openMenuOf(tester, 'Grace needs prayer');
+    await tester.tap(find.text('Block user'));
+    await tester.pumpAndSettle();
+    expect(find.text('Block Grace?'), findsOneWidget);
+    await tester.tap(find.widgetWithText(FilledButton, 'Block'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Grace needs prayer'), findsNothing);
+    expect(find.text('Grace is blocked.'), findsOneWidget);
+
+    await tester.tap(find.text('Profile').last);
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('Blocked users'));
+    await tester.tap(find.text('Blocked users'));
+    await tester.pumpAndSettle();
+    expect(find.text('Grace'), findsOneWidget);
+
+    await tester.tap(find.text('Unblock'));
+    await tester.pumpAndSettle();
+    expect(prayersApi.blocked, isEmpty);
+    expect(find.text('No one is blocked'), findsOneWidget);
+  });
+
+  testWidgets(
+    'the community guidelines are agreed to once, before the first post',
+    (tester) async {
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+      await signInFromProfile(tester);
+      await openPrayers(tester);
+
+      await tester.tap(find.text('Share Prayer'));
+      await tester.pumpAndSettle();
+      expect(find.text('Community guidelines'), findsOneWidget);
+      // Cancelling means no post.
+      await tester.tap(find.text('Cancel'));
+      await tester.pumpAndSettle();
+      expect(find.text('Post Anonymously'), findsNothing);
+
+      await tester.tap(find.text('Share Prayer'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('I agree'));
+      await tester.pumpAndSettle();
+      expect(find.text('Post Anonymously'), findsOneWidget);
+      await tester.tap(find.byIcon(Icons.close));
+      await tester.pumpAndSettle();
+
+      // Agreed once: straight to the form next time.
+      await tester.tap(find.text('Share Prayer'));
+      await tester.pumpAndSettle();
+      expect(find.text('Community guidelines'), findsNothing);
+      expect(find.text('Post Anonymously'), findsOneWidget);
+    },
+  );
 
   testWidgets('saving from Home fills the heart and Undo reverts it', (
     tester,

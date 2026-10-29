@@ -68,8 +68,9 @@ class HasMorePrayersNotifier extends Notifier<bool> {
   void setHasMore(bool val) => state = val;
 }
 
-final hasMorePrayersProvider =
-    NotifierProvider<HasMorePrayersNotifier, bool>(HasMorePrayersNotifier.new);
+final hasMorePrayersProvider = NotifierProvider<HasMorePrayersNotifier, bool>(
+  HasMorePrayersNotifier.new,
+);
 
 class IsLoadingMorePrayersNotifier extends Notifier<bool> {
   @override
@@ -178,8 +179,9 @@ class PrayersFeedNotifier extends AsyncNotifier<List<Prayer>> {
         _currentPage = nextPage;
         final currentList = state.value ?? [];
         final existingIds = currentList.map((p) => p.id).toSet();
-        final uniqueNew =
-            newItems.where((p) => !existingIds.contains(p.id)).toList();
+        final uniqueNew = newItems
+            .where((p) => !existingIds.contains(p.id))
+            .toList();
         state = AsyncData([...currentList, ...uniqueNew]);
       }
     } catch (_) {
@@ -254,7 +256,40 @@ class PrayersFeedNotifier extends AsyncNotifier<List<Prayer>> {
 
     unawaited(ref.read(authProvider.notifier).refreshUser());
   }
+
+  /// Reports a prayer and takes it out of this user's feed straight away.
+  Future<void> reportPrayer(
+    String prayerId, {
+    required ReportReason reason,
+    String details = '',
+  }) async {
+    await ref
+        .read(prayersApiProvider)
+        .reportPrayer(prayerId, reason: reason, details: details);
+    final currentList = state.value ?? [];
+    state = AsyncData(currentList.where((p) => p.id != prayerId).toList());
+  }
+
+  /// Blocks the author of [prayerId]. The feed reloads, because the app doesn't
+  /// know who wrote a prayer (ids are kept private) to remove their other posts.
+  Future<void> blockAuthorOf(String prayerId) async {
+    await ref.read(prayersApiProvider).blockAuthor(prayerId);
+    ref.invalidate(blockedUsersProvider);
+    await refresh();
+  }
+
+  /// Unblocks [userId]; their prayers show again.
+  Future<void> unblock(String userId) async {
+    await ref.read(prayersApiProvider).unblockUser(userId);
+    ref.invalidate(blockedUsersProvider);
+    await refresh();
+  }
 }
+
+/// The people the signed-in user has blocked (Profile › Blocked users).
+final blockedUsersProvider = FutureProvider.autoDispose<List<BlockedUser>>(
+  (ref) => ref.watch(prayersApiProvider).getBlockedUsers(),
+);
 
 final prayersFeedProvider =
     AsyncNotifierProvider<PrayersFeedNotifier, List<Prayer>>(

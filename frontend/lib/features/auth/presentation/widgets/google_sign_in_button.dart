@@ -23,9 +23,7 @@ class GoogleSignInButton extends StatelessWidget {
         foregroundColor: AppColors.textPrimary,
         side: const BorderSide(color: AppColors.border),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       ),
       child: isLoading
           ? const SizedBox.square(
@@ -41,11 +39,16 @@ class GoogleSignInButton extends StatelessWidget {
               children: [
                 _GoogleLogo(),
                 const SizedBox(width: 12),
-                Text(
-                  'Continue with Google',
-                  style: textTheme.labelLarge?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.2,
+                // Flexible: in a narrow dialog or with large text, shrink to
+                // "Continue with Goo…" rather than overflow the button.
+                Flexible(
+                  child: Text(
+                    'Continue with Google',
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.labelLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.2,
+                    ),
                   ),
                 ),
               ],
@@ -59,9 +62,7 @@ class _GoogleLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox.square(
       dimension: 20,
-      child: CustomPaint(
-        painter: _GoogleLogoPainter(),
-      ),
+      child: CustomPaint(painter: _GoogleLogoPainter()),
     );
   }
 }

@@ -3,7 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../auth/application/auth_service.dart';
 import '../../auth/presentation/widgets/sign_in_prompt_dialog.dart';
 import '../application/prayers_provider.dart';
+import '../data/community_guidelines_store.dart';
+import '../data/models/prayer.dart';
 import 'widgets/create_prayer_dialog.dart';
+import 'widgets/moderation_dialogs.dart';
 import 'widgets/prayer_card.dart';
 
 class PrayersPage extends ConsumerWidget {
@@ -32,6 +35,16 @@ class PrayersPage extends ConsumerWidget {
       if (!signedIn || !context.mounted) return;
     }
 
+    // Everyone agrees to the community guidelines before their first post.
+    final guidelines = ref.read(communityGuidelinesStoreProvider);
+    final accepted = await guidelines.hasAccepted();
+    if (!context.mounted) return;
+    if (!accepted) {
+      if (!await showCommunityGuidelines(context)) return;
+      await guidelines.accept();
+      if (!context.mounted) return;
+    }
+
     showDialog<void>(
       context: context,
       builder: (ctx) => CreatePrayerDialog(
@@ -52,6 +65,79 @@ class PrayersPage extends ConsumerWidget {
         },
       ),
     );
+  }
+
+  /// Guests sign in first; returns false if they don't.
+  Future<bool> _signedInFor(
+    BuildContext context,
+    WidgetRef ref, {
+    required String title,
+    required String message,
+  }) async {
+    if (ref.read(authProvider).value != null) return true;
+    return showSignInPromptDialog(
+      context,
+      title: title,
+      message: message,
+      icon: Icons.shield_outlined,
+    );
+  }
+
+  void _toast(BuildContext context, String message) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  Future<void> _report(BuildContext context, WidgetRef ref, Prayer prayer) async {
+    if (!await _signedInFor(
+      context,
+      ref,
+      title: 'Report a prayer',
+      message: 'Sign in to report posts that break the community guidelines.',
+    )) {
+      return;
+    }
+    if (!context.mounted) return;
+    final report = await showReportPrayerSheet(context);
+    if (report == null || !context.mounted) return;
+    try {
+      await ref
+          .read(prayersFeedProvider.notifier)
+          .reportPrayer(prayer.id, reason: report.reason, details: report.details);
+      if (context.mounted) {
+        _toast(context, 'Thanks for reporting. Our team will review it.');
+      }
+    } catch (_) {
+      if (context.mounted) {
+        _toast(context, 'Couldn\'t send your report. Please try again.');
+      }
+    }
+  }
+
+  Future<void> _block(BuildContext context, WidgetRef ref, Prayer prayer) async {
+    if (!await _signedInFor(
+      context,
+      ref,
+      title: 'Block someone',
+      message: 'Sign in to block people whose prayers you don\'t want to see.',
+    )) {
+      return;
+    }
+    if (!context.mounted ||
+        !await confirmBlockAuthor(context, prayer.authorName)) {
+      return;
+    }
+    try {
+      await ref.read(prayersFeedProvider.notifier).blockAuthorOf(prayer.id);
+      if (context.mounted) {
+        _toast(context, '${prayer.authorName} is blocked.');
+      }
+    } catch (_) {
+      if (context.mounted) {
+        _toast(context, 'Couldn\'t block them. Please try again.');
+      }
+    }
   }
 
   @override
@@ -465,6 +551,8 @@ class PrayersPage extends ConsumerWidget {
                                 }
                               }
                             : null,
+                        onReport: () => _report(context, ref, prayer),
+                        onBlock: () => _block(context, ref, prayer),
                       );
                     },
                   ),

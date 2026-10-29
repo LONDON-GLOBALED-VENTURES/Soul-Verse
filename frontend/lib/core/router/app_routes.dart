@@ -6,6 +6,7 @@ abstract final class AppRoutes {
   static const prayers = '/prayers';
   static const more = '/more';
   static const share = '/share';
+  static const blockedUsers = '$more/blocked';
 
   static String moodVerses(String moodId) => '$explore/mood/$moodId';
 }

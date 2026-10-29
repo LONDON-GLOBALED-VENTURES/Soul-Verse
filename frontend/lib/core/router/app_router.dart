@@ -5,6 +5,7 @@ import '../../features/favourites/presentation/favourites_page.dart';
 import '../../features/more/presentation/more_page.dart';
 import '../../features/onboarding/application/onboarding_provider.dart';
 import '../../features/onboarding/presentation/onboarding_page.dart';
+import '../../features/prayers/presentation/blocked_users_page.dart';
 import '../../features/prayers/presentation/prayers_page.dart';
 import '../../features/share/presentation/share_verse_page.dart';
 import '../../features/verses/presentation/explore_page.dart';
@@ -95,6 +96,12 @@ GoRouter appRouter(Ref ref) {
               GoRoute(
                 path: AppRoutes.more,
                 builder: (_, _) => const MorePage(),
+                routes: [
+                  GoRoute(
+                    path: 'blocked',
+                    builder: (_, _) => const BlockedUsersPage(),
+                  ),
+                ],
               ),
             ],
           ),

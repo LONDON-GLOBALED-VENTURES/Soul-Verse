@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/router/app_routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/async_states.dart';
@@ -712,7 +714,17 @@ class _AccountCard extends ConsumerWidget {
                 ),
                 const SizedBox(height: 12),
                 const Divider(height: 1),
-                const SizedBox(height: 4),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  dense: true,
+                  leading: const Icon(
+                    Icons.block,
+                    color: AppColors.textSecondary,
+                  ),
+                  title: Text('Blocked users', style: textTheme.titleSmall),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => context.push(AppRoutes.blockedUsers),
+                ),
                 const DeleteAccountButton(),
               ],
             ),
