@@ -6,6 +6,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/async_states.dart';
 import '../../auth/application/auth_service.dart';
+import '../../auth/presentation/delete_account_flow.dart';
 import '../../auth/presentation/widgets/google_sign_in_button.dart';
 import '../../reminders/application/exact_alarms_provider.dart';
 import '../../reminders/application/reminder_service.dart';
@@ -709,6 +710,10 @@ class _AccountCard extends ConsumerWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 12),
+                const Divider(height: 1),
+                const SizedBox(height: 4),
+                const DeleteAccountButton(),
               ],
             ),
           ),

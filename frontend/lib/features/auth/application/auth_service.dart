@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../favourites/data/favourites_repository.dart';
 import '../data/auth_api.dart';
 import '../data/auth_token_storage.dart';
 import '../data/models/user.dart';
@@ -11,6 +12,9 @@ import '../data/models/user.dart';
 abstract class GoogleSignInService {
   Future<String?> getGoogleIdToken();
   Future<void> signOut();
+
+  /// Signs out and revokes SoulVerse's access to the Google account.
+  Future<void> disconnect();
 }
 
 const _googleServerClientId = String.fromEnvironment(
@@ -25,12 +29,13 @@ const _googleIOSClientId = String.fromEnvironment(
 
 class DefaultGoogleSignInService implements GoogleSignInService {
   DefaultGoogleSignInService([GoogleSignIn? googleSignIn])
-      : _googleSignIn = googleSignIn ??
-            GoogleSignIn(
-              clientId: Platform.isIOS ? _googleIOSClientId : null,
-              serverClientId: _googleServerClientId,
-              scopes: ['email', 'profile'],
-            );
+    : _googleSignIn =
+          googleSignIn ??
+          GoogleSignIn(
+            clientId: Platform.isIOS ? _googleIOSClientId : null,
+            serverClientId: _googleServerClientId,
+            scopes: ['email', 'profile'],
+          );
 
   final GoogleSignIn _googleSignIn;
 
@@ -53,6 +58,17 @@ class DefaultGoogleSignInService implements GoogleSignInService {
       await _googleSignIn.signOut();
     } catch (e) {
       debugPrint('Google Sign-Out failed: $e');
+    }
+  }
+
+  @override
+  Future<void> disconnect() async {
+    try {
+      await _googleSignIn.disconnect();
+    } catch (e) {
+      // Revoking can fail offline; the account is already deleted, so just sign out.
+      debugPrint('Google disconnect failed: $e');
+      await signOut();
     }
   }
 }
@@ -105,10 +121,12 @@ class AuthNotifier extends AsyncNotifier<User?> {
 
       final api = ref.read(authApiProvider);
       final session = await api.signInWithGoogle(idToken);
-      await ref.read(authTokenStorageProvider).saveTokens(
-        accessToken: session.accessToken,
-        refreshToken: session.refreshToken,
-      );
+      await ref
+          .read(authTokenStorageProvider)
+          .saveTokens(
+            accessToken: session.accessToken,
+            refreshToken: session.refreshToken,
+          );
       state = AsyncData(session.user);
       return true;
     } catch (e, st) {
@@ -128,6 +146,21 @@ class AuthNotifier extends AsyncNotifier<User?> {
     }
   }
 
+  /// Permanently deletes the account on the server, then signs out on this
+  /// phone and removes that account's saved favourites. Throws if the server
+  /// couldn't delete it, leaving the user signed in so they can try again.
+  Future<void> deleteAccount() async {
+    final user = state.value;
+    await ref.read(authApiProvider).deleteAccount();
+
+    await ref.read(googleSignInServiceProvider).disconnect();
+    await ref.read(authTokenStorageProvider).clear();
+    if (user != null) {
+      await ref.read(favouritesRepositoryProvider).clear(userId: user.id);
+    }
+    state = const AsyncData(null);
+  }
+
   Future<void> refreshUser() async {
     try {
       final api = ref.read(authApiProvider);
@@ -137,9 +170,10 @@ class AuthNotifier extends AsyncNotifier<User?> {
   }
 }
 
-final authProvider = AsyncNotifierProvider<AuthNotifier, User?>(AuthNotifier.new);
+final authProvider = AsyncNotifierProvider<AuthNotifier, User?>(
+  AuthNotifier.new,
+);
 
 final currentUserIdProvider = Provider<String?>((ref) {
   return ref.watch(authProvider).value?.id;
 });
-

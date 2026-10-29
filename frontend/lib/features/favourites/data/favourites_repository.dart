@@ -22,8 +22,8 @@ class FavouritesRepository {
 
   String _storageKey(String? userId) =>
       userId != null && userId.trim().isNotEmpty
-          ? '${_baseKey}_${userId.trim()}'
-          : '${_baseKey}_guest';
+      ? '${_baseKey}_${userId.trim()}'
+      : '${_baseKey}_guest';
 
   Future<List<FavouriteVerse>> load({String? userId}) async {
     final key = _storageKey(userId);
@@ -61,6 +61,10 @@ class FavouritesRepository {
           'items': favourites.map((f) => f.toJson()).toList(),
         }),
       );
+
+  /// Removes the favourites saved on this phone for [userId] (e.g. after the
+  /// account is deleted).
+  Future<void> clear({String? userId}) => _prefs.remove(_storageKey(userId));
 }
 
 @Riverpod(keepAlive: true)

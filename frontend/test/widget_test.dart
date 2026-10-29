@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 
@@ -203,6 +204,13 @@ class _FakeGoogleSignInService implements GoogleSignInService {
   Future<void> signOut() async {
     signOutCalls++;
   }
+
+  var disconnectCalls = 0;
+
+  @override
+  Future<void> disconnect() async {
+    disconnectCalls++;
+  }
 }
 
 class _FakeAuthApi implements AuthApi {
@@ -227,6 +235,17 @@ class _FakeAuthApi implements AuthApi {
 
   @override
   Future<User> getMe() async => currentUser;
+
+  var deleteAccountCalls = 0;
+
+  /// When set, deleting the account fails with this error.
+  Object? deleteAccountError;
+
+  @override
+  Future<void> deleteAccount() async {
+    deleteAccountCalls++;
+    if (deleteAccountError != null) throw deleteAccountError!;
+  }
 }
 
 void main() {
@@ -984,6 +1003,83 @@ void main() {
       expect(googleSignInService.signOutCalls, 1);
     },
   );
+
+  Future<void> signInFromProfile(WidgetTester tester) async {
+    await tester.tap(find.text('Profile').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Continue with Google'));
+    await tester.pumpAndSettle();
+  }
+
+  Future<void> tapDeleteAccount(WidgetTester tester) async {
+    await tester.ensureVisible(find.text('Delete account'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Delete account'));
+    await tester.pumpAndSettle();
+  }
+
+  testWidgets(
+    'deleting the account signs out and clears that account from the phone',
+    (tester) async {
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+      await signInFromProfile(tester);
+      final userId = authApi.currentUser.id;
+      final prefs = SharedPreferencesAsync();
+      await tester.runAsync(
+        () => prefs.setString('favourites_$userId', '{"items":[]}'),
+      );
+
+      await tapDeleteAccount(tester);
+      expect(find.text('Delete your account?'), findsOneWidget);
+      expect(find.textContaining('doesn\'t cancel a subscription'), findsOne);
+
+      // Cancelling changes nothing.
+      await tester.tap(find.text('Cancel'));
+      await tester.pumpAndSettle();
+      expect(authApi.deleteAccountCalls, 0);
+      expect(find.text('John Doe'), findsOneWidget);
+
+      await tapDeleteAccount(tester);
+      await tester.tap(find.widgetWithText(FilledButton, 'Delete account'));
+      await tester.pumpAndSettle();
+
+      expect(authApi.deleteAccountCalls, 1);
+      expect(googleSignInService.disconnectCalls, 1);
+      expect(find.text('Your account has been deleted'), findsOneWidget);
+      expect(find.text('Continue with Google'), findsOneWidget);
+      expect(
+        await tester.runAsync(() => prefs.getString('favourites_$userId')),
+        isNull,
+      );
+    },
+  );
+
+  testWidgets('if deleting fails, the user stays signed in and can retry', (
+    tester,
+  ) async {
+    authApi.deleteAccountError = DioException(
+      requestOptions: RequestOptions(path: '/auth/me'),
+      type: DioExceptionType.connectionError,
+    );
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await signInFromProfile(tester);
+
+    await tapDeleteAccount(tester);
+    await tester.tap(find.widgetWithText(FilledButton, 'Delete account'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Couldn\'t delete your account'), findsOneWidget);
+    expect(googleSignInService.disconnectCalls, 0);
+
+    // The connection is back; trying again works.
+    authApi.deleteAccountError = null;
+    await tester.tap(find.text('Try again'));
+    await tester.pumpAndSettle();
+    expect(authApi.deleteAccountCalls, 2);
+    expect(find.text('Continue with Google'), findsOneWidget);
+  });
 
   testWidgets('saving from Home fills the heart and Undo reverts it', (
     tester,

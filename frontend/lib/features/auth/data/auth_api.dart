@@ -29,6 +29,11 @@ class AuthApi {
     final response = await _dio.get<Map<String, dynamic>>('/auth/me');
     return User.fromJson(response.data!['user'] as Map<String, dynamic>);
   }
+
+  /// Permanently deletes the signed-in user's account and everything they shared.
+  Future<void> deleteAccount() async {
+    await _dio.delete<void>('/auth/me');
+  }
 }
 
 final authApiProvider = Provider<AuthApi>((ref) {
