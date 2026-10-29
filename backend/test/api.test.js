@@ -154,6 +154,12 @@ test('image URLs use https when the request came through an https proxy', async 
   assert.match(template.imageUrl, /^https:\/\//);
 });
 
+test('the app config says billing is on by default', async () => {
+  const { status, body } = await get('/config');
+  assert.equal(status, 200);
+  assert.deepEqual(body, { billingEnabled: true });
+});
+
 test('templates only reference emotions that exist', async () => {
   const ids = new Set((await get('/moods')).body.map((m) => m.id));
   for (const template of (await get('/templates')).body) {

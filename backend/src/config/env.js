@@ -47,6 +47,9 @@ module.exports = {
   supportEmail: process.env.SUPPORT_EMAIL || 'support@example.com',
   // Moderator access to /api/admin (reports, hide/restore). Unset: those routes don't exist.
   adminApiKey: process.env.ADMIN_API_KEY || '',
+  // QA switch: 'false' unlocks every Premium feature in the app (no purchases).
+  // Only for a staging backend; on production it would make Premium free for everyone.
+  billingEnabled: process.env.BILLING_ENABLED !== 'false',
   jwtSecret,
   jwtRefreshSecret,
   // Fake "mock-google-token:" sign-ins: always in tests, in development only on request.

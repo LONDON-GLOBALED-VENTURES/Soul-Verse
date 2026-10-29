@@ -16,7 +16,7 @@ const run = (env, snippet = '') => {
   const script = `
     const config = require(${JSON.stringify(path.join(SRC, 'config', 'env.js'))});
     ${snippet}
-    console.log(JSON.stringify({ nodeEnv: config.nodeEnv, mock: config.allowMockGoogleAuth }));
+    console.log(JSON.stringify({ nodeEnv: config.nodeEnv, mock: config.allowMockGoogleAuth, billing: config.billingEnabled }));
   `;
   const result = spawnSync(process.execPath, ['-e', script], {
     cwd: os.tmpdir(),
@@ -102,4 +102,12 @@ test('production rejects a mock Google token instead of signing it in', () => {
   );
   assert.equal(result.status, 4, result.stderr);
   assert.match(result.stderr, /REJECTED/);
+});
+
+test('billing is on unless BILLING_ENABLED is exactly "false"', () => {
+  const dev = { NODE_ENV: 'development' };
+  assert.equal(run(dev).config.billing, true);
+  assert.equal(run({ ...dev, BILLING_ENABLED: 'true' }).config.billing, true);
+  assert.equal(run({ ...dev, BILLING_ENABLED: 'no' }).config.billing, true);
+  assert.equal(run({ ...dev, BILLING_ENABLED: 'false' }).config.billing, false);
 });

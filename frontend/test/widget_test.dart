@@ -22,6 +22,9 @@ import 'package:soulverse/features/prayers/data/prayers_api.dart';
 import 'package:soulverse/features/prayers/presentation/widgets/prayer_card.dart';
 import 'package:soulverse/features/reminders/data/notification_scheduler.dart';
 import 'package:soulverse/features/share/data/models/verse_style.dart';
+import 'package:soulverse/features/subscription/application/premium_providers.dart';
+import 'package:soulverse/features/subscription/data/app_config.dart';
+import 'package:soulverse/features/subscription/data/billing_service.dart';
 import 'package:soulverse/features/share/data/photo_picker.dart';
 import 'package:soulverse/features/share/data/share_service.dart';
 import 'package:soulverse/features/verses/application/verses_providers.dart';
@@ -271,6 +274,24 @@ class _FakePrayersApi implements PrayersApi {
       blocked.removeWhere((b) => b.userId == userId);
 }
 
+class _FakeAppConfigApi implements AppConfigApi {
+  bool billingEnabled = true;
+
+  @override
+  Future<AppConfig> fetch() async => AppConfig(billingEnabled: billingEnabled);
+}
+
+class _FakeBillingService implements BillingService {
+  @override
+  Future<void> logIn(String userId) async {}
+
+  @override
+  Future<void> logOut() async {}
+
+  @override
+  Stream<bool> watchPremium() => Stream.value(false);
+}
+
 class _FakeGoogleSignInService implements GoogleSignInService {
   String? idToken = 'mock-google-token:john@gmail.com:John Doe';
   var signOutCalls = 0;
@@ -330,6 +351,7 @@ void main() {
   late _FakeShareService shareService;
   late _FakePhotoPicker photoPicker;
   late _FakePrayersApi prayersApi;
+  late _FakeAppConfigApi appConfigApi;
   late _FakeHomeWidgetService homeWidgetService;
   late _FakeVersesApi versesApi;
   late _NoopScheduler notificationScheduler;
@@ -359,6 +381,7 @@ void main() {
     shareService = _FakeShareService();
     photoPicker = _FakePhotoPicker();
     prayersApi = _FakePrayersApi();
+    appConfigApi = _FakeAppConfigApi();
     homeWidgetService = _FakeHomeWidgetService();
     versesApi = _FakeVersesApi();
     notificationScheduler = _NoopScheduler();
@@ -373,6 +396,8 @@ void main() {
       shareServiceProvider.overrideWithValue(shareService),
       photoPickerProvider.overrideWithValue(photoPicker),
       prayersApiProvider.overrideWithValue(prayersApi),
+      appConfigApiProvider.overrideWithValue(appConfigApi),
+      billingServiceProvider.overrideWithValue(_FakeBillingService()),
       homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
       notificationSchedulerProvider.overrideWithValue(notificationScheduler),
       googleSignInServiceProvider.overrideWithValue(googleSignInService),
@@ -1310,6 +1335,25 @@ void main() {
       expect(find.text('Post Anonymously'), findsOneWidget);
     },
   );
+
+  testWidgets('Profile shows a test-build banner only when billing is off', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Profile').last);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Test build: billing off'), findsNothing);
+
+    // A QA build pointed at a staging backend with BILLING_ENABLED=false.
+    appConfigApi.billingEnabled = false;
+    await tester.pumpWidget(const SizedBox());
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Profile').last);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Test build: billing off'), findsOneWidget);
+  });
 
   testWidgets('saving from Home fills the heart and Undo reverts it', (
     tester,

@@ -15,6 +15,7 @@ import '../../reminders/application/reminder_service.dart';
 import '../../reminders/application/reminders_provider.dart';
 import '../../reminders/data/notification_scheduler.dart';
 import '../../reminders/data/reminder_settings.dart';
+import '../../subscription/application/premium_providers.dart';
 import '../../subscription/presentation/premium_upgrade_sheet.dart';
 
 class MorePage extends ConsumerStatefulWidget {
@@ -170,6 +171,8 @@ class _MorePageState extends ConsumerState<MorePage> {
                 child: Text('Profile', style: textTheme.headlineMedium),
               ),
             ),
+            if (!ref.watch(billingEnabledProvider))
+              const SliverToBoxAdapter(child: _BillingOffBanner()),
             const SliverPadding(
               padding: EdgeInsets.fromLTRB(16, 0, 16, 12),
               sliver: SliverToBoxAdapter(child: _AccountCard()),
@@ -751,6 +754,42 @@ class _AccountCard extends ConsumerWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Shown when the backend has billing switched off (QA/staging builds), so
+/// testers know Premium is unlocked without a subscription.
+class _BillingOffBanner extends StatelessWidget {
+  const _BillingOffBanner();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFF4D6),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFFE6C27A)),
+        ),
+        child: Row(
+          children: [
+            const Icon(Icons.science_outlined, size: 20, color: Color(0xFF8A6D1F)),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                'Test build: billing off. All Premium features are unlocked.',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: const Color(0xFF5C4813),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

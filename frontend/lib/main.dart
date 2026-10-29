@@ -7,6 +7,7 @@ import 'core/theme/app_theme.dart';
 import 'features/home_widget/home_widget_service.dart';
 import 'features/reminders/application/reminder_service.dart';
 import 'features/reminders/application/reminders_provider.dart';
+import 'features/subscription/application/premium_providers.dart';
 import 'features/verses/application/verses_providers.dart';
 
 void main() {
@@ -28,6 +29,10 @@ class SoulVerseApp extends ConsumerWidget {
     ref.listen(remindersProvider, (_, next) {
       next.whenData(ref.read(reminderServiceProvider).reschedule);
     });
+
+    // Keeps the app store account linked to whoever is signed in, and the
+    // Premium status current, from launch (see premiumEntitlementProvider).
+    ref.listen(premiumEntitlementProvider, (_, _) {});
 
     return MaterialApp.router(
       title: 'SoulVerse',
