@@ -99,3 +99,34 @@ test('creating a prayer stores and returns its type', { skip }, async () => {
   const requests = await dbPrayer.listPrayers({ type: 'request' });
   assert.equal(requests.total, 0);
 });
+
+test('deleting a user removes their prayers and likes and fixes the counts', { skip }, async () => {
+  await resetSchema();
+  await migrate();
+  const newUser = (name) =>
+    dbUser.findOrCreateFromGoogle({
+      googleId: `g_${name}`,
+      email: `${name}@example.com`,
+      name,
+      avatarUrl: '',
+    });
+  const anna = await newUser('anna');
+  const ben = await newUser('ben');
+  const prayer = (authorId, title) =>
+    dbPrayer.createPrayer({ authorId, title, content: 'Please pray for strength this week.' });
+  const annasPrayer = await prayer(anna.id, 'Anna needs prayer');
+  const bensPrayer = await prayer(ben.id, 'Ben needs prayer');
+  await dbPrayer.toggleLike({ prayerId: bensPrayer.id, userId: anna.id });
+  await dbPrayer.toggleLike({ prayerId: annasPrayer.id, userId: ben.id });
+
+  assert.equal(await dbUser.deleteUser(anna.id), true);
+
+  assert.equal(await dbUser.findById(anna.id), null);
+  const feed = await dbPrayer.listPrayers({ currentUserId: ben.id });
+  assert.deepEqual(feed.items.map((p) => [p.id, p.likesCount]), [[bensPrayer.id, 0]]);
+  assert.equal((await dbUser.findById(ben.id)).prayerStats.likesReceived, 0);
+  const { rows } = await pool.query('SELECT COUNT(*)::int AS n FROM prayer_likes');
+  assert.equal(rows[0].n, 0);
+
+  assert.equal(await dbUser.deleteUser(anna.id), false, 'already gone');
+});

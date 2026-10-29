@@ -1,5 +1,6 @@
 const googleAuthService = require('../services/google-auth.service');
 const userService = require('../services/user.service');
+const accountService = require('../services/account.service');
 const { signAccessToken, signRefreshToken, verifyRefreshToken } = require('../utils/token');
 const HttpError = require('../utils/http-error');
 
@@ -47,9 +48,15 @@ const getMe = async (req, res) => {
   res.json({ user: req.user });
 };
 
+const deleteMe = async (req, res) => {
+  await accountService.deleteAccount(req.user.id);
+  res.status(204).end();
+};
+
 module.exports = {
   googleAuth,
   refresh,
   getMe,
+  deleteMe,
 };
 

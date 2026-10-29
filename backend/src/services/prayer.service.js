@@ -260,6 +260,23 @@ const deletePrayer = async ({ prayerId, userId }) => {
   return { success: true };
 };
 
+/**
+ * Account deletion with the JSON files: removes the user's prayers and takes
+ * their likes off everyone else's, keeping those prayers' and authors' counts right.
+ * (Postgres does this in db-user.service deleteUser.)
+ */
+const removeUserData = async (userId) => {
+  const prayers = loadPrayers();
+  for (const prayer of prayers) {
+    if (prayer.authorId === userId || !prayer.likedBy?.includes(userId)) continue;
+    prayer.likedBy = prayer.likedBy.filter((id) => id !== userId);
+    prayer.likesCount = Math.max(0, (prayer.likesCount || 1) - 1);
+    await userService.adjustPrayerStats(prayer.authorId, { likesReceivedDelta: -1 });
+  }
+  prayersCache = prayers.filter((p) => p.authorId !== userId);
+  savePrayers();
+};
+
 const _resetForTests = (initial = []) => {
   prayersCache = [...initial];
   savePrayers();
@@ -271,5 +288,6 @@ module.exports = {
   toggleLike,
   deletePrayer,
   formatPrayer,
+  removeUserData,
   _resetForTests,
 };

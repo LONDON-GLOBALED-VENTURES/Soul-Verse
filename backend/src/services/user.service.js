@@ -163,6 +163,21 @@ const adjustPrayerStats = async (userId, { prayersSharedDelta = 0, likesReceived
   return sanitize(user);
 };
 
+/**
+ * Removes the user. In Postgres this also removes their prayers and likes; with
+ * the JSON files, account.service clears those first. False if there was no such user.
+ */
+const deleteUser = async (id) => {
+  if (isDbActive()) return dbUser.deleteUser(id);
+
+  const users = loadUsers();
+  const index = users.findIndex((u) => u.id === id);
+  if (index === -1) return false;
+  users.splice(index, 1);
+  saveUsers();
+  return true;
+};
+
 const _resetForTests = (initial = []) => {
   usersCache = [...initial];
   saveUsers();
@@ -175,6 +190,7 @@ module.exports = {
   findOrCreateFromGoogle,
   updateSubscription,
   adjustPrayerStats,
+  deleteUser,
   sanitize,
   _resetForTests,
 };

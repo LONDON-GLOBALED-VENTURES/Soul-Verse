@@ -43,6 +43,8 @@ module.exports = {
   corsOrigin: process.env.CORS_ORIGIN || '*',
   assetBaseUrl: process.env.ASSET_BASE_URL?.replace(/\/+$/, '') || '',
   googleClientId: process.env.GOOGLE_CLIENT_ID || '',
+  // Shown on the public account-deletion page.
+  supportEmail: process.env.SUPPORT_EMAIL || 'support@example.com',
   jwtSecret,
   jwtRefreshSecret,
   // Fake "mock-google-token:" sign-ins: always in tests, in development only on request.

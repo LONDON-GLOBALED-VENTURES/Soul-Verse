@@ -107,7 +107,48 @@ const updateSubscription = async (id, subscriptionUpdate = {}) => {
   return formatUser(res.rows[0]);
 };
 
+/**
+ * Deletes the user and everything they created. Their prayers and likes go
+ * with the user (ON DELETE CASCADE); first the likes they gave are taken off
+ * other people's prayers and authors, so those counts stay right.
+ * Returns false when there was no such user.
+ */
+const deleteUser = async (id) => {
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    await client.query(
+      `UPDATE users u
+       SET likes_received = GREATEST(0, u.likes_received - given.n)
+       FROM (
+         SELECT p.author_id, COUNT(*)::int AS n
+         FROM prayer_likes l JOIN prayers p ON p.id = l.prayer_id
+         WHERE l.user_id = $1 AND p.author_id <> $1
+         GROUP BY p.author_id
+       ) given
+       WHERE u.id = given.author_id`,
+      [id]
+    );
+    await client.query(
+      `UPDATE prayers p
+       SET likes_count = GREATEST(0, p.likes_count - 1)
+       FROM prayer_likes l
+       WHERE l.prayer_id = p.id AND l.user_id = $1 AND p.author_id <> $1`,
+      [id]
+    );
+    const deleted = await client.query('DELETE FROM users WHERE id = $1', [id]);
+    await client.query('COMMIT');
+    return deleted.rowCount > 0;
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
+  }
+};
+
 module.exports = {
+  deleteUser,
   findById,
   findByGoogleId,
   findByEmail,

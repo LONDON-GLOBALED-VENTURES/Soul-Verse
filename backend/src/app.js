@@ -1,7 +1,8 @@
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-const { corsOrigin } = require('./config/env');
+const { corsOrigin, supportEmail } = require('./config/env');
 const routes = require('./routes');
 const { notFound, errorHandler } = require('./middlewares/error.middleware');
 
@@ -31,6 +32,16 @@ app.get('/', (req, res) => {
       auth: '/api/auth',
     },
   });
+});
+
+// Public page the stores link to, explaining how to delete an account.
+const escapeHtml = (value) =>
+  value.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+const deleteAccountPage = fs
+  .readFileSync(path.join(__dirname, 'pages', 'delete-account.html'), 'utf8')
+  .replaceAll('{{SUPPORT_EMAIL}}', escapeHtml(supportEmail));
+app.get('/delete-account', (req, res) => {
+  res.type('html').send(deleteAccountPage);
 });
 
 // Root /health alias for hosting health checks.
