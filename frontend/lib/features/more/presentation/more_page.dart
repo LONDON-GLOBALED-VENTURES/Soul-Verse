@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/config/legal_links.dart';
 import '../../../core/router/app_routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
@@ -17,6 +18,7 @@ import '../../reminders/data/notification_scheduler.dart';
 import '../../reminders/data/reminder_settings.dart';
 import '../../subscription/application/premium_providers.dart';
 import '../../subscription/presentation/premium_upgrade_sheet.dart';
+import '../../subscription/presentation/subscription_actions.dart';
 
 class MorePage extends ConsumerStatefulWidget {
   const MorePage({super.key});
@@ -298,6 +300,24 @@ class _MorePageState extends ConsumerState<MorePage> {
                           'Daily verses and peaceful reflections for your journey.',
                           style: textTheme.bodyMedium,
                         ),
+                        if (termsUrl.isNotEmpty || privacyUrl.isNotEmpty) ...[
+                          const SizedBox(height: 8),
+                          Wrap(
+                            spacing: 8,
+                            children: [
+                              if (termsUrl.isNotEmpty)
+                                TextButton(
+                                  onPressed: () => openExternalUrl(termsUrl),
+                                  child: const Text('Terms of Use'),
+                                ),
+                              if (privacyUrl.isNotEmpty)
+                                TextButton(
+                                  onPressed: () => openExternalUrl(privacyUrl),
+                                  child: const Text('Privacy Policy'),
+                                ),
+                            ],
+                          ),
+                        ],
                       ],
                     ),
                   ),
@@ -468,6 +488,9 @@ class _AccountCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
     final authState = ref.watch(authProvider);
+    // From the app store (or unlocked when billing is off for QA).
+    final isPremium = ref.watch(isPremiumProvider);
+    final billingEnabled = ref.watch(billingEnabledProvider);
 
     return authState.when(
       data: (user) {
@@ -569,7 +592,7 @@ class _AccountCard extends ConsumerWidget {
                             runSpacing: 4,
                             children: [
                               InkWell(
-                                onTap: user.subscription.isPremium
+                                onTap: isPremium
                                     ? null
                                     : () => showPremiumUpgradeSheet(context),
                                 borderRadius: BorderRadius.circular(12),
@@ -579,7 +602,7 @@ class _AccountCard extends ConsumerWidget {
                                     vertical: 2,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: user.subscription.isPremium
+                                    color: isPremium
                                         ? const Color(0xFFFFD700)
                                               .withValues(alpha: 0.18)
                                         : AppColors.accent.withValues(
@@ -590,7 +613,7 @@ class _AccountCard extends ConsumerWidget {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      if (user.subscription.isPremium) ...[
+                                      if (isPremium) ...[
                                         const Icon(
                                           Icons.star_rounded,
                                           size: 13,
@@ -599,11 +622,11 @@ class _AccountCard extends ConsumerWidget {
                                         const SizedBox(width: 3),
                                       ],
                                       Text(
-                                        user.subscription.isPremium
+                                        isPremium
                                             ? 'Premium Member'
                                             : 'Free Plan',
                                         style: textTheme.labelSmall?.copyWith(
-                                          color: user.subscription.isPremium
+                                          color: isPremium
                                               ? const Color(0xFFB8860B)
                                               : AppColors.accent,
                                           fontWeight: FontWeight.w600,
@@ -717,6 +740,18 @@ class _AccountCard extends ConsumerWidget {
                 ),
                 const SizedBox(height: 12),
                 const Divider(height: 1),
+                if (billingEnabled)
+                  isPremium
+                      ? _AccountTile(
+                          icon: Icons.credit_card,
+                          label: 'Manage subscription',
+                          onTap: () => openManageSubscription(context, ref),
+                        )
+                      : _AccountTile(
+                          icon: Icons.restore,
+                          label: 'Restore purchases',
+                          onTap: () => restorePurchases(context, ref),
+                        ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   dense: true,
@@ -778,7 +813,11 @@ class _BillingOffBanner extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(Icons.science_outlined, size: 20, color: Color(0xFF8A6D1F)),
+            const Icon(
+              Icons.science_outlined,
+              size: 20,
+              color: Color(0xFF8A6D1F),
+            ),
             const SizedBox(width: 10),
             Expanded(
               child: Text(
@@ -792,6 +831,31 @@ class _BillingOffBanner extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// A row in the signed-in account card (e.g. Manage subscription).
+class _AccountTile extends StatelessWidget {
+  const _AccountTile({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      dense: true,
+      leading: Icon(icon, color: AppColors.textSecondary),
+      title: Text(label, style: Theme.of(context).textTheme.titleSmall),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: onTap,
     );
   }
 }

@@ -327,6 +327,14 @@ class _FakeBillingService implements BillingService {
     if (restoreFindsPremium) _setPremium(true);
     return restoreFindsPremium;
   }
+
+  var managementUrlCalls = 0;
+
+  @override
+  Future<String> managementUrl() async {
+    managementUrlCalls++;
+    return 'https://play.google.com/store/account/subscriptions';
+  }
 }
 
 class _FakeGoogleSignInService implements GoogleSignInService {
@@ -1117,6 +1125,7 @@ void main() {
   testWidgets(
     'Profile tab signs in with Google, shows profile and Free Plan, and signs out',
     (tester) async {
+      appConfigApi.billingEnabled = true;
       await tester.pumpWidget(app());
       await tester.pumpAndSettle();
 
@@ -1375,6 +1384,18 @@ void main() {
     },
   );
 
+  testWidgets('with billing off, Profile has no subscription items', (
+    tester,
+  ) async {
+    await tester.pumpWidget(app());
+    await tester.pumpAndSettle();
+    await signInFromProfile(tester);
+
+    expect(find.text('Premium Member'), findsOneWidget);
+    expect(find.text('Restore purchases'), findsNothing);
+    expect(find.text('Manage subscription'), findsNothing);
+  });
+
   testWidgets('Profile shows a test-build banner only when billing is off', (
     tester,
   ) async {
@@ -1522,6 +1543,71 @@ void main() {
       expect(find.text('Your SoulVerse Premium is restored.'), findsOneWidget);
       expect(find.bySemanticsLabel('Script font'), findsOneWidget);
     });
+
+    Future<void> openProfileSignedIn(WidgetTester tester) async {
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+      await signInFromProfile(tester);
+    }
+
+    Future<void> tapProfileItem(WidgetTester tester, String label) async {
+      await tester.ensureVisible(find.text(label));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(label));
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('free users can restore a subscription from Profile', (
+      tester,
+    ) async {
+      await openProfileSignedIn(tester);
+      expect(find.text('Free Plan'), findsOneWidget);
+      expect(find.text('Manage subscription'), findsNothing);
+
+      await tapProfileItem(tester, 'Restore purchases');
+      expect(
+        find.text('No Premium subscription was found for this account.'),
+        findsOneWidget,
+      );
+
+      billing.restoreFindsPremium = true;
+      await tapProfileItem(tester, 'Restore purchases');
+      expect(find.text('Your SoulVerse Premium is restored.'), findsOneWidget);
+      expect(find.text('Premium Member'), findsOneWidget);
+      expect(find.text('Manage subscription'), findsOneWidget);
+    });
+
+    testWidgets('subscribers manage their subscription in the store', (
+      tester,
+    ) async {
+      billing.premium = true;
+      await openProfileSignedIn(tester);
+      expect(find.text('Premium Member'), findsOneWidget);
+      expect(find.text('Restore purchases'), findsNothing);
+
+      await tapProfileItem(tester, 'Manage subscription');
+      expect(billing.managementUrlCalls, 1);
+    });
+
+    testWidgets(
+      'subscribers are warned that deleting doesn\'t cancel Premium',
+      (tester) async {
+        billing.premium = true;
+        await openProfileSignedIn(tester);
+        await tapProfileItem(tester, 'Delete account');
+
+        expect(find.text('You have SoulVerse Premium'), findsOneWidget);
+        expect(find.textContaining('keep being charged'), findsOneWidget);
+        await tester.tap(
+          find.descendant(
+            of: find.byType(AlertDialog),
+            matching: find.text('Manage subscription'),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(billing.managementUrlCalls, 1);
+      },
+    );
 
     testWidgets('Home\'s Edit opens the paywall for free users', (
       tester,

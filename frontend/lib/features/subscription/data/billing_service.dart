@@ -44,6 +44,9 @@ abstract class BillingService {
   /// Returns whether the user has Premium afterwards.
   Future<bool> restore();
 
+  /// Where the user manages or cancels their subscription in the store.
+  Future<String> managementUrl();
+
   /// Links purchases to the signed-in SoulVerse account, so Premium follows
   /// the account across reinstalls and devices.
   Future<void> logIn(String userId);
@@ -189,5 +192,23 @@ class RevenueCatBillingService implements BillingService {
     if (!_available) return false;
     await _ensureConfigured();
     return _hasPremium(await Purchases.restorePurchases());
+  }
+
+  /// The store's own subscriptions page for this app.
+  static String get storeSubscriptionsUrl => Platform.isIOS
+      ? 'https://apps.apple.com/account/subscriptions'
+      : 'https://play.google.com/store/account/subscriptions'
+            '?package=com.londonglobaledventures.soulverse';
+
+  @override
+  Future<String> managementUrl() async {
+    if (!_available) return storeSubscriptionsUrl;
+    try {
+      await _ensureConfigured();
+      return (await Purchases.getCustomerInfo()).managementURL ??
+          storeSubscriptionsUrl;
+    } catch (_) {
+      return storeSubscriptionsUrl;
+    }
   }
 }

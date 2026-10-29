@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../subscription/presentation/subscription_actions.dart';
 import '../application/auth_service.dart';
 
 const _deleteRed = Color(0xFFC0392B);
@@ -63,12 +64,13 @@ Future<void> _deleteWithProgress(BuildContext context, WidgetRef ref) async {
   }
 }
 
-class _ConfirmDeleteDialog extends StatelessWidget {
+class _ConfirmDeleteDialog extends ConsumerWidget {
   const _ConfirmDeleteDialog();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
+    final subscribed = hasActiveSubscription(ref);
     Widget bullet(String text) => Padding(
       padding: const EdgeInsets.only(top: 4),
       child: Row(
@@ -100,20 +102,53 @@ class _ConfirmDeleteDialog extends StatelessWidget {
               style: textTheme.bodySmall,
             ),
             const SizedBox(height: 12),
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.accent.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'This doesn\'t cancel a subscription. If you have SoulVerse '
-                'Premium, cancel it in Google Play or the App Store first.',
-                style: textTheme.bodySmall?.copyWith(
-                  color: AppColors.textPrimary,
+            if (subscribed)
+              // Deleting doesn't stop store billing, so make this hard to miss.
+              Container(
+                padding: const EdgeInsets.fromLTRB(12, 12, 12, 4),
+                decoration: BoxDecoration(
+                  color: _deleteRed.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: _deleteRed.withValues(alpha: 0.4)),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'You have SoulVerse Premium',
+                      style: textTheme.titleSmall?.copyWith(color: _deleteRed),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Deleting your account doesn\'t stop the subscription. '
+                      'Cancel it first, or you\'ll keep being charged.',
+                      style: textTheme.bodySmall?.copyWith(
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                      onPressed: () => openManageSubscription(context, ref),
+                      child: const Text('Manage subscription'),
+                    ),
+                  ],
+                ),
+              )
+            else
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: AppColors.accent.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  'This doesn\'t cancel a subscription. If you have SoulVerse '
+                  'Premium, cancel it in Google Play or the App Store first.',
+                  style: textTheme.bodySmall?.copyWith(
+                    color: AppColors.textPrimary,
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),

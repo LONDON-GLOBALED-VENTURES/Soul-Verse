@@ -70,6 +70,9 @@ class _FakeBilling implements BillingService {
 
   @override
   Future<bool> restore() async => false;
+
+  @override
+  Future<String> managementUrl() async => 'https://example.com';
 }
 
 void main() {
