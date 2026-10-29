@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -275,13 +276,30 @@ class _FakePrayersApi implements PrayersApi {
 }
 
 class _FakeAppConfigApi implements AppConfigApi {
-  bool billingEnabled = true;
+  // Off by default, as on a QA backend, so the editor tests can use every
+  // tool; the billing tests switch it on.
+  bool billingEnabled = false;
 
   @override
   Future<AppConfig> fetch() async => AppConfig(billingEnabled: billingEnabled);
 }
 
 class _FakeBillingService implements BillingService {
+  bool premium = false;
+  PremiumOffer? offer = const PremiumOffer(
+    monthlyPrice: '\$0.99',
+    trialDays: 7,
+  );
+  PurchaseOutcome outcome = PurchaseOutcome.purchased;
+  bool restoreFindsPremium = false;
+  var purchaseCalls = 0;
+  final _changes = StreamController<bool>.broadcast();
+
+  void _setPremium(bool value) {
+    premium = value;
+    _changes.add(value);
+  }
+
   @override
   Future<void> logIn(String userId) async {}
 
@@ -289,7 +307,26 @@ class _FakeBillingService implements BillingService {
   Future<void> logOut() async {}
 
   @override
-  Stream<bool> watchPremium() => Stream.value(false);
+  Stream<bool> watchPremium() async* {
+    yield premium;
+    yield* _changes.stream;
+  }
+
+  @override
+  Future<PremiumOffer?> getOffer() async => offer;
+
+  @override
+  Future<PurchaseOutcome> purchasePremium() async {
+    purchaseCalls++;
+    if (outcome == PurchaseOutcome.purchased) _setPremium(true);
+    return outcome;
+  }
+
+  @override
+  Future<bool> restore() async {
+    if (restoreFindsPremium) _setPremium(true);
+    return restoreFindsPremium;
+  }
 }
 
 class _FakeGoogleSignInService implements GoogleSignInService {
@@ -352,6 +389,7 @@ void main() {
   late _FakePhotoPicker photoPicker;
   late _FakePrayersApi prayersApi;
   late _FakeAppConfigApi appConfigApi;
+  late _FakeBillingService billing;
   late _FakeHomeWidgetService homeWidgetService;
   late _FakeVersesApi versesApi;
   late _NoopScheduler notificationScheduler;
@@ -382,6 +420,7 @@ void main() {
     photoPicker = _FakePhotoPicker();
     prayersApi = _FakePrayersApi();
     appConfigApi = _FakeAppConfigApi();
+    billing = _FakeBillingService();
     homeWidgetService = _FakeHomeWidgetService();
     versesApi = _FakeVersesApi();
     notificationScheduler = _NoopScheduler();
@@ -397,7 +436,7 @@ void main() {
       photoPickerProvider.overrideWithValue(photoPicker),
       prayersApiProvider.overrideWithValue(prayersApi),
       appConfigApiProvider.overrideWithValue(appConfigApi),
-      billingServiceProvider.overrideWithValue(_FakeBillingService()),
+      billingServiceProvider.overrideWithValue(billing),
       homeWidgetServiceProvider.overrideWithValue(homeWidgetService),
       notificationSchedulerProvider.overrideWithValue(notificationScheduler),
       googleSignInServiceProvider.overrideWithValue(googleSignInService),
@@ -1339,6 +1378,7 @@ void main() {
   testWidgets('Profile shows a test-build banner only when billing is off', (
     tester,
   ) async {
+    appConfigApi.billingEnabled = true;
     await tester.pumpWidget(app());
     await tester.pumpAndSettle();
     await tester.tap(find.text('Profile').last);
@@ -1353,6 +1393,163 @@ void main() {
     await tester.tap(find.text('Profile').last);
     await tester.pumpAndSettle();
     expect(find.textContaining('Test build: billing off'), findsOneWidget);
+  });
+
+  group('with billing on', () {
+    setUp(() => appConfigApi.billingEnabled = true);
+
+    // The paywall is taller than the test screen, so scroll to its buttons.
+    Future<void> tapOnPaywall(WidgetTester tester, String label) async {
+      await tester.ensureVisible(find.text(label));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(label));
+    }
+
+    Future<void> openShare(WidgetTester tester, {bool signIn = false}) async {
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+      if (signIn) {
+        await signInFromProfile(tester);
+        await tester.tap(find.text('Home').last);
+        await tester.pumpAndSettle();
+      }
+      await tester.tap(find.text('Share').first);
+      await tester.pumpAndSettle();
+    }
+
+    VerseStyle previewStyle(WidgetTester tester) =>
+        tester.widget<VerseCard>(find.byType(VerseCard)).style;
+
+    testWidgets(
+      'free users can pick templates but the editor tools are locked',
+      (tester) async {
+        await openShare(tester);
+
+        // The templates stay free.
+        expect(find.bySemanticsLabel('Background dawn'), findsOneWidget);
+        // Your photo is Premium.
+        expect(find.bySemanticsLabel('Your photo (Premium)'), findsOneWidget);
+
+        await tester.tap(find.text('Font'));
+        await tester.pumpAndSettle();
+        expect(find.text('SoulVerse Premium'), findsOneWidget);
+        expect(
+          find.textContaining('\$0.99', findRichText: true),
+          findsOneWidget,
+        );
+        expect(find.text('Start 7-day free trial'), findsOneWidget);
+        expect(find.textContaining('renews automatically'), findsOneWidget);
+
+        await tapOnPaywall(tester, 'Maybe later');
+        await tester.pumpAndSettle();
+        expect(find.text('SoulVerse Premium'), findsNothing);
+        expect(find.bySemanticsLabel('Script font'), findsNothing);
+        expect(previewStyle(tester), VerseStyle.standard);
+      },
+    );
+
+    testWidgets('a free user\'s remembered style isn\'t used', (tester) async {
+      await tester.runAsync(
+        () => SharedPreferencesAsync().setString(
+          'last_verse_style',
+          '{"font":"script"}',
+        ),
+      );
+      await openShare(tester);
+      expect(previewStyle(tester), VerseStyle.standard);
+    });
+
+    testWidgets('guests sign in before subscribing', (tester) async {
+      await openShare(tester);
+      await tester.tap(find.text('Font'));
+      await tester.pumpAndSettle();
+      await tapOnPaywall(tester, 'Start 7-day free trial');
+      await tester.pumpAndSettle();
+
+      expect(find.text('Sign in to subscribe'), findsOneWidget);
+      expect(billing.purchaseCalls, 0);
+    });
+
+    testWidgets('subscribing unlocks the tool that was tapped straight away', (
+      tester,
+    ) async {
+      await openShare(tester, signIn: true);
+      await tester.tap(find.text('Font'));
+      await tester.pumpAndSettle();
+      await tapOnPaywall(tester, 'Start 7-day free trial');
+      await tester.pumpAndSettle();
+
+      expect(billing.purchaseCalls, 1);
+      expect(find.text('SoulVerse Premium'), findsNothing);
+      expect(find.text('Welcome to SoulVerse Premium!'), findsOneWidget);
+      // The Font tool the user tapped is now open and works.
+      await tester.tap(find.bySemanticsLabel('Script font'));
+      await tester.pumpAndSettle();
+      expect(previewStyle(tester).font, VerseFont.script);
+    });
+
+    testWidgets('a cancelled purchase keeps the paywall open and locked', (
+      tester,
+    ) async {
+      billing.outcome = PurchaseOutcome.cancelled;
+      await openShare(tester, signIn: true);
+      await tester.tap(find.text('Font'));
+      await tester.pumpAndSettle();
+      await tapOnPaywall(tester, 'Start 7-day free trial');
+      await tester.pumpAndSettle();
+
+      expect(find.text('SoulVerse Premium'), findsOneWidget);
+      expect(find.bySemanticsLabel('Script font'), findsNothing);
+    });
+
+    testWidgets('restore brings Premium back, or says none was found', (
+      tester,
+    ) async {
+      await openShare(tester, signIn: true);
+      await tester.tap(find.text('Font'));
+      await tester.pumpAndSettle();
+
+      await tapOnPaywall(tester, 'Restore purchases');
+      await tester.pumpAndSettle();
+      expect(
+        find.textContaining('couldn\'t find a Premium subscription'),
+        findsOne,
+      );
+
+      billing.restoreFindsPremium = true;
+      await tapOnPaywall(tester, 'Restore purchases');
+      await tester.pumpAndSettle();
+      expect(find.text('Your SoulVerse Premium is restored.'), findsOneWidget);
+      expect(find.bySemanticsLabel('Script font'), findsOneWidget);
+    });
+
+    testWidgets('Home\'s Edit opens the paywall for free users', (
+      tester,
+    ) async {
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Edit'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('SoulVerse Premium'), findsOneWidget);
+      expect(find.text('Share Verse'), findsNothing);
+    });
+
+    testWidgets('Premium users open the editor straight from Home\'s Edit', (
+      tester,
+    ) async {
+      billing.premium = true;
+      await tester.pumpWidget(app());
+      await tester.pumpAndSettle();
+      await signInFromProfile(tester);
+      await tester.tap(find.text('Home').last);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Edit'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('SoulVerse Premium'), findsNothing);
+      expect(find.bySemanticsLabel('Script font'), findsOneWidget);
+    });
   });
 
   testWidgets('saving from Home fills the heart and Undo reverts it', (

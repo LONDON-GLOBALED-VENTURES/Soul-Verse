@@ -8,8 +8,42 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 /// The RevenueCat entitlement that unlocks Premium features.
 const premiumEntitlementId = 'premium';
 
+/// What the store currently offers, shown on the paywall.
+@immutable
+class PremiumOffer {
+  const PremiumOffer({required this.monthlyPrice, this.trialDays});
+
+  /// Localised, e.g. "$0.99" or "£0.89".
+  final String monthlyPrice;
+
+  /// Length of the free trial for this user, or null if they don't get one
+  /// (e.g. they've had a trial before).
+  final int? trialDays;
+}
+
+enum PurchaseOutcome {
+  /// Premium is active now.
+  purchased,
+
+  /// The user closed the store's payment sheet.
+  cancelled,
+
+  /// Paid with a method that takes time to clear; Premium unlocks when it does.
+  pending,
+}
+
 /// The app store subscription, behind an interface so tests can use a fake.
 abstract class BillingService {
+  /// The monthly Premium subscription, or null if the store has none set up.
+  Future<PremiumOffer?> getOffer();
+
+  /// Opens the store's payment sheet. Throws if the store reports an error.
+  Future<PurchaseOutcome> purchasePremium();
+
+  /// Brings back a subscription bought earlier on this store account.
+  /// Returns whether the user has Premium afterwards.
+  Future<bool> restore();
+
   /// Links purchases to the signed-in SoulVerse account, so Premium follows
   /// the account across reinstalls and devices.
   Future<void> logIn(String userId);
@@ -87,4 +121,73 @@ class RevenueCatBillingService implements BillingService {
 
   static bool _hasPremium(CustomerInfo info) =>
       info.entitlements.active.containsKey(premiumEntitlementId);
+
+  Package? _package;
+
+  Future<Package?> _premiumPackage() async {
+    if (_package != null) return _package;
+    await _ensureConfigured();
+    final offering = (await Purchases.getOfferings()).current;
+    return _package =
+        offering?.monthly ?? offering?.availablePackages.firstOrNull;
+  }
+
+  @override
+  Future<PremiumOffer?> getOffer() async {
+    if (!_available) return null;
+    final product = (await _premiumPackage())?.storeProduct;
+    if (product == null) return null;
+    return PremiumOffer(
+      monthlyPrice: product.priceString,
+      trialDays: _trialDays(product),
+    );
+  }
+
+  /// Google Play describes a free trial as a "free phase" of the subscription;
+  /// the App Store as an introductory price of zero.
+  static int? _trialDays(StoreProduct product) {
+    final freePhase = product.defaultOption?.freePhase?.billingPeriod;
+    if (freePhase != null) return _days(freePhase.unit, freePhase.value);
+    final intro = product.introductoryPrice;
+    if (intro != null && intro.price == 0) {
+      return _days(intro.periodUnit, intro.periodNumberOfUnits);
+    }
+    return null;
+  }
+
+  static int? _days(PeriodUnit unit, int value) => switch (unit) {
+    PeriodUnit.day => value,
+    PeriodUnit.week => value * 7,
+    PeriodUnit.month => value * 30,
+    PeriodUnit.year => value * 365,
+    PeriodUnit.unknown => null,
+  };
+
+  @override
+  Future<PurchaseOutcome> purchasePremium() async {
+    final package = await _premiumPackage();
+    if (package == null) throw StateError('No Premium subscription is set up');
+    try {
+      final result = await Purchases.purchase(PurchaseParams.package(package));
+      return _hasPremium(result.customerInfo)
+          ? PurchaseOutcome.purchased
+          : PurchaseOutcome.pending;
+    } on PlatformException catch (e) {
+      final code = PurchasesErrorHelper.getErrorCode(e);
+      if (code == PurchasesErrorCode.purchaseCancelledError) {
+        return PurchaseOutcome.cancelled;
+      }
+      if (code == PurchasesErrorCode.paymentPendingError) {
+        return PurchaseOutcome.pending;
+      }
+      rethrow;
+    }
+  }
+
+  @override
+  Future<bool> restore() async {
+    if (!_available) return false;
+    await _ensureConfigured();
+    return _hasPremium(await Purchases.restorePurchases());
+  }
 }

@@ -109,5 +109,10 @@
         <!-- Direct image sharing to these apps. -->
         <package android:name="com.whatsapp"/>
         <package android:name="com.instagram.android"/>
+        <!-- Opening the Terms, Privacy and subscription pages in a browser. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
+        </intent>
     </queries>
 </manifest>

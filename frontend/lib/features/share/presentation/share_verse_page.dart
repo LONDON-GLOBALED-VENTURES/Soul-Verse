@@ -16,7 +16,7 @@ import '../../verses/data/models/verse.dart';
 import '../../verses/data/models/verse_template.dart';
 import '../../favourites/application/favourites_provider.dart';
 import '../../favourites/presentation/toggle_favourite.dart';
-import '../../auth/application/auth_service.dart';
+import '../../subscription/application/premium_providers.dart';
 import '../../subscription/presentation/premium_upgrade_sheet.dart';
 import '../data/models/verse_style.dart';
 import '../data/photo_picker.dart';
@@ -81,8 +81,19 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
   _Snapshot get _snapshot =>
       (template: _template, style: _style, autoTextColour: _autoTextColour);
 
-  bool get _isOriginal =>
-      _style == VerseStyle.standard && _template.id == widget.args.template.id;
+  /// What the preview and the shared image use. Free users get the template's
+  /// own look; their (e.g. remembered) style comes back if they subscribe.
+  VerseStyle get _shownStyle =>
+      ref.read(isPremiumProvider) ? _style : VerseStyle.standard;
+
+  /// Runs [action] now, or after the user unlocks Premium on the paywall.
+  Future<void> _whenUnlocked(
+    VoidCallback action, {
+    required bool locked,
+  }) async {
+    if (locked && !await showPremiumUpgradeSheet(context)) return;
+    if (mounted) action();
+  }
 
   @override
   void initState() {
@@ -149,7 +160,7 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
   Future<Uint8List> _render() async {
     // Make sure the background has loaded so it isn't captured as a placeholder.
     // If it fails to load, still share what's on screen rather than failing.
-    final ImageProvider? image = switch (_style.customBackground) {
+    final ImageProvider? image = switch (_shownStyle.customBackground) {
       PhotoBackground(:final path) => FileImage(File(path)),
       null => CachedNetworkImageProvider(_template.imageUrl),
       // Colours and gradients have nothing to load.
@@ -236,8 +247,10 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
       ...templates.where((t) => t.id != widget.args.template.id),
     ];
 
-    final currentUser = ref.watch(authProvider).value;
-    final isPremium = currentUser?.subscription.isPremium ?? false;
+    final isPremium = ref.watch(isPremiumProvider);
+    final style = _shownStyle;
+    // A Premium tool (e.g. Font from Home's Edit) falls back to Background.
+    final tool = isPremium || !_tool.isPremium ? _tool : EditorTool.background;
 
     return Scaffold(
       appBar: AppBar(
@@ -282,14 +295,14 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                             verse: _verse,
                             template: _template,
                             borderRadius: BorderRadius.zero,
-                            style: _style,
-                            onTextPositionChanged: _busy
+                            style: style,
+                            onTextPositionChanged: _busy || !isPremium
                                 ? null
                                 : (position) => _updateStyle(
                                     _style.copyWith(textPosition: position),
                                   ),
                             // Tapping words only highlights while that tool is open.
-                            onWordTapped: _busy || _tool != EditorTool.highlight
+                            onWordTapped: _busy || tool != EditorTool.highlight
                                 ? null
                                 : (word) => _updateStyle(
                                     _style.toggleHighlight(word),
@@ -309,16 +322,24 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
                     _HistoryBar(
                       onUndo: _undoStack.isEmpty ? null : _undo,
                       onRedo: _redoStack.isEmpty ? null : _redo,
-                      onReset: _isOriginal ? null : _reset,
+                      onReset:
+                          style == VerseStyle.standard &&
+                              _template.id == widget.args.template.id
+                          ? null
+                          : _reset,
                     ),
                     SizedBox(
                       height: 72,
-                      child: _toolControls(choices, isPremium),
+                      child: _toolControls(tool, choices, isPremium),
                     ),
                     const SizedBox(height: 4),
                     EditorToolStrip(
-                      selected: _tool,
-                      onSelected: (tool) => setState(() => _tool = tool),
+                      selected: tool,
+                      locked: !isPremium,
+                      onSelected: (next) => _whenUnlocked(
+                        locked: next.isPremium && !isPremium,
+                        () => setState(() => _tool = next),
+                      ),
                     ),
                   ],
                 ),
@@ -417,12 +438,16 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
   }
 
   Widget _backgroundChoices(List<VerseTemplate> choices, bool isPremium) {
-    final custom = _style.customBackground;
+    final custom = _shownStyle.customBackground;
+    // Your photo, colours and gradients are Premium; the templates are free.
+    void premiumBackground(VoidCallback apply) =>
+        _whenUnlocked(apply, locked: !isPremium);
     final tiles = <Widget>[
       BackgroundTile(
         label: 'Your photo',
         selected: custom is PhotoBackground,
-        onTap: _pickPhoto,
+        locked: !isPremium,
+        onTap: () => premiumBackground(_pickPhoto),
         child: custom is PhotoBackground
             ? Stack(
                 fit: StackFit.expand,
@@ -457,14 +482,20 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
         BackgroundTile(
           label: '${colour.name} background',
           selected: custom == ColourBackground(colour.color),
-          onTap: () => _setBackground(ColourBackground(colour.color)),
+          locked: !isPremium,
+          onTap: () => premiumBackground(
+            () => _setBackground(ColourBackground(colour.color)),
+          ),
           child: ColoredBox(color: colour.color),
         ),
       for (final gradient in backgroundGradients)
         BackgroundTile(
           label: '${gradient.name} gradient',
           selected: custom == GradientBackground(gradient.colors),
-          onTap: () => _setBackground(GradientBackground(gradient.colors)),
+          locked: !isPremium,
+          onTap: () => premiumBackground(
+            () => _setBackground(GradientBackground(gradient.colors)),
+          ),
           child: verseBackground(
             _template,
             GradientBackground(gradient.colors),
@@ -480,8 +511,12 @@ class _ShareVersePageState extends ConsumerState<ShareVersePage> {
     );
   }
 
-  Widget _toolControls(List<VerseTemplate> choices, bool isPremium) {
-    return switch (_tool) {
+  Widget _toolControls(
+    EditorTool tool,
+    List<VerseTemplate> choices,
+    bool isPremium,
+  ) {
+    return switch (tool) {
       EditorTool.background => _backgroundChoices(choices, isPremium),
       EditorTool.adjust => BackgroundAdjustControl(
         darkness: _style.effectiveDarkness(_template.overlayOpacity),

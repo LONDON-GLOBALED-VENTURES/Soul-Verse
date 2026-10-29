@@ -14,6 +14,8 @@ import '../../../core/widgets/verse_card.dart';
 import '../../favourites/presentation/toggle_favourite.dart';
 import '../../share/presentation/share_verse_page.dart';
 import '../../share/presentation/widgets/verse_editor_controls.dart';
+import '../../subscription/application/premium_providers.dart';
+import '../../subscription/presentation/premium_upgrade_sheet.dart';
 import '../application/verses_providers.dart';
 import '../data/models/verse.dart';
 import '../data/models/verse_template.dart';
@@ -62,12 +64,21 @@ class HomePage extends ConsumerWidget {
                       verse: d.verse,
                       template: d.template,
                       onShare: () => _openShare(context, d.verse, d.template),
-                      onEdit: () => _openShare(
-                        context,
-                        d.verse,
-                        d.template,
-                        initialTool: EditorTool.font,
-                      ),
+                      // The editor is Premium: free users see the paywall
+                      // first, and go straight on to it if they subscribe.
+                      onEdit: () async {
+                        if (!ref.read(isPremiumProvider) &&
+                            !await showPremiumUpgradeSheet(context)) {
+                          return;
+                        }
+                        if (!context.mounted) return;
+                        _openShare(
+                          context,
+                          d.verse,
+                          d.template,
+                          initialTool: EditorTool.font,
+                        );
+                      },
                     ),
                   ),
                   loading: () => const LoadingBox(radius: AppRadius.card),

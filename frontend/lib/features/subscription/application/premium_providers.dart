@@ -42,6 +42,11 @@ final premiumEntitlementProvider = StreamProvider<bool>((ref) async* {
   yield* billing.watchPremium();
 });
 
+/// The price and trial shown on the paywall, loaded when it opens.
+final premiumOfferProvider = FutureProvider.autoDispose<PremiumOffer?>(
+  (ref) => ref.watch(billingServiceProvider).getOffer(),
+);
+
 /// Whether Premium features (your own photo, the image editor) are unlocked:
 /// with an active subscription, or always when billing is switched off for QA.
 final isPremiumProvider = Provider<bool>((ref) {

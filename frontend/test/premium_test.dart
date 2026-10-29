@@ -61,6 +61,15 @@ class _FakeBilling implements BillingService {
     yield current;
     yield* _premium.stream;
   }
+
+  @override
+  Future<PremiumOffer?> getOffer() async => null;
+
+  @override
+  Future<PurchaseOutcome> purchasePremium() async => PurchaseOutcome.cancelled;
+
+  @override
+  Future<bool> restore() async => false;
 }
 
 void main() {

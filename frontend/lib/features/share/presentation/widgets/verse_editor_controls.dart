@@ -23,6 +23,9 @@ enum EditorTool {
 
   final String label;
   final IconData icon;
+
+  /// Everything except picking one of the templates needs SoulVerse Premium.
+  bool get isPremium => this != background;
 }
 
 /// Text colours offered in the editor.
@@ -42,10 +45,16 @@ class EditorToolStrip extends StatelessWidget {
     super.key,
     required this.selected,
     required this.onSelected,
+    this.locked = false,
   });
 
   final EditorTool selected;
+
+  /// Also called for a locked tool; the screen decides (e.g. shows the paywall).
   final ValueChanged<EditorTool> onSelected;
+
+  /// Premium tools show a lock (the user doesn't have Premium).
+  final bool locked;
 
   @override
   Widget build(BuildContext context) {
@@ -75,12 +84,23 @@ class EditorToolStrip extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(
-                          tool.icon,
-                          size: 22,
-                          color: tool == selected
-                              ? AppColors.accent
-                              : AppColors.textSecondary,
+                        Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Icon(
+                              tool.icon,
+                              size: 22,
+                              color: tool == selected
+                                  ? AppColors.accent
+                                  : AppColors.textSecondary,
+                            ),
+                            if (locked && tool.isPremium)
+                              const Positioned(
+                                right: -6,
+                                top: -4,
+                                child: _LockBadge(),
+                              ),
+                          ],
                         ),
                         const SizedBox(height: 3),
                         Text(
@@ -102,6 +122,23 @@ class EditorToolStrip extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// A small gold lock marking a Premium option.
+class _LockBadge extends StatelessWidget {
+  const _LockBadge();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(2),
+      decoration: const BoxDecoration(
+        color: Color(0xFFD4AF37),
+        shape: BoxShape.circle,
+      ),
+      child: const Icon(Icons.lock_rounded, size: 9, color: Colors.white),
     );
   }
 }
@@ -738,6 +775,7 @@ class BackgroundTile extends StatelessWidget {
     required this.selected,
     required this.onTap,
     required this.child,
+    this.locked = false,
   });
 
   final String label;
@@ -745,12 +783,15 @@ class BackgroundTile extends StatelessWidget {
   final VoidCallback? onTap;
   final Widget child;
 
+  /// Premium-only: shows a lock (tapping it should open the paywall).
+  final bool locked;
+
   @override
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
       selected: selected,
-      label: label,
+      label: locked ? '$label (Premium)' : label,
       excludeSemantics: true,
       child: GestureDetector(
         onTap: onTap,
@@ -772,7 +813,18 @@ class BackgroundTile extends StatelessWidget {
                 border: Border.all(color: AppColors.border),
                 borderRadius: BorderRadius.circular(9),
               ),
-              child: SizedBox.expand(child: child),
+              child: SizedBox.expand(
+                child: locked
+                    ? Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          child,
+                          const ColoredBox(color: Colors.black26),
+                          const Center(child: _LockBadge()),
+                        ],
+                      )
+                    : child,
+              ),
             ),
           ),
         ),
