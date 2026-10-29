@@ -45,6 +45,8 @@ module.exports = {
   googleClientId: process.env.GOOGLE_CLIENT_ID || '',
   // Shown on the public account-deletion page.
   supportEmail: process.env.SUPPORT_EMAIL || 'support@example.com',
+  // Moderator access to /api/admin (reports, hide/restore). Unset: those routes don't exist.
+  adminApiKey: process.env.ADMIN_API_KEY || '',
   jwtSecret,
   jwtRefreshSecret,
   // Fake "mock-google-token:" sign-ins: always in tests, in development only on request.

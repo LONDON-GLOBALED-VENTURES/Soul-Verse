@@ -59,6 +59,28 @@ async function migrate() {
       );
     `);
 
+    // 3b. Moderation: hidden prayers, reports and blocks (all removed with their user or prayer).
+    await client.query(`
+      ALTER TABLE prayers ADD COLUMN IF NOT EXISTS hidden_at TIMESTAMPTZ;
+
+      CREATE TABLE IF NOT EXISTS prayer_reports (
+        prayer_id VARCHAR(128) REFERENCES prayers(id) ON DELETE CASCADE,
+        reporter_id VARCHAR(128) REFERENCES users(id) ON DELETE CASCADE,
+        reason VARCHAR(20) NOT NULL,
+        details TEXT NOT NULL DEFAULT '',
+        created_at TIMESTAMPTZ DEFAULT NOW(),
+        PRIMARY KEY (prayer_id, reporter_id)
+      );
+
+      CREATE TABLE IF NOT EXISTS user_blocks (
+        blocker_id VARCHAR(128) REFERENCES users(id) ON DELETE CASCADE,
+        blocked_id VARCHAR(128) REFERENCES users(id) ON DELETE CASCADE,
+        label VARCHAR(255) NOT NULL DEFAULT '',
+        created_at TIMESTAMPTZ DEFAULT NOW(),
+        PRIMARY KEY (blocker_id, blocked_id)
+      );
+    `);
+
     // 4. Performance Indexes
     await client.query(`
       CREATE INDEX IF NOT EXISTS idx_prayers_created_at ON prayers(created_at DESC);
@@ -66,6 +88,7 @@ async function migrate() {
       CREATE INDEX IF NOT EXISTS idx_prayers_category ON prayers(category);
       CREATE INDEX IF NOT EXISTS idx_prayers_type ON prayers(type);
       CREATE INDEX IF NOT EXISTS idx_prayer_likes_user ON prayer_likes(user_id);
+      CREATE INDEX IF NOT EXISTS idx_prayer_reports_created_at ON prayer_reports(created_at DESC);
     `);
 
     await client.query('COMMIT');

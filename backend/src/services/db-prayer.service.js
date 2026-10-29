@@ -11,7 +11,8 @@ const formatPrayerRow = (row, currentUserId = null) => {
 
   return {
     id: row.id,
-    authorId: row.author_id,
+    // Only your own: on anonymous prayers it would reveal who wrote them.
+    authorId: isMine ? row.author_id : '',
     authorName: isAnonymous ? 'Anonymous Believer' : (row.author_name || 'Believer'),
     authorAvatar: isAnonymous ? '' : (row.author_avatar || ''),
     authorStatusLevel: authorStatus.title,
@@ -50,6 +51,18 @@ const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', mi
   if (mine && currentUserId) {
     params.push(currentUserId);
     conditions.push(`p.author_id = $${params.length}`);
+  }
+
+  // Hidden (reported) prayers only show to their author; blocked authors don't show at all.
+  if (currentUserId) {
+    params.push(currentUserId);
+    const me = `$${params.length}`;
+    conditions.push(`(p.hidden_at IS NULL OR p.author_id = ${me})`);
+    conditions.push(
+      `NOT EXISTS (SELECT 1 FROM user_blocks b WHERE b.blocker_id = ${me} AND b.blocked_id = p.author_id)`
+    );
+  } else {
+    conditions.push('p.hidden_at IS NULL');
   }
 
   const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
@@ -306,9 +319,86 @@ const deletePrayer = async ({ prayerId, userId }) => {
   }
 };
 
+/** Who wrote a prayer, for reporting and blocking; null if there's no such prayer. */
+const getPrayerAuthor = async (prayerId) => {
+  const { rows } = await pool.query(
+    `SELECT p.author_id, p.is_anonymous, u.name
+     FROM prayers p LEFT JOIN users u ON u.id = p.author_id
+     WHERE p.id = $1`,
+    [prayerId]
+  );
+  const row = rows[0];
+  if (!row) return null;
+  return { authorId: row.author_id, isAnonymous: Boolean(row.is_anonymous), name: row.name || 'Believer' };
+};
+
+/** Records a report (once per user) and returns how many people have now reported the prayer. */
+const addReport = async ({ prayerId, userId, reason, details }) => {
+  await pool.query(
+    `INSERT INTO prayer_reports (prayer_id, reporter_id, reason, details)
+     VALUES ($1, $2, $3, $4)
+     ON CONFLICT (prayer_id, reporter_id) DO NOTHING`,
+    [prayerId, userId, reason, details]
+  );
+  const { rows } = await pool.query(
+    'SELECT COUNT(*)::int AS n FROM prayer_reports WHERE prayer_id = $1',
+    [prayerId]
+  );
+  return rows[0].n;
+};
+
+/** Hides or restores a prayer. Restoring clears its reports so it starts fresh. False if not found. */
+const setHidden = async (prayerId, hidden) => {
+  const res = await pool.query(
+    `UPDATE prayers SET hidden_at = ${hidden ? 'COALESCE(hidden_at, NOW())' : 'NULL'} WHERE id = $1`,
+    [prayerId]
+  );
+  if (!hidden) await pool.query('DELETE FROM prayer_reports WHERE prayer_id = $1', [prayerId]);
+  return res.rowCount > 0;
+};
+
+/** Reported prayers with their reports, most recently reported first (for moderators). */
+const listReported = async () => {
+  const { rows } = await pool.query(
+    `SELECT p.id, p.title, p.content, p.is_anonymous, p.hidden_at, p.created_at,
+            u.name AS author_name, r.reason, r.details, r.created_at AS reported_at
+     FROM prayer_reports r
+     JOIN prayers p ON p.id = r.prayer_id
+     LEFT JOIN users u ON u.id = p.author_id
+     ORDER BY r.created_at DESC`
+  );
+  const byPrayer = new Map();
+  for (const row of rows) {
+    if (!byPrayer.has(row.id)) {
+      byPrayer.set(row.id, {
+        prayer: {
+          id: row.id,
+          title: row.title,
+          content: row.content,
+          authorName: row.author_name || 'Believer',
+          isAnonymous: Boolean(row.is_anonymous),
+          hidden: Boolean(row.hidden_at),
+          createdAt: new Date(row.created_at).toISOString(),
+        },
+        reports: [],
+      });
+    }
+    byPrayer.get(row.id).reports.push({
+      reason: row.reason,
+      details: row.details,
+      createdAt: new Date(row.reported_at).toISOString(),
+    });
+  }
+  return [...byPrayer.values()];
+};
+
 module.exports = {
   listPrayers,
   createPrayer,
   toggleLike,
   deletePrayer,
+  getPrayerAuthor,
+  addReport,
+  setHidden,
+  listReported,
 };

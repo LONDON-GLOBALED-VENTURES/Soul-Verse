@@ -174,8 +174,49 @@ const deleteUser = async (id) => {
   const index = users.findIndex((u) => u.id === id);
   if (index === -1) return false;
   users.splice(index, 1);
+  // Nobody needs to block an account that no longer exists.
+  for (const user of users) {
+    if (user.blocks) user.blocks = user.blocks.filter((b) => b.userId !== id);
+  }
   saveUsers();
   return true;
+};
+
+/** Blocks [blockedId] for [blockerId]; [label] is the name they appeared under. */
+const addBlock = async (blockerId, blockedId, label) => {
+  if (isDbActive()) return dbUser.addBlock(blockerId, blockedId, label);
+
+  const blocker = loadUsers().find((u) => u.id === blockerId);
+  if (!blocker) return;
+  blocker.blocks = blocker.blocks || [];
+  if (blocker.blocks.some((b) => b.userId === blockedId)) return;
+  blocker.blocks.push({ userId: blockedId, label, createdAt: new Date().toISOString() });
+  saveUsers();
+};
+
+const removeBlock = async (blockerId, blockedId) => {
+  if (isDbActive()) return dbUser.removeBlock(blockerId, blockedId);
+
+  const blocker = loadUsers().find((u) => u.id === blockerId);
+  if (!blocker?.blocks) return;
+  blocker.blocks = blocker.blocks.filter((b) => b.userId !== blockedId);
+  saveUsers();
+};
+
+/** The people [blockerId] has blocked, most recent first. */
+const listBlocks = async (blockerId) => {
+  if (isDbActive()) return dbUser.listBlocks(blockerId);
+
+  const blocker = loadUsers().find((u) => u.id === blockerId);
+  return [...(blocker?.blocks || [])]
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    .map((b) => ({ userId: b.userId, name: b.label, blockedAt: b.createdAt }));
+};
+
+/** Ids of everyone [blockerId] has blocked (JSON mode; Postgres filters in SQL). */
+const getBlockedIds = (blockerId) => {
+  const blocker = loadUsers().find((u) => u.id === blockerId);
+  return new Set((blocker?.blocks || []).map((b) => b.userId));
 };
 
 const _resetForTests = (initial = []) => {
@@ -191,6 +232,10 @@ module.exports = {
   updateSubscription,
   adjustPrayerStats,
   deleteUser,
+  addBlock,
+  removeBlock,
+  listBlocks,
+  getBlockedIds,
   sanitize,
   _resetForTests,
 };

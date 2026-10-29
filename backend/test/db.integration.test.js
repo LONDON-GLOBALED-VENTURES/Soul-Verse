@@ -130,3 +130,69 @@ test('deleting a user removes their prayers and likes and fixes the counts', { s
 
   assert.equal(await dbUser.deleteUser(anna.id), false, 'already gone');
 });
+
+test('reports, hiding and blocks shape each person\'s feed', { skip }, async () => {
+  await resetSchema();
+  await migrate();
+  await migrate(); // still idempotent with the moderation tables
+  const newUser = (name) =>
+    dbUser.findOrCreateFromGoogle({ googleId: `g_${name}`, email: `${name}@example.com`, name, avatarUrl: '' });
+  const anna = await newUser('anna');
+  const ben = await newUser('ben');
+  const carl = await newUser('carl');
+  const annasPrayer = await dbPrayer.createPrayer({
+    authorId: anna.id,
+    title: 'Anna needs prayer',
+    content: 'Please pray for strength this week.',
+    isAnonymous: true,
+  });
+  const titles = async (userId) =>
+    (await dbPrayer.listPrayers({ currentUserId: userId })).items.map((p) => p.title);
+
+  // Other people never see the author's id; the author does.
+  assert.equal((await dbPrayer.listPrayers({ currentUserId: ben.id })).items[0].authorId, '');
+  assert.equal((await dbPrayer.listPrayers({ currentUserId: anna.id })).items[0].authorId, anna.id);
+
+  assert.deepEqual(await dbPrayer.getPrayerAuthor(annasPrayer.id), {
+    authorId: anna.id,
+    isAnonymous: true,
+    name: 'anna',
+  });
+  assert.equal(await dbPrayer.getPrayerAuthor('pry_missing'), null);
+
+  // One report per person.
+  assert.equal(await dbPrayer.addReport({ prayerId: annasPrayer.id, userId: ben.id, reason: 'spam', details: 'Ads' }), 1);
+  assert.equal(await dbPrayer.addReport({ prayerId: annasPrayer.id, userId: ben.id, reason: 'spam', details: '' }), 1);
+  const reported = await dbPrayer.listReported();
+  assert.equal(reported.length, 1);
+  assert.equal(reported[0].prayer.authorName, 'anna');
+  assert.deepEqual(reported[0].reports.map((r) => [r.reason, r.details]), [['spam', 'Ads']]);
+
+  assert.equal(await dbPrayer.setHidden(annasPrayer.id, true), true);
+  assert.deepEqual(await titles(ben.id), []);
+  assert.deepEqual(await titles(null), []);
+  assert.deepEqual(await titles(anna.id), ['Anna needs prayer']);
+  assert.equal((await dbPrayer.listPrayers({})).total, 0, 'the total matches too');
+
+  assert.equal(await dbPrayer.setHidden(annasPrayer.id, false), true);
+  assert.deepEqual(await dbPrayer.listReported(), [], 'restoring clears its reports');
+  assert.equal(await dbPrayer.setHidden('pry_missing', true), false);
+
+  await dbUser.addBlock(carl.id, anna.id, 'Anonymous Believer');
+  await dbUser.addBlock(carl.id, anna.id, 'Anonymous Believer'); // no duplicate
+  assert.deepEqual(await titles(carl.id), []);
+  assert.deepEqual(await titles(ben.id), ['Anna needs prayer']);
+  const blocks = await dbUser.listBlocks(carl.id);
+  assert.deepEqual(blocks.map((b) => [b.userId, b.name]), [[anna.id, 'Anonymous Believer']]);
+
+  await dbUser.removeBlock(carl.id, anna.id);
+  assert.deepEqual(await titles(carl.id), ['Anna needs prayer']);
+
+  // Deleting accounts removes their reports and blocks.
+  await dbPrayer.addReport({ prayerId: annasPrayer.id, userId: ben.id, reason: 'other', details: '' });
+  await dbUser.addBlock(carl.id, anna.id, 'Anonymous Believer');
+  await dbUser.deleteUser(ben.id);
+  assert.deepEqual(await dbPrayer.listReported(), []);
+  await dbUser.deleteUser(anna.id);
+  assert.deepEqual(await dbUser.listBlocks(carl.id), []);
+});

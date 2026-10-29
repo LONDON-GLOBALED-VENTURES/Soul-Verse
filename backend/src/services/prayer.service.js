@@ -49,7 +49,8 @@ const formatPrayer = async (prayer, currentUserId = null) => {
 
   return {
     id: prayer.id,
-    authorId: prayer.authorId,
+    // Only your own: on anonymous prayers it would reveal who wrote them.
+    authorId: isMine ? prayer.authorId : '',
     authorName: prayer.isAnonymous ? 'Anonymous Believer' : (author?.name || prayer.authorName || 'Believer'),
     authorAvatar: prayer.isAnonymous ? '' : (author?.avatarUrl || prayer.authorAvatar || ''),
     authorStatusLevel: authorStatus.title,
@@ -89,6 +90,12 @@ const listPrayers = async ({ sort = 'recent', category = 'All', type = 'all', mi
   if (mine && currentUserId) {
     filtered = filtered.filter((p) => p.authorId === currentUserId);
   }
+
+  // Hidden (reported) prayers only show to their author; blocked authors don't show at all.
+  const blocked = currentUserId ? userService.getBlockedIds(currentUserId) : new Set();
+  filtered = filtered.filter(
+    (p) => (!p.hiddenAt || p.authorId === currentUserId) && !blocked.has(p.authorId)
+  );
 
   if (sort === 'popular' || sort === 'top') {
     filtered.sort((a, b) => {
@@ -273,8 +280,82 @@ const removeUserData = async (userId) => {
     prayer.likesCount = Math.max(0, (prayer.likesCount || 1) - 1);
     await userService.adjustPrayerStats(prayer.authorId, { likesReceivedDelta: -1 });
   }
+  for (const prayer of prayers) {
+    if (prayer.reports) prayer.reports = prayer.reports.filter((r) => r.userId !== userId);
+  }
   prayersCache = prayers.filter((p) => p.authorId !== userId);
   savePrayers();
+};
+
+/** Who wrote a prayer, for reporting and blocking; null if there's no such prayer. */
+const getPrayerAuthor = async (prayerId) => {
+  if (isDbActive()) return dbPrayer.getPrayerAuthor(prayerId);
+
+  const prayer = loadPrayers().find((p) => p.id === prayerId);
+  if (!prayer) return null;
+  const author = await userService.findById(prayer.authorId);
+  return {
+    authorId: prayer.authorId,
+    isAnonymous: Boolean(prayer.isAnonymous),
+    name: author?.name || prayer.authorName || 'Believer',
+  };
+};
+
+/** Records a report (once per user) and returns how many people have now reported the prayer. */
+const addReport = async ({ prayerId, userId, reason, details }) => {
+  if (isDbActive()) return dbPrayer.addReport({ prayerId, userId, reason, details });
+
+  const prayer = loadPrayers().find((p) => p.id === prayerId);
+  prayer.reports = prayer.reports || [];
+  if (!prayer.reports.some((r) => r.userId === userId)) {
+    prayer.reports.push({ userId, reason, details, createdAt: new Date().toISOString() });
+    savePrayers();
+  }
+  return prayer.reports.length;
+};
+
+/** Hides or restores a prayer. Restoring clears its reports so it starts fresh. False if not found. */
+const setHidden = async (prayerId, hidden) => {
+  if (isDbActive()) return dbPrayer.setHidden(prayerId, hidden);
+
+  const prayer = loadPrayers().find((p) => p.id === prayerId);
+  if (!prayer) return false;
+  if (hidden) {
+    prayer.hiddenAt = prayer.hiddenAt || new Date().toISOString();
+  } else {
+    prayer.hiddenAt = null;
+    prayer.reports = [];
+  }
+  savePrayers();
+  return true;
+};
+
+/** Reported prayers with their reports, most recently reported first (for moderators). */
+const listReported = async () => {
+  if (isDbActive()) return dbPrayer.listReported();
+
+  const reported = loadPrayers().filter((p) => p.reports?.length);
+  const latest = (p) => p.reports.reduce((max, r) => (r.createdAt > max ? r.createdAt : max), '');
+  reported.sort((a, b) => latest(b).localeCompare(latest(a)));
+  return Promise.all(
+    reported.map(async (p) => {
+      const author = await userService.findById(p.authorId);
+      return {
+        prayer: {
+          id: p.id,
+          title: p.title,
+          content: p.content,
+          authorName: author?.name || p.authorName || 'Believer',
+          isAnonymous: Boolean(p.isAnonymous),
+          hidden: Boolean(p.hiddenAt),
+          createdAt: p.createdAt,
+        },
+        reports: [...p.reports]
+          .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+          .map(({ reason, details, createdAt }) => ({ reason, details, createdAt })),
+      };
+    })
+  );
 };
 
 const _resetForTests = (initial = []) => {
@@ -289,5 +370,9 @@ module.exports = {
   deletePrayer,
   formatPrayer,
   removeUserData,
+  getPrayerAuthor,
+  addReport,
+  setHidden,
+  listReported,
   _resetForTests,
 };

@@ -147,7 +147,41 @@ const deleteUser = async (id) => {
   }
 };
 
+/** Blocks [blockedId] for [blockerId]; [label] is the name they appeared under. */
+const addBlock = async (blockerId, blockedId, label) => {
+  await pool.query(
+    `INSERT INTO user_blocks (blocker_id, blocked_id, label)
+     VALUES ($1, $2, $3)
+     ON CONFLICT (blocker_id, blocked_id) DO NOTHING`,
+    [blockerId, blockedId, label]
+  );
+};
+
+const removeBlock = async (blockerId, blockedId) => {
+  await pool.query('DELETE FROM user_blocks WHERE blocker_id = $1 AND blocked_id = $2', [
+    blockerId,
+    blockedId,
+  ]);
+};
+
+/** The people [blockerId] has blocked, most recent first. */
+const listBlocks = async (blockerId) => {
+  const { rows } = await pool.query(
+    `SELECT blocked_id, label, created_at FROM user_blocks
+     WHERE blocker_id = $1 ORDER BY created_at DESC`,
+    [blockerId]
+  );
+  return rows.map((r) => ({
+    userId: r.blocked_id,
+    name: r.label,
+    blockedAt: new Date(r.created_at).toISOString(),
+  }));
+};
+
 module.exports = {
+  addBlock,
+  removeBlock,
+  listBlocks,
   deleteUser,
   findById,
   findByGoogleId,
