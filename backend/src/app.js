@@ -34,15 +34,18 @@ app.get('/', (req, res) => {
   });
 });
 
-// Public page the stores link to, explaining how to delete an account.
+// Public pages the stores and the app link to: how to delete an account, and
+// the Terms of Use and Privacy Policy.
 const escapeHtml = (value) =>
   value.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
-const deleteAccountPage = fs
-  .readFileSync(path.join(__dirname, 'pages', 'delete-account.html'), 'utf8')
-  .replaceAll('{{SUPPORT_EMAIL}}', escapeHtml(supportEmail));
-app.get('/delete-account', (req, res) => {
-  res.type('html').send(deleteAccountPage);
-});
+for (const page of ['delete-account', 'terms', 'privacy']) {
+  const html = fs
+    .readFileSync(path.join(__dirname, 'pages', `${page}.html`), 'utf8')
+    .replaceAll('{{SUPPORT_EMAIL}}', escapeHtml(supportEmail));
+  app.get(`/${page}`, (req, res) => {
+    res.type('html').send(html);
+  });
+}
 
 // Root /health alias for hosting health checks.
 app.get('/health', (req, res) => {

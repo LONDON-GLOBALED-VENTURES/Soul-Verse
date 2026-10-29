@@ -101,3 +101,15 @@ test('the account deletion page explains how to delete and who to email', async 
   assert.match(page, /mailto:support@example\.com/);
   assert.doesNotMatch(page, /{{SUPPORT_EMAIL}}/);
 });
+
+test('the Terms of Use and Privacy Policy pages are served with the support email', async () => {
+  for (const [path, heading] of [['/terms', 'Terms of Use'], ['/privacy', 'Privacy Policy']]) {
+    const res = await fetch(`${origin}${path}`);
+    assert.equal(res.status, 200, path);
+    assert.match(res.headers.get('content-type'), /text\/html/, path);
+    const page = await res.text();
+    assert.match(page, new RegExp(`<h1>${heading}</h1>`), path);
+    assert.match(page, /mailto:support@example\.com/, path);
+    assert.doesNotMatch(page, /{{/, path);
+  }
+});
