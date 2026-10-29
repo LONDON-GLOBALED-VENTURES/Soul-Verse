@@ -1,3 +1,6 @@
 {
-  "API_BASE_URL": "https://api.example.com/api"
+  "API_BASE_URL": "https://api.example.com/api",
+  "TERMS_URL": "https://api.example.com/terms",
+  "PRIVACY_URL": "https://api.example.com/privacy",
+  "REVENUECAT_ANDROID_KEY": "goog_your_revenuecat_public_key"
 }
