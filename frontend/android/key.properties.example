@@ -1,0 +1,6 @@
+# Copy to key.properties (same folder; never committed) to sign release builds
+# with the Google Play upload key. Keep the .jks file and password backed up.
+storeFile=D:/keys/soulverse-upload.jks
+storePassword=your-keystore-password
+keyAlias=upload
+keyPassword=your-keystore-password
