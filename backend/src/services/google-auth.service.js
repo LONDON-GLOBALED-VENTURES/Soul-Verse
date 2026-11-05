@@ -1,8 +1,8 @@
 const { OAuth2Client } = require('google-auth-library');
-const { googleClientId, allowMockGoogleAuth } = require('../config/env');
+const { googleClientIds, allowMockGoogleAuth } = require('../config/env');
 const HttpError = require('../utils/http-error');
 
-const client = new OAuth2Client(googleClientId || undefined);
+const client = new OAuth2Client();
 
 /**
  * Verifies a Google ID token and returns verified profile details.
@@ -30,14 +30,14 @@ const verifyGoogleToken = async (idToken) => {
     };
   }
 
-  if (!googleClientId) {
+  if (googleClientIds.length === 0) {
     throw new HttpError(500, 'GOOGLE_CLIENT_ID is not configured on the server');
   }
 
   try {
     const ticket = await client.verifyIdToken({
       idToken,
-      audience: googleClientId,
+      audience: googleClientIds,
     });
     const payload = ticket.getPayload();
 

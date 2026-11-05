@@ -42,7 +42,12 @@ module.exports = {
   port: Number(process.env.PORT) || 3000,
   corsOrigin: process.env.CORS_ORIGIN || '*',
   assetBaseUrl: process.env.ASSET_BASE_URL?.replace(/\/+$/, '') || '',
-  googleClientId: process.env.GOOGLE_CLIENT_ID || '',
+  // The Web OAuth client ID(s) sign-in tokens are issued for. Comma-separated, so a
+  // new client can be added while builds using the old one are still installed.
+  googleClientIds: (process.env.GOOGLE_CLIENT_ID || '')
+    .split(',')
+    .map((id) => id.trim())
+    .filter(Boolean),
   // Shown on the public account-deletion page.
   supportEmail: process.env.SUPPORT_EMAIL || 'support@example.com',
   // Moderator access to /api/admin (reports, hide/restore). Unset: those routes don't exist.

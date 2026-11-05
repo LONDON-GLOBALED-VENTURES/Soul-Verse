@@ -7,6 +7,14 @@ Thumbs.db
 __pycache__/
 *.pyc
 
+# Google OAuth client downloads (from Google Cloud; not used by the code)
+client_*.json
+client_secret_*.json
+client_*.plist
+
+# Local copy of the app icon for uploading to stores and consoles
+/soulverse-logo.png
+
 # Node (backend)
 backend/node_modules/
 backend/npm-debug.log*

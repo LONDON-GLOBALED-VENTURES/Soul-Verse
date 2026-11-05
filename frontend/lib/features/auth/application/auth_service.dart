@@ -19,12 +19,12 @@ abstract class GoogleSignInService {
 
 const _googleServerClientId = String.fromEnvironment(
   'GOOGLE_CLIENT_ID',
-  defaultValue: '255267733185-rmsq5809usmfseqvjot1qq75h75c9ahd.apps.googleusercontent.com',
+  defaultValue: '469292499276-jcrki963pg3squtsbrs949h9h3erkhnq.apps.googleusercontent.com',
 );
 
 const _googleIOSClientId = String.fromEnvironment(
   'GOOGLE_IOS_CLIENT_ID',
-  defaultValue: '255267733185-3tdm9het5g12a83dkpdg36reu0elpmcm.apps.googleusercontent.com',
+  defaultValue: '469292499276-e3fv0ek19tp5jbo59cegksj1qou5u218.apps.googleusercontent.com',
 );
 
 class DefaultGoogleSignInService implements GoogleSignInService {

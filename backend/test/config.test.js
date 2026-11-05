@@ -104,6 +104,17 @@ test('production rejects a mock Google token instead of signing it in', () => {
   assert.match(result.stderr, /REJECTED/);
 });
 
+test('GOOGLE_CLIENT_ID accepts several comma-separated client IDs', () => {
+  const ids = (value) =>
+    run({ NODE_ENV: 'development', GOOGLE_CLIENT_ID: value }, 'console.log(JSON.stringify(config.googleClientIds)); process.exit(0);').config;
+  assert.deepEqual(ids('new.apps.googleusercontent.com'), ['new.apps.googleusercontent.com']);
+  assert.deepEqual(ids(' new.apps.googleusercontent.com , old.apps.googleusercontent.com, '), [
+    'new.apps.googleusercontent.com',
+    'old.apps.googleusercontent.com',
+  ]);
+  assert.deepEqual(ids(''), []);
+});
+
 test('billing is on unless BILLING_ENABLED is exactly "false"', () => {
   const dev = { NODE_ENV: 'development' };
   assert.equal(run(dev).config.billing, true);
