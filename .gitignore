@@ -23,3 +23,5 @@ backend/.env.*
 !backend/.env.example
 backend/src/data/users.json
 backend/src/data/prayers.json
+
+SoulVerse-iOS-Simulator-Screenshots/

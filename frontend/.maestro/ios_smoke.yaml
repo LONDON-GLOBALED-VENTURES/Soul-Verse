@@ -1,5 +1,8 @@
 # Smoke test run by the "Build Mobile Apps" workflow on an iPhone Simulator:
 # goes through onboarding, opens every tab and saves a screenshot of each.
+#
+# On iOS each tab's label is the name plus "\nTab 2 of 5", so tabs are matched
+# with "(?s)Name.*" (the name, then anything including the line break).
 appId: com.londonglobaledventures.soulverse
 ---
 - launchApp:
@@ -17,19 +20,19 @@ appId: com.londonglobaledventures.soulverse
     text: "Allow"
     optional: true
 - extendedWaitUntil:
-    visible: "Explore"
+    visible: "(?s)Explore.*"
     timeout: 30000
 - waitForAnimationToEnd
 - takeScreenshot: screenshots/03-home
-- tapOn: "Explore"
+- tapOn: "(?s)Explore.*"
 - waitForAnimationToEnd
 - takeScreenshot: screenshots/04-explore
-- tapOn: "Prayers"
+- tapOn: "(?s)Prayers.*"
 - waitForAnimationToEnd
 - takeScreenshot: screenshots/05-prayers
-- tapOn: "Favourites"
+- tapOn: "(?s)Favourites.*"
 - waitForAnimationToEnd
 - takeScreenshot: screenshots/06-favourites
-- tapOn: "Profile"
+- tapOn: "(?s)Profile.*"
 - waitForAnimationToEnd
 - takeScreenshot: screenshots/07-profile

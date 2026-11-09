@@ -114,7 +114,6 @@ jobs:
       - name: Run the app and tap through every tab
         run: |
           cd frontend
-          mkdir -p screenshots
           maestro test --test-output-dir=maestro-output .maestro/ios_smoke.yaml
 
       - name: Upload Simulator screenshots
@@ -122,7 +121,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SoulVerse-iOS-Simulator-Screenshots
-          path: |
-            frontend/screenshots
-            frontend/.maestro/screenshots
-            frontend/maestro-output
+          path: frontend/maestro-output
