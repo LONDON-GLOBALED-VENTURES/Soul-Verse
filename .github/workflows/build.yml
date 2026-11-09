@@ -3,6 +3,13 @@ name: Build Mobile Apps (Android & iOS)
 on:
   workflow_dispatch:
 
+env:
+  # Same settings as frontend/dart_defines/prod.json (which isn't in git).
+  DART_DEFINES: >-
+    --dart-define=API_BASE_URL=https://soulverse-backend-469292499276.europe-west1.run.app/api
+    --dart-define=TERMS_URL=https://soulverse-backend-469292499276.europe-west1.run.app/terms
+    --dart-define=PRIVACY_URL=https://soulverse-backend-469292499276.europe-west1.run.app/privacy
+
 jobs:
   build-android:
     name: Build Android APK
@@ -31,7 +38,7 @@ jobs:
       - name: Build Android Release APK
         run: |
           cd frontend
-          flutter build apk --release --dart-define=API_BASE_URL=https://soulverse-backend-469292499276.europe-west1.run.app
+          flutter build apk --release $DART_DEFINES
 
       - name: Upload Android APK Artifact
         uses: actions/upload-artifact@v4
@@ -60,7 +67,7 @@ jobs:
       - name: Build iOS App (Device / Unsigned)
         run: |
           cd frontend
-          flutter build ios --release --no-codesign --dart-define=API_BASE_URL=https://soulverse-backend-469292499276.europe-west1.run.app
+          flutter build ios --release --no-codesign $DART_DEFINES
 
       - name: Package Unsigned IPA for Sideloading
         run: |
@@ -77,7 +84,7 @@ jobs:
       - name: Build iOS Simulator App
         run: |
           cd frontend
-          flutter build ios --simulator --dart-define=API_BASE_URL=https://soulverse-backend-469292499276.europe-west1.run.app
+          flutter build ios --simulator $DART_DEFINES
           cd build/ios/iphonesimulator
           zip -r SoulVerse-Simulator.zip Runner.app
 
@@ -86,3 +93,36 @@ jobs:
         with:
           name: SoulVerse-iOS-Simulator
           path: frontend/build/ios/iphonesimulator/SoulVerse-Simulator.zip
+
+      - name: Start an iPhone Simulator
+        run: |
+          UDID=$(xcrun simctl list devices available -j | python3 -c "
+          import json, sys
+          devices = json.load(sys.stdin)['devices']
+          print(next(d['udid'] for runtime, ds in devices.items() if 'iOS' in runtime
+                     for d in ds if d['name'].startswith('iPhone')))")
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl install "$UDID" frontend/build/ios/iphonesimulator/Runner.app
+          xcrun simctl list devices booted
+
+      - name: Install Maestro
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Run the app and tap through every tab
+        run: |
+          cd frontend
+          mkdir -p screenshots
+          maestro test --test-output-dir=maestro-output .maestro/ios_smoke.yaml
+
+      - name: Upload Simulator screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SoulVerse-iOS-Simulator-Screenshots
+          path: |
+            frontend/screenshots
+            frontend/.maestro/screenshots
+            frontend/maestro-output

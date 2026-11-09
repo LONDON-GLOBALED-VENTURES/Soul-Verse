@@ -1,0 +1,35 @@
+# Smoke test run by the "Build Mobile Apps" workflow on an iPhone Simulator:
+# goes through onboarding, opens every tab and saves a screenshot of each.
+appId: com.londonglobaledventures.soulverse
+---
+- launchApp:
+    clearState: true
+    permissions:
+      all: allow
+- extendedWaitUntil:
+    visible: "Begin Your Journey"
+    timeout: 60000
+- takeScreenshot: screenshots/01-welcome
+- tapOn: "Begin Your Journey"
+- takeScreenshot: screenshots/02-intent
+- tapOn: "Skip"
+- tapOn:
+    text: "Allow"
+    optional: true
+- extendedWaitUntil:
+    visible: "Explore"
+    timeout: 30000
+- waitForAnimationToEnd
+- takeScreenshot: screenshots/03-home
+- tapOn: "Explore"
+- waitForAnimationToEnd
+- takeScreenshot: screenshots/04-explore
+- tapOn: "Prayers"
+- waitForAnimationToEnd
+- takeScreenshot: screenshots/05-prayers
+- tapOn: "Favourites"
+- waitForAnimationToEnd
+- takeScreenshot: screenshots/06-favourites
+- tapOn: "Profile"
+- waitForAnimationToEnd
+- takeScreenshot: screenshots/07-profile
